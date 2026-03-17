@@ -6,11 +6,11 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Portal Interno | beServices</title>
 
-    <!-- Google Fonts: Inter 400/500/600 (Arial for headings) -->
+    <!-- Google Fonts: Inter & Montserrat -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@400;500;600;700&display=swap"
         rel="stylesheet" />
 
     <!-- Premium Icons -->
@@ -30,7 +30,7 @@
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        heading: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
                     },
                 }
             }
@@ -70,7 +70,7 @@
         .internal-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 10px 25px -5px rgba(0, 26, 65, 0.1);
-            border-color: rgba(0, 212, 255, 0.3);
+            border-color: rgba(80, 202, 191, 0.3);
         }
     </style>
 </head>
@@ -102,7 +102,7 @@
                 marca y otros recursos confidenciales de beServices.</p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8">
+        <div class="grid md:grid-cols-3 gap-8">
             <!-- Catalog Link -->
             <a href="catalogo.html" class="internal-card p-10 flex flex-col group relative overflow-hidden">
                 <div
@@ -141,6 +141,25 @@
                 </p>
                 <div class="flex items-center text-corporateNavy font-bold text-sm">
                     Ver Brand Guidelines <i
+                        class="ph ph-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- Commercial Processes Link -->
+            <a href="procesos-comerciales.html" class="internal-card p-10 flex flex-col group relative overflow-hidden">
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-brandBlue/5 rounded-bl-full -z-10 group-hover:bg-brandBlue/10 transition-colors">
+                </div>
+                <div
+                    class="w-14 h-14 bg-corporateNavy/5 text-corporateNavy rounded-2xl flex items-center justify-center mb-8">
+                    <i class="ph ph-flow-arrow text-3xl"></i>
+                </div>
+                <h2 class="text-2xl font-normal mb-3 group-hover:text-brandBlue transition-colors">Procesos Comerciales</h2>
+                <p class="text-mutedGray text-sm leading-relaxed mb-6 flex-grow">
+                    Definición de pipelines de venta, ciclos de renovaciones, asignación de cuentas y operativa comercial interna.
+                </p>
+                <div class="flex items-center text-brandBlue font-bold text-sm">
+                    Ver Procesos <i
                         class="ph ph-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                 </div>
             </a>
