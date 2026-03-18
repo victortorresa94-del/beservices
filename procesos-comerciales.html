@@ -839,7 +839,11 @@
           const c = document.getElementById('view-container');
           if(currentView === 'table') {
             const data = CONTACTS[activeTab]; const isE = activeTab==='E';
-            c.innerHTML = `<div class="overflow-x-auto"><table class="w-full text-[11px] text-left"><thead class="bg-slate-50 uppercase font-bold text-corporateNavy border-b"><tr><th class="p-4">Empresa</th><th class="p-4">Contacto</th>${isE?'<th class="p-4">Motivo</th>':'<th class="p-4">Pipeline</th><th class="p-4">Estado</th>'}</tr></thead><tbody class="divide-y">${data.map(x => `<tr><td class="p-4 font-bold">${x.company}</td><td class="p-4">${x.contact}</td>${isE?`<td class="p-4 text-red-500">${x.motive}</td>`:`<td class="p-4"><span class="px-2 py-0.5 rounded text-[9px] font-bold ${currentSubStates[x.pipeline]?.badge || ''}">${x.pipeName}</span></td><td class="p-4"><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background-color:${COLOR_MAP[x.color].hex}"></span>${x.sub}</div></td>`}</tr>`).join('')}</tbody></table></div>`;
+            c.innerHTML = `<div class="overflow-x-auto"><table class="w-full text-[11px] text-left"><thead class="bg-slate-50 uppercase font-bold text-corporateNavy border-b"><tr><th class="p-4">Empresa</th><th class="p-4">Contacto</th>${isE?'<th class="p-4">Motivo</th>':'<th class="p-4 uppercase tracking-wider">Etapa Pipeline</th><th class="p-4 capitalize">Estado</th>'}</tr></thead><tbody class="divide-y">${data.map(x => {
+              const pipe = currentSubStates[x.pipeline];
+              const stageName = pipe ? pipe.stages[x.stage] : '—';
+              return `<tr><td class="p-4 font-bold">${x.company}</td><td class="p-4">${x.contact}</td>${isE?`<td class="p-4 text-red-500">${x.motive}</td>`:`<td class="p-4"><span class="px-2 py-0.5 rounded text-[9px] font-bold ${pipe?.badge || ''}">${stageName}</span></td><td class="p-4"><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background-color:${COLOR_MAP[x.color].hex}"></span>${x.sub}</div></td>`}</tr>`
+            }).join('')}</tbody></table></div>`;
           } else {
             if(activeTab==='E') { c.innerHTML = '<p class="p-10 text-center text-mutedGray">Sin pipeline para descartados.</p>'; }
             else {
