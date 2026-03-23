@@ -188,54 +188,68 @@
         </div>
       </div>
 
-      <div class="flex overflow-x-auto gap-6 pb-6 custom-scrollbar">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 pb-6">
         <!-- Segment A -->
-        <div class="internal-card p-6 min-w-[300px] flex-shrink-0 border-t-4 border-t-electricCyan">
-          <span class="text-4xl font-bold text-electricCyan block mb-2">A</span>
-          <h3 class="text-xl font-bold mb-3">Clientes con proyecto</h3>
-          <p class="text-sm text-mutedGray mb-4 h-20">Contratado servicio activo: seguridad, backup, cloud, migración o IA. Clientes plenos.</p>
-          <div class="bg-electricCyan/10 text-electricCyan text-xs font-bold px-3 py-1.5 rounded-full inline-block">
-            Newsletter + Revisión Mensual
+        <div class="internal-card p-5 flex flex-col border-t-4 border-t-electricCyan hover:-translate-y-1 transition-transform">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="font-bold text-corporateNavy leading-tight text-sm pr-2">Clientes con proyecto</h3>
+            <span class="text-2xl font-black text-electricCyan/30">A</span>
+          </div>
+          <p class="text-xs text-mutedGray mb-4 flex-grow leading-relaxed">Contratado servicio activo: seguridad, backup, cloud o IA. Clientes plenos.</p>
+          <div class="mt-auto">
+             <span class="bg-electricCyan/10 text-electricCyan text-[10px] uppercase tracking-wider font-bold px-2 py-1.5 rounded block text-center truncate">Newsletter + Revisión</span>
           </div>
         </div>
+
         <!-- Segment B -->
-        <div class="internal-card p-6 min-w-[300px] flex-shrink-0 border-t-4 border-t-brandBlue">
-          <span class="text-4xl font-bold text-brandBlue block mb-2">B</span>
-          <h3 class="text-xl font-bold mb-3">Solo licencias</h3>
-          <p class="text-sm text-mutedGray mb-4 h-20">M365 o Google Workspace sin servicios adicionales. Alto potencial de Upsell.</p>
-          <div class="bg-brandBlue/10 text-brandBlue text-xs font-bold px-3 py-1.5 rounded-full inline-block">
-            Email Segmentado x Producto
+        <div class="internal-card p-5 flex flex-col border-t-4 border-t-brandBlue hover:-translate-y-1 transition-transform">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="font-bold text-corporateNavy leading-tight text-sm pr-2">Solo licencias</h3>
+            <span class="text-2xl font-black text-brandBlue/30">B</span>
+          </div>
+          <p class="text-xs text-mutedGray mb-4 flex-grow leading-relaxed">M365 o Google Workspace sin servicios extra. Alto potencial Upsell.</p>
+          <div class="mt-auto">
+             <span class="bg-brandBlue/10 text-brandBlue text-[10px] uppercase tracking-wider font-bold px-2 py-1.5 rounded block text-center truncate">Email x Producto</span>
           </div>
         </div>
+
         <!-- Segment C -->
-        <div class="internal-card p-6 min-w-[300px] flex-shrink-0 border-t-4 border-t-amber-500">
-          <span class="text-4xl font-bold text-amber-500 block mb-2">C</span>
-          <h3 class="text-xl font-bold mb-3">Leads Calientes</h3>
-          <p class="text-sm text-mutedGray mb-4 h-20">Interés reciente: respuesta email, visita landing o referido. Listos para negociación.</p>
-          <div class="bg-amber-500/10 text-amber-600 text-xs font-bold px-3 py-1.5 rounded-full inline-block">
-            Secuencia 3 emails (7 días)
+        <div class="internal-card p-5 flex flex-col border-t-4 border-t-amber-500 hover:-translate-y-1 transition-transform">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="font-bold text-corporateNavy leading-tight text-sm pr-2">Leads Calientes</h3>
+            <span class="text-2xl font-black text-amber-500/30">C</span>
+          </div>
+          <p class="text-xs text-mutedGray mb-4 flex-grow leading-relaxed">Interés reciente: respuesta email, visita landing. Listos para negociar.</p>
+          <div class="mt-auto">
+             <span class="bg-amber-500/10 text-amber-600 text-[10px] uppercase tracking-wider font-bold px-2 py-1.5 rounded block text-center truncate">Secuencia 7 días</span>
           </div>
         </div>
+
         <!-- Segment D -->
-        <div class="internal-card p-6 min-w-[300px] flex-shrink-0 border-t-4 border-t-mutedGray">
-          <span class="text-4xl font-bold text-mutedGray block mb-2">D</span>
-          <h3 class="text-xl font-bold mb-3">Leads Fríos</h3>
-          <p class="text-sm text-mutedGray mb-4 h-20">Base histórica (~12k contactos). Sin señales recientes. Necesitan calentamiento.</p>
-          <div class="bg-mutedGray/10 text-mutedGray text-xs font-bold px-3 py-1.5 rounded-full inline-block">
-            Contenido Educativo (Warm-up)
+        <div class="internal-card p-5 flex flex-col border-t-4 border-t-mutedGray hover:-translate-y-1 transition-transform">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="font-bold text-corporateNavy leading-tight text-sm pr-2">Leads Fríos</h3>
+            <span class="text-2xl font-black text-mutedGray/30">D</span>
+          </div>
+          <p class="text-xs text-mutedGray mb-4 flex-grow leading-relaxed">Base histórica (~12k). Sin señales recientes. Necesitan calentamiento.</p>
+          <div class="mt-auto">
+             <span class="bg-mutedGray/10 text-mutedGray text-[10px] uppercase tracking-wider font-bold px-2 py-1.5 rounded block text-center truncate">Warm-up Educativo</span>
           </div>
         </div>
+
         <!-- Segment E -->
-        <div class="internal-card p-6 min-w-[300px] flex-shrink-0 border-t-4 border-t-red-400">
-          <span class="text-4xl font-bold text-red-400 block mb-2">E</span>
-          <h3 class="text-xl font-bold mb-3">Descartados</h3>
-          <p class="text-sm text-mutedGray mb-4 h-20">Fuera de ICP: competencia, particulares de España, o baja solicitada.</p>
-          <div class="bg-red-400/10 text-red-500 text-xs font-bold px-3 py-1.5 rounded-full inline-block">
-            Excluidos de Campañas
+        <div class="internal-card p-5 flex flex-col border-t-4 border-t-red-400 hover:-translate-y-1 transition-transform">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="font-bold text-corporateNavy leading-tight text-sm pr-2">Descartados</h3>
+            <span class="text-2xl font-black text-red-400/30">E</span>
+          </div>
+          <p class="text-xs text-mutedGray mb-4 flex-grow leading-relaxed">Fuera de ICP: competencia, particulares, o baja solicitada.</p>
+          <div class="mt-auto">
+             <span class="bg-red-400/10 text-red-500 text-[10px] uppercase tracking-wider font-bold px-2 py-1.5 rounded block text-center truncate">Excluidos Campañas</span>
           </div>
         </div>
       </div>
-      <p class="text-sm text-mutedGray italic mt-4">Nota: las sublistas por campaña (ej. "Clientes B con Business Basic") siempre deben vincularse a su segmento madre.</p>
+      <p class="text-sm text-mutedGray italic mt-2">Nota: las sublistas por campaña siempre deben vincularse a su segmento madre.</p>
     </section>
 
     <!-- Section 2: Ciclo de Ventas -->
