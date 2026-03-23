@@ -242,8 +242,7 @@
                 </div>
             </div>
 
-            <div
-                class="hidden lg:flex flex-col gap-6 text-[10rem] font-heading font-black leading-none text-white/5 select-none reveal delay-200">
+            <div class="hidden lg:flex flex-col gap-6 text-[10rem] font-heading font-black leading-none text-white/5 select-none reveal delay-200">
                 <span class="tracking-tighter">Aa</span>
                 <span class="tracking-tighter font-sans font-normal">Aa</span>
             </div>
@@ -265,12 +264,12 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <!-- Visual Example -->
                 <div class="relative h-[400px] rounded-3xl overflow-hidden reveal bg-cover bg-center"
-                    style="background-image: url('assets/hero.jpeg');">
-                    <div class="absolute inset-0 bg-corporateNavy/20"></div>
+                    style="background-image: url('assets/Banner Linkedin.png');">
+                    <div class="absolute inset-0 bg-corporateNavy/20 backdrop-blur-[2px]"></div>
                     <!-- The Glass Card Example -->
                     <div class="absolute inset-8 md:inset-16">
                         <div
-                            class="glass-card w-full h-full flex flex-col justify-center items-center p-8 text-center text-corporateNavy border-white/40">
+                            class="glass-card w-full h-full flex flex-col justify-center items-center p-8 text-center text-corporateNavy border-white/40 shadow-xl">
                             <i class="ph ph-bounding-box text-5xl mb-4 text-corporateNavy"></i>
                             <h4 class="text-2xl font-normal mb-2">Efecto Cristal</h4>
                             <p class="text-sm font-medium">Fondo semitransparente + Desenfoque (Blur 16px) + Borde sutil
@@ -279,43 +278,95 @@
                     </div>
                 </div>
 
-                <!-- Explanation -->
-                <div class="space-y-8 reveal delay-200">
-                    <div class="flex gap-4">
-                        <div
-                            class="w-12 h-12 shrink-0 bg-white rounded-xl shadow-sm flex items-center justify-center text-corporateNavy font-bold">
-                            1</div>
-                        <div>
-                            <h4 class="text-xl font-normal mb-2">Desenfoque de Fondo (Backdrop Blur)</h4>
-                            <p class="text-mutedGray text-sm">Lejos de las texturas sólidas del diseño web antiguo, el
-                                back-drop blur absorbe sutilmente los colores y formas que hay detrás, haciendo que la
-                                web se sienta orgánica y premium.</p>
+                             <!-- Interactive Explanation -->
+                <div class="space-y-4 reveal delay-200" id="brand-accordion">
+                    <!-- Tab 1 -->
+                    <div class="bg-white rounded-[1.5rem] shadow-sm border border-gray-100 overflow-hidden accordion-item active">
+                        <button class="w-full px-6 py-5 text-left font-bold text-corporateNavy flex justify-between items-center bg-gray-50/50 hover:bg-gray-50 transition-colors" onclick="toggleBrandAccordion(this)">
+                            <span class="flex items-center gap-3"><i class="ph ph-target text-xl text-brandBlue"></i> Lo que transmitimos</span>
+                            <i class="ph ph-caret-down transition-transform duration-300 transform rotate-180"></i>
+                        </button>
+                        <div class="px-6 pb-5 pt-2 text-sm text-mutedGray max-h-[500px] opacity-100 overflow-hidden transition-all duration-300 content-body">
+                            <ul class="space-y-2 list-disc list-inside marker:text-electricCyan">
+                                <li><strong>Solidez Enterprise:</strong> Transmitimos gran autoridad técnica e institucional.</li>
+                                <li><strong>Innovación Disruptiva:</strong> Una aproximación moderna y ágil B2B.</li>
+                                <li><strong>Claridad Absoluta:</strong> Diseño limpio lejos del estilo IT tradicional y oscuro.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Tab 2 -->
+                    <div class="bg-white rounded-[1.5rem] shadow-sm border border-gray-100 overflow-hidden accordion-item">
+                        <button class="w-full px-6 py-5 text-left font-bold text-corporateNavy flex justify-between items-center bg-gray-50/50 hover:bg-gray-50 transition-colors" onclick="toggleBrandAccordion(this)">
+                            <span class="flex items-center gap-3"><i class="ph ph-palette text-xl text-electricCyan"></i> El porqué de estos colores</span>
+                            <i class="ph ph-caret-down transition-transform duration-300"></i>
+                        </button>
+                        <div class="px-6 pb-0 pt-0 text-sm text-mutedGray max-h-0 opacity-0 overflow-hidden transition-all duration-300 content-body" style="padding-top:0px; padding-bottom:0px;">
+                            <ul class="space-y-2 list-disc list-inside marker:text-electricCyan">
+                                <li><strong>Corporate Navy (#001A41):</strong> Seriedad B2B y soporte estratégico constante.</li>
+                                <li><strong>Brand Blue (#0075f2) & Electric Cyan (#50cabf):</strong> Chispas tecnológicas que guían la mirada (Call To Actions).</li>
+                                <li><strong>Extremo Contraste:</strong> Marino sobre fondo blanco maximiza legibilidad y elegancia.</li>
+                            </ul>
                         </div>
                     </div>
 
-                    <div class="flex gap-4">
-                        <div
-                            class="w-12 h-12 shrink-0 bg-white rounded-xl shadow-sm flex items-center justify-center text-corporateNavy font-bold">
-                            2</div>
-                        <div>
-                            <h4 class="text-xl font-normal mb-2">Bordes Inteligentes (Soft Borders)</h4>
-                            <p class="text-mutedGray text-sm">Todas las tarjetas de "cristal" llevan un borde de 1px
-                                usando blanco o gris muy transparente. Todo el diseño incluye esquinas redondeadas
-                                extremas (border-radius grandes) para dar tactilidad.</p>
+                    <!-- Tab 3 -->
+                    <div class="bg-white rounded-[1.5rem] shadow-sm border border-gray-100 overflow-hidden accordion-item">
+                        <button class="w-full px-6 py-5 text-left font-bold text-corporateNavy flex justify-between items-center bg-gray-50/50 hover:bg-gray-50 transition-colors" onclick="toggleBrandAccordion(this)">
+                            <span class="flex items-center gap-3"><i class="ph ph-cube text-xl text-corporateNavy"></i> Efectos Tech, Glassmorphism y 3D</span>
+                            <i class="ph ph-caret-down transition-transform duration-300"></i>
+                        </button>
+                        <div class="px-6 pb-0 pt-0 text-sm text-mutedGray max-h-0 opacity-0 overflow-hidden transition-all duration-300 content-body" style="padding-top:0px; padding-bottom:0px;">
+                            <ul class="space-y-2 list-disc list-inside marker:text-electricCyan">
+                                <li><strong>Interactividad Viva:</strong> La interfaz responde, es una plataforma viva y reactiva.</li>
+                                <li><strong>Backdrop blur (Esmerilado):</strong> Genera sensación táctil y estratificada.</li>
+                                <li><strong>Sombras Suaves & Hover 3D:</strong> Humanizan el software complejo.</li>
+                            </ul>
                         </div>
                     </div>
 
-                    <div class="flex gap-4">
-                        <div
-                            class="w-12 h-12 shrink-0 bg-white rounded-xl shadow-sm flex items-center justify-center text-corporateNavy font-bold">
-                            3</div>
-                        <div>
-                            <h4 class="text-xl font-normal mb-2">Animaciones de Flotación (Hover)</h4>
-                            <p class="text-mutedGray text-sm">Al interactuar con los servicios, las cajas aplican un
-                                ligero translateY (se elevan) y aumentan la opacidad de sus sombras y bordes,
-                                transmitiendo reactividad técnica.</p>
+                    <!-- Tab 4 -->
+                    <div class="bg-white rounded-[1.5rem] shadow-sm border border-gray-100 overflow-hidden accordion-item">
+                        <button class="w-full px-6 py-5 text-left font-bold text-corporateNavy flex justify-between items-center bg-gray-50/50 hover:bg-gray-50 transition-colors" onclick="toggleBrandAccordion(this)">
+                            <span class="flex items-center gap-3"><i class="ph ph-wind text-xl text-corporateNavy"></i> El rol vital del Espacio en Blanco</span>
+                            <i class="ph ph-caret-down transition-transform duration-300"></i>
+                        </button>
+                        <div class="px-6 pb-0 pt-0 text-sm text-mutedGray max-h-0 opacity-0 overflow-hidden transition-all duration-300 content-body" style="padding-top:0px; padding-bottom:0px;">
+                            <ul class="space-y-2 list-disc list-inside marker:text-electricCyan">
+                                <li><strong>El Oxígeno Estructural:</strong> Los amplios márgenes reducen drásticamente la fatiga visual.</li>
+                                <li><strong>Paz Mental y Enfoque:</strong> Transmite que delegar en nosotros soluciona problemas visualmente (y técnicamente).</li>
+                                <li><strong>Foco absoluto:</strong> Permite jerarquizar solo lo esencial.</li>
+                            </ul>
                         </div>
                     </div>
+
+                    <script>
+                        function toggleBrandAccordion(btn) {
+                            const item = btn.parentElement;
+                            const body = item.querySelector('.content-body');
+                            const icon = btn.querySelector('.ph-caret-down');
+                            const isActive = item.classList.contains('active');
+
+                            document.querySelectorAll('.accordion-item').forEach(el => {
+                                el.classList.remove('active');
+                                const b = el.querySelector('.content-body');
+                                b.style.maxHeight = '0px';
+                                b.style.opacity = '0';
+                                b.style.paddingTop = '0px';
+                                b.style.paddingBottom = '0px';
+                                el.querySelector('.ph-caret-down').classList.remove('rotate-180');
+                            });
+
+                            if (!isActive) {
+                                item.classList.add('active');
+                                body.style.maxHeight = '500px';
+                                body.style.opacity = '1';
+                                body.style.paddingTop = '0.5rem';
+                                body.style.paddingBottom = '1.25rem';
+                                icon.classList.add('rotate-180');
+                            }
+                        }
+                    </script>
                 </div>
             </div>
         </div>
@@ -344,6 +395,112 @@
                     <img src="assets/a-professional-b2b-tech-social-media-pos_qtcQOEAvS1urAYTxCUGOBQ_R2c-IN4mTq606yCp_1150Q_sd.jpeg"
                         alt="Ref 3"
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                </div>
+            </div>
+
+            <!-- New Custom Application Examples -->
+            <h4 class="text-2xl font-normal text-corporateNavy mt-16 mb-8 reveal">Piezas Corporativas Actualizadas</h4>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 reveal delay-200">
+                
+                <!-- Correo: iframe -->
+                <div class="internal-card overflow-hidden flex flex-col shadow-lg border border-gray-100 rounded-3xl">
+                    <div class="bg-gray-100 text-corporateNavy px-5 py-3 text-sm font-bold flex items-center justify-between border-b border-gray-200">
+                        <span class="flex items-center gap-2"><i class="ph ph-envelope-simple-open uppercase text-lg"></i> Ejemplo de Correo</span>
+                        <div class="flex gap-1.5"><div class="w-3 h-3 rounded-full bg-red-400"></div><div class="w-3 h-3 rounded-full bg-amber-400"></div><div class="w-3 h-3 rounded-full bg-green-400"></div></div>
+                    </div>
+                    <div class="h-[500px] w-full bg-white relative">
+                        <iframe src="correo-seguridad-ejemplo.html" class="w-full h-full absolute inset-0 border-none"></iframe>
+                    </div>
+                </div>
+                
+                <!-- PDF Carousel / Post -->
+                <div class="internal-card overflow-hidden flex flex-col shadow-lg border border-gray-100 rounded-3xl">
+                    <div class="bg-brandBlue text-white px-5 py-3 text-sm font-bold flex items-center gap-2 border-b border-brandBlue/50">
+                        <i class="ph ph-linkedin-logo text-lg"></i> Post LinkedIn (Carrusel Scroll Horizontal)
+                    </div>
+                    <div class="h-[500px] w-full bg-slate-100 relative flex items-center justify-center" id="pdf-carousel-container">
+                        <div id="pdf-loading" class="text-brandBlue font-bold flex items-center gap-2">
+                            <i class="ph ph-spinner animate-spin text-2xl"></i> Extrayendo Carrusel...
+                        </div>
+                        <style>
+                            .hide-scrollbar::-webkit-scrollbar { display: none; }
+                        </style>
+                        <div id="pdf-carousel" class="flex gap-6 overflow-x-auto w-full h-full p-6 snap-x snap-mandatory scroll-smooth hide-scrollbar hidden" style="scrollbar-width: none;">
+                            <!-- Canvases will be injected here -->
+                        </div>
+                    </div>
+                </div>
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+                <script>
+                    document.addEventListener("DOMContentLoaded", async () => {
+                        const url = 'assets/COPILOT - Acceso Datos.pdf';
+                        const carousel = document.getElementById('pdf-carousel');
+                        const loading = document.getElementById('pdf-loading');
+                        
+                        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+                        
+                        try {
+                            const pdf = await pdfjsLib.getDocument(url).promise;
+                            for (let i = 1; i <= pdf.numPages; i++) {
+                                const page = await pdf.getPage(i);
+                                const viewport = page.getViewport({ scale: 1.5 });
+                                
+                                const container = document.createElement('div');
+                                container.className = 'relative shrink-0 h-full snap-center shadow-md bg-white rounded-lg overflow-hidden flex items-center justify-center border border-gray-200';
+                                
+                                const canvas = document.createElement('canvas');
+                                const context = canvas.getContext('2d');
+                                
+                                const containerHeight = 450; 
+                                const scale = containerHeight / viewport.height;
+                                const scaledViewport = page.getViewport({ scale: 1.5 * scale });
+                                
+                                canvas.height = scaledViewport.height;
+                                canvas.width = scaledViewport.width;
+                                canvas.className = "h-full w-auto object-contain block";
+                                
+                                await page.render({
+                                    canvasContext: context,
+                                    viewport: scaledViewport
+                                }).promise;
+                                
+                                // Opcional: Contador de páginas
+                                const badge = document.createElement('div');
+                                badge.className = 'absolute bottom-4 right-4 bg-black/60 text-white text-xs font-bold px-2 py-1 rounded-full backdrop-blur-sm';
+                                badge.innerHTML = `${i} / ${pdf.numPages}`;
+                                container.appendChild(badge);
+
+                                container.appendChild(canvas);
+                                carousel.appendChild(container);
+                            }
+                            loading.classList.add('hidden');
+                            carousel.classList.remove('hidden');
+                        } catch (err) {
+                            console.error("PDF load error:", err);
+                            loading.innerHTML = "Error al cargar el carrusel (No se encuentra el PDF localmente).";
+                        }
+                    });
+                </script>
+
+                <!-- Banner Linkedin -->
+                <div class="internal-card overflow-hidden lg:col-span-2 shadow-lg border border-gray-100 rounded-3xl">
+                    <div class="bg-corporateNavy text-white px-5 py-3 text-sm font-bold flex items-center gap-2">
+                        <i class="ph ph-image text-lg text-electricCyan"></i> Banner Perfil LinkedIn
+                    </div>
+                    <div class="bg-white p-4 md:p-8 flex justify-center items-center">
+                        <img src="assets/Banner Linkedin.png" alt="Banner Linkedin" class="w-full h-auto rounded-xl shadow-md border border-gray-50 object-cover" />
+                    </div>
+                </div>
+
+                <!-- Plantilla Propuesta -->
+                <div class="internal-card overflow-hidden lg:col-span-2 shadow-lg border border-gray-100 rounded-3xl">
+                    <div class="bg-electricCyan text-corporateNavy px-5 py-3 text-sm font-bold flex items-center gap-2 border-b border-electricCyan/50">
+                        <i class="ph ph-file-text text-lg"></i> Plantilla para Propuestas Comerciales
+                    </div>
+                    <div class="bg-slate-50 p-4 md:p-8 flex justify-center items-center">
+                        <img src="assets/Plantilla Documento.png" alt="Plantilla" class="w-full h-auto max-w-3xl rounded border border-gray-200 shadow-xl object-contain" />
+                    </div>
                 </div>
             </div>
         </div>

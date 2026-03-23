@@ -1,370 +1,174 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>beServices | Correo Seguridad IA</title>
-    <!-- Google Fonts: Inter and Montserrat -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@400;500;600;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --brand-blue: #0075f2;
-            --corporate-navy: #001A41;
-            --electric-cyan: #50cabf;
-            --bg-soft: #EAEEF3; /* More gray as requested */
-            --text-main: #001A41;
-            --text-muted: #4B5563;
-            --white: #FFFFFF;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #E2E8F0;
-            color: var(--text-main);
-            padding: 40px 20px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .email-container {
-            width: 100%;
-            max-width: 600px;
-            background-color: var(--white);
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0, 26, 65, 0.12);
-        }
-
-        /* Header */
-        .header {
-            padding: 30px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            height: 22px;
-        }
-
-        .header-meta {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--text-muted);
-            opacity: 0.4;
-            letter-spacing: 0.05em;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 50px 50px 70px;
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            background-color: var(--white);
-        }
-
-        .hero-text {
-            flex: 1.2;
-        }
-
-        .hero-text h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 32px;
-            font-weight: 500;
-            line-height: 1.2;
-            color: var(--corporate-navy);
-            letter-spacing: -0.01em;
-        }
-
-        .hero-image {
-            flex: 0.8;
-            width: 100%;
-            max-width: 180px;
-            height: auto;
-            border-radius: 20px;
-        }
-
-        /* Content Sections */
-        .section {
-            padding: 60px 50px;
-            border-top: 1px solid rgba(0, 26, 65, 0.05);
-        }
-
-        .section-split {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .section-reverse {
-            flex-direction: row-reverse;
-        }
-
-        .section-text {
-            flex: 1;
-        }
-
-        .section-text h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            color: var(--corporate-navy);
-            line-height: 1.3;
-        }
-
-        .section-text p {
-            font-size: 15px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .section-icon {
-            width: 150px;
-            height: auto;
-            object-fit: contain;
-            border-radius: 20px;
-        }
-
-        /* Gray Section Variation */
-        .section-gray {
-            background-color: var(--bg-soft);
-        }
-
-        /* Footer */
-        .footer {
-            background-color: var(--corporate-navy);
-            padding: 60px 50px;
-            color: var(--white);
-            position: relative;
-        }
-
-        .footer-logo {
-            height: 20px;
-            filter: brightness(0) invert(1);
-            margin-bottom: 30px;
-        }
-
-        .footer-grid {
-            display: flex;
-            justify-content: space-between;
-            gap: 40px;
-        }
-
-        .footer-main {
-            flex: 1.5;
-        }
-
-        .footer-cta {
-            flex: 1;
-            text-align: right;
-        }
-
-        .footer h3 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 14px;
-            font-weight: 800;
-            letter-spacing: 0.1em;
-            margin-bottom: 15px;
-            opacity: 0.9;
-        }
-
-        .footer p {
-            font-size: 14px;
-            opacity: 0.6;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-
-        .footer-link {
-            display: inline-block;
-            padding: 12px 24px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 100px;
-            color: var(--white);
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .footer-link:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: var(--electric-cyan);
-        }
-
-        .footer-bottom {
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-bottom span {
-            font-size: 11px;
-            font-weight: 500;
-            opacity: 0.4;
-            letter-spacing: 0.05em;
-        }
-
-        .glass-badge {
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 10px 15px;
-            border-radius: 12px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .cyan-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--electric-cyan);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--electric-cyan);
-        }
-
-        @media (max-width: 500px) {
-            .section-split, .hero {
-                flex-direction: column;
-                text-align: center;
-            }
-            .section-icon, .hero-image {
-                width: 140px;
-                margin-top: 20px;
-            }
-            .footer-grid {
-                flex-direction: column;
-                text-align: center;
-            }
-            .footer-cta {
-                text-align: center;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="email-container">
+<!-- beServices Security Email Template - HubSpot Optimized (Inline Styles Only) -->
+<div style="font-family: 'Inter', sans-serif; background-color: #E2E8F0; padding: 40px 20px; color: #001A41;">
+    <div style="width: 100%; max-width: 600px; margin: 0 auto; background-color: #FFFFFF; border-radius: 24px; overflow: hidden; box-shadow: 0 30px 60px rgba(0, 26, 65, 0.12);">
+        
         <!-- Header -->
-        <header class="header">
-            <img src="assets/logo.png" alt="beServices" class="logo">
-            <div class="header-meta">#01ADIC | #SCAD</div>
-        </header>
+        <div style="padding: 30px 50px; display: block; text-align: left;">
+            <img src="https://6703796.fs1.hubspotusercontent-na1.net/hubfs/6703796/2026/Logo%20beservices%202026%20(Portada).png" alt="beServices" style="height: 22px; display: block;">
+        </div>
 
         <!-- Intro Text -->
-        <section style="padding: 30px 50px 10px; background-color: #FFFFFF;">
-          <p style="font-family: 'Inter', sans-serif; font-size: 15px; 
-             color: #4B5563; line-height: 1.7; margin-bottom: 12px;">
-            Hola,
-          </p>
-          <p style="font-family: 'Inter', sans-serif; font-size: 15px; 
-             color: #4B5563; line-height: 1.7; margin-bottom: 12px;">
-            La mayoría de empresas están a punto de activar Copilot sin saber 
-            quién puede ver qué — o ya lo han hecho.
-          </p>
-          <p style="font-family: 'Inter', sans-serif; font-size: 15px; 
-             color: #4B5563; line-height: 1.7;">
-            En este correo te explicamos qué está pasando, por qué es un problema 
-            real y qué deberías tener configurado antes de activar cualquier 
-            herramienta de IA en tu empresa.
-          </p>
-        </section>
+        <div style="padding: 30px 50px 10px; background-color: #FFFFFF;">
+            <p style="font-family: 'Inter', sans-serif; font-size: 15px; color: #4B5563; line-height: 1.7; margin: 0 0 12px 0;">
+                Hola,
+            </p>
+            <p style="font-family: 'Inter', sans-serif; font-size: 15px; color: #4B5563; line-height: 1.7; margin: 0 0 12px 0;">
+                La mayoría de empresas están a punto de activar Copilot sin saber quién puede ver qué — o ya lo han hecho.
+            </p>
+            <p style="font-family: 'Inter', sans-serif; font-size: 15px; color: #4B5563; line-height: 1.7; margin: 0;">
+                En este correo te explicamos qué está pasando, por qué es un problema real y qué deberías tener configurado antes de activar cualquier herramienta de IA en tu empresa.
+            </p>
+        </div>
 
-        <!-- Hero -->
-        <section class="hero">
-            <div class="hero-text">
-                <h1>La IA puede leer todo lo que tienes en tu empresa</h1>
-            </div>
-            <img src="https://6703796.fs1.hubspotusercontent-na1.net/hubfs/6703796/2026/security_shield.png" alt="Security Shield" class="hero-image">
-        </section>
+        <!-- Hero Section -->
+        <div style="padding: 50px 50px 70px; background-color: #FFFFFF; text-align: left;">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                    <td style="vertical-align: middle;">
+                        <h1 style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 500; line-height: 1.2; color: #001A41; letter-spacing: -0.01em; margin: 0;">
+                            La IA puede leer todo lo que tienes en tu empresa
+                        </h1>
+                    </td>
+                    <td style="width: 180px; text-align: right; vertical-align: middle; padding-left: 20px;">
+                        <img src="https://recursos.beservices.es/hubfs/2026/security_shield.png" alt="Security Shield" style="width: 100%; max-width: 180px; height: auto; border-radius: 20px; display: block; margin-left: auto;">
+                    </td>
+                </tr>
+            </table>
+        </div>
 
         <!-- Section 1 -->
-        <section class="section section-gray">
-            <div class="section-split section-reverse">
-                <div class="section-text">
-                    <h2>Descubre cómo proteger tus datos frente a la IA</h2>
-                    <p>La inteligencia artificial no solo automatiza procesos; también expone tus datos al mundo si no hay políticas estrictas. Gobierna, protege y audita tu entorno Workspace.</p>
-                </div>
-                <img src="https://6703796.fs1.hubspotusercontent-na1.net/hubfs/6703796/2026/security_glass_slabs.png" alt="Data Protection" class="section-icon">
-            </div>
-        </section>
+        <div style="padding: 60px 40px; background-color: #EAEEF3; border-top: 1px solid rgba(0, 26, 65, 0.05);">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                    <td style="width: 150px; text-align: left; vertical-align: middle; padding-right: 30px;">
+                        <img src="https://recursos.beservices.es/hubfs/2026/security_glass_slabs.png" alt="Data Protection" style="width: 100%; max-width: 150px; height: auto; border-radius: 20px; display: block;">
+                    </td>
+                    <td style="vertical-align: middle;">
+                        <h2 style="font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 600; margin-bottom: 16px; color: #001A41; line-height: 1.3; margin-top: 0;">
+                            Descubre cómo proteger tus datos frente a la IA
+                        </h2>
+                        <p style="font-size: 15px; color: #4B5563; line-height: 1.6; margin: 0;">
+                            La inteligencia artificial no solo automatiza procesos; también expone tus datos al mundo si no hay políticas estrictas. Gobierna, protege y audita tu entorno Workspace.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
         <!-- Section 2 -->
-        <section class="section">
-            <div class="section-split">
-                <div class="section-text">
-                    <h2>Control de identidades y acceso seguro</h2>
-                    <p>Configuración avanzada de seguridad email e identidades. Protección frente a phishing hiperrealista y ataques generados por IA que simulan contextos directivos.</p>
-                </div>
-                <img src="https://6703796.fs1.hubspotusercontent-na1.net/hubfs/6703796/2026/hero.jpeg" alt="Identity Control" class="section-icon">
-            </div>
-        </section>
+        <div style="padding: 60px 40px; background-color: #FFFFFF; border-top: 1px solid rgba(0, 26, 65, 0.05);">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                    <td style="vertical-align: middle; padding-right: 30px;">
+                        <h2 style="font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 600; margin-bottom: 16px; color: #001A41; line-height: 1.3; margin-top: 0;">
+                            Control de identidades y acceso seguro
+                        </h2>
+                        <p style="font-size: 15px; color: #4B5563; line-height: 1.6; margin: 0;">
+                            Cuando Copilot está activo, accede a todo lo que cada usuario puede ver en tu Microsoft 365. Sin una gestión correcta de identidades — quién entra, desde dónde y con qué dispositivo — no hay forma de controlar qué datos toca la IA. La configuración de seguridad de M365 existe. Solo hay que activarla.
+                        </p>
+                    </td>
+                    <td style="width: 150px; text-align: right; vertical-align: middle;">
+                        <img src="https://recursos.beservices.es/hubfs/2026/hero.jpeg" alt="Identity Control" style="width: 100%; max-width: 150px; height: auto; border-radius: 20px; display: block; margin-left: auto;">
+                    </td>
+                </tr>
+            </table>
+        </div>
 
         <!-- Section 3 -->
-        <section class="section section-gray">
-            <div class="section-split section-reverse">
-                <div class="section-text">
-                    <h2>Auditoría proactiva y cumplimiento</h2>
-                    <p>La nueva regulación europea exige gobernanza y trazabilidad sobre los datos procesados por IA. Auditar el uso interno de LLMs es ahora una obligación legal para tu empresa.</p>
-                </div>
-                <img src="https://6703796.fs1.hubspotusercontent-na1.net/hubfs/6703796/2026/metallic_lock.png" alt="Surveillance Audit" class="section-icon">
-            </div>
-        </section>
+        <div style="padding: 60px 40px; background-color: #EAEEF3; border-top: 1px solid rgba(0, 26, 65, 0.05);">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                    <td style="width: 150px; text-align: left; vertical-align: middle; padding-right: 30px;">
+                        <img src="https://recursos.beservices.es/hubfs/2026/metallic_lock.png" alt="Identity Control" style="width: 100%; max-width: 150px; height: auto; border-radius: 20px; display: block;">
+                    </td>
+                    <td style="vertical-align: middle;">
+                        <h2 style="font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 600; margin-bottom: 16px; color: #001A41; line-height: 1.3; margin-top: 0;">
+                            Auditoría proactiva y cumplimiento
+                        </h2>
+                        <p style="font-size: 15px; color: #4B5563; line-height: 1.6; margin: 0;">
+                            La nueva regulación europea exige gobernanza y trazabilidad sobre los datos procesados por IA. Auditar el uso interno de LLMs es ahora una obligación legal para tu empresa.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
         <!-- Section 4 -->
-        <section class="section">
-            <div class="section-split">
-                <div class="section-text">
-                    <h2>Resiliencia y continuidad de negocio</h2>
-                    <p>Backup inmutable y Disaster Recovery para tu infraestructura. Protege tus activos digitales frente a cualquier eventualidad, garantizando la continuidad operativa.</p>
+        <div style="padding: 60px 40px; background-color: #FFFFFF; border-top: 1px solid rgba(0, 26, 65, 0.05);">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                    <td style="vertical-align: middle; padding-right: 30px;">
+                        <h2 style="font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 600; margin-bottom: 16px; color: #001A41; line-height: 1.3; margin-top: 0;">
+                            Y si algo falla, el negocio no se detiene
+                        </h2>
+                        <p style="font-size: 15px; color: #4B5563; line-height: 1.6; margin: 0;">
+                            Un backup inmutable de tu Microsoft 365 y un plan de recuperación ante incidentes no son opcionales. Son la red que garantiza que, pase lo que pase, tus datos están y tu empresa sigue funcionando.
+                        </p>
+                    </td>
+                    <td style="width: 150px; text-align: right; vertical-align: middle;">
+                        <img src="https://recursos.beservices.es/hubfs/2026/clean_glass_shield.png" alt="Business Continuity" style="width: 100%; max-width: 150px; height: auto; border-radius: 20px; display: block; margin-left: auto;">
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- New CTA Section: Refined Design -->
+        <div style="padding: 80px 40px; text-align: center; background-color: #EAEEF3; border-top: 1px solid rgba(0, 26, 65, 0.05);">
+            <div style="max-width: 500px; margin: 0 auto; background: #FFFFFF; padding: 50px; border-radius: 32px; box-shadow: 0 10px 40px rgba(0, 26, 65, 0.05); border: 1px solid rgba(0, 26, 65, 0.03);">
+                <!-- Microsoft Branding -->
+                <div style="margin-bottom: 30px; opacity: 0.8;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" style="height: 24px; display: block; margin: 0 auto;">
                 </div>
-                <img src="https://6703796.fs1.hubspotusercontent-na1.net/hubfs/6703796/2026/security_shield.png" alt="Business Continuity" class="section-icon">
+                
+                <!-- Main Headline -->
+                <h2 style="font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 800; line-height: 1.3; color: #001A41; margin-bottom: 24px; letter-spacing: -0.01em; margin-top: 0;">
+                    Acaba de darte la IA<br>más potente de su historia.
+                </h2>
+                
+                <!-- Narrative Hook -->
+                <div style="margin-bottom: 40px;">
+                    <p style="font-size: 16px; font-weight: 600; color: #001A41; margin-bottom: 8px;">
+                        La pregunta no es si la vas a usar.
+                    </p>
+                    <p style="font-size: 14px; color: #4B5563; line-height: 1.6;">
+                        Es si tu empresa está lista para que lo haga de forma segura.
+                    </p>
+                </div>
+                
+                <!-- CTA Button -->
+                <a href="mailto:hola@beservices.es" 
+                   style="display:inline-block; background-color:#50CABF; border-radius: 100px; padding: 16px 50px; text-decoration: none; color:#001A41; font-weight:700; font-size: 15px; border: none; box-shadow: 0 4px 15px rgba(80, 202, 191, 0.2);">
+                  Hablemos
+                </a>
             </div>
-        </section>
+        </div>
 
         <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-grid">
-                <div class="footer-main">
-                    <h3>BESERVICES</h3>
-                    <p>Seguridad avanzada para Microsoft 365 y servicios gestionados para tu entorno digital.</p>
-                    <div class="glass-badge">
-                        <span class="cyan-dot"></span>
-                        <span style="font-size: 13px; font-weight: 500;">BeReady for the future, today.</span>
-                    </div>
-                </div>
-                <div class="footer-cta">
-                    <img src="assets/logo.png" alt="beServices" class="footer-logo">
-                    <p style="margin-bottom: 20px;">¿Hablamos?</p>
-                    <a href="[LINK_REUNION]" class="footer-link" 
-                       style="display:block; margin-bottom: 12px; text-align:center;">
-                      Buscar una hora para reunirse con BeServices →
-                    </a>
-                    <a href="mailto:hola@beservices.es" class="footer-link">
-                      hola@beservices.es
-                    </a>
-                </div>
-            </div>
+        <div style="background-color: #001A41; padding: 60px 40px; color: #FFFFFF;">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                    <td style="vertical-align: top; padding-bottom: 40px;">
+                        <h3 style="font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 800; letter-spacing: 0.1em; margin-bottom: 15px; margin-top: 0; color: #FFFFFF !important; text-transform: uppercase;">
+                            BESERVICES
+                        </h3>
+                        <p style="font-size: 14px; line-height: 1.6; margin-bottom: 25px; color: #FFFFFF !important;">
+                            Seguridad avanzada para Microsoft 365 y servicios gestionados para tu entorno digital.
+                        </p>
+                    </td>
+                    <td style="width: 250px; text-align: right; vertical-align: top; padding-bottom: 40px;">
+                        <img src="https://6703796.fs1.hubspotusercontent-na1.net/hubfs/6703796/2026/Logo%20beservices%202026%20(Portada).png" alt="beServices" style="height: 20px; filter: brightness(0) invert(1); margin-bottom: 30px; display: block; margin-left: auto;">
+                        <p style="margin-bottom: 20px; color: #FFFFFF !important;">¿Hablamos?</p>
+                        <a href="mailto:hola@beservices.es" style="display:inline-block; padding: 12px 24px; border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 100px; color: #FFFFFF !important; text-decoration: none; font-size: 13px; font-weight: 600;">
+                          hola@beservices.es
+                        </a>
+                    </td>
+                </tr>
+            </table>
 
-            <div class="footer-bottom">
-                <span>Servicios para tu entorno digital</span>
-                <span style="opacity: 0.3;">© 2026 BeServices Tech-Clarity</span>
+            <div style="margin-top: 50px; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.2); display: block; overflow: hidden;">
+                <span style="float: left; font-size: 11px; font-weight: 500; opacity: 1; letter-spacing: 0.05em; color: #FFFFFF !important;">Scaling your digital world</span>
+                <span style="float: right; font-size: 11px; font-weight: 500; opacity: 1; letter-spacing: 0.05em; color: #FFFFFF !important;">© 2026 BeServices</span>
             </div>
-        </footer>
+        </div>
     </div>
-
-</body>
-</html>
+</div>
