@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Licencias y Productividad - BeServices</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { brandBlue: '#0075f2', corporateNavy: '#001A41', mutedGray: '#9CA3AF', electricCyan: '#50cabf' }, fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Montserrat', 'sans-serif'] } } }
+    }
+  </script>
+  <style>
+    body { background-color: #FFFFFF; color: #001A41; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; font-weight: 800; color: #001A41; letter-spacing: -0.02em; }
+    .glass-navbar { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0, 26, 65, 0.06); }
+    .text-gradient { background: linear-gradient(135deg, #001A41 0%, #50cabf 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: all 0.75s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    .hero-bg { background: linear-gradient(to bottom, #f8fafc, #ffffff); }
+  </style>
+</head>
+
+<body class="antialiased selection:bg-corporateNavy selection:text-white">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 w-full z-50 glass-navbar transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center">
+        <img src="assets/logo.png" alt="beServices Logo" class="h-8 w-auto mix-blend-multiply" />
+      </a>
+      <a href="catalogo.html" class="inline-flex items-center gap-2 justify-center px-6 py-2.5 text-sm font-bold text-white bg-corporateNavy rounded-full hover:bg-corporateNavy/90 transition-colors shadow-lg shadow-corporateNavy/20">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i> Volver al Catálogo
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative pt-40 pb-20 lg:pt-48 lg:pb-24 overflow-hidden hero-bg">
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-electricCyan/5 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3"></div>
+    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-corporateNavy/5 rounded-full blur-3xl -z-10 -translate-x-1/2 translate-y-1/2"></div>
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-corporateNavy/5 border border-corporateNavy/10 mb-6 reveal active">
+        <i data-lucide="briefcase" class="w-4 h-4 text-corporateNavy"></i>
+        <span class="text-[10px] font-bold tracking-widest text-corporateNavy uppercase">Workplace</span>
+      </div>
+      <h1 class="text-4xl md:text-6xl font-heading font-normal text-corporateNavy mb-6 reveal active" style="transition-delay:100ms">
+        Licencias y Productividad <br /><span class="text-gradient font-bold drop-shadow-sm">sin intermediarios</span>
+      </h1>
+      <p class="text-lg text-mutedGray leading-relaxed mb-10 max-w-2xl reveal active" style="transition-delay:200ms">
+        "Necesito las herramientas para que mi equipo trabaje". Proveemos y optimizamos el licenciamiento diario de tu plantilla, asegurando que inviertes justo en lo que utilizas.
+      </p>
+    </div>
+  </section>
+
+  <!-- QUÉ INCLUYE -->
+  <section class="py-20 border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-8 reveal">
+        
+        <!-- Microsoft 365 -->
+        <div class="bg-gray-50/50 border border-gray-100 rounded-2xl p-8">
+          <div class="w-12 h-12 bg-corporateNavy/5 text-corporateNavy rounded-xl flex items-center justify-center mb-6">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" class="h-6 opacity-80" alt="Microsoft">
+          </div>
+          <h3 class="text-xl font-bold text-corporateNavy mb-4">Microsoft 365 y Suite Completa</h3>
+          <p class="text-mutedGray text-sm mb-6">El entorno corporativo estándar, optimizado y securizado.</p>
+          <ul class="space-y-3 text-sm text-corporateNavy">
+            <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-3 mt-0.5"></i><strong class="mx-1">Core:</strong> Business Basic, Standard y Premium. Apps for Enterprise.</li>
+            <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-3 mt-0.5"></i><strong class="mx-1">Infra / Correo:</strong> Exchange Online (P1, P2)</li>
+            <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-3 mt-0.5"></i><strong class="mx-1">IA:</strong> Licencias de Microsoft 365 Copilot</li>
+            <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-3 mt-0.5"></i><strong class="mx-1">Data:</strong> Power BI Pro / Premium</li>
+            <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-3 mt-0.5"></i><strong class="mx-1">Low-Code:</strong> Power Automate y Power Apps</li>
+          </ul>
+        </div>
+
+        <!-- Google Workspace -->
+        <div class="bg-gray-50/50 border border-gray-100 rounded-2xl p-8">
+          <div class="w-12 h-12 bg-corporateNavy/5 text-corporateNavy rounded-xl flex items-center justify-center mb-6">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" class="h-6 opacity-80" alt="Google">
+          </div>
+          <h3 class="text-xl font-bold text-corporateNavy mb-4">Google Workspace</h3>
+          <p class="text-mutedGray text-sm mb-6">La vanguardia del trabajo colaborativo simultáneo en la nube pura.</p>
+          <ul class="space-y-3 text-sm text-corporateNavy">
+            <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-3 mt-0.5"></i><strong class="mx-1">Core:</strong> Business Starter, Standard, Plus y licencias Enterprise</li>
+            <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-3 mt-0.5"></i><strong class="mx-1">Campo:</strong> Licencias Frontline Starter</li>
+            <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-3 mt-0.5"></i><strong class="mx-1">IA:</strong> Google Gemini para empresas</li>
+            <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-3 mt-0.5"></i><strong class="mx-1">Ecosistema:</strong> Looker y Google Cloud Identity Premium</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-corporateNavy pt-16 pb-8 border-t border-white/5 mt-10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col items-center justify-center">
+      <img src="assets/logo.png" alt="beServices Logo" class="h-8 w-auto mix-blend-multiply bg-white rounded-lg p-2 mb-4" />
+      <p class="text-white/60 text-sm">© 2026 beServices. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    function reveal() {
+      document.querySelectorAll(".reveal").forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add("active");
+      });
+    }
+    window.addEventListener("scroll", reveal);
+    setTimeout(reveal, 100);
+    lucide.createIcons();
+  </script>
+</body>
+</html>

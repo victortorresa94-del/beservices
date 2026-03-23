@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Cloud e Infraestructura - BeServices</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { brandBlue: '#0075f2', corporateNavy: '#001A41', mutedGray: '#9CA3AF', electricCyan: '#50cabf' }, fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Montserrat', 'sans-serif'] } } }
+    }
+  </script>
+  <style>
+    body { background-color: #FFFFFF; color: #001A41; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; font-weight: 800; color: #001A41; letter-spacing: -0.02em; }
+    .glass-navbar { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0, 26, 65, 0.06); }
+    .text-gradient { background: linear-gradient(135deg, #001A41 0%, #50cabf 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: all 0.75s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    .hero-bg { background: linear-gradient(to bottom, #f8fafc, #ffffff); }
+  </style>
+</head>
+
+<body class="antialiased selection:bg-corporateNavy selection:text-white">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 w-full z-50 glass-navbar transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center">
+        <img src="assets/logo.png" alt="beServices Logo" class="h-8 w-auto mix-blend-multiply" />
+      </a>
+      <a href="catalogo.html" class="inline-flex items-center gap-2 justify-center px-6 py-2.5 text-sm font-bold text-white bg-corporateNavy rounded-full hover:bg-corporateNavy/90 transition-colors shadow-lg shadow-corporateNavy/20">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i> Volver al Catálogo
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative pt-40 pb-20 lg:pt-48 lg:pb-24 overflow-hidden hero-bg">
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-electricCyan/5 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3"></div>
+    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-corporateNavy/5 rounded-full blur-3xl -z-10 -translate-x-1/2 translate-y-1/2"></div>
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-corporateNavy/5 border border-corporateNavy/10 mb-6 reveal active">
+        <i data-lucide="cloud" class="w-4 h-4 text-corporateNavy"></i>
+        <span class="text-[10px] font-bold tracking-widest text-corporateNavy uppercase">BeCloud</span>
+      </div>
+      <h1 class="text-4xl md:text-6xl font-heading font-normal text-corporateNavy mb-6 reveal active" style="transition-delay:100ms">
+        Infraestructura Cloud <br /><span class="text-gradient font-bold drop-shadow-sm">sin interrupciones</span>
+      </h1>
+      <p class="text-lg text-mutedGray leading-relaxed mb-10 max-w-2xl reveal active" style="transition-delay:200ms">
+        "Necesito que mi infraestructura no falle". Garantizamos alta disponibilidad, rendimiento y escalabilidad para todas tus aplicaciones críticas, ya sea en Azure, GCP o nuestro Cloud Dedicado.
+      </p>
+    </div>
+  </section>
+
+  <!-- QUÉ INCLUYE -->
+  <section class="py-20 border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-8 reveal">
+        
+        <!-- Tarjeta 1 -->
+        <div class="bg-gray-50/50 border border-gray-100 rounded-2xl p-8">
+          <div class="w-12 h-12 bg-corporateNavy/5 text-corporateNavy rounded-xl flex items-center justify-center mb-6">
+            <i data-lucide="server" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-corporateNavy mb-4">Servidores y Nube Pública</h3>
+          <p class="text-mutedGray text-sm mb-6">Integramos y administramos entornos en los líderes del mercado public cloud y VPS.</p>
+          <ul class="space-y-3 text-sm text-corporateNavy">
+            <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-3 mt-0.5"></i><strong class="mx-1">Microsoft Azure:</strong> Suscripciones CSP, Azure AD Premium</li>
+            <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-3 mt-0.5"></i><strong class="mx-1">Google Cloud (GCP):</strong> Infraestructura robusta y Kubernetes</li>
+            <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-3 mt-0.5"></i><strong class="mx-1">Servidores VPS:</strong> Linux para Web/E-commerce o dedicados</li>
+            <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-3 mt-0.5"></i><strong class="mx-1">Hosting Corporativo:</strong> CPanel, IPs dedicadas, Certificados SSL, Dominios</li>
+          </ul>
+        </div>
+
+        <!-- Tarjeta 2 -->
+        <div class="bg-gray-50/50 border border-gray-100 rounded-2xl p-8">
+          <div class="w-12 h-12 bg-corporateNavy/5 text-corporateNavy rounded-xl flex items-center justify-center mb-6">
+            <i data-lucide="cloud-cog" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-corporateNavy mb-4">BeCloud Datacenter Privado</h3>
+          <p class="text-mutedGray text-sm mb-6">Soluciones para CPD Virtual y escritorios remotos sobre nuestra infraestructura propietaria.</p>
+          <ul class="space-y-3 text-sm text-corporateNavy">
+            <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-3 mt-0.5"></i>Entornos BeCloud Multicliente (compartidos) o Dedicados (Basic a Summit)</li>
+            <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-3 mt-0.5"></i>CPD Virtual Completo (paquetes flexibles desde be4 hasta be32)</li>
+            <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-3 mt-0.5"></i>Despliegue de Citrix Cloud Apps & Desktops</li>
+            <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-3 mt-0.5"></i>Licenciamiento Microsoft SPLA (Windows Server, RDS)</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-6 text-center reveal">
+      <h2 class="text-3xl font-heading text-corporateNavy mb-6">Mueve tu empresa a la Nube</h2>
+      <p class="text-mutedGray mb-8">Nuestros ingenieros Cloud diseñarán la arquitectura óptima que reduzca tus costes on-premise y asegure rendimiento 24x7.</p>
+      <a href="mailto:hola@beservices.es" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-corporateNavy rounded-full hover:bg-corporateNavy/90 transition-all hover:scale-105 shadow-xl shadow-corporateNavy/20 group">
+        Consultoría de arquitectura Cloud <i data-lucide="arrow-right" class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-corporateNavy pt-16 pb-8 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col items-center justify-center">
+      <img src="assets/logo.png" alt="beServices Logo" class="h-8 w-auto mix-blend-multiply bg-white rounded-lg p-2 mb-4" />
+      <p class="text-white/60 text-sm">© 2026 beServices. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    function reveal() {
+      document.querySelectorAll(".reveal").forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add("active");
+      });
+    }
+    window.addEventListener("scroll", reveal);
+    setTimeout(reveal, 100);
+
+    window.addEventListener('scroll', function () {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 20) navbar.classList.add('shadow-md');
+      else navbar.classList.remove('shadow-md');
+    });
+
+    lucide.createIcons();
+  </script>
+</body>
+</html>
