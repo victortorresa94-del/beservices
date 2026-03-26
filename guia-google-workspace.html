@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Workspace — Guía de Ventas beServices</title>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --blue:#1a73e8; --red:#ea4335; --yellow:#fbbc04; --green:#34a853;
+  --gray-50:#f8f9fa; --gray-100:#f1f3f4; --gray-200:#e8eaed;
+  --gray-400:#9aa0a6; --gray-600:#5f6368; --gray-900:#202124;
+  --font:'Google Sans',sans-serif;
+}
+body { font-family:var(--font); background:#fff; color:var(--gray-900); }
+
+/* NAV */
+.topbar { display:flex; align-items:center; gap:12px; padding:16px 40px; border-bottom:1px solid var(--gray-200); position:sticky; top:0; background:#fff; z-index:200; }
+.logo { display:flex; align-items:center; gap:2px; font-size:20px; font-weight:500; }
+.g-b{color:#4285F4}.g-r{color:#EA4335}.g-y{color:#FBBC05}.g-g{color:#34A853}
+.logo-sep { width:1px; height:24px; background:var(--gray-200); margin:0 8px; }
+.logo-sub { font-size:18px; font-weight:400; color:var(--gray-600); }
+.nav-right { margin-left:auto; font-size:11px; color:var(--gray-400); background:var(--gray-100); padding:4px 10px; border-radius:100px; border:1px solid var(--gray-200); }
+
+.tabs { display:flex; padding:0 40px; border-bottom:2px solid var(--gray-200); overflow-x:auto; gap:4px; }
+.tab { padding:14px 18px; font-size:13px; font-weight:500; color:var(--gray-600); background:none; border:none; cursor:pointer; border-bottom:3px solid transparent; margin-bottom:-2px; white-space:nowrap; font-family:var(--font); transition:color .15s; }
+.tab:hover { color:var(--blue); }
+.tab.on { color:var(--blue); border-bottom-color:var(--blue); }
+
+.sec { display:none; padding:36px 40px 64px; }
+.sec.on { display:block; }
+
+/* SECTION TITLE */
+.stitle { font-size:24px; font-weight:500; margin-bottom:6px; }
+.ssub { font-size:13px; color:var(--gray-600); margin-bottom:28px; line-height:1.5; }
+
+/* PLANS GRID */
+.grid4 { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.grid2 { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+
+.card { border:1px solid var(--gray-200); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; }
+.card:hover { box-shadow:0 2px 16px rgba(0,0,0,.08); }
+.card.star { border:2px solid var(--blue); }
+
+.card-head { padding:24px 20px 18px; background:var(--gray-50); border-bottom:1px solid var(--gray-200); }
+.plan-ico { font-size:22px; margin-bottom:12px; }
+.plan-name { font-size:14px; font-weight:700; margin-bottom:3px; }
+.plan-tag { font-size:11px; color:var(--gray-600); margin-bottom:14px; line-height:1.4; min-height:30px; }
+.price-big { font-size:26px; font-weight:300; }
+.price-big .curr { font-size:15px; font-weight:400; vertical-align:top; margin-top:5px; display:inline-block; }
+.price-big .unit { font-size:12px; font-weight:400; color:var(--gray-600); }
+.price-note { font-size:10.5px; color:var(--gray-400); margin-top:3px; }
+.cta { display:block; margin-top:14px; padding:8px; text-align:center; border-radius:6px; font-size:12.5px; font-weight:500; border:1px solid var(--blue); color:var(--blue); background:#fff; cursor:pointer; font-family:var(--font); text-decoration:none; }
+.card.star .cta { background:var(--blue); color:#fff; }
+
+.card-body { padding:18px 20px; flex-grow:1; }
+.fg-title { font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-400); margin:14px 0 8px; }
+.fg-title:first-child { margin-top:0; }
+.fi { display:flex; gap:7px; margin-bottom:7px; font-size:12px; color:var(--gray-600); line-height:1.4; align-items:flex-start; }
+.yes { color:var(--green); font-size:13px; flex-shrink:0; margin-top:1px; }
+.no  { color:var(--gray-400); font-size:13px; flex-shrink:0; margin-top:1px; }
+.bold { font-weight:600; color:var(--gray-900); }
+
+/* PLAN DESCRIPTIONS */
+.plan-desc { font-size:11.5px; color:var(--gray-600); font-style:italic; margin-bottom:16px; line-height:1.4; }
+.plan-desc-title { display:block; font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-400); margin-bottom:4px; font-style:normal; }
+
+/* POPULAR */
+.pop-wrap { position:relative; display:flex; }
+.pop-badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--blue); color:#fff; font-size:10px; font-weight:700; padding:3px 14px; border-radius:0 0 8px 8px; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; z-index:10; }
+
+/* PILL BADGES */
+.pill { display:inline-block; padding:2px 8px; border-radius:100px; font-size:10.5px; font-weight:500; }
+.pill-blue   { background:#e8f0fe; color:var(--blue); }
+.pill-green  { background:#e6f4ea; color:var(--green); }
+.pill-orange { background:#fef3e0; color:#f29900; }
+.pill-red    { background:#fce8e6; color:var(--red); }
+.pill-purple { background:#f3e8fd; color:#9334e6; }
+.pill-gray   { background:var(--gray-200); color:var(--gray-600); }
+
+/* TABLE */
+.tbl-wrap { overflow-x:auto; border:1px solid var(--gray-200); border-radius:12px; }
+table { width:100%; border-collapse:collapse; font-size:12.5px; }
+th { padding:13px 16px; text-align:left; font-weight:600; font-size:11px; color:var(--gray-600); background:var(--gray-50); border-bottom:1px solid var(--gray-200); white-space:nowrap; }
+th.hl { background:#e8f0fe; color:var(--blue); }
+td { padding:11px 16px; border-bottom:1px solid var(--gray-200); color:#3c4043; vertical-align:middle; }
+tr:last-child td { border-bottom:none; }
+tr:hover td { background:#f8f9fa; }
+td.hl { background:rgba(26,115,232,.03); }
+.cat-row td { background:var(--gray-100); font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-400); padding:9px 16px; }
+.ck  { color:var(--green); font-size:17px; }
+.cno { color:var(--gray-400); font-size:17px; }
+
+/* ADDON CARDS */
+.addon-card { border:1px solid var(--gray-200); border-radius:12px; padding:22px; display:flex; flex-direction:column; }
+.addon-card:hover { box-shadow:0 2px 14px rgba(0,0,0,.07); }
+.addon-head { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.addon-ico { width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+.addon-name { font-size:14px; font-weight:700; margin-bottom:2px; }
+.addon-sub  { font-size:11px; color:var(--gray-600); }
+.addon-price { font-size:22px; font-weight:300; margin:10px 0 4px; }
+.addon-price .u { font-size:12px; color:var(--gray-600); font-weight:400; }
+.addon-desc { font-size:12px; color:var(--gray-600); line-height:1.5; margin-bottom:12px; }
+.addon-feats { border-top:1px solid var(--gray-200); padding-top:12px; flex-grow:1; }
+.af { display:flex; gap:7px; font-size:12px; color:var(--gray-600); margin-bottom:7px; line-height:1.4; }
+
+/* WARNING/INFO BOXES */
+.warning-box { background:#fef3e0; border:1px solid #fde68a; border-radius:10px; padding:14px 18px; font-size:12.5px; color:#92400e; margin-top:8px; }
+.banner-warning { background:#fef3e0; border:1px solid #fde68a; border-radius:12px; padding:20px; margin-bottom:28px; color:#92400e; }
+.banner-warning h3 { font-size:16px; font-weight:700; margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+.info-box { background:#e8f0fe; border:1px solid #c5d4f5; border-radius:10px; padding:16px 20px; display:flex; gap:12px; align-items:flex-start; }
+.info-box .ico { font-size:22px; flex-shrink:0; }
+.info-box .title { font-size:14px; font-weight:600; color:var(--blue); margin-bottom:5px; }
+.info-box .text { font-size:12.5px; color:var(--gray-600); line-height:1.6; }
+
+/* SECTION DIVIDER */
+.divider-title { font-size:13px; font-weight:600; color:var(--gray-900); margin:28px 0 14px; display:flex; align-items:center; gap:10px; }
+.divider-title::after { content:''; flex:1; height:1px; background:var(--gray-200); }
+
+/* GUIDE (needs-based) */
+.need-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+.need-card { border:1px solid var(--gray-200); border-radius:12px; overflow:hidden; }
+.need-head { padding:16px 20px; display:flex; align-items:center; gap:12px; border-bottom:1px solid var(--gray-200); }
+.need-ico { font-size:22px; }
+.need-label { font-size:13px; font-weight:600; }
+.need-body { padding:16px 20px; }
+.need-sol { display:flex; align-items:flex-start; gap:10px; margin-bottom:10px; }
+.arrow { color:var(--blue); font-weight:700; flex-shrink:0; font-size:16px; margin-top:1px; }
+.sol-text { font-size:12.5px; color:var(--gray-600); line-height:1.4; }
+
+/* GEMINI ENTERPRISE SPECIFIC */
+.highlight-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:32px; }
+.hl-card { border:1px solid var(--gray-200); border-radius:12px; padding:20px; background:white; }
+.hl-ico { font-size:24px; margin-bottom:12px; }
+.hl-title { font-size:14px; font-weight:700; margin-bottom:6px; }
+.hl-text { font-size:12px; color:var(--gray-600); line-height:1.5; }
+.connector-grid { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+.connector-chip { padding:4px 12px; background:#f1f3f4; color:#5f6368; border-radius:100px; font-size:11px; font-weight:500; }
+
+/* FOOTER */
+.foot { margin-top:40px; padding:14px 20px; background:var(--gray-50); border-radius:10px; font-size:11.5px; color:var(--gray-600); line-height:1.6; border:1px solid var(--gray-200); }
+::-webkit-scrollbar{height:4px;width:4px} ::-webkit-scrollbar-thumb{background:var(--gray-400);border-radius:2px}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">
+    <span class="g-b">G</span><span class="g-r">o</span><span class="g-y">o</span><span class="g-b">g</span><span class="g-g">l</span><span class="g-r">e</span>
+    &nbsp;<span style="color:#5f6368;font-weight:400">Workspace</span>
+  </div>
+  <div class="logo-sep"></div>
+  <div class="logo-sub">Guía de ventas</div>
+  <div class="nav-right">beServices · Actualizado marzo 2026</div>
+</div>
+
+<nav class="tabs">
+  <button class="tab on" onclick="show('planes',this)">📋 Planes Workspace</button>
+  <button class="tab" onclick="show('comparativa',this)">⚖️ Comparativa</button>
+  <button class="tab" onclick="show('addons',this)">➕ Add-ons</button>
+  <button class="tab" onclick="show('gemini-ent',this)">🤖 Gemini Enterprise</button>
+  <button class="tab" onclick="show('ai-personal',this)">👤 Google AI personal</button>
+  <button class="tab" onclick="show('guia',this)">🎯 Guía de ventas</button>
+</nav>
+
+<!-- ===== PLANES ===== -->
+<div id="planes" class="sec on">
+  <div class="stitle">Planes Google Workspace para empresas</div>
+  <div class="ssub">Desde enero 2025, <strong>Gemini AI incluido sin coste adicional</strong> en todos los planes Business y Enterprise. Los add-ons separados de Gemini ya no existen.</div>
+
+  <div class="grid4" style="margin-bottom:32px">
+    <!-- STARTER -->
+    <div class="card">
+      <div class="card-head">
+        <div class="plan-ico">🔵</div>
+        <div class="plan-name">Business Starter</div>
+        <div class="plan-tag">Para autónomos y empresas pequeñas que arrancan</div>
+        <div class="price-big"><span class="curr">€</span>8,10<span class="unit">/usuario/mes</span></div>
+        <div class="price-note">Plan anual · Flexible: ~€9,72/mes</div>
+        <a href="#" class="cta">Empezar prueba gratuita</a>
+      </div>
+      <div class="card-body">
+        <div class="plan-desc">
+          <span class="plan-desc-title">¿Qué es?</span>
+          <em>El plan de entrada para autónomos y equipos muy pequeños que solo necesitan email profesional @dominio y colaboración básica. Gemini muy limitado.</em>
+        </div>
+        <div class="fg-title">Almacenamiento</div>
+        <div class="fi"><span class="yes">✓</span><span><span class="bold">30 GB</span> por usuario</span></div>
+        <div class="fg-title">Comunicación</div>
+        <div class="fi"><span class="yes">✓</span> Gmail corporativo @dominio</div>
+        <div class="fi"><span class="yes">✓</span> Meet hasta <span class="bold">100 participantes</span></div>
+        <div class="fi"><span class="no">—</span> <span style="color:var(--gray-400)">Sin grabación de reuniones</span></div>
+        <div class="fg-title">Gemini incluido</div>
+        <div class="fi"><span class="yes">✓</span> Gemini en Gmail (básico)</div>
+        <div class="fi"><span class="no">—</span> <span style="color:var(--gray-400)">Sin Gemini en Docs/Sheets/Slides</span></div>
+        <div class="fi"><span class="no">—</span> <span style="color:var(--gray-400)">Gemini app: solo 5 prompts/día</span></div>
+        <div class="fg-title">Seguridad</div>
+        <div class="fi"><span class="yes">✓</span> 2FA, antiphishing, antispam</div>
+      </div>
+    </div>
+
+    <!-- STANDARD -->
+    <div class="pop-wrap">
+      <div class="pop-badge">Más popular</div>
+      <div class="card star">
+        <div class="card-head">
+          <div class="plan-ico">🟢</div>
+          <div class="plan-name">Business Standard</div>
+          <div class="plan-tag">El punto dulce para PYMEs y agencias activas</div>
+          <div class="price-big"><span class="curr">€</span>16,20<span class="unit">/usuario/mes</span></div>
+          <div class="price-note">Plan anual · Flexible: ~€19,44/mes</div>
+          <a href="#" class="cta">Empezar prueba gratuita</a>
+        </div>
+        <div class="card-body">
+          <div class="plan-desc">
+            <span class="plan-desc-title">¿Qué es?</span>
+            <em>El plan más popular para PYMEs y agencias activas. Gemini completo en todas las apps, 2 TB por usuario, grabaciones de reuniones. El punto dulce entre precio y funcionalidad.</em>
+          </div>
+          <div class="fg-title">Almacenamiento</div>
+          <div class="fi"><span class="yes">✓</span><span><span class="bold">2 TB</span> por usuario</span></div>
+          <div class="fg-title">Comunicación</div>
+          <div class="fi"><span class="yes">✓</span> Gmail corporativo @dominio</div>
+          <div class="fi"><span class="yes">✓</span> Meet hasta <span class="bold">150 participantes</span></div>
+          <div class="fi"><span class="yes">✓</span> <span class="bold">Grabación</span> de reuniones en Drive</div>
+          <div class="fg-title">Gemini incluido ✨</div>
+          <div class="fi"><span class="yes">✓</span><span><span class="bold">Gemini completo</span> en Gmail, Docs, Sheets, Slides, Drive, Meet, Chat</span></div>
+          <div class="fi"><span class="yes">✓</span> Google Vids (creación vídeo IA)</div>
+          <div class="fg-title">Seguridad</div>
+          <div class="fi"><span class="yes">✓</span> 2FA, antiphishing, antispam</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLUS -->
+    <div class="card">
+      <div class="card-head">
+        <div class="plan-ico">🟡</div>
+        <div class="plan-name">Business Plus</div>
+        <div class="plan-tag">Para empresas con compliance y retención de datos</div>
+        <div class="price-big"><span class="curr">€</span>25,30<span class="unit">/usuario/mes</span></div>
+        <div class="price-note">Plan anual · Flexible: ~€30,36/mes</div>
+        <a href="#" class="cta">Empezar prueba gratuita</a>
+      </div>
+      <div class="card-body">
+        <div class="plan-desc">
+          <span class="plan-desc-title">¿Qué es?</span>
+          <em>Para empresas con obligaciones legales de conservación de datos. Añade Google Vault (retención y eDiscovery) sobre el Standard. Imprescindible en sectores regulados.</em>
+        </div>
+        <div class="fg-title">Almacenamiento</div>
+        <div class="fi"><span class="yes">✓</span><span><span class="bold">5 TB</span> por usuario</span></div>
+        <div class="fg-title">Comunicación</div>
+        <div class="fi"><span class="yes">✓</span> Gmail corporativo @dominio</div>
+        <div class="fi"><span class="yes">✓</span> Meet hasta <span class="bold">500 participantes</span></div>
+        <div class="fg-title">Gemini incluido ✨</div>
+        <div class="fi"><span class="yes">✓</span> Todo lo de Standard</div>
+        <div class="fg-title">Seguridad y Compliance</div>
+        <div class="fi"><span class="yes">✓</span><span><span class="bold">Google Vault</span> (retención / eDiscovery)</span></div>
+        <div class="fi"><span class="yes">✓</span> Gestión avanzada de endpoints</div>
+      </div>
+    </div>
+
+    <!-- ENTERPRISE -->
+    <div class="card">
+      <div class="card-head">
+        <div class="plan-ico">🔴</div>
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-tag">Para grandes corporaciones. Máxima seguridad y control. Sin límite de usuarios.</div>
+        <div class="price-big" style="font-size:18px;font-weight:500;padding-top:4px">Precio personalizado</div>
+        <div class="price-note">Contactar ventas · Sin límite de usuarios</div>
+        <a href="#" class="cta">Contactar con ventas</a>
+      </div>
+      <div class="card-body">
+        <div class="plan-desc">
+          <span class="plan-desc-title">¿Qué es?</span>
+          <em>Para grandes organizaciones sin límite de usuarios. El único plan con DLP completo, regiones de datos, S/MIME y soporte con SLA. Hay tres sub-ediciones (Starter, Standard, Plus) con precio personalizado.</em>
+        </div>
+        <div class="fg-title">Almacenamiento</div>
+        <div class="fi"><span class="yes">✓</span><span><span class="bold">5 TB+</span> por usuario (ampliable)</span></div>
+        <div class="fg-title">Comunicación</div>
+        <div class="fi"><span class="yes">✓</span> Gmail + cifrado <span class="bold">S/MIME</span></div>
+        <div class="fi"><span class="yes">✓</span> Meet hasta <span class="bold">1.000 participantes</span></div>
+        <div class="fg-title">Gemini incluido ✨</div>
+        <div class="fi"><span class="yes">✓</span> Todo lo de Standard + controles admin avanzados</div>
+        <div class="fg-title">Seguridad Enterprise</div>
+        <div class="fi"><span class="yes">✓</span><span><span class="bold">DLP</span> (prevención pérdida datos)</span></div>
+        <div class="fi"><span class="yes">✓</span> Acceso contextual</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><strong>Notas:</strong> Precios en euros, España, plan anual (16% dto respecto al plan flexible mensual). Planes Business: máx. 300 usuarios. Enterprise: sin límite. Todos incluyen prueba gratuita 14 días. Gemini ya está integrado sin add-on adicional en todos los planes Business y Enterprise.</div>
+</div>
+
+<!-- ===== COMPARATIVA ===== -->
+<div id="comparativa" class="sec">
+  <div class="stitle">Comparativa detallada</div>
+  <div class="ssub">Todas las características clave por plan de un vistazo.</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:200px">Característica</th>
+          <th>Starter · €8,10</th>
+          <th class="hl">Standard · €16,20 ⭐</th>
+          <th>Plus · €25,30</th>
+          <th>Enterprise · Custom</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="cat-row"><td colspan="5">💾 Almacenamiento</td></tr>
+        <tr><td>Storage por usuario</td><td><span class="pill pill-orange">30 GB</span></td><td class="hl"><span class="pill pill-green">2 TB</span></td><td><span class="pill pill-blue">5 TB</span></td><td><span class="pill pill-purple">5 TB+</span></td></tr>
+        <tr class="cat-row"><td colspan="5">📧 Gmail y colaboración</td></tr>
+        <tr><td>Email corporativo @dominio</td><td><span class="ck">✓</span></td><td class="hl"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span> + S/MIME</td></tr>
+        <tr class="cat-row"><td colspan="5">📹 Google Meet</td></tr>
+        <tr><td>Máx. participantes</td><td>100</td><td class="hl"><strong>150</strong></td><td>500</td><td>1.000</td></tr>
+        <tr><td>Grabación en Drive</td><td><span class="cno">—</span></td><td class="hl"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td></tr>
+        <tr class="cat-row"><td colspan="5">🤖 Gemini IA (incluido desde 2025)</td></tr>
+        <tr><td>Gemini en Gmail</td><td><span class="pill pill-orange">Básico</span></td><td class="hl"><span class="pill pill-green">Completo</span></td><td><span class="pill pill-green">Completo</span></td><td><span class="pill pill-green">Completo</span></td></tr>
+        <tr><td>Gemini en Workspace Apps</td><td><span class="cno">—</span></td><td class="hl"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td></tr>
+        <tr class="cat-row"><td colspan="5">🔒 Seguridad y Compliance</td></tr>
+        <tr><td>Google Vault (eDiscovery)</td><td><span class="cno">—</span></td><td class="hl"><span class="cno">—</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td></tr>
+        <tr><td>DLP (prevención pérdida datos)</td><td><span class="cno">—</span></td><td class="hl"><span class="cno">—</span></td><td><span class="cno">—</span></td><td><span class="ck">✓</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== ADD-ONS ===== -->
+<div id="addons" class="sec">
+  <div class="stitle">Add-ons de Google Workspace</div>
+  <div class="ssub">Se añaden encima del plan Workspace. Gestionados desde la Admin Console.</div>
+
+  <div class="divider-title">Add-ons de IA (para cuentas corporativas Workspace)</div>
+  <div class="grid3" style="margin-bottom:24px">
+    <!-- AI EXPANDED -->
+    <div class="addon-card">
+      <div class="addon-head">
+        <div class="addon-ico" style="background:#e8f0fe">✨</div>
+        <div>
+          <div class="addon-name">AI Expanded Access</div>
+          <div class="addon-sub">Nuevo en 2026</div>
+        </div>
+      </div>
+      <div class="addon-price">Consultar <span class="u">Admin Console</span></div>
+      <div class="plan-desc">
+        <span class="plan-desc-title">¿Qué es?</span>
+        <em>Add-on intermedio de IA para Workspace. Para equipos que necesitan más cuota de generación de imágenes, vídeo e IA, pero sin llegar al nivel Ultra.</em>
+      </div>
+      <div class="addon-feats">
+        <div class="af"><span class="yes">✓</span> Mayor acceso a generadores de imagen/vídeo</div>
+        <div class="af"><span class="yes">✓</span> NotebookLM ampliado</div>
+        <div class="af"><span class="yes">✓</span> Traducción en tiempo real en Meet</div>
+      </div>
+    </div>
+
+    <!-- AI ULTRA ACCESS -->
+    <div class="addon-card" style="border-color:#c5d4f5">
+      <div class="addon-head">
+        <div class="addon-ico" style="background:linear-gradient(135deg,#4285F4,#8ab4f8)">⚡</div>
+        <div>
+          <div class="addon-name">AI Ultra Access</div>
+          <div class="addon-sub">Máximo nivel IA</div>
+        </div>
+      </div>
+      <div class="addon-price">$249,99 <span class="u">/usuario/mes</span></div>
+      <div class="plan-desc">
+        <span class="plan-desc-title">¿Qué es?</span>
+        <em>El nivel más alto de IA para Workspace. Equivalente corporativo al Google AI Ultra personal. Para creativos, developers e investigadores con cargas intensivas.</em>
+      </div>
+      <div class="addon-feats">
+        <div class="af"><span class="yes">✓</span> Acceso máximo a Gemini 3 Pro + Deep Research</div>
+        <div class="af"><span class="yes">✓</span> 25.000 créditos IA/mes para Flow/Whisk</div>
+        <div class="af"><span class="yes">✓</span> Antigravity: límites más altos</div>
+      </div>
+    </div>
+
+    <!-- APPSHEET -->
+    <div class="addon-card">
+      <div class="addon-head">
+        <div class="addon-ico" style="background:#e6f4ea">📱</div>
+        <div>
+          <div class="addon-name">AppSheet</div>
+          <div class="addon-sub">Crea apps sin código</div>
+        </div>
+      </div>
+      <div class="addon-price">desde $5 <span class="u">/usuario/mes</span></div>
+      <div class="plan-desc">
+        <span class="plan-desc-title">¿Qué es?</span>
+        <em>Plataforma no-code para crear apps empresariales sin programar, integrada nativamente con Workspace y con Gemini para automatizaciones por IA.</em>
+      </div>
+      <div class="addon-feats">
+        <div class="af"><span class="yes">✓</span> Automatizaciones básicas y avanzadas</div>
+        <div class="af"><span class="yes">✓</span> Integración nativa Workspace</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== GEMINI ENTERPRISE ===== -->
+<div id="gemini-ent" class="sec">
+  <div class="stitle">🤖 Gemini Enterprise</div>
+  <div class="ssub">Plataforma de agentes y búsqueda empresarial de nueva generación.</div>
+
+  <div class="banner-warning">
+    <h3>⚠️ Gemini Enterprise no es un plan de Workspace</h3>
+    <p>Es una plataforma independiente de Google Cloud lanzada en octubre de 2025. Tiene su propia facturación separada y se puede usar con o sin Workspace. Es el competidor directo de ChatGPT Enterprise y Claude Enterprise. Se vende a través del canal de Google Cloud, no del canal de Workspace.</p>
+  </div>
+
+  <div class="highlight-grid">
+    <div class="hl-card">
+      <div class="hl-ico">🔍</div>
+      <div class="hl-title">Búsqueda empresarial unificada</div>
+      <div class="hl-text">Busca en todos los datos de la empresa en una sola interfaz: Workspace, Salesforce, SAP, SharePoint, Jira, Slack y más de 20 conectores.</div>
+    </div>
+    <div class="hl-card">
+      <div class="hl-ico">🤖</div>
+      <div class="hl-title">Plataforma de agentes IA</div>
+      <div class="hl-text">Crea, despliega y gestiona agentes IA con herramientas no-code. Incluye agentes preconfigurados: Deep Research, NotebookLM, Data Insights.</div>
+    </div>
+    <div class="hl-card">
+      <div class="hl-ico">🔒</div>
+      <div class="hl-title">Gobernanza centralizada</div>
+      <div class="hl-text">Auditoría completa, control de acceso granular, compliance y seguridad enterprise para todos los agentes de la organización.</div>
+    </div>
+  </div>
+
+  <div class="grid4" style="margin-bottom:32px">
+    <!-- BUSINESS -->
+    <div class="card">
+      <div class="card-head">
+        <div class="plan-ico">🏢</div>
+        <div class="plan-name">Gemini Ent. Business</div>
+        <div class="plan-tag">Hasta 300 usuarios. Búsqueda y agentes esenciales.</div>
+        <div class="price-big"><span class="curr">$</span>21<span class="unit">/u/mes</span></div>
+        <div class="price-note">(orientativo — confirmar Cloud)</div>
+      </div>
+      <div class="card-body">
+        <div class="plan-desc">
+          <span class="plan-desc-title">¿Qué es?</span>
+          <em>Para equipos de hasta 300 usuarios que quieren empezar con búsqueda IA y agentes sin setup complejo de IT. El punto de entrada a la plataforma.</em>
+        </div>
+        <div class="fi"><span class="yes">✓</span> Búsqueda enterprise básica</div>
+        <div class="fi"><span class="yes">✓</span> Gemini 3 Pro + Deep Research</div>
+        <div class="fi"><span class="yes">✓</span> Agentes no-code básicos</div>
+        <div class="fi"><span class="no">—</span> Sin conectores third-party completos</div>
+      </div>
+    </div>
+
+    <!-- STANDARD -->
+    <div class="pop-wrap">
+      <div class="pop-badge">Recomendado</div>
+      <div class="card star">
+        <div class="card-head">
+          <div class="plan-ico">⚡</div>
+          <div class="plan-name">Gemini Ent. Standard</div>
+          <div class="plan-tag">Conectores ilimitados y NotebookLM Enterprise.</div>
+          <div class="price-big"><span class="curr">$</span>30<span class="unit">/u/mes</span></div>
+          <div class="price-note">(orientativo — confirmar Cloud)</div>
+        </div>
+        <div class="card-body">
+          <div class="plan-desc">
+            <span class="plan-desc-title">¿Qué es?</span>
+            <em>Para organizaciones que necesitan conectar todos sus sistemas empresariales y dar a sus equipos agentes IA potentes. Incluye Code Assist y NotebookLM Enterprise.</em>
+          </div>
+          <div class="fi"><span class="yes">✓</span> TODO lo de Business</div>
+          <div class="fi"><span class="yes">✓</span> Ecosistema COMPLETO de conectores</div>
+          <div class="fi"><span class="yes">✓</span> NotebookLM Enterprise completo</div>
+          <div class="fi"><span class="yes">✓</span> Data Insights + Code Assist</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLUS -->
+    <div class="card">
+      <div class="card-head">
+        <div class="plan-ico">💎</div>
+        <div class="plan-name">Gemini Ent. Plus</div>
+        <div class="plan-tag">Máximo almacenamiento y cómputo intensivo.</div>
+        <div class="price-big"><span class="curr">$</span>60<span class="unit">/u/mes</span></div>
+        <div class="price-note">(orientativo — confirmar Cloud)</div>
+      </div>
+      <div class="card-body">
+        <div class="plan-desc">
+          <span class="plan-desc-title">¿Qué es?</span>
+          <em>Para grandes corporaciones con necesidades de cómputo intensivo y procesamiento masivo de documentos. El nivel más alto de almacenamiento y governance.</em>
+        </div>
+        <div class="fi"><span class="yes">✓</span> TODO lo de Standard al máximo</div>
+        <div class="fi"><span class="yes">✓</span> 75 GiB storage pooled / usuario</div>
+        <div class="fi"><span class="yes">✓</span> Capacidad masiva documentos</div>
+      </div>
+    </div>
+
+    <!-- FRONTLINE -->
+    <div class="card">
+      <div class="card-head">
+        <div class="plan-ico">👷</div>
+        <div class="plan-name">Gemini Ent. Frontline</div>
+        <div class="plan-tag">Para usuarios que solo usan agentes preconfigurados.</div>
+        <div class="price-big"><span class="curr">$</span>—</div>
+        <div class="price-note">Requiere min. 150 lic. Standard/Plus</div>
+      </div>
+      <div class="card-body">
+        <div class="plan-desc">
+          <span class="plan-desc-title">¿Qué es?</span>
+          <em>Para trabajadores de primera línea (retail, manufactura, salud) que solo necesitan USAR agentes ya configurados, no crearlos. Requiere licencias Standard o Plus previas.</em>
+        </div>
+        <div class="fi"><span class="yes">✓</span> Usar agentes preconfigurados</div>
+        <div class="fi"><span class="yes">✓</span> Deep Research (acceso usuario)</div>
+        <div class="fi"><span class="no">—</span> No puede crear agentes</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider-title">Conectores disponibles (Integración Unificada)</div>
+  <div class="connector-grid">
+    <span class="connector-chip">Google Workspace</span><span class="connector-chip">Gmail</span><span class="connector-chip">Drive</span><span class="connector-chip">Microsoft 365</span><span class="connector-chip">OneDrive</span><span class="connector-chip">SharePoint</span><span class="connector-chip">Salesforce</span><span class="connector-chip">SAP</span><span class="connector-chip">Jira Cloud</span><span class="connector-chip">Slack</span><span class="connector-chip">GitHub</span><span class="connector-chip">ServiceNow</span><span class="connector-chip">Zendesk</span><span class="connector-chip">HubSpot</span><span class="connector-chip">Notion</span><span class="connector-chip">Monday</span>
+  </div>
+</div>
+
+<!-- ===== GOOGLE AI PERSONAL ===== -->
+<div id="ai-personal" class="sec">
+  <div class="stitle">Google AI Plans — Solo para cuentas personales</div>
+  <div class="ssub">Cuentas @gmail.com personales. No mezclables con Workspace.</div>
+
+  <div class="grid3">
+    <!-- PLUS -->
+    <div class="card">
+      <div class="card-head">
+        <div class="plan-ico">🔵</div>
+        <div class="plan-name">Google AI Plus</div>
+        <div class="price-big"><span class="curr">$</span>7,99<span class="unit">/mes</span></div>
+      </div>
+      <div class="card-body">
+        <div class="plan-desc">
+          <span class="plan-desc-title">¿Qué es?</span>
+          <em>Plan de entrada personal. Para usuarios que quieren acceso mejorado a Gemini sin comprometerse con el plan Pro. Válido solo para cuentas @gmail.com personales.</em>
+        </div>
+        <div class="fi"><span class="yes">✓</span> 200 GB Storage</div>
+        <div class="fi"><span class="yes">✓</span> Gemini 3 Pro (más acceso)</div>
+      </div>
+    </div>
+
+    <!-- PRO -->
+    <div class="pop-wrap">
+      <div class="pop-badge">Más popular</div>
+      <div class="card star">
+        <div class="card-head">
+          <div class="plan-ico">🟢</div>
+          <div class="plan-name">Google AI Pro</div>
+          <div class="price-big"><span class="curr">$</span>19,99<span class="unit">/mes</span></div>
+        </div>
+        <div class="card-body">
+          <div class="plan-desc">
+            <span class="plan-desc-title">¿Qué es?</span>
+            <em>El antiguo 'Gemini Advanced'. Para usuarios que usan IA a diario: redacción, investigación, Antigravity y herramientas de desarrollo. La mejor relación calidad-precio para devs.</em>
+          </div>
+          <div class="fi"><span class="yes">✓</span> 2 TB Storage</div>
+          <div class="fi"><span class="yes">✓</span> Deep Research + Deep Think</div>
+          <div class="fi"><span class="yes">✓</span> Antigravity límites altos</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ULTRA -->
+    <div class="card">
+      <div class="card-head">
+        <div class="plan-ico">⚡</div>
+        <div class="plan-name">Google AI Ultra</div>
+        <div class="price-big"><span class="curr">$</span>249,99<span class="unit">/mes</span></div>
+      </div>
+      <div class="card-body">
+        <div class="plan-desc">
+          <span class="plan-desc-title">¿Qué es?</span>
+          <em>El tope de gama absoluto. Para creadores de vídeo profesional, developers con cargas muy intensivas y power users que necesitan el máximo de todo el ecosistema Google AI.</em>
+        </div>
+        <div class="fi"><span class="yes">✓</span> 30 TB Storage</div>
+        <div class="fi"><span class="yes">✓</span> Project Mariner (solo US)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== GUÍA DE VENTAS ===== -->
+<div id="guia" class="sec">
+  <div class="stitle">Guía de ventas rápida</div>
+  <div class="ssub">Recomendaciones según perfil.</div>
+  <div class="need-grid">
+    <div class="need-card">
+      <div class="need-head" style="background:#e8f0fe">
+        <div class="need-ico">📧</div>
+        <div class="need-label">Email corporativo + Drive</div>
+      </div>
+      <div class="need-body">
+        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Standard (€16,20)</strong>: 2 TB y Gemini completo. Recomendado.</div></div>
+      </div>
+    </div>
+    <div class="need-card">
+      <div class="need-head" style="background:#fef3e0">
+        <div class="need-ico">⚖️</div>
+        <div class="need-label">Compliance legal</div>
+      </div>
+      <div class="need-body">
+        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Business Plus (€25,30)</strong>: incluye Google Vault obligatorio.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.sec').forEach(s => s.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+}
+</script>
+
+</body>
+</html>

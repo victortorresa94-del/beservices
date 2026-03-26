@@ -98,6 +98,34 @@
         }
 
         .section-spacing {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+
+        .besafe-bg {
+            background-color: #001A41;
+        }
+
+        .besafe-text {
+            color: #FFFFFF;
+        }
+
+        .besafe-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .besafe-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+        }
+
+        .section-spacing {
             padding-top: 120px;
             padding-bottom: 120px;
         }
@@ -171,56 +199,57 @@
                 class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-corporateNavy rounded-full hover:bg-corporateNavy/90 transition-colors shadow-lg shadow-corporateNavy/20"> Internal Site </a>
         </div>
     </nav>
-
     <!-- BEGIN: Hero Section -->
-    <section class="relative pt-40 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <!-- Minimalist Background Elements -->
-        <div
-            class="absolute top-0 right-0 w-[800px] h-[800px] bg-electricCyan/5 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3">
-        </div>
-        <div
-            class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-corporateNavy/5 rounded-full blur-3xl -z-10 -translate-x-1/2 translate-y-1/2">
-        </div>
-
+    <section class="relative pt-40 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <!-- Text Content -->
                 <div class="max-w-2xl reveal active">
-                    <div
-                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-corporateNavy/5 border border-corporateNavy/10 mb-8">
-                        <span class="w-2 h-2 rounded-full bg-electricCyan animate-pulse"></span>
-                        <span class="text-xs font-bold tracking-widest text-corporateNavy uppercase">Security &
-                            Governance</span>
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200 mb-8">
+                        <span class="w-2 h-2 rounded-full bg-electricCyan"></span>
+                        <span class="text-xs font-bold tracking-widest text-corporateNavy uppercase">Security & Governance</span>
                     </div>
-
-                    <h1 class="hero-heading mb-6">
-                        Scaling your <span class="text-gradient font-bold">digital World</span>
+                    <h1 class="hero-heading mb-6 font-normal">
+                        Scaling your <span class="text-corporateNavy font-bold">digital</span> <br /><span class="text-gradient font-bold">World</span>
                     </h1>
-
                     <p class="text-lg text-mutedGray leading-relaxed mb-10 max-w-xl">
-                        La inteligencia artificial no solo automatiza procesos corporativos; también expone tus datos al
-                        mundo si no hay políticas estrictas. Gobierna, protege y audita tu entorno Workspace y agentes
-                        autónomos.
+                        La inteligencia artificial no solo automatiza procesos corporativos; también expone tus datos al mundo si no hay políticas estrictas. Gobierna, protege y audita tu entorno Workspace y agentes autónomos.
                     </p>
-
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#suite"
-                            class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-corporateNavy rounded-full hover:bg-corporateNavy/90 transition-all shadow-xl shadow-corporateNavy/20 hover:-translate-y-1">
-                            Explorar BeSafe Suite
-                        </a>
-                        <a href="#workplace"
-                            class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-corporateNavy bg-white border border-corporateNavy/10 rounded-full hover:bg-gray-50 transition-all shadow-sm hover:-translate-y-1">
-                            Descubre nuestros servicios
-                        </a>
+                        <a href="#suite" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-corporateNavy rounded-full transition-all shadow-xl shadow-corporateNavy/20 hover:-translate-y-1">Explorar BeSafe Suite</a>
+                        <a href="#areas" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-corporateNavy bg-white border border-corporateNavy/10 rounded-full hover:bg-gray-50 transition-all shadow-sm">Descubre nuestros servicios</a>
                     </div>
                 </div>
-
-                <!-- Visual Content -->
                 <div class="relative flex justify-center lg:justify-end reveal active" style="transition-delay: 200ms;">
-                    <!-- Temporary placeholder, will be replaced by the generated hero image -->
-                    <img src="assets/hero.jpeg" alt="Tech Clarity AI Core"
-                        class="w-full max-w-[600px] h-auto object-contain rounded-2xl glass-cloud-transform mix-blend-darken"
-                        id="hero-img" />
+                    <img src="assets/hero.jpeg" alt="Tech Clarity AI Core" class="w-full max-w-[600px] h-auto object-contain rounded-3xl" id="hero-img" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE RIESGOS (EL "PROBLEMA") -->
+    <section class="py-24 bg-red-50/50 border-y border-red-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <h2 class="text-3xl md:text-4xl font-heading text-corporateNavy mb-6">¿Tu IT es una ventaja o un cuello de botella?</h2>
+                    <p class="text-mutedGray text-lg mb-8">El 70% de las empresas españolas tienen agujeros de seguridad en sus entornos Cloud que desconocen. Un parón técnico de 4h puede costar miles de euros. No dejes tu infraestructura al azar.</p>
+                    <div class="space-y-4">
+                       <div class="flex items-center gap-3 text-red-600 font-medium">
+                          <i data-lucide="x-circle" class="w-5 h-5"></i> "Pagamos licencias que no configuramos bien."
+                       </div>
+                       <div class="flex items-center gap-3 text-red-600 font-medium">
+                          <i data-lucide="x-circle" class="w-5 h-5"></i> "Usamos IA sin saber qué datos estamos exponiendo."
+                       </div>
+                       <div class="flex items-center gap-3 text-red-600 font-medium">
+                          <i data-lucide="x-circle" class="w-5 h-5"></i> "Nuestro soporte tarda días en responder."
+                       </div>
+                    </div>
+                </div>
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-2xl reveal relative overflow-hidden" style="transition-delay: 200ms;">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-electricCyan/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                    <h3 class="text-2xl font-bold text-corporateNavy mb-6">beServices es la respuesta</h3>
+                    <p class="text-mutedGray text-sm mb-8">Tomamos el control de tu tecnología para que tú tomes el control de tu crecimiento. Profesionales del sector financiero, logístico y eventos ya confían en nosotros.</p>
+                    <a href="#areas" class="px-6 py-3 bg-corporateNavy text-white font-bold rounded-full inline-block">Eliminar riesgos ahora</a>
                 </div>
             </div>
         </div>
@@ -244,177 +273,127 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 2: El problema -->
-    <section class="py-24 bg-gray-50/50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="glass-card p-10 reveal group flex flex-col h-full bg-white bg-opacity-100 cursor-pointer hover:bg-white/90 shadow-sm hover:shadow-xl">
-                    <h3 class="text-xl font-normal text-corporateNavy mb-4 leading-tight">"Pagamos Microsoft 365 cada mes pero nunca lo hemos configurado bien"</h3>
-                    <p class="text-mutedGray text-sm leading-relaxed mb-8 flex-grow">Licencias, seguridad, backup y soporte para tu puesto de trabajo digital.</p>
-                    <a href="#workplace" class="inline-flex items-center text-sm font-bold text-electricCyan group-hover:text-brandBlue transition-colors group-hover:translate-x-1 duration-300">Ver Workplace &rarr;</a>
-                </div>
-                <!-- Card 2 -->
-                <div class="glass-card p-10 reveal group flex flex-col h-full bg-white bg-opacity-100 cursor-pointer hover:bg-white/90 shadow-sm hover:shadow-xl" style="transition-delay: 100ms;">
-                    <h3 class="text-xl font-normal text-corporateNavy mb-4 leading-tight">"Necesitamos infraestructura cloud seria, no solo un hosting básico"</h3>
-                    <p class="text-mutedGray text-sm leading-relaxed mb-8 flex-grow">Azure, GCP, firewall, backup y monitorización gestionados.</p>
-                    <a href="#cloud" class="inline-flex items-center text-sm font-bold text-electricCyan group-hover:text-brandBlue transition-colors group-hover:translate-x-1 duration-300">Ver Cloud &rarr;</a>
-                </div>
-                <!-- Card 3 -->
-                <div class="glass-card p-10 reveal group flex flex-col h-full bg-white bg-opacity-100 cursor-pointer hover:bg-white/90 shadow-sm hover:shadow-xl" style="transition-delay: 200ms;">
-                    <h3 class="text-xl font-normal text-corporateNavy mb-4 leading-tight">"Queremos usar IA en la empresa sin que sea un riesgo para los datos"</h3>
-                    <p class="text-mutedGray text-sm leading-relaxed mb-8 flex-grow">Copilot, Gemini, automatizaciones y governance para adoptar IA con control.</p>
-                    <a href="#suite" class="inline-flex items-center text-sm font-bold text-electricCyan group-hover:text-brandBlue transition-colors group-hover:translate-x-1 duration-300">Ver Inteligencia Artificial &rarr;</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN 3: Nuestras áreas de servicio -->
+    <!-- ÁREAS DE SERVICIO REFINADAS -->
     <section class="py-24 bg-white" id="areas">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-4xl mx-auto mb-20 reveal">
-                <h3 class="text-4xl md:text-5xl font-heading font-normal text-corporateNavy mb-6">Todo lo que necesita tu entorno digital, en un solo partner.</h3>
-                <p class="text-lg text-mutedGray">Desde el puesto de trabajo hasta la infraestructura cloud y la adopción de IA.</p>
+                <h3 class="text-4xl md:text-5xl font-heading font-normal text-corporateNavy mb-6">Digitalización Blindada</h3>
+                <p class="text-lg text-mutedGray">Dominamos las tres capas que sostienen a cualquier empresa moderna.</p>
             </div>
-            <div class="grid md:grid-cols-3 gap-8 text-center">
-                <!-- Col 1 -->
-                <div class="p-8 pb-10 rounded-[2rem] border border-gray-100 bg-gray-50/50 reveal group flex flex-col items-center hover:border-brandBlue/30 hover:bg-white transition-all shadow-sm hover:shadow-xl">
-                    <div class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center text-brandBlue mb-6">
-                        <i class="ph ph-desktop text-3xl"></i>
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Licencias & Workspace -->
+                <div class="p-10 rounded-[3rem] bg-slate-50 border border-slate-100 reveal group hover:border-brandBlue/30 hover:bg-white transition-all shadow-sm">
+                    <div class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center text-brandBlue mb-8 group-hover:scale-110 transition-transform">
+                        <i data-lucide="laptop" class="w-8 h-8"></i>
                     </div>
-                    <h4 class="text-xl font-bold text-corporateNavy mb-6">WORKPLACE</h4>
-                    <span class="text-sm text-mutedGray mb-8 leading-loose flex-grow block">
-                        Microsoft 365 &middot; Google Workspace &middot; Besafe (seguridad) &middot; Bebackup &middot; Migración &middot; Soporte
-                    </span>
-                    <a href="#workplace" class="w-full inline-flex justify-center items-center py-3 px-4 bg-white border border-gray-200 text-corporateNavy font-bold rounded-full group-hover:bg-brandBlue group-hover:text-white group-hover:border-brandBlue transition-all shadow-sm">Ver servicios Workplace &rarr;</a>
+                    <h4 class="text-2xl font-bold text-corporateNavy mb-4 uppercase">Workplace</h4>
+                    <p class="text-mutedGray text-sm mb-8 leading-relaxed">Microsoft 365 y Google Workspace desde una perspectiva de experto. No solo el buzón, sino el 100% de la herramienta.</p>
+                    <ul class="space-y-3 mb-10 text-sm font-medium text-corporateNavy/70">
+                       <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-electricCyan"></i> Gestión de Licencias</li>
+                       <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-electricCyan"></i> Seguridad beSafe</li>
+                       <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-electricCyan"></i> Soporte beHelp</li>
+                    </ul>
+                    <a href="servicio-licencias.html" class="w-full py-4 bg-white border border-gray-200 text-corporateNavy font-bold rounded-full text-center block hover:bg-corporateNavy hover:text-white transition-all">Ver detalle Workplace</a>
                 </div>
-                <!-- Col 2 -->
-                <div class="p-8 pb-10 rounded-[2rem] border border-gray-100 bg-gray-50/50 reveal group flex flex-col items-center hover:border-brandBlue/30 hover:bg-white transition-all shadow-sm hover:shadow-xl" style="transition-delay: 100ms;">
-                    <div class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center text-brandBlue mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 mx-auto" fill="currentColor" viewBox="0 0 256 256"><path d="M160,216H72a56,56,0,0,1-13.83-110.28,64,64,0,0,1,123.66,0A56,56,0,0,1,160,216Zm-88-96a40,40,0,0,0,0,80h88a40,40,0,0,0,7.37-79.31l-4.7-1a8,8,0,0,1-6.14-6.32l-1.42-7.23A48,48,0,0,0,67.64,116l-1.34,4.22A8,8,0,0,1,59.3,125Z"></path></svg>
+
+                <!-- Cloud & Infra -->
+                <div class="p-10 rounded-[3rem] bg-slate-50 border border-slate-100 reveal group hover:border-electricCyan/30 hover:bg-white transition-all shadow-xl scale-105 z-10 border-electricCyan/20">
+                    <div class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center text-electricCyan mb-8 group-hover:scale-110 transition-transform">
+                        <i data-lucide="cloud" class="w-8 h-8"></i>
                     </div>
-                    <h4 class="text-xl font-bold text-corporateNavy mb-6">CLOUD</h4>
-                    <span class="text-sm text-mutedGray mb-8 leading-loose flex-grow block">
-                        Azure &middot; Google Cloud &middot; Firewall SonicWall &middot; Backup infraestructura &middot; Monitorización &middot; Soporte Cloud
-                    </span>
-                    <a href="#cloud" class="w-full inline-flex justify-center items-center py-3 px-4 bg-white border border-gray-200 text-corporateNavy font-bold rounded-full group-hover:bg-brandBlue group-hover:text-white group-hover:border-brandBlue transition-all shadow-sm">Ver servicios Cloud &rarr;</a>
+                    <h4 class="text-2xl font-bold text-corporateNavy mb-4 uppercase">Cloud-First</h4>
+                    <p class="text-mutedGray text-sm mb-8 leading-relaxed">Infraestructura híbrida y pública (Azure/GCP). CPD Virtual, Servidores y Backup inmutable bajo demanda.</p>
+                    <ul class="space-y-3 mb-10 text-sm font-medium text-corporateNavy/70">
+                       <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-electricCyan"></i> Azure & Google Cloud</li>
+                       <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-electricCyan"></i> Backup Veeam</li>
+                       <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-electricCyan"></i> Firewall Gestionado</li>
+                    </ul>
+                    <a href="servicio-cloud.html" class="w-full py-4 bg-corporateNavy text-white font-bold rounded-full text-center block hover:bg-electricCyan hover:text-corporateNavy transition-all shadow-lg shadow-corporateNavy/20">Ver detalle Cloud</a>
                 </div>
-                <!-- Col 3 -->
-                <div class="p-8 pb-10 rounded-[2rem] border border-gray-100 bg-gray-50/50 reveal group flex flex-col items-center hover:border-brandBlue/30 hover:bg-white transition-all shadow-sm hover:shadow-xl" style="transition-delay: 200ms;">
-                    <div class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center text-brandBlue mb-6">
-                        <i class="ph ph-cpu text-3xl"></i>
+
+                <!-- AI & IA -->
+                <div class="p-10 rounded-[3rem] bg-slate-50 border border-slate-100 reveal group hover:border-brandBlue/30 hover:bg-white transition-all shadow-sm">
+                    <div class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center text-brandBlue mb-8 group-hover:scale-110 transition-transform">
+                        <i data-lucide="sparkles" class="w-8 h-8"></i>
                     </div>
-                    <h4 class="text-xl font-bold text-corporateNavy mb-6">INTELIGENCIA ARTIFICIAL</h4>
-                    <span class="text-sm text-mutedGray mb-8 leading-loose flex-grow block">
-                        Copilot &middot; Gemini &middot; Automatizaciones &middot; Seguridad IA &middot; Data Governance &middot; AI Readiness
-                    </span>
-                    <a href="#suite" class="w-full inline-flex justify-center items-center py-3 px-4 bg-white border border-gray-200 text-corporateNavy font-bold rounded-full group-hover:bg-brandBlue group-hover:text-white group-hover:border-brandBlue transition-all shadow-sm">Ver servicios IA &rarr;</a>
+                    <h4 class="text-2xl font-bold text-corporateNavy mb-4 uppercase">AI Intelligence</h4>
+                    <p class="text-mutedGray text-sm mb-8 leading-relaxed">Adopción segura de la IA. Preparamos tus datos para que Copilot o Gemini aporten valor real sin riesgos.</p>
+                    <ul class="space-y-3 mb-10 text-sm font-medium text-corporateNavy/70">
+                       <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-electricCyan"></i> AI Readiness Audit</li>
+                       <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-electricCyan"></i> Data Governance</li>
+                       <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-electricCyan"></i> Proyectos de Automatización</li>
+                    </ul>
+                    <a href="servicio-ia.html" class="w-full py-4 bg-white border border-gray-200 text-corporateNavy font-bold rounded-full text-center block hover:bg-corporateNavy hover:text-white transition-all">Ver detalle IA</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- BEGIN: BeSafe Suite (Dark/Navy High Contrast Section) -->
-    <section id="suite" class="section-spacing besafe-bg relative overflow-hidden">
-        <!-- Subtle Glow in Dark Background -->
-        <div
-            class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-corporateNavy via-corporateNavy to-black -z-10">
-        </div>
-        <div class="absolute top-0 right-1/4 w-[500px] h-[500px] bg-electricCyan/10 rounded-full blur-3xl -z-10"></div>
-
+    <!-- SECCIÓN 3: BeSafe Suite -->
+    <section id="suite" class="py-32 besafe-bg relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-electricCyan/5 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brandBlue/10 rounded-full blur-3xl -z-10 -translate-x-1/2 translate-y-1/2"></div>
+        
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-20 reveal">
-                <span class="text-electricCyan font-bold tracking-widest uppercase text-sm mb-4 block">La Solución
-                    Integral</span>
-                <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
-                    <h2 class="text-4xl md:text-5xl font-heading font-normal text-white max-w-2xl leading-tight">
-                        BeSafe Suite:<br />Inteligencia <span class="text-electricCyan">Protegida</span>
-                    </h2>
-                    <p class="text-gray-400 max-w-md text-base">
-                        Audita, clasifica y protege en tres niveles. Desde el correo electrónico tradicional hasta los
-                        agentes autónomos de tu empresa.
-                    </p>
+                <span class="text-electricCyan font-bold tracking-widest uppercase text-xs mb-4 block">Protección 360º</span>
+                <h2 class="text-4xl md:text-5xl font-heading font-normal text-white leading-tight">
+                    BeSafe Suite:<br /><span class="text-electricCyan">Seguridad Activa by Design</span>
+                </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Backup -->
+                <div class="besafe-card p-10 reveal" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-electricCyan/10 rounded-2xl flex items-center justify-center text-electricCyan mb-8">
+                        <i data-lucide="database" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4 uppercase">Backup</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-8">Tu último seguro de vida. Copias de seguridad inmutables contra el Ransomware, asegurando que tus datos siempre estén allí cuando más los necesites.</p>
+                    <a href="servicio-backup.html" class="inline-flex items-center text-electricCyan font-bold hover:gap-2 transition-all group">
+                        Ver planes <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Endpoint -->
+                <div class="besafe-card p-10 reveal" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-electricCyan/10 rounded-2xl flex items-center justify-center text-electricCyan mb-8">
+                        <i data-lucide="shield-check" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4 uppercase">Endpoint</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-8">Protección proactiva en cada dispositivo. Bloqueamos amenazas antes de que toquen tu red con tecnología EDR de última generación.</p>
+                    <a href="servicio-endpoint.html" class="inline-flex items-center text-electricCyan font-bold hover:gap-2 transition-all group">
+                        Ver planes <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- AI Shield -->
+                <div class="besafe-card p-10 reveal" style="transition-delay: 300ms;">
+                    <div class="w-14 h-14 bg-electricCyan/10 rounded-2xl flex items-center justify-center text-electricCyan mb-8">
+                        <i data-lucide="cpu" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4 uppercase">AI Shield</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-8">Escudo inteligente contra ciberataques de nueva generación. Analizamos patrones de comportamiento para detectar lo invisible.</p>
+                    <a href="servicio-ia.html" class="inline-flex items-center text-electricCyan font-bold hover:gap-2 transition-all group">
+                        Ver planes <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                    </a>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="grid lg:grid-cols-3 gap-6">
-                <!-- Base -->
-                <div class="besafe-card p-10 flex flex-col reveal text-white group">
-                    <div class="flex justify-between items-start mb-12">
-                        <div
-                            class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center group-hover:bg-electricCyan/20 transition-colors">
-                            <i
-                                class="ph ph-briefcase text-3xl text-white group-hover:text-electricCyan transition-colors"></i>
-                        </div>
-                        <span
-                            class="px-3 py-1 bg-white/10 text-xs font-bold tracking-wider rounded-full text-gray-300">BASE</span>
-                    </div>
-                    <h3 class="text-2xl font-normal mb-4 besafe-text">Workspace</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
-                        La puerta de entrada. Seguridad gestionada para Microsoft 365 y Google Workspace. Protección de
-                        identidades, correo, Phishing defensivo y políticas condicionales.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span
-                            class="text-xs font-medium px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300">Defender
-                            for M365</span>
-                        <span
-                            class="text-xs font-medium px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300">Zero
-                            Trust</span>
-                    </div>
-                </div>
-
-                <!-- Complete -->
-                <div class="besafe-card p-10 flex flex-col reveal text-white group" style="transition-delay: 100ms;">
-                    <div class="flex justify-between items-start mb-12">
-                        <div
-                            class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center group-hover:bg-electricCyan/20 transition-colors">
-                            <i
-                                class="ph ph-buildings text-3xl text-white group-hover:text-electricCyan transition-colors"></i>
-                        </div>
-                        <span
-                            class="px-3 py-1 bg-white/10 text-xs font-bold tracking-wider rounded-full text-gray-300">COMPLETO</span>
-                    </div>
-                    <h3 class="text-2xl font-normal mb-4 besafe-text">Enterprise</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
-                        Protección perimetral y resiliencia. Backup inmutable, Disaster Recovery y gestión de endpoints
-                        empresariales a gran escala, cubriendo todos los vectores.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span
-                            class="text-xs font-medium px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300">Firewall
-                            NGS</span>
-                        <span
-                            class="text-xs font-medium px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300">BeBackup</span>
-                    </div>
-                </div>
-
-                <!-- AI -->
-                <div class="besafe-card p-10 flex flex-col reveal text-white group border-electricCyan/40 relative overflow-hidden"
-                    style="transition-delay: 200ms; box-shadow: 0 0 40px rgba(0, 212, 255, 0.05);">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-electricCyan/20 blur-2xl rounded-full"></div>
-                    <div class="flex justify-between items-start mb-12 relative z-10">
-                        <div class="w-14 h-14 bg-electricCyan/10 rounded-2xl flex items-center justify-center">
-                            <i class="ph ph-brain text-3xl text-electricCyan"></i>
-                        </div>
-                        <span
-                            class="px-3 py-1 bg-electricCyan text-corporateNavy text-xs font-bold tracking-wider rounded-full">FLAGSHIP</span>
-                    </div>
-                    <h3 class="text-2xl font-normal mb-4 text-white relative z-10">AI Governance</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed mb-8 flex-grow relative z-10">
-                        Control absoluto sobre los agentes IA. Regula qué datos corporativos alimentan a Microsoft
-                        Copilot y ChatGPT corporativo. DLP avanzado enfocado en IA y prevención de data leakage.
-                    </p>
-                    <div class="flex flex-wrap gap-2 relative z-10">
-                        <span
-                            class="text-xs font-medium px-3 py-1.5 rounded-full bg-electricCyan/10 border border-electricCyan/30 text-electricCyan">Gobierno
-                            de Datos IA</span>
-                        <span
-                            class="text-xs font-medium px-3 py-1.5 rounded-full bg-electricCyan/10 border border-electricCyan/30 text-electricCyan">Copilot
-                            Security</span>
-                    </div>
-                </div>
+    <!-- SECCIÓN CONTACTO / CTA FINAL -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center reveal">
+            <h2 class="text-4xl md:text-5xl font-heading text-corporateNavy mb-6 leading-tight">¿Hablamos del futuro de tu IT?</h2>
+            <p class="text-mutedGray text-lg mb-12">No somos un proveedor de licencias. Somos el socio tecnológico que te permite centrarte en lo que realmente importa: tu negocio.</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <a href="mailto:hola@beservices.es" class="w-full sm:w-auto px-10 py-5 bg-corporateNavy text-white font-bold rounded-full hover:scale-105 transition shadow-xl shadow-corporateNavy/20 group">
+                    Agendar Consultoria Gratuita <i data-lucide="message-square" class="inline ml-2 w-5 h-5"></i>
+                </a>
+                <a href="catalogo.html" class="w-full sm:w-auto px-10 py-5 text-corporateNavy font-bold border border-gray-200 rounded-full hover:bg-gray-50 transition">
+                    Ver Catálogo Completo
+                </a>
             </div>
         </div>
     </section>
@@ -564,6 +543,159 @@
         </div>
     </footer>
 
+    <!-- MODAL SYSTEM -->
+    <div id="modal-container" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-6">
+        <div class="modal-overlay absolute inset-0" onclick="closeAllModals()"></div>
+        
+        <!-- POPUP 1 — Audit -->
+        <div id="modal-audit" class="modal-content relative hidden p-8 md:p-12">
+            <button onclick="closeAllModals()" class="absolute top-6 right-6 text-gray-400 hover:text-corporateNavy transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <div class="flex items-center gap-4 mb-4">
+                <div class="w-12 h-12 bg-ice-blue rounded-xl flex items-center justify-center text-beservices-blue">
+                    <i data-lucide="search" class="w-6 h-6"></i>
+                </div>
+                <div>
+                   <h2 class="text-2xl md:text-3xl font-heading text-beservices-blue">Audit</h2>
+                   <p class="text-lg font-bold text-mutedGray">€0 — Sin compromiso</p>
+                </div>
+            </div>
+            <p class="text-corporateNavy/70 mb-8 border-b border-gray-100 pb-6">La primera conversación siempre es gratuita. Sin ventas, sin presión.</p>
+            
+            <div class="space-y-8 mb-10">
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-widest text-beservices-blue mb-4 flex items-center gap-2">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i> QUÉ INCLUYE
+                    </h4>
+                    <ul class="space-y-3 text-sm text-corporateNavy/80">
+                        <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-electricCyan shrink-0 mt-0.5"></i> Auditoría de 45 minutos de tu entorno M365 o Google Workspace</li>
+                        <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-electricCyan shrink-0 mt-0.5"></i> Revisión de configuraciones críticas de seguridad (Secure Score)</li>
+                        <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-electricCyan shrink-0 mt-0.5"></i> Identificación de usuarios, permisos y accesos problemáticos</li>
+                        <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-electricCyan shrink-0 mt-0.5"></i> Informe escrito con hallazgos concretos</li>
+                        <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-electricCyan shrink-0 mt-0.5"></i> Recomendación de pasos a seguir según tu situación</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-widest text-beservices-blue mb-3">PARA QUIÉN ES</h4>
+                    <p class="text-sm text-corporateNavy/70 leading-relaxed">Cualquier empresa que use Microsoft 365 o Google Workspace y quiera saber exactamente en qué punto está su entorno digital.</p>
+                </div>
+                <div class="internal-note">
+                    <p class="font-bold mb-1 flex items-center gap-1">🔒 USO COMERCIAL (INTERNO)</p>
+                    <p>Puerta de entrada a todos los packs. El 70% genera propuesta Protect o Shield en 2 semanas. No vender, solo diagnosticar.</p>
+                </div>
+            </div>
+            <a href="mailto:hola@beservices.es" class="block text-center py-4 bg-beservices-blue text-white font-bold rounded-full hover:bg-corporateNavy transition-all shadow-xl shadow-beservices-blue/20">Solicitar Audit gratuito</a>
+        </div>
+
+        <!-- POPUP 2 — Start -->
+        <div id="modal-start" class="modal-content relative hidden p-8 md:p-12">
+            <button onclick="closeAllModals()" class="absolute top-6 right-6 text-gray-400 hover:text-corporateNavy transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <div class="flex items-center gap-4 mb-4">
+                <div class="w-12 h-12 bg-ice-blue rounded-xl flex items-center justify-center text-beservices-blue">
+                    <i data-lucide="cloud" class="w-6 h-6"></i>
+                </div>
+                <div>
+                   <h2 class="text-2xl md:text-3xl font-heading text-beservices-blue">Start</h2>
+                   <p class="text-lg font-bold text-mutedGray">Precio a medida</p>
+                </div>
+            </div>
+            <p class="text-corporateNavy/70 mb-8 border-b border-gray-100 pb-6">Para el cliente que entra por licencias y merece algo más que una licencia suelta.</p>
+            
+            <div class="space-y-8 mb-10">
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-widest text-beservices-blue mb-4 flex items-center gap-2">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i> QUÉ INCLUYE
+                    </h4>
+                    <ul class="space-y-3 text-sm text-corporateNavy/80">
+                        <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-electricCyan shrink-0 mt-0.5"></i> Licencias (M365 o Google Workspace el plan ideal)</li>
+                        <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-electricCyan shrink-0 mt-0.5"></i> Seguridad básica: Doble verificación (MFA) y antispam</li>
+                        <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-electricCyan shrink-0 mt-0.5"></i> Soporte: Bolsa de 5 horas técnicas para dudas e incidencias</li>
+                    </ul>
+                </div>
+                <div class="internal-note">
+                    <p class="font-bold mb-1 flex items-center gap-1">🔒 USO COMERCIAL (INTERNO)</p>
+                    <p>Evitar vender licencias solas. Recomendación profesional: MFA y Soporte base. Proyectos de ~€500-800.</p>
+                </div>
+            </div>
+            <a href="mailto:hola@beservices.es" class="block text-center py-4 bg-beservices-blue text-white font-bold rounded-full hover:bg-corporateNavy transition-all shadow-xl shadow-beservices-blue/20">Solicitar propuesta Start</a>
+        </div>
+
+        <!-- POPUP 3 — Protect -->
+        <div id="modal-protect" class="modal-content relative hidden p-8 md:p-12">
+            <button onclick="closeAllModals()" class="absolute top-6 right-6 text-gray-400 hover:text-corporateNavy transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <div class="flex items-center gap-4 mb-4">
+                <div class="w-12 h-12 bg-ice-blue rounded-xl flex items-center justify-center text-beservices-blue">
+                    <i data-lucide="shield" class="w-6 h-6"></i>
+                </div>
+                <div>
+                   <h2 class="text-2xl md:text-3xl font-heading text-beservices-blue">Protect</h2>
+                   <p class="text-lg font-bold text-mutedGray">Precio a medida</p>
+                </div>
+            </div>
+            <p class="text-corporateNavy/70 mb-8 border-b border-gray-100 pb-6">Para el que ya tiene licencias pero nunca ha configurado la seguridad.</p>
+            
+            <div class="space-y-8 mb-10">
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-widest text-beservices-blue mb-4 flex items-center gap-2">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i> QUÉ INCLUYE
+                    </h4>
+                    <ul class="space-y-3 text-sm text-corporateNavy/80">
+                        <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-electricCyan shrink-0 mt-0.5"></i> Auditoría completa antes de empezar</li>
+                        <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-electricCyan shrink-0 mt-0.5"></i> Protección de correo, identidades y dispositivos</li>
+                        <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-electricCyan shrink-0 mt-0.5"></i> Backup: Copias diarias de correo, archivos y documentos</li>
+                        <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-electricCyan shrink-0 mt-0.5"></i> Soporte técnico mensual con horas incluidas</li>
+                    </ul>
+                </div>
+                <div class="internal-note">
+                    <p class="font-bold mb-1 flex items-center gap-1">🔒 USO COMERCIAL (INTERNO)</p>
+                    <p>Pack de upsell prioritario para clientes actuales (85 potenciales). Justifica valor mediante la seguridad y el backup.</p>
+                </div>
+            </div>
+            <a href="mailto:hola@beservices.es" class="block text-center py-4 bg-beservices-blue text-white font-bold rounded-full hover:bg-corporateNavy transition-all shadow-xl shadow-beservices-blue/20">Solicitar propuesta Protect</a>
+        </div>
+
+        <!-- POPUP 4 — Shield -->
+        <div id="modal-shield" class="modal-content relative hidden p-8 md:p-12">
+            <button onclick="closeAllModals()" class="absolute top-6 right-6 text-gray-400 hover:text-corporateNavy transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <div class="flex items-center gap-4 mb-4">
+                <div class="w-12 h-12 bg-ice-blue rounded-xl flex items-center justify-center text-beservices-blue">
+                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                </div>
+                <div>
+                   <h2 class="text-2xl md:text-3xl font-heading text-beservices-blue">Shield</h2>
+                   <p class="text-lg font-bold text-mutedGray flex items-center gap-2">Precio a medida <span class="text-[10px] bg-ice-blue px-2 py-0.5 rounded-full border border-beservices-blue/10">AVANZADO</span></p>
+                </div>
+            </div>
+            <p class="text-corporateNavy/70 mb-8 border-b border-gray-100 pb-6">Para el que quiere el máximo nivel de protección y está listo para usar IA.</p>
+            
+            <div class="space-y-8 mb-10">
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-widest text-beservices-blue mb-4 flex items-center gap-2">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i> QUÉ INCLUYE
+                    </h4>
+                    <ul class="space-y-3 text-sm text-corporateNavy/80">
+                        <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-electricCyan shrink-0 mt-0.5"></i> Seguridad Avanzada: XDR y respuesta a amenazas en tiempo real</li>
+                        <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-electricCyan shrink-0 mt-0.5"></i> Backup completo de todo el entorno</li>
+                        <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-electricCyan shrink-0 mt-0.5"></i> IA Segura: Copilot/Gemini con políticas DLP activas</li>
+                        <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-electricCyan shrink-0 mt-0.5"></i> Gestión Proactiva: Supervisión continua 24/7</li>
+                    </ul>
+                </div>
+                <div class="internal-note">
+                    <p class="font-bold mb-1 flex items-center gap-1">🔒 USO COMERCIAL (INTERNO)</p>
+                    <p>Venta vía IA (Copilot/Gemini). No se vende seguridad, se vende "la forma correcta de habilitar la IA". Proyectos de €14k-18k.</p>
+                </div>
+            </div>
+            <a href="mailto:hola@beservices.es" class="block text-center py-4 bg-beservices-blue text-white font-bold rounded-full hover:bg-corporateNavy transition-all shadow-xl shadow-beservices-blue/20">Solicitar propuesta Shield</a>
+        </div>
+    </div>
+
     <!-- Interactive JS -->
     <script>
         // Simple Scroll Reveal Logic
@@ -594,6 +726,9 @@
                 navbar.classList.add('py-2');
             }
         });
+        
+        // Load initial icons
+        lucide.createIcons();
     </script>
 </body>
 

@@ -110,81 +110,72 @@
   </section>
 
   <!-- PLANES BEHELP -->
-  <section class="py-24 bg-gray-50">
+  <section class="py-24 bg-gray-50 border-t border-gray-100">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16 reveal">
-        <h2 class="text-3xl font-heading text-corporateNavy mb-4">Planes de Soporte</h2>
-        <p class="text-mutedGray text-sm max-w-xl mx-auto">Selecciona el modelo de consumo que mejor se adapte a tu empresa. Claridad total, sin letra pequeña.</p>
+        <h2 class="text-3xl md:text-5xl font-heading text-corporateNavy mb-6">Planes BeHelp</h2>
+        <p class="text-mutedGray text-lg max-w-2xl mx-auto">Soporte técnico estructurado para empresas que no pueden permitirse parones. Elige tu nivel de cobertura.</p>
       </div>
 
       <div class="grid lg:grid-cols-3 gap-8 items-stretch reveal">
 
-        <!-- Tarifa plana -->
-        <div class="plan-card p-8 bg-white flex flex-col hover:-translate-y-2">
-          <div class="mb-6">
-            <span class="text-[10px] font-bold uppercase tracking-widest text-mutedGray">Tarifa Plana Recursiva</span>
-            <h3 class="text-2xl font-heading font-normal text-corporateNavy mt-2">BeHelp Month</h3>
-            <p class="text-brandBlue text-sm mt-3 font-semibold h-10">"Sé exactamente cuánto pago cada mes"</p>
+        <!-- Standard -->
+        <div class="plan-card p-10 bg-white flex flex-col hover:-translate-y-2">
+          <div class="mb-8">
+            <div class="w-12 h-12 bg-slate-50 text-slate-400 rounded-xl flex items-center justify-center mb-6"><i data-lucide="shield" class="w-6 h-6"></i></div>
+            <h3 class="text-2xl font-bold text-corporateNavy">Standard</h3>
+            <p class="text-mutedGray text-sm mt-2">Mantenimiento preventivo y reactivo esencial.</p>
           </div>
-          <div class="mb-8 flex-grow border-t border-gray-100 pt-6">
-            <ul class="space-y-3 text-sm text-mutedGray">
-              <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-2 shrink-0"></i>Packs de <strong class="text-corporateNavy ml-1">2h, 5h o 10h/mes</strong></li>
-              <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-2 shrink-0"></i><span class="line-through opacity-70">Horas acumulables al mes siguiente</span> (No)</li>
-              <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-2 shrink-0"></i>SLA: respuesta en <strong class="text-corporateNavy ml-1">8h laborables</strong></li>
-              <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-2 shrink-0"></i>Gestión en portal de tickets</li>
+          <div class="mb-8 flex-grow">
+            <ul class="space-y-4 text-sm text-corporateNavy">
+              <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 text-green-500 shrink-0"></i> <span>Gestión de Tickets ilimitada</span></li>
+              <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 text-green-500 shrink-0"></i> <span>Soporte Remoto Workplace</span></li>
+              <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 text-green-500 shrink-0"></i> <span>Monitorización de equipos</span></li>
             </ul>
           </div>
-          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-            <div class="text-[10px] uppercase text-mutedGray font-bold mb-1">Precio hora fijo</div>
-            <div class="text-4xl font-heading font-bold text-corporateNavy mt-2">€60<span class="text-lg font-normal text-mutedGray">/h</span></div>
-            <p class="text-xs text-mutedGray mt-4 pt-3 border-t border-gray-200">Ideal para: Equipos con altísima rotación o onboardings predecibles.</p>
+          <div class="pt-8 border-t border-gray-100">
+             <a href="mailto:hola@beservices.es" class="block text-center py-4 bg-corporateNavy text-white font-bold rounded-full hover:bg-corporateNavy/90 transition">Saber más</a>
           </div>
         </div>
 
-        <!-- Bolsa horas (Recomendado) -->
-        <div class="plan-card featured p-8 bg-white flex flex-col hover:-translate-y-2 relative overflow-hidden transform scale-105 z-10 shadow-xl border-electricCyan">
-          <div class="absolute top-0 right-0 bg-electricCyan text-corporateNavy text-[10px] font-bold tracking-widest uppercase px-4 py-1.5 rounded-bl-xl shadow-sm">
-            ⭐ Modelo Estrella
+        <!-- Advanced -->
+        <div class="plan-card featured p-10 bg-white flex flex-col hover:-translate-y-2 relative overflow-hidden ring-2 ring-electricCyan/30">
+          <div class="absolute top-0 right-0 bg-electricCyan text-corporateNavy text-[10px] font-bold tracking-widest uppercase px-6 py-2 rounded-bl-2xl">Recomendado</div>
+          <div class="mb-8">
+            <div class="w-12 h-12 bg-electricCyan/10 text-electricCyan rounded-xl flex items-center justify-center mb-6"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
+            <h3 class="text-2xl font-bold text-corporateNavy">Advanced</h3>
+            <p class="text-mutedGray text-sm mt-2">Seguridad activa y prioridad de respuesta.</p>
           </div>
-          <div class="mb-6 mt-2">
-            <span class="text-[10px] font-bold uppercase tracking-widest text-electricCyan">Bolsa de horas flexible</span>
-            <h3 class="text-2xl font-heading font-normal text-corporateNavy mt-2">BeHelp Pack</h3>
-            <p class="text-brandBlue text-sm mt-3 font-semibold h-10">"Lo compro y lo uso cuando lo necesito"</p>
-          </div>
-          <div class="mb-8 flex-grow border-t border-electricCyan/10 pt-6">
-            <ul class="space-y-3 text-sm text-mutedGray">
-              <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-2 shrink-0"></i>Packs escalables de <strong class="text-corporateNavy ml-1">3h, 5h o 10h</strong></li>
-              <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-2 shrink-0"></i>Caducidad <strong class="text-corporateNavy ml-1">12 meses</strong> desde compra</li>
-              <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-2 shrink-0"></i>SLA: respuesta en <strong class="text-corporateNavy ml-1">4h laborables</strong></li>
-              <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-2 shrink-0"></i>Recargable instantáneamente</li>
+          <div class="mb-8 flex-grow">
+            <ul class="space-y-4 text-sm text-corporateNavy">
+              <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 text-electricCyan shrink-0"></i> <span>Todo lo del plan Standard</span></li>
+              <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 text-electricCyan shrink-0"></i> <span>Prioridad de respuesta < 4h</span></li>
+              <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 text-electricCyan shrink-0"></i> <span>Gestión de Seguridad Endpoint</span></li>
+              <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 text-electricCyan shrink-0"></i> <span>Auditoría trimestral de IT</span></li>
             </ul>
           </div>
-          <div class="bg-white rounded-2xl p-6 border border-electricCyan/20 shadow-sm relative">
-            <div class="text-[10px] uppercase text-electricCyan font-bold mb-1">Precio hora escalada</div>
-            <div class="text-4xl font-heading font-bold text-corporateNavy mt-2">€70<span class="text-lg font-normal text-mutedGray">/h</span></div>
-            <p class="text-xs text-mutedGray mt-4 pt-3 border-t border-gray-100">Ideal para: Cualquier empresa. Es el modelo estándar recomendado.</p>
+          <div class="pt-8 border-t border-gray-100">
+             <a href="mailto:hola@beservices.es" class="block text-center py-4 bg-electricCyan text-corporateNavy font-bold rounded-full hover:bg-electricCyan/90 transition shadow-lg shadow-electricCyan/20">Saber más</a>
           </div>
         </div>
 
-        <!-- Horas abiertas -->
-        <div class="plan-card p-8 bg-white flex flex-col hover:-translate-y-2">
-          <div class="mb-6">
-            <span class="text-[10px] font-bold uppercase tracking-widest text-mutedGray">Pago por Uso Completo</span>
-            <h3 class="text-2xl font-heading font-normal text-corporateNavy mt-2">BeHelp On Demand</h3>
-            <p class="text-brandBlue text-sm mt-3 font-semibold h-10">"Sin prepagos, máxima prioridad"</p>
+        <!-- Premium -->
+        <div class="plan-card p-10 bg-white flex flex-col hover:-translate-y-2">
+          <div class="mb-8">
+             <div class="w-12 h-12 bg-brandBlue/10 text-brandBlue rounded-xl flex items-center justify-center mb-6"><i data-lucide="crown" class="w-6 h-6"></i></div>
+            <h3 class="text-2xl font-bold text-corporateNavy">Premium</h3>
+            <p class="text-mutedGray text-sm mt-2">Externalización total del departamento IT.</p>
           </div>
-          <div class="mb-8 flex-grow border-t border-gray-100 pt-6">
-            <ul class="space-y-3 text-sm text-mutedGray">
-              <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-2 shrink-0"></i>Sin compromiso ni compra por adelantado</li>
-              <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-2 shrink-0"></i>SLA Crítico: respuesta en <strong class="text-corporateNavy ml-1">2h laborables</strong></li>
-              <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-2 shrink-0"></i>Atención <strong class="text-corporateNavy ml-1">prioritaria</strong> frente al resto de modelos</li>
-              <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-2 shrink-0"></i>Facturación a mes vencido validada</li>
+          <div class="mb-8 flex-grow">
+            <ul class="space-y-4 text-sm text-corporateNavy">
+              <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 text-brandBlue shrink-0"></i> <span>Todo lo del plan Advanced</span></li>
+              <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 text-brandBlue shrink-0"></i> <span>Respuesta inmediata VIP</span></li>
+              <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 text-brandBlue shrink-0"></i> <span>Soporte presencial incluido</span></li>
+              <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 text-brandBlue shrink-0"></i> <span>CIO as a Service (Estrategia)</span></li>
             </ul>
           </div>
-          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-            <div class="text-[10px] uppercase text-mutedGray font-bold mb-1">Precio hora premium</div>
-            <div class="text-4xl font-heading font-bold text-corporateNavy mt-2">€80<span class="text-lg font-normal text-mutedGray">/h</span></div>
-            <p class="text-xs text-mutedGray mt-4 pt-3 border-t border-gray-200">Ideal para: Clientes que valoran la inmediatez sin casarse con un pack.</p>
+          <div class="pt-8 border-t border-gray-100">
+             <a href="mailto:hola@beservices.es" class="block text-center py-4 bg-corporateNavy text-white font-bold rounded-full hover:bg-corporateNavy/90 transition">Saber más</a>
           </div>
         </div>
 
@@ -192,14 +183,47 @@
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="py-20">
+  <!-- CASO DE ÉXITO SUMA CAPITAL -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6 reveal">
+       <div class="grid lg:grid-cols-2 gap-12 items-center bg-corporateNavy rounded-[3rem] overflow-hidden">
+          <div class="p-12 lg:p-16 text-white">
+             <img src="https://sumacapital.com/wp-content/themes/sumacapital/assets/img/logo-white.svg" class="h-8 mb-8 opacity-80" alt="Suma Capital">
+             <h2 class="text-3xl font-heading mb-6">"BeServices es nuestro departamento IT desde hace 10 años"</h2>
+             <p class="text-white/70 text-lg mb-8 leading-relaxed">Suma Capital confía en nuestro soporte BeHelp para gestionar el día a día de sus usuarios, su infraestructura en Cloud y sus políticas de seguridad.</p>
+             <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center border border-white/20"><i data-lucide="check" class="text-electricCyan"></i></div>
+                <p class="text-sm font-bold uppercase tracking-widest text-electricCyan">Soporte 360º Garantizado</p>
+             </div>
+          </div>
+          <div class="relative h-full min-h-[400px]">
+             <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Suma Capital Office">
+             <div class="absolute inset-0 bg-corporateNavy/20"></div>
+          </div>
+       </div>
+    </div>
+  </section>
+
+  <!-- RIESGO DE NO HACER NADA -->
+  <section class="py-24 bg-red-50 border-y border-red-100">
     <div class="max-w-4xl mx-auto px-6 text-center reveal">
-      <h2 class="text-3xl font-heading text-corporateNavy mb-6">¿Dudas de cuál te encaja?</h2>
-      <p class="text-mutedGray mb-8">Nuestros auditores revisan tu volumen histórico de tickets y te recomiendan el modelo que te resultará más rentable.</p>
-      <a href="mailto:hola@beservices.es" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-corporateNavy rounded-full hover:bg-corporateNavy/90 transition-all hover:scale-105 shadow-xl shadow-corporateNavy/20 group">
-        Hablar con el departamento técnico <i data-lucide="arrow-right" class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
-      </a>
+      <i data-lucide="alert-octagon" class="w-16 h-16 text-red-600 mx-auto mb-6"></i>
+      <h2 class="text-3xl font-heading text-corporateNavy mb-6">El coste de "ya lo arreglaré yo"</h2>
+      <p class="text-mutedGray text-lg mb-10 leading-relaxed">Perder una mañana intentando configurar un correo o una impresora no es "ahorrar". Es perder productividad real. Deja que los expertos lo hagan en 5 minutos mientras tú te centras en vender.</p>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="py-24 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 text-center reveal">
+      <h2 class="text-4xl md:text-5xl font-heading text-corporateNavy mb-6">¿Hablamos de tus sistemas?</h2>
+      <p class="text-mutedGray mb-10 text-lg">Hacemos una auditoría inicial de tus equipos y redes sin coste para dimensionar qué plan necesitas realmente. Sin compromiso.</p>
+      
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="mailto:hola@beservices.es" class="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white bg-corporateNavy rounded-full hover:bg-corporateNavy/90 transition-all hover:scale-105 shadow-xl shadow-corporateNavy/20 group">
+          Solicitar Auditoría IT Gratis <i data-lucide="arrow-right" class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+      </div>
     </div>
   </section>
 

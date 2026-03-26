@@ -39,66 +39,219 @@
     </div>
   </nav>
 
-  <section class="relative pt-40 pb-20 lg:pt-48 lg:pb-24 overflow-hidden hero-bg">
-    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-electricCyan/5 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3"></div>
-    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-corporateNavy/5 rounded-full blur-3xl -z-10 -translate-x-1/2 translate-y-1/2"></div>
-    <div class="max-w-7xl mx-auto px-6">
+  <!-- HERO -->
+  <section class="relative pt-40 pb-20 lg:pt-48 lg:pb-32 overflow-hidden hero-bg">
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-electricCyan/10 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3"></div>
+    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brandBlue/5 rounded-full blur-3xl -z-10 -translate-x-1/2 translate-y-1/2"></div>
+    
+    <div class="max-w-7xl mx-auto px-6 text-center">
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-electricCyan/10 border border-electricCyan/20 mb-6 reveal active">
-        <i data-lucide="sparkles" class="w-4 h-4 text-electricCyan"></i>
-        <span class="text-[10px] font-bold tracking-widest text-electricCyan uppercase">IA Corporativa</span>
+        <i data-lucide="sparkles" class="w-4 h-4 text-electricCyan animate-pulse"></i>
+        <span class="text-[10px] font-bold tracking-widest text-electricCyan uppercase">Inteligencia Artificial Corporativa</span>
       </div>
-      <h1 class="text-4xl md:text-6xl font-heading font-normal text-corporateNavy mb-6 reveal active" style="transition-delay:100ms">
-        Inteligencia Artificial <br /><span class="text-gradient font-bold drop-shadow-sm">sin riesgos</span>
+      <h1 class="text-4xl md:text-5xl lg:text-7xl font-heading font-normal text-corporateNavy mb-6 reveal active" style="transition-delay:100ms">
+        Tus datos, tu IA, <br /><span class="text-gradient font-bold drop-shadow-sm">tu ventaja competitiva</span>
       </h1>
-      <p class="text-lg text-mutedGray leading-relaxed mb-10 max-w-2xl reveal active" style="transition-delay:200ms">
-        "Quiero usar IA pero no sé cómo empezar sin liarla". Despliega IA corporativa conectada a tus propios datos, completamente privada y sin exponer información sensible al exterior.
+      <p class="text-lg text-mutedGray leading-relaxed mb-10 max-w-2xl mx-auto reveal active" style="transition-delay:200ms">
+        Despliega Microsoft Copilot y Google Gemini de forma segura. Conecta la IA a tus documentos corporativos sin comprometer la privacidad ni la propiedad intelectual.
       </p>
+      
+      <div class="flex flex-wrap items-center justify-center gap-8 mb-12 reveal active" style="transition-delay:250ms">
+        <div class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-500">
+           <img src="https://beservices.es/wp-content/uploads/2024/09/Microsoft_365_logo-1024x169.png" class="h-6 object-contain" alt="Microsoft">
+           <span class="font-bold text-corporateNavy">Copilot</span>
+        </div>
+        <div class="w-px h-8 bg-gray-200 hidden md:block"></div>
+        <div class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-500">
+           <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" class="h-6 object-contain" alt="Google">
+           <span class="font-bold text-corporateNavy">Gemini</span>
+        </div>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal active" style="transition-delay:300ms">
+         <a href="#proyectos" class="px-8 py-4 w-full sm:w-auto bg-corporateNavy text-white font-bold rounded-full hover:bg-corporateNavy/90 transition shadow-xl shadow-corporateNavy/20 text-center">Ver proyectos de IA</a>
+         <a href="mailto:hola@beservices.es" class="px-8 py-4 w-full sm:w-auto bg-white text-corporateNavy border border-gray-200 font-bold rounded-full hover:bg-gray-50 transition text-center flex items-center justify-center gap-2">
+           <i data-lucide="message-square" class="w-4 h-4 text-brandBlue"></i> Auditoría IA Readiness
+         </a>
+      </div>
     </div>
   </section>
 
-  <!-- QUÉ INCLUYE -->
-  <section class="py-20 border-t border-gray-100">
+  <!-- COPILOT & GEMINI -->
+  <section class="py-24 bg-white relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid lg:grid-cols-3 gap-8 reveal">
-        
-        <div class="bg-gray-50/50 border border-gray-100 rounded-2xl p-8">
-          <div class="w-12 h-12 bg-corporateNavy/5 text-corporateNavy rounded-xl flex items-center justify-center mb-6">
-            <i data-lucide="key" class="w-6 h-6"></i>
+      <div class="grid lg:grid-cols-2 gap-12 reveal">
+        <!-- Microsoft Copilot -->
+        <div class="rounded-3xl p-10 border border-gray-100 bg-slate-50/50 hover:border-brandBlue/30 transition-all group">
+          <div class="w-16 h-16 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+             <i data-lucide="sparkles" class="w-8 h-8 text-brandBlue"></i>
           </div>
-          <h3 class="text-xl font-bold text-corporateNavy mb-4">Licencias y Configuración</h3>
-          <p class="text-mutedGray text-sm mb-6">LLMs integrados orgánicamente en tu ecosistema actual.</p>
-          <ul class="space-y-3 text-sm text-corporateNavy">
-            <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-3 mt-0.5"></i><strong class="mx-1">M365 Copilot:</strong> Licenciamiento, activación y diseño de políticas Base de privacidad.</li>
-            <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-3 mt-0.5"></i><strong class="mx-1">Google Gemini:</strong> Activación en Google Workspace y configuración de alcance.</li>
+          <h2 class="text-3xl font-heading text-corporateNavy mb-6">Microsoft Copilot <br />for 365</h2>
+          <p class="text-mutedGray mb-8 leading-relaxed">El asistente de IA más potente del mundo integrado directamente en Word, Excel, PowerPoint y Teams. BeServices te ayuda en todo el ciclo:</p>
+          <ul class="space-y-4 mb-10">
+            <li class="flex items-start gap-3">
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-brandBlue shrink-0 mt-0.5"></i>
+              <span class="text-sm text-corporateNavy font-medium">Activación de licencias y configuración de Tenant.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-brandBlue shrink-0 mt-0.5"></i>
+              <span class="text-sm text-corporateNavy font-medium">Copilot Studio: Creación de agentes low-code personalizados.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-brandBlue shrink-0 mt-0.5"></i>
+              <span class="text-sm text-corporateNavy font-medium">Políticas de DLP (Data Loss Prevention) para IA.</span>
+            </li>
           </ul>
+          <div class="p-6 bg-brandBlue/5 rounded-2xl border border-brandBlue/10">
+             <p class="text-xs text-brandBlue font-bold uppercase tracking-widest mb-1">Impacto estimado</p>
+             <p class="text-xl font-heading font-normal text-corporateNavy">Ahorro de <span class="font-bold text-brandBlue">10h mensuales</span> por empleado en tareas administrativas.</p>
+          </div>
         </div>
 
-        <div class="bg-gray-50/50 border border-gray-100 rounded-2xl p-8">
-          <div class="w-12 h-12 bg-corporateNavy/5 text-corporateNavy rounded-xl flex items-center justify-center mb-6">
-            <i data-lucide="bot" class="w-6 h-6"></i>
+        <!-- Google Gemini -->
+        <div class="rounded-3xl p-10 border border-gray-100 bg-slate-50/50 hover:border-electricCyan/30 transition-all group">
+          <div class="w-16 h-16 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+             <i data-lucide="bot" class="w-8 h-8 text-electricCyan"></i>
           </div>
-          <h3 class="text-xl font-bold text-corporateNavy mb-4">Automatizaciones con IA</h3>
-          <p class="text-mutedGray text-sm mb-6">Quita trabajo manual a tu equipo aprovechando motores inteligentes.</p>
-          <ul class="space-y-3 text-sm text-corporateNavy">
-            <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-3 mt-0.5"></i>Uso de Power Automate + AI Builder para flujos corporativos.</li>
-            <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-3 mt-0.5"></i>Implementación con GWS Studio.</li>
-            <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 text-electricCyan mr-3 mt-0.5"></i>Creación de Agentes GPT personalizados y controlados para la empresa (Proyectos).</li>
+          <h2 class="text-3xl font-heading text-corporateNavy mb-6">Google Gemini <br />for Workspace</h2>
+          <p class="text-mutedGray mb-8 leading-relaxed">La IA nativa de Google que transforma la colaboración en Docs, Sheets y Gmail. Especialmente potente para empresas con ADN 100% Cloud.</p>
+          <ul class="space-y-4 mb-10">
+            <li class="flex items-start gap-3">
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-electricCyan shrink-0 mt-0.5"></i>
+              <span class="text-sm text-corporateNavy font-medium">Implementación de Gemini Business y Enterprise.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-electricCyan shrink-0 mt-0.5"></i>
+              <span class="text-sm text-corporateNavy font-medium">Integración con Vertex AI para proyectos avanzados.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-electricCyan shrink-0 mt-0.5"></i>
+              <span class="text-sm text-corporateNavy font-medium">Adopción y formación proactiva para equipos.</span>
+            </li>
           </ul>
-        </div>
-
-        <div class="bg-gray-50/50 border border-gray-100 rounded-2xl p-8 relative overflow-hidden">
-          <div class="absolute top-0 right-0 bg-gray-200 text-gray-500 text-[9px] font-bold tracking-widest uppercase px-3 py-1 rounded-bl-lg">En construcción</div>
-          <div class="w-12 h-12 bg-corporateNavy/5 text-corporateNavy rounded-xl flex items-center justify-center mb-6 opacity-70">
-            <i data-lucide="shield-alert" class="w-6 h-6"></i>
+          <div class="p-6 bg-electricCyan/5 rounded-2xl border border-electricCyan/10">
+             <p class="text-xs text-electricCyan font-bold uppercase tracking-widest mb-1">Impacto estimado</p>
+             <p class="text-xl font-heading font-normal text-corporateNavy">Reducción del <span class="font-bold text-electricCyan">45% en tiempo</span> de redacción y análisis de datos.</p>
           </div>
-          <h3 class="text-xl font-bold text-corporateNavy mb-4 text-mutedGray">AI Readiness </h3>
-          <p class="text-mutedGray text-sm mb-6">Preparando el terreno antes de inyectar IA en tus datos.</p>
-          <ul class="space-y-3 text-sm text-mutedGray">
-            <li class="flex items-start"><i data-lucide="circle" class="w-3 h-3 text-gray-300 mr-3 mt-1 shrink-0"></i>Auditoría de madurez de IA (¿Qué datos están expuestos?).</li>
-            <li class="flex items-start"><i data-lucide="circle" class="w-3 h-3 text-gray-300 mr-3 mt-1 shrink-0"></i>Gobernanza del Dato: Limpieza de permisos antes de activar Copilot.</li>
-          </ul>
         </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- AI READINESS AUDIT -->
+  <section class="py-24 bg-corporateNavy relative overflow-hidden">
+    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-16 items-center reveal">
+        <div>
+           <h2 class="text-3xl lg:text-5xl font-heading text-white mb-8">AI Readiness: No actives Copilot sin limpiar antes</h2>
+           <p class="text-white/70 text-lg mb-10 leading-relaxed">Configurar IA es fácil. Hacerlo bien es crítico: si activas Copilot y tus empleados tienen permisos excesivos en SharePoint, la IA les mostrará nóminas, contratos o datos de clientes que no deberían ver.</p>
+           
+           <div class="space-y-6">
+              <div class="flex gap-4">
+                 <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center shrink-0 border border-white/20"><i data-lucide="shield-check" class="w-5 h-5 text-electricCyan"></i></div>
+                 <div>
+                    <h4 class="text-white font-bold mb-1">Auditoría de Permisos</h4>
+                    <p class="text-white/50 text-sm">Escaneamos tu SharePoint y directorios para cerrar brechas de seguridad antes de que la IA aprenda de ellas.</p>
+                 </div>
+              </div>
+              <div class="flex gap-4">
+                 <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center shrink-0 border border-white/20"><i data-lucide="database" class="w-5 h-5 text-electricCyan"></i></div>
+                 <div>
+                    <h4 class="text-white font-bold mb-1">Gobernanza del Dato</h4>
+                    <p class="text-white/50 text-sm">Estructuramos tu información corporativa para que los resultados de la IA sean precisos y útiles.</p>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <div class="relative">
+           <div class="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 shadow-2xl">
+              <div class="text-center mb-10">
+                 <i data-lucide="alert-triangle" class="w-12 h-12 text-electricCyan mx-auto mb-4 animate-bounce"></i>
+                 <h3 class="text-white text-2xl font-bold">El "Over-sharing" es el mayor riesgo</h3>
+                 <p class="text-white/60 text-sm mt-2">La IA tiene memoria fotográfica. Si un archivo es accesible, ella lo leerá.</p>
+              </div>
+              <div class="space-y-4">
+                 <div class="p-4 bg-red-500/10 border border-red-500/20 rounded-xl flex items-center gap-3">
+                    <i data-lucide="x-circle" class="w-5 h-5 text-red-500"></i>
+                    <span class="text-white/80 text-xs font-medium italic">"Copilot, ¿cuánto cobra el CEO?"</span>
+                 </div>
+                 <div class="p-4 bg-green-500/10 border border-green-500/20 rounded-xl flex items-center gap-3">
+                    <i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i>
+                    <span class="text-white/80 text-xs font-semibold">Con BeCloud IA Readiness: Acceso Denegado.</span>
+                 </div>
+              </div>
+           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROYECTOS DE IA PERSONALIZADOS -->
+  <section id="proyectos" class="py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl md:text-5xl font-heading text-corporateNavy mb-6">Proyectos de IA a medida</h2>
+        <p class="text-mutedGray text-lg max-w-2xl mx-auto">Más allá de las herramientas estándar, desarrollamos soluciones específicas para tus necesidades de negocio.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
+         <!-- Card 1 -->
+         <div class="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all">
+            <div class="w-12 h-12 bg-corporateNavy/5 text-brandBlue rounded-xl flex items-center justify-center mb-6"><i data-lucide="bar-chart" class="w-6 h-6"></i></div>
+            <h3 class="text-xl font-bold text-corporateNavy mb-3">Análisis Predictivo</h3>
+            <p class="text-mutedGray text-sm">Uso de modelos para predecir demanda, bajas de clientes o picos de stock en base a tus datos históricos.</p>
+         </div>
+         <!-- Card 2 -->
+         <div class="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all">
+            <div class="w-12 h-12 bg-corporateNavy/5 text-brandBlue rounded-xl flex items-center justify-center mb-6"><i data-lucide="message-square-plus" class="w-6 h-6"></i></div>
+            <h3 class="text-xl font-bold text-corporateNavy mb-3">Chatbots con RAG</h3>
+            <p class="text-mutedGray text-sm">Buscadores inteligentes que responden preguntas leyendo solo tus PDF corporativos, manuales técnicos o bases de conocimiento.</p>
+         </div>
+         <!-- Card 3 -->
+         <div class="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all">
+            <div class="w-12 h-12 bg-corporateNavy/5 text-brandBlue rounded-xl flex items-center justify-center mb-6"><i data-lucide="cog" class="w-6 h-6"></i></div>
+            <h3 class="text-xl font-bold text-corporateNavy mb-3">Automatización Cognitiva</h3>
+            <p class="text-mutedGray text-sm">Sistemas que leen facturas, clasifican correos complejos automáticamente o resumen actas de reuniones sin intervención humana.</p>
+         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASO DE USO -->
+  <section class="py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-6 reveal">
+      <div class="bg-corporateNavy rounded-[3rem] p-10 md:p-16 relative overflow-hidden flex flex-col md:flex-row items-center gap-12">
+        <div class="absolute right-0 top-0 w-64 h-64 bg-white/10 rounded-full blur-[80px]"></div>
+        <div class="w-24 h-24 bg-white text-brandBlue rounded-3xl flex items-center justify-center shrink-0 shadow-2xl relative z-10">
+           <i data-lucide="cpu" class="w-12 h-12"></i>
+        </div>
+        <div class="relative z-10 flex-grow text-center md:text-left text-white">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 mb-6 border border-white/20">
+            <span class="text-[10px] font-bold tracking-widest text-white uppercase">CASO DE ÉXITO • BeServices Interno</span>
+          </div>
+          <p class="text-2xl md:text-4xl font-medium leading-tight mb-8">
+            "Hemos reducido el tiempo de respuesta en soporte técnico un <span class="font-bold border-b-4 border-electricCyan">30%</span> inyectando una capa de IA RAG sobre nuestra base de conocimiento técnica de 15 años."
+          </p>
+          <div class="flex items-center gap-4 justify-center md:justify-start">
+             <div class="w-px h-10 bg-white/20"></div>
+             <p class="text-sm text-white/70">Proyecto: BeHelp AI Intelligence</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="py-24 border-t border-gray-100 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 text-center reveal relative z-10">
+      <h2 class="text-3xl md:text-5xl font-heading text-corporateNavy mb-6">El momento de la IA es ahora</h2>
+      <p class="text-mutedGray mb-10 text-lg">Tu competencia ya está explorando cómo ser más eficientes. No te quedes atrás por miedo a la seguridad. Nosotros ponemos las barreras para que tú solo pongas el talento.</p>
+      
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="mailto:hola@beservices.es" class="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white bg-corporateNavy rounded-full hover:bg-corporateNavy/90 transition-all hover:scale-105 shadow-xl shadow-corporateNavy/20 group">
+          Contactar con un experto en IA <i data-lucide="arrow-right" class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+        </a>
       </div>
     </div>
   </section>
