@@ -157,7 +157,8 @@ td.hl { background:rgba(26,115,232,.03); }
 </div>
 
 <nav class="tabs">
-  <button class="tab on" onclick="show('planes',this)">📋 Planes Workspace</button>
+  <button class="tab on" onclick="show('inicio',this)">🏠 Inicio</button>
+  <button class="tab" onclick="show('planes',this)">📋 Planes Workspace</button>
   <button class="tab" onclick="show('comparativa',this)">⚖️ Comparativa</button>
   <button class="tab" onclick="show('addons',this)">➕ Add-ons</button>
   <button class="tab" onclick="show('gemini-ent',this)">🤖 Gemini Enterprise</button>
@@ -165,8 +166,71 @@ td.hl { background:rgba(26,115,232,.03); }
   <button class="tab" onclick="show('guia',this)">🎯 Guía de ventas</button>
 </nav>
 
+<!-- ===== INICIO ===== -->
+<div id="inicio" class="sec on">
+  <div class="stitle">Resumen de Soluciones Google</div>
+  <div class="ssub">Guía rápida para entender el ecosistema de productividad e Inteligencia Artificial de Google.</div>
+
+  <div class="grid2" style="margin-bottom:32px">
+    <div class="info-box">
+      <div class="ico">🏢</div>
+      <div>
+        <div class="title">Google Workspace (Business)</div>
+        <div class="text">Para empresas de hasta 300 usuarios. Incluye Gmail, Drive, Meet y Gemini IA base en todas las aplicaciones críticas.</div>
+      </div>
+    </div>
+    <div class="info-box">
+      <div class="ico">🚀</div>
+      <div>
+        <div class="title">Google Workspace (Enterprise)</div>
+        <div class="text">Sin límite de usuarios. Añade capas de seguridad crítica (DLP), compliance avanzado y Gemini con controles de administración globales.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider-title">El mapa mental de la IA de Google</div>
+  <div class="tbl-wrap" style="margin-bottom:24px">
+    <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Descripción</th>
+          <th>¿Requiere Workspace?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Gemini en Workspace</strong></td>
+          <td>IA embebida en Gmail, Docs, etc.</td>
+          <td><span class="pill pill-green">SÍ, viene incluido</span></td>
+        </tr>
+        <tr>
+          <td><strong>AI Expanded / Ultra Access</strong></td>
+          <td>Add-ons para más cuota de IA en Workspace</td>
+          <td><span class="pill pill-blue">SÍ</span></td>
+        </tr>
+        <tr>
+          <td><strong>Gemini Enterprise</strong></td>
+          <td>Plataforma agéntica independiente (Google Cloud)</td>
+          <td><span class="pill pill-orange">NO NECESARIAMENTE</span></td>
+        </tr>
+        <tr>
+          <td><strong>Google AI Plus/Pro/Ultra</strong></td>
+          <td>Planes personales (Google One)</td>
+          <td><span class="pill pill-gray">NO</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="info-box" style="background:#f8f9fa; border-color:var(--gray-200)">
+    <div class="ico">💡</div>
+    <div class="text">Utiliza las pestañas superiores para navegar por el detalle de cada solución, comparar características técnicas o ver casos de uso específicos en la <strong>Guía de ventas</strong>.</div>
+  </div>
+</div>
+
 <!-- ===== PLANES ===== -->
-<div id="planes" class="sec on">
+<div id="planes" class="sec">
   <div class="stitle">Planes Google Workspace para empresas</div>
   <div class="ssub">Desde enero 2025, <strong>Gemini AI incluido sin coste adicional</strong> en todos los planes Business y Enterprise. Los add-ons separados de Gemini ya no existen.</div>
 
@@ -585,24 +649,107 @@ td.hl { background:rgba(26,115,232,.03); }
 <!-- ===== GUÍA DE VENTAS ===== -->
 <div id="guia" class="sec">
   <div class="stitle">Guía de ventas rápida</div>
-  <div class="ssub">Recomendaciones según perfil.</div>
+  <div class="ssub">Recomendaciones estratégicas según la necesidad del cliente.</div>
   <div class="need-grid">
+    <!-- CASE 1 -->
     <div class="need-card">
-      <div class="need-head" style="background:#e8f0fe">
-        <div class="need-ico">📧</div>
-        <div class="need-label">Email corporativo + Drive</div>
+      <div class="need-head" style="background:#f3e8fd">
+        <div class="need-ico">🤖</div>
+        <div class="need-label">Quiero crear agentes IA</div>
       </div>
       <div class="need-body">
-        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Standard (€16,20)</strong>: 2 TB y Gemini completo. Recomendado.</div></div>
+        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Gemini Enterprise (€35 add-on)</strong>: Vertex AI + NotebookLM Plus + Agentspace.</div></div>
+        <div class="need-sol"><div class="arrow">⭐</div><div class="sol-text"><strong>Combinación recomendada</strong>: Workspace Standard + Gemini Enterprise.</div></div>
       </div>
     </div>
+    <!-- CASE 2 -->
+    <div class="need-card">
+      <div class="need-head" style="background:#e8f0fe">
+        <div class="need-ico">✨</div>
+        <div class="need-label">IA en el día a día (correo, docs, reuniones)</div>
+      </div>
+      <div class="need-body">
+        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Standard + Gemini Business (€22 add-on)</strong>: IA integrada en Gmail, Docs, Meet y Sheets para productividad diaria.</div></div>
+      </div>
+    </div>
+    <!-- CASE 3 -->
+    <div class="need-card">
+      <div class="need-head" style="background:#fce8e6">
+        <div class="need-ico">🛡️</div>
+        <div class="need-label">Equipo grande con datos sensibles</div>
+      </div>
+      <div class="need-body">
+        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Enterprise (precio a consultar)</strong>: DLP + SAML + controles avanzados + Gemini incluido para máxima seguridad.</div></div>
+      </div>
+    </div>
+    <!-- CASE 4 -->
+    <div class="need-card">
+      <div class="need-head" style="background:var(--gray-100)">
+        <div class="need-ico">👷</div>
+        <div class="need-label">Trabajadores de campo / sin ordenador fijo</div>
+      </div>
+      <div class="need-body">
+        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Frontline Starter (€2,23)</strong>: Optimizado para móvil, acceso a herramientas básicas sin apps de escritorio.</div></div>
+      </div>
+    </div>
+    <!-- CASE 5 -->
+    <div class="need-card">
+      <div class="need-head" style="background:var(--gray-50)">
+        <div class="need-ico">📧</div>
+        <div class="need-label">Solo necesito correo corporativo básico</div>
+      </div>
+      <div class="need-body">
+        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Business Starter (€7,99)</strong>: 30GB de espacio, lo mínimo funcional para presencia profesional.</div></div>
+      </div>
+    </div>
+    <!-- CASE 6 -->
+    <div class="need-card">
+      <div class="need-head" style="background:#e6f4ea">
+        <div class="need-ico">📱</div>
+        <div class="need-label">Quiero automatizar procesos internos</div>
+      </div>
+      <div class="need-body">
+        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Standard + AppSheet (desde €5)</strong>: Apps sin código sobre datos de Sheets/Drive para digitalizar procesos.</div></div>
+      </div>
+    </div>
+    <!-- CASE 7 -->
     <div class="need-card">
       <div class="need-head" style="background:#fef3e0">
         <div class="need-ico">⚖️</div>
-        <div class="need-label">Compliance legal</div>
+        <div class="need-label">Sector regulado (sanidad, legal, financiero)</div>
       </div>
       <div class="need-body">
-        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Business Plus (€25,30)</strong>: incluye Google Vault obligatorio.</div></div>
+        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Business Plus + Gemini Enterprise</strong>: Vault + eDiscovery + gobernanza del dato asistida por IA.</div></div>
+      </div>
+    </div>
+    <!-- CASE 8 -->
+    <div class="need-card">
+      <div class="need-head" style="background:#e8f0fe">
+        <div class="need-ico">🚀</div>
+        <div class="need-label">Migración desde Microsoft 365</div>
+      </div>
+      <div class="need-body">
+        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Standard como base</strong> + sesión de migración técnica BeServices incluida para un salto sin fricciones.</div></div>
+      </div>
+    </div>
+    <!-- CASE 9 -->
+    <div class="need-card">
+      <div class="need-head" style="background:#e6f4ea">
+        <div class="need-ico">📊</div>
+        <div class="need-label">Quiero analizar datos de negocio con IA</div>
+      </div>
+      <div class="need-body">
+        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Standard + Gemini Enterprise + Looker</strong>: Transforma datos en bruto en dashboards dinámicos con IA.</div></div>
+      </div>
+    </div>
+    <!-- CASE 10 -->
+    <div class="need-card">
+      <div class="need-head" style="background:#fce8e6">
+        <div class="need-ico">🌐</div>
+        <div class="need-label">Empresa con múltiples sedes o países</div>
+      </div>
+      <div class="need-body">
+        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Enterprise</strong>: Gestión centralizada de usuarios, SSO y políticas granulares por unidad organizativa.</div></div>
       </div>
     </div>
   </div>
