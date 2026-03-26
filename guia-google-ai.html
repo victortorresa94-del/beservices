@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Google Workspace — Guía de Ventas beServices</title>
+<title>Guía Google AI — beServices</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -14,6 +15,15 @@
   --font:'Google Sans',sans-serif;
 }
 body { font-family:var(--font); background:#fff; color:var(--gray-900); }
+
+/* MESH FOR AI SECTION */
+.mesh-bg { 
+  background-attachment: fixed;
+  background-image: radial-gradient(at 0% 0%, hsla(217,100%,50%,0.08) 0, transparent 50%), 
+                    radial-gradient(at 100% 0%, hsla(188,100%,50%,0.05) 0, transparent 50%),
+                    radial-gradient(at 50% 100%, hsla(217,100%,50%,0.03) 0, transparent 50%);
+}
+
 
 /* NAV */
 .topbar { display:flex; align-items:center; gap:12px; padding:16px 40px; border-bottom:1px solid var(--gray-200); position:sticky; top:0; background:#fff; z-index:200; }
@@ -194,16 +204,18 @@ td.hl { background:rgba(26,115,232,.03); }
 <div class="topbar">
   <div class="logo">
     <span class="g-b">G</span><span class="g-r">o</span><span class="g-y">o</span><span class="g-b">g</span><span class="g-g">l</span><span class="g-r">e</span>
-    &nbsp;<span style="color:#5f6368;font-weight:400">Workspace</span>
+    &nbsp;<span style="color:#5f6368;font-weight:400">AI</span>
   </div>
   <div class="logo-sep"></div>
   <div class="logo-sub">Guía de ventas</div>
   <div class="nav-right">beServices · Actualizado marzo 2026</div>
 </div>
 
+
 <div class="tabs-wrap" id="tabsWrap">
   <nav class="tabs" id="tabsNav">
     <button class="tab on" onclick="show('inicio',this)">🏠 Inicio</button>
+    <button class="tab" onclick="show('universo-ia',this)">🌌 Universo AI</button>
     <button class="tab" onclick="show('planes',this)">📋 Planes Workspace</button>
     <button class="tab" onclick="show('comparativa',this)">⚖️ Comparativa</button>
     <button class="tab" onclick="show('addons',this)">➕ Add-ons</button>
@@ -212,6 +224,7 @@ td.hl { background:rgba(26,115,232,.03); }
     <button class="tab" onclick="show('guia',this)">🎯 Guía de ventas</button>
   </nav>
 </div>
+
 
 
 <!-- ===== INICIO ===== -->
@@ -234,7 +247,7 @@ td.hl { background:rgba(26,115,232,.03); }
         <div class="text">Sin límite de usuarios. Capas de seguridad crítica (DLP), compliance avanzado y Gemini total.</div>
       </div>
     </div>
-    <div class="info-box" style="background: linear-gradient(135deg, #e8f0fe 0%, #f3e8fd 100%); border-color: #d2e3fc; cursor: pointer;" onclick="window.location.href='universo-ia-google.html'">
+    <div class="info-box" style="background: linear-gradient(135deg, #e8f0fe 0%, #f3e8fd 100%); border-color: #d2e3fc; cursor: pointer;" onclick="show('universo-ia', document.querySelectorAll('.tab')[1])">
       <div class="ico">✨</div>
       <div>
         <div class="title" style="color:#673ab7">Universo IA Google (Total)</div>
@@ -242,6 +255,7 @@ td.hl { background:rgba(26,115,232,.03); }
       </div>
     </div>
   </div>
+
 
 
   <div class="divider-title">El mapa mental de la IA de Google</div>
@@ -284,6 +298,200 @@ td.hl { background:rgba(26,115,232,.03); }
     <div class="text">Utiliza las pestañas superiores para navegar por el detalle de cada solución, comparar características técnicas o ver casos de uso específicos en la <strong>Guía de ventas</strong>.</div>
   </div>
 </div>
+
+<!-- ===== UNIVERSO IA ===== -->
+<div id="universo-ia" class="sec">
+  <div class="stitle">El Mapa Completo de la IA de Google</div>
+  <div class="ssub">Desde los modelos fundacionales hasta las herramientas de creación y agentes autónomos.</div>
+
+  <div class="ai-search-box">
+    <span class="ai-search-ico">🔍</span>
+    <input type="text" id="aiSearch" class="ai-search-input" placeholder="Busca una herramienta (ej. 'Notebook', 'Vertex', 'Video')..." onkeyup="filterCards()">
+  </div>
+
+  <div class="ai-filters">
+    <button class="ai-filter active" onclick="filterCat('all', this)">Todo</button>
+    <button class="ai-filter" onclick="filterCat('brain', this)">🧠 Modelos</button>
+    <button class="ai-filter" onclick="filterCat('creative', this)">🎨 Creatividad</button>
+    <button class="ai-filter" onclick="filterCat('dev', this)">💻 Developer</button>
+    <button class="ai-filter" onclick="filterCat('work', this)">💼 Productividad</button>
+    <button class="ai-filter" onclick="filterCat('biz', this)">🏢 Empresa</button>
+  </div>
+
+  <div id="aiContainer">
+    <!-- Brain -->
+    <div class="category-block" data-cat="brain">
+      <div class="divider-title">🧠 Modelos Fundacionales (El Cerebro)</div>
+      <div class="ai-grid">
+        <div class="ai-card" data-tags="gemini pro brain model">
+          <div class="ai-card-head"><div class="ai-card-ico g-gemini" style="color:#fff">G</div><div class="ai-card-name">Gemini 3 Pro</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">El cerebro universal de Google.</span>
+            <div class="ai-tech">Multimodal (LMM) · 2M tokens · Razonamiento avanzado.</div>
+            <div class="ai-easy">Como el motor de un F1: da potencia a todo.</div>
+          </div>
+        </div>
+        <div class="ai-card" data-tags="gemini flash fast model">
+          <div class="ai-card-head"><div class="ai-card-ico g-gemini" style="color:#fff; opacity:0.8">⚡</div><div class="ai-card-name">Gemini 3 Flash</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">IA ultrarrápida para tareas inmediatas.</span>
+            <div class="ai-tech">Baja latencia · Alta escala · Respuestas rápidas.</div>
+            <div class="ai-easy">Un mensajero en moto: va a toda leche.</div>
+          </div>
+        </div>
+        <div class="ai-card" data-tags="deep think gemini science model">
+          <div class="ai-card-head"><div class="ai-card-ico g-gemini" style="color:#fff">🔬</div><div class="ai-card-name">Gemini Deep Think</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">IA para razonamiento lógico puro.</span>
+            <div class="ai-tech">Problemas complejos · Matemáticas · Lógica iterativa.</div>
+            <div class="ai-easy">Un científico con tres másteres pensando en silencio.</div>
+          </div>
+        </div>
+        <div class="ai-card" data-tags="nano banana imagen image generation model">
+          <div class="ai-card-head"><div class="ai-card-ico g-gemini" style="color:#fff; background:#f44336">🎨</div><div class="ai-card-name">Nano Banana Pro</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">Generador de imágenes ultra-realistas.</span>
+            <div class="ai-tech">Difusión (Imagen 4) · Realismo extremo · Fidelidad.</div>
+            <div class="ai-easy">Un fotógrafo profesional con carrete infinito.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Creative -->
+    <div class="category-block" data-cat="creative" style="margin-top:40px">
+      <div class="divider-title">🎨 Creatividad & Media (Google Labs)</div>
+      <div class="ai-grid">
+        <div class="ai-card" data-tags="flow video image studio labs">
+          <div class="ai-card-head"><div class="ai-card-ico g-lab" style="color:#fff">🌊</div><div class="ai-card-name">Google Flow</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">Estudio creativo "todo en uno".</span>
+            <div class="ai-tech">Veo 3.1 + Imagen 4 · Narrativa visual cinematográfica.</div>
+            <div class="ai-easy">Un estudio de Hollywood en una pestaña.</div>
+          </div>
+        </div>
+        <div class="ai-card" data-tags="whisk image fusion labs">
+          <div class="ai-card-head"><div class="ai-card-ico g-lab" style="color:#fff">🌪️</div><div class="ai-card-name">Whisk</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">Fusión mágica de imágenes.</span>
+            <div class="ai-tech">Mezcla sujetos y escenas · Gemini Caps · Imagen 3.</div>
+            <div class="ai-easy">Como una batidora: echas dos fotos y sale una nueva.</div>
+          </div>
+        </div>
+        <div class="ai-card" data-tags="vids video workspace">
+          <div class="ai-card-head"><div class="ai-card-ico" style="color:var(--blue)">🎬</div><div class="ai-card-name">Google Vids</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">Crea videos corporativos en minutos.</span>
+            <div class="ai-tech">App Workspace · Guiones e imágenes generadas por IA.</div>
+            <div class="ai-easy">El "Canva" del video corporativo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dev -->
+    <div class="category-block" data-cat="dev" style="margin-top:40px">
+      <div class="divider-title">💻 Ecosistema Developer (Vibe Coding)</div>
+      <div class="ai-grid">
+        <div class="ai-card" data-tags="studio vibe coding app lowcode">
+          <div class="ai-card-head"><div class="ai-card-ico" style="background:#000; color:#fff">✨</div><div class="ai-card-name">AI Studio</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">Crea apps solo con palabras.</span>
+            <div class="ai-tech">Vibe Coding · Generación de código nativa · Cloud Run.</div>
+            <div class="ai-easy">Le hablas a la pantalla y la app se escribe sola.</div>
+          </div>
+        </div>
+        <div class="ai-card" data-tags="code assist duet ide assist">
+          <div class="ai-card-head"><div class="ai-card-ico" style="color:var(--blue)">💻</div><div class="ai-card-name">Code Assist</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">Tu copiloto experto en programación.</span>
+            <div class="ai-tech">Asistente IDE · Comprensión de bases de código enteras.</div>
+            <div class="ai-easy">Un arquitecto senior revisando tu código.</div>
+          </div>
+        </div>
+        <div class="ai-card" data-tags="cli terminal shell agent">
+          <div class="ai-card-head"><div class="ai-card-ico" style="background:var(--navy); color:#fff">$_</div><div class="ai-card-name">Gemini CLI</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">IA directamente en tu terminal.</span>
+            <div class="ai-tech">Agente de línea de comandos · Automatización de SO.</div>
+            <div class="ai-easy">Hablarle a un PC para que haga gestiones por ti.</div>
+          </div>
+        </div>
+        <div class="ai-card" data-tags="idx firebase studio cloud ide">
+          <div class="ai-card-head"><div class="ai-card-ico" style="color:#ffca28">🔥</div><div class="ai-card-name">Firebase Studio</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">Taller de desarrollo en la nube.</span>
+            <div class="ai-tech">IDE en navegador · Gemini nativo · Emuladores app.</div>
+            <div class="ai-easy">Un taller donde las herramientas te dicen qué hacer.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Productivity -->
+    <div class="category-block" data-cat="work" style="margin-top:40px">
+      <div class="divider-title">💼 Productividad & Workspace</div>
+      <div class="ai-grid">
+        <div class="ai-card" data-tags="notebooklm research rag documents">
+          <div class="ai-card-head"><div class="ai-card-ico g-notebook" style="color:#fff">📓</div><div class="ai-card-name">NotebookLM</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">Tu libreta de investigación inteligente.</span>
+            <div class="ai-tech">RAG avanzado · Grounding sobre tus propios archivos.</div>
+            <div class="ai-easy">Un becario superdotado que se lee mil PDFs por ti.</div>
+          </div>
+        </div>
+        <div class="ai-card" data-tags="sidekick workspace side panel">
+          <div class="ai-card-head"><div class="ai-card-ico" style="color:var(--cyan)">🙋‍♂️</div><div class="ai-card-name">Sidekick</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">El asistente que vive en tus apps.</span>
+            <div class="ai-tech">Panel contextual · Redacción y resumen en tiempo real.</div>
+            <div class="ai-easy">El copiloto que te pasa los papeles antes de pedirlos.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Biz -->
+    <div class="category-block" data-cat="biz" style="margin-top:40px">
+      <div class="divider-title">🏢 Soluciones Enterprise (Vertex)</div>
+      <div class="ai-grid">
+        <div class="ai-card" data-tags="vertex cloud enterprise platform">
+          <div class="ai-card-head"><div class="ai-card-ico g-vertex" style="color:#fff">V</div><div class="ai-card-name">Vertex AI</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">La gran fábrica de IA para empresas.</span>
+            <div class="ai-tech">MLOps · Entrenamiento de modelos · Gestión escala.</div>
+            <div class="ai-easy">La caja de herramientas profesional de Google Cloud.</div>
+          </div>
+        </div>
+        <div class="ai-card" data-tags="agent builder lowcode agents biz">
+          <div class="ai-card-head"><div class="ai-card-ico" style="color:var(--blue)">🤖</div><div class="ai-card-name">Agent Builder</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">Crea agentes de negocio sin programar.</span>
+            <div class="ai-tech">Orquestador de agentes · RAG nativo · Diálogos flujos.</div>
+            <div class="ai-easy">Un editor de personajes para crear expertos en tu empresa.</div>
+          </div>
+        </div>
+        <div class="ai-card" data-tags="document ai ocr invoices biz">
+          <div class="ai-card-head"><div class="ai-card-ico" style="color:var(--navy)">📄</div><div class="ai-card-name">Document AI</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">Lectura y extracción de datos masiva.</span>
+            <div class="ai-tech">Procesamiento documentos · Extracción factura/contrato.</div>
+            <div class="ai-easy">Un lince que lee mil facturas y las pasa a Excel.</div>
+          </div>
+        </div>
+        <div class="ai-card" data-tags="contact center ccai customer service">
+          <div class="ai-card-head"><div class="ai-card-ico" style="color:var(--blue)">🎧</div><div class="ai-card-name">Contact Center AI</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">Atención al cliente del futuro.</span>
+            <div class="ai-tech">Dialogflow CX + Agent Assist · Multicanal.</div>
+            <div class="ai-easy">La secretaria más rápida y amable del mundo (24h).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- ===== PLANES ===== -->
 <div id="planes" class="sec">
@@ -818,7 +1026,47 @@ function show(id, btn) {
   document.getElementById(id).classList.add('on');
   btn.classList.add('on');
   btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  
+  // AI Universe special styling
+  if(id === 'universo-ia') {
+    document.body.classList.add('mesh-bg');
+  } else {
+    document.body.classList.remove('mesh-bg');
+  }
 }
+
+/* AI UNIVERSE FUNCTIONS */
+function filterCards() {
+  const query = document.getElementById('aiSearch').value.toLowerCase();
+  const cards = document.querySelectorAll('.ai-card');
+  
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase() + card.dataset.tags.toLowerCase();
+    card.style.display = text.includes(query) ? 'flex' : 'none';
+  });
+  
+  document.querySelectorAll('.category-block').forEach(block => {
+    const visible = block.querySelectorAll('.ai-card[style="display: flex;"]');
+    block.style.display = visible.length > 0 || query === '' ? 'block' : 'none';
+  });
+}
+
+function filterCat(cat, btn) {
+  document.querySelectorAll('.ai-filter').forEach(f => f.classList.remove('active'));
+  btn.classList.add('active');
+  
+  document.querySelectorAll('.category-block').forEach(block => {
+    if (cat === 'all' || block.dataset.cat === cat) {
+      block.style.display = 'block';
+    } else {
+      block.style.display = 'none';
+    }
+  });
+  
+  document.getElementById('aiSearch').value = '';
+  document.querySelectorAll('.ai-card').forEach(c => c.style.display = 'flex');
+}
+
 
 const tabsNav = document.getElementById('tabsNav');
 const tabsWrap = document.getElementById('tabsWrap');
@@ -832,6 +1080,16 @@ function updateScrollHint() {
 tabsNav.addEventListener('scroll', updateScrollHint);
 window.addEventListener('resize', updateScrollHint);
 updateScrollHint();
+
+// Tab selection by URL parameter
+window.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const tabId = params.get('tab');
+  if (tabId) {
+    const btn = Array.from(document.querySelectorAll('.tab')).find(b => b.onclick.toString().includes(`'${tabId}'`));
+    if (btn) show(tabId, btn);
+  }
+});
 
 </script>
 
