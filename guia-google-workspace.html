@@ -23,10 +23,16 @@ body { font-family:var(--font); background:#fff; color:var(--gray-900); }
 .logo-sub { font-size:18px; font-weight:400; color:var(--gray-600); }
 .nav-right { margin-left:auto; font-size:11px; color:var(--gray-400); background:var(--gray-100); padding:4px 10px; border-radius:100px; border:1px solid var(--gray-200); }
 
-.tabs { display:flex; padding:0 40px; border-bottom:2px solid var(--gray-200); overflow-x:auto; gap:4px; }
-.tab { padding:14px 18px; font-size:13px; font-weight:500; color:var(--gray-600); background:none; border:none; cursor:pointer; border-bottom:3px solid transparent; margin-bottom:-2px; white-space:nowrap; font-family:var(--font); transition:color .15s; }
+.tabs { display:flex; padding:0 40px; border-bottom:2px solid var(--gray-200); overflow-x:auto; gap:4px; position:relative; -webkit-overflow-scrolling:touch; }
+.tabs::-webkit-scrollbar { display:none; }
+.tab { padding:14px 18px; font-size:13px; font-weight:500; color:var(--gray-600); background:none; border:none; cursor:pointer; border-bottom:3px solid transparent; margin-bottom:-2px; white-space:nowrap; font-family:var(--font); transition:color .15s; min-height:44px; }
 .tab:hover { color:var(--blue); }
 .tab.on { color:var(--blue); border-bottom-color:var(--blue); }
+
+.tabs-wrap { position:relative; }
+.tabs-wrap::after { content:''; position:absolute; right:0; top:0; bottom:2px; width:40px; background:linear-gradient(to right, transparent, #fff); pointer-events:none; z-index:10; opacity:0; transition:opacity .3s; }
+.tabs-wrap.is-scrollable::after { opacity:1; }
+
 
 .sec { display:none; padding:36px 40px 64px; }
 .sec.on { display:block; }
@@ -52,8 +58,9 @@ body { font-family:var(--font); background:#fff; color:var(--gray-900); }
 .price-big .curr { font-size:15px; font-weight:400; vertical-align:top; margin-top:5px; display:inline-block; }
 .price-big .unit { font-size:12px; font-weight:400; color:var(--gray-600); }
 .price-note { font-size:10.5px; color:var(--gray-400); margin-top:3px; }
-.cta { display:block; margin-top:14px; padding:8px; text-align:center; border-radius:6px; font-size:12.5px; font-weight:500; border:1px solid var(--blue); color:var(--blue); background:#fff; cursor:pointer; font-family:var(--font); text-decoration:none; }
+.cta { display:block; margin-top:14px; padding:12px 8px; text-align:center; border-radius:8px; font-size:12.5px; font-weight:500; border:1px solid var(--blue); color:var(--blue); background:#fff; cursor:pointer; font-family:var(--font); text-decoration:none; min-height:44px; display:flex; align-items:center; justify-content:center; }
 .card.star .cta { background:var(--blue); color:#fff; }
+
 
 .card-body { padding:18px 20px; flex-grow:1; }
 .fg-title { font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-400); margin:14px 0 8px; }
@@ -142,6 +149,44 @@ td.hl { background:rgba(26,115,232,.03); }
 /* FOOTER */
 .foot { margin-top:40px; padding:14px 20px; background:var(--gray-50); border-radius:10px; font-size:11.5px; color:var(--gray-600); line-height:1.6; border:1px solid var(--gray-200); }
 ::-webkit-scrollbar{height:4px;width:4px} ::-webkit-scrollbar-thumb{background:var(--gray-400);border-radius:2px}
+
+@media (max-width: 768px) {
+  .topbar { padding: 12px 16px; gap: 8px; }
+  .logo-sep, .logo-sub, .nav-right { display: none; }
+  .tabs { padding: 0 16px; }
+  .tab { padding: 12px 14px; font-size: 12px; }
+  .sec { padding: 24px 16px 48px; }
+  .stitle { font-size: 20px; line-height:1.2; }
+  .ssub { margin-bottom: 20px; }
+  
+  .grid4, .grid3, .grid2, .need-grid, .highlight-grid { 
+    grid-template-columns: 1fr !important; 
+    gap: 16px;
+  }
+  
+  .pop-badge { top: -10px; font-size: 9px; padding: 2px 10px; }
+  
+  .info-box { flex-direction: column; gap: 8px; padding: 12px 16px; }
+  .info-box .ico { font-size: 18px; }
+  
+  .tbl-wrap { margin-left: -16px; margin-right: -16px; border-left:none; border-right:none; border-radius:0; }
+  table { font-size: 11px; min-width: 600px; }
+  th, td { padding: 10px 12px; }
+  
+  .card-head { padding: 20px 16px; }
+  .card-body { padding: 16px; }
+  .plan-ico { font-size: 20px; }
+  .price-big { font-size: 22px; }
+  
+  .addon-card { padding: 16px; }
+  .addon-price { font-size: 18px; }
+  
+  .foot { font-size: 10.5px; margin-top: 24px; }
+
+  /* Mobile hint for scroll */
+  .tbl-wrap::before { content:'Desliza para ver más →'; display:block; font-size:9px; color:var(--gray-400); padding:6px 16px; background:var(--gray-50); border-bottom:1px solid var(--gray-200); text-transform:uppercase; letter-spacing:0.05em; }
+}
+
 </style>
 </head>
 <body>
@@ -156,15 +201,18 @@ td.hl { background:rgba(26,115,232,.03); }
   <div class="nav-right">beServices · Actualizado marzo 2026</div>
 </div>
 
-<nav class="tabs">
-  <button class="tab on" onclick="show('inicio',this)">🏠 Inicio</button>
-  <button class="tab" onclick="show('planes',this)">📋 Planes Workspace</button>
-  <button class="tab" onclick="show('comparativa',this)">⚖️ Comparativa</button>
-  <button class="tab" onclick="show('addons',this)">➕ Add-ons</button>
-  <button class="tab" onclick="show('gemini-ent',this)">🤖 Gemini Enterprise</button>
-  <button class="tab" onclick="show('ai-personal',this)">👤 Google AI personal</button>
-  <button class="tab" onclick="show('guia',this)">🎯 Guía de ventas</button>
-</nav>
+<div class="tabs-wrap" id="tabsWrap">
+  <nav class="tabs" id="tabsNav">
+    <button class="tab on" onclick="show('inicio',this)">🏠 Inicio</button>
+    <button class="tab" onclick="show('planes',this)">📋 Planes Workspace</button>
+    <button class="tab" onclick="show('comparativa',this)">⚖️ Comparativa</button>
+    <button class="tab" onclick="show('addons',this)">➕ Add-ons</button>
+    <button class="tab" onclick="show('gemini-ent',this)">🤖 Gemini Enterprise</button>
+    <button class="tab" onclick="show('ai-personal',this)">👤 Google AI personal</button>
+    <button class="tab" onclick="show('guia',this)">🎯 Guía de ventas</button>
+  </nav>
+</div>
+
 
 <!-- ===== INICIO ===== -->
 <div id="inicio" class="sec on">
@@ -761,7 +809,22 @@ function show(id, btn) {
   document.querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
   document.getElementById(id).classList.add('on');
   btn.classList.add('on');
+  btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
 }
+
+const tabsNav = document.getElementById('tabsNav');
+const tabsWrap = document.getElementById('tabsWrap');
+function updateScrollHint() {
+  if (tabsNav.scrollWidth > tabsNav.clientWidth) {
+    tabsWrap.classList.add('is-scrollable');
+  } else {
+    tabsWrap.classList.remove('is-scrollable');
+  }
+}
+tabsNav.addEventListener('scroll', updateScrollHint);
+window.addEventListener('resize', updateScrollHint);
+updateScrollHint();
+
 </script>
 
 </body>
