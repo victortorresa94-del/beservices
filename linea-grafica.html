@@ -420,17 +420,20 @@
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
                 <script>
                     document.addEventListener("DOMContentLoaded", async () => {
-                        const url = 'assets/COPILOT - Acceso Datos.pdf';
+                        const url = 'assets/COPILOT - Acceso Datos.pdf'; // El navegador maneja espacios normalmente, pero pdf.js a veces es quisquilloso
                         const carousel = document.getElementById('pdf-carousel');
                         const loading = document.getElementById('pdf-loading');
                         
                         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
                         
                         try {
-                            const pdf = await pdfjsLib.getDocument(url).promise;
+                            const pdf = await pdfjsLib.getDocument({
+                                url: encodeURI(url),
+                                cMapUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/',
+                                cMapPacked: true,
+                            }).promise;
                             for (let i = 1; i <= pdf.numPages; i++) {
                                 const page = await pdf.getPage(i);
-                                const viewport = page.getViewport({ scale: 1.5 });
                                 
                                 const container = document.createElement('div');
                                 container.className = 'relative w-full shadow-md bg-white rounded-lg overflow-hidden flex items-center justify-center border border-gray-200';
@@ -438,20 +441,18 @@
                                 const canvas = document.createElement('canvas');
                                 const context = canvas.getContext('2d');
                                 
-                                // Get container width dynamically by making canvas responsive to container width
-                                const scale = 1.0; 
-                                const scaledViewport = page.getViewport({ scale: scale });
+                                const scale = 1.2; 
+                                const viewport = page.getViewport({ scale: scale });
                                 
-                                canvas.height = scaledViewport.height;
-                                canvas.width = scaledViewport.width;
+                                canvas.height = viewport.height;
+                                canvas.width = viewport.width;
                                 canvas.className = "w-full h-auto block";
                                 
                                 await page.render({
                                     canvasContext: context,
-                                    viewport: scaledViewport
+                                    viewport: viewport
                                 }).promise;
                                 
-                                // Opcional: Contador de páginas
                                 const badge = document.createElement('div');
                                 badge.className = 'absolute bottom-4 right-4 bg-black/60 text-white text-xs font-bold px-2 py-1 rounded-full backdrop-blur-sm';
                                 badge.innerHTML = `${i} / ${pdf.numPages}`;
@@ -464,7 +465,7 @@
                             carousel.classList.remove('hidden');
                         } catch (err) {
                             console.error("PDF load error:", err);
-                            loading.innerHTML = "Error al cargar el carrusel (No se encuentra el PDF localmente).";
+                            loading.innerHTML = "Error al cargar el carrusel (Fichero de 84MB, puede tardar o fallar en conexiones lentas).";
                             loading.classList.remove('h-full');
                         }
                     });
@@ -481,13 +482,70 @@
                 </div>
 
                 <!-- Plantilla Propuesta -->
-                <div class="internal-card overflow-hidden lg:col-span-2 shadow-lg border border-gray-100 rounded-3xl">
+                <div class="internal-card overflow-hidden lg:col-span-2 shadow-lg border border-gray-100 rounded-3xl mb-8">
                     <div class="bg-electricCyan text-corporateNavy px-5 py-3 text-sm font-bold flex items-center gap-2 border-b border-electricCyan/50">
                         <i class="ph ph-file-text text-lg"></i> Plantilla para Propuestas Comerciales
                     </div>
                     <div class="bg-slate-50 p-4 md:p-8 flex justify-center items-center">
                         <img src="assets/Plantilla Documento.png" alt="Plantilla" class="w-full h-auto max-w-3xl rounded border border-gray-200 shadow-xl object-contain" />
                     </div>
+                </div>
+
+                <!-- Ejemplo Real Linkedin -->
+                <div class="internal-card overflow-hidden lg:col-span-2 shadow-lg border border-gray-100 rounded-3xl">
+                    <div class="bg-[#0077b5] text-white px-5 py-3 text-sm font-bold flex items-center gap-2">
+                        <i class="ph ph-linkedin-logo text-lg"></i> Aplicación Real en LinkedIn (Social Media)
+                    </div>
+                    <div class="bg-white p-4 md:p-8 flex justify-center items-center">
+                        <img src="assets/linkedin-ejemplo.png" alt="LinkedIn Real Example" class="w-full h-auto rounded-xl shadow-md border border-gray-50 object-cover" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Iconografía de Servicios -->
+    <section class="py-24 bg-gray-50/30 border-t border-gray-100 reveal delay-300">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16">
+                <h2 class="text-xs font-normal tracking-widest text-electricCyan uppercase mb-3">05 // Iconografía</h2>
+                <h3 class="text-4xl font-heading font-normal text-corporateNavy">Iconos de Concepto</h3>
+                <p class="text-mutedGray mt-4 max-w-2xl">Iconos premium diseñados para las diferentes fases y pilares de nuestros procesos B2B.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                <!-- Icon 1 -->
+                <div class="flex flex-col items-center gap-4 text-center group">
+                    <div class="w-32 h-32 rounded-3xl bg-white shadow-sm border border-gray-100 flex items-center justify-center p-6 group-hover:scale-110 transition-transform duration-500">
+                        <img src="assets/ICONOS/ACTIVA.png" alt="Activa" class="w-full h-full object-contain" />
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-corporateNavy opacity-60">Activa</span>
+                </div>
+                <!-- Icon 2 -->
+                <div class="flex flex-col items-center gap-4 text-center group">
+                    <div class="w-32 h-32 rounded-3xl bg-white shadow-sm border border-gray-100 flex items-center justify-center p-6 group-hover:scale-110 transition-transform duration-500">
+                        <img src="assets/ICONOS/PROTEGE.png" alt="Protege" class="w-full h-full object-contain" />
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-corporateNavy opacity-60">Protege</span>
+                </div>
+                <!-- Icon 3 -->
+                <div class="flex flex-col items-center gap-4 text-center group">
+                    <div class="w-32 h-32 rounded-3xl bg-white shadow-sm border border-gray-100 flex items-center justify-center p-6 group-hover:scale-110 transition-transform duration-500">
+                        <img src="assets/ICONOS/GESTIONA.png" alt="Gestiona" class="w-full h-full object-contain" />
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-corporateNavy opacity-60">Gestiona</span>
+                </div>
+                <!-- Icon 4 -->
+                <div class="flex flex-col items-center gap-4 text-center group">
+                    <div class="w-32 h-32 rounded-3xl bg-white shadow-sm border border-gray-100 flex items-center justify-center p-6 group-hover:scale-110 transition-transform duration-500">
+                        <img src="assets/ICONOS/POTENCIA.png" alt="Potencia" class="w-full h-full object-contain" />
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-corporateNavy opacity-60">Potencia</span>
+                </div>
+                <!-- Icon 5 -->
+                <div class="flex flex-col items-center gap-4 text-center group">
+                    <div class="w-32 h-32 rounded-3xl bg-white shadow-sm border border-gray-100 flex items-center justify-center p-6 group-hover:scale-110 transition-transform duration-500">
+                        <img src="assets/ICONOS/ESCALA.png" alt="Escala" class="w-full h-full object-contain" />
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-corporateNavy opacity-60">Escala</span>
                 </div>
             </div>
         </div>

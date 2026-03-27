@@ -166,7 +166,7 @@ td.hl { background:rgba(26,115,232,.03); }
   .ai-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,0.06); }
   .ai-card-head { padding:20px; border-bottom:1px solid var(--gray-100); display:flex; align-items:center; gap:14px; background:linear-gradient(135deg, #fff 0%, var(--gray-50) 100%); }
   .ai-card-ico { width:44px; height:44px; border-radius:10px; background:#fff; box-shadow:0 2px 6px rgba(0,0,0,0.04); display:flex; align-items:center; justify-content:center; flex-shrink:0; border:1px solid var(--gray-100); padding: 8px; }
-  .ai-card-ico img { width: 100%; height: 100%; object-fit: contain; }
+  .ai-card-ico img { width: 100%; height: 100%; object-fit: contain; max-width: 100%; }
   .ai-card-name { font-size:16px; font-weight:700; color:var(--gray-900); }
   .ai-card-body { padding:20px; flex-grow:1; }
   .ai-quick { font-weight:500; color:var(--blue); font-size:14px; margin-bottom:12px; display:block; }
@@ -224,6 +224,25 @@ td.hl { background:rgba(26,115,232,.03); }
   .tbl-wrap::before { content:'Desliza para ver más →'; display:block; font-size:9px; color:var(--gray-400); padding:6px 16px; background:var(--gray-50); border-bottom:1px solid var(--gray-200); text-transform:uppercase; letter-spacing:0.05em; }
 }
 
+  /* SALES PACKS */
+  .pack-container { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+  .pack-box { border: 2px solid var(--gray-200); border-radius: 14px; background: #fff; padding: 20px; transition: 0.3s; position: relative; }
+  .pack-box.premium { border-color: var(--blue); }
+  .pack-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; border-bottom: 1px solid var(--gray-100); padding-bottom: 12px; }
+  .pack-title { font-size: 15px; font-weight: 700; color: var(--gray-900); }
+  .pack-price { text-align: right; }
+  .pack-price-main { font-size: 18px; font-weight: 700; color: var(--blue); }
+  .pack-price-sub { font-size: 11px; color: var(--gray-400); }
+  .pack-formula { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; background: var(--gray-50); padding: 8px 12px; border-radius: 8px; border: 1px dashed var(--gray-300); }
+  .pack-item { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--gray-600); }
+  .pack-plus { color: var(--blue); font-weight: 800; }
+  .pack-bullets { list-style: none; }
+  .pack-bullet { display: flex; gap: 8px; font-size: 12.5px; color: var(--gray-600); margin-bottom: 6px; align-items: flex-start; }
+  .pack-bullet b { color: var(--blue); font-weight: 600; }
+  .pack-footer { margin-top: 15px; padding-top: 12px; border-top: 1px solid var(--gray-100); font-size: 11px; color: var(--gray-400); display: flex; justify-content: space-between; align-items: center; }
+  .beservices-tag { background: var(--blue); color: #fff; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 9px; text-transform: uppercase; }
+  
+  .ideal-for { font-size: 11px; color: var(--blue); background: #e8f0fe; padding: 4px 10px; border-radius: 6px; margin-top: 10px; font-weight: 600; display: inline-block; }
 </style>
 </head>
 <body>
@@ -244,7 +263,6 @@ td.hl { background:rgba(26,115,232,.03); }
     <button class="tab on" onclick="show('inicio',this)">🏠 Inicio</button>
     <button class="tab" onclick="show('universo-ia',this)">🌌 Universo AI</button>
     <button class="tab" onclick="show('planes',this)">📋 Planes Workspace</button>
-    <button class="tab" onclick="show('comparativa',this)">⚖️ Comparativa</button>
     <button class="tab" onclick="show('addons',this)">➕ Add-ons</button>
     <button class="tab" onclick="show('gemini-ent',this)">🤖 Gemini Enterprise</button>
     <button class="tab" onclick="show('ai-personal',this)">👤 Google AI personal</button>
@@ -350,36 +368,108 @@ td.hl { background:rgba(26,115,232,.03); }
     <div class="category-block" data-cat="brain">
       <div class="divider-title">🧠 Modelos Fundacionales (El Cerebro)</div>
       <div class="ai-grid">
-        <div class="ai-card" data-tags="gemini pro brain model">
-          <div class="ai-card-head"><div class="ai-card-ico"><img src="Logos Google/Gemini-AI-Logo.webp" alt="Gemini"></div><div class="ai-card-name">Gemini 3 Pro</div></div>
+        <div class="ai-card" data-tags="google ai studio aistudio developer developer studio">
+          <div class="ai-card-head"><div class="ai-card-ico"><img src="https://www.gstatic.com/aistudio/ai_studio_googblue_1x_icon_192px.png" alt="AI Studio"></div><div class="ai-card-name">Google AI Studio</div></div>
           <div class="ai-card-body">
-            <span class="ai-quick">El cerebro universal de Google.</span>
-            <div class="ai-tech">Multimodal (LMM) · 2M tokens · Razonamiento avanzado.</div>
-            <div class="ai-easy">Como el motor de un F1: da potencia a todo.</div>
+            <span class="ai-quick">Entorno de desarrollo rápido con Gemini.</span>
+            <div class="ai-tech">Prototipado rápido · Prompt Engineering · Acceso a modelos experimentales.</div>
+            <div class="ai-easy">Un laboratorio para crear prototipos de IA en minutos.</div>
           </div>
         </div>
-        <div class="ai-card" data-tags="gemini flash fast model">
-          <div class="ai-card-head"><div class="ai-card-ico"><img src="Logos Google/Gemini-AI-Logo.webp" alt="Gemini"></div><div class="ai-card-name">Gemini 3 Flash</div></div>
+        <div class="ai-card" data-tags="jules github agent developer">
+          <div class="ai-card-head"><div class="ai-card-ico"><img src="https://www.gstatic.com/images/branding/product/2x/googleg_48dp.png" alt="Jules"></div><div class="ai-card-name">Jules</div></div>
           <div class="ai-card-body">
-            <span class="ai-quick">IA ultrarrápida para tareas inmediatas.</span>
-            <div class="ai-tech">Baja latencia · Alta escala · Respuestas rápidas.</div>
-            <div class="ai-easy">Un mensajero en moto: va a toda leche.</div>
+            <span class="ai-quick">Agente IA experto para GitHub.</span>
+            <div class="ai-tech">Automatización de código · Mantenimiento de repos · Integración con GitHub.</div>
+            <div class="ai-easy">Un compañero de equipo que te ayuda a mantener el código limpio.</div>
           </div>
         </div>
-        <div class="ai-card" data-tags="deep think gemini science model">
-          <div class="ai-card-head"><div class="ai-card-ico"><img src="Logos Google/Gemini-AI-Logo.webp" alt="Gemini"></div><div class="ai-card-name">Gemini Deep Think</div></div>
+        <div class="ai-card" data-tags="project mariner agent developer">
+          <div class="ai-card-head"><div class="ai-card-ico"><img src="https://www.gstatic.com/images/branding/product/2x/googleg_48dp.png" alt="Project Mariner"></div><div class="ai-card-name">Project Mariner</div></div>
           <div class="ai-card-body">
-            <span class="ai-quick">IA para razonamiento lógico puro.</span>
-            <div class="ai-tech">Problemas complejos · Matemáticas · Lógica iterativa.</div>
-            <div class="ai-easy">Un científico con tres másteres pensando en silencio.</div>
+            <span class="ai-quick">Agente autónomo para navegador.</span>
+            <div class="ai-tech">Acciones en el navegador · Automatización de tareas web avanzadas.</div>
+            <div class="ai-easy">Un copiloto que maneja el ratón y el teclado por ti en la web.</div>
           </div>
         </div>
-        <div class="ai-card" data-tags="nano banana imagen image generation model">
-          <div class="ai-card-head"><div class="ai-card-ico"><img src="Logos Google/google-ai.webp=n-w48-h50-fcrop64=1,000005bcfffffa44-rw" alt="AI"></div><div class="ai-card-name">Nano Banana Pro</div></div>
+        <div class="ai-card" data-tags="google lens creativity visual search consumer">
+          <div class="ai-card-head"><div class="ai-card-ico"><img src="https://ssl.gstatic.com/lens/misc/googlelogo2x.png" alt="Google Lens"></div><div class="ai-card-name">Google Lens</div></div>
           <div class="ai-card-body">
-            <span class="ai-quick">Generador de imágenes ultra-realistas.</span>
-            <div class="ai-tech">Difusión (Imagen 4) · Realismo extremo · Fidelidad.</div>
-            <div class="ai-easy">Un fotógrafo profesional con carrete infinito.</div>
+            <span class="ai-quick">Búsqueda visual inteligente.</span>
+            <div class="ai-tech">Reconocimiento de imágenes · OCR avanzado · Búsqueda contextual.</div>
+            <div class="ai-easy">Ojos mágicos: apunta a algo y Google te dirá qué es.</div>
+          </div>
+        </div>
+        <div class="ai-card" data-tags="learnlm productivity education model">
+          <div class="ai-card-head"><div class="ai-card-ico"><img src="https://www.gstatic.com/images/branding/product/2x/googleg_48dp.png" alt="LearnLM"></div><div class="ai-card-name">LearnLM</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">IA optimizada para el aprendizaje.</span>
+            <div class="ai-tech">Modelos educativos · Tutoría inteligente · Explicaciones adaptativas.</div>
+            <div class="ai-easy">Un tutor personal que sabe exactamente cómo explicarte las cosas.</div>
+          </div>
+        </div>
+        <div class="ai-card" data-tags="alphafold alphacode science developer code deepmind">
+          <div class="ai-card-head"><div class="ai-card-ico"><img src="https://www.gstatic.com/images/branding/product/2x/googleg_48dp.png" alt="DeepMind"></div><div class="ai-card-name">AlphaFold / AlphaCode</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">IA para ciencia y programación avanzada.</span>
+            <div class="ai-tech">Predicción de proteínas · Programación a nivel competitivo.</div>
+            <div class="ai-easy">El cerebro de Google DeepMind resolviendo retos históricos.</div>
+          </div>
+        </div>
+        <div class="ai-card" data-tags="imagen 4 creative image generation model deepmind">
+          <div class="ai-card-head"><div class="ai-card-ico"><img src="https://www.gstatic.com/images/branding/product/2x/googleg_48dp.png" alt="Imagen 4"></div><div class="ai-card-name">Imagen 4</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">Generación de imágenes de siguiente nivel.</span>
+            <div class="ai-tech">Realismo extremo · Comprensión de texto mejorada.</div>
+            <div class="ai-easy">Un artista digital que pinta tus pensamientos con realismo total.</div>
+          </div>
+        </div>
+        <div class="ai-card" data-tags="veo 3 creative video generation deepmind">
+          <div class="ai-card-head"><div class="ai-card-ico"><img src="https://www.gstatic.com/images/branding/product/2x/googleg_48dp.png" alt="Veo 3"></div><div class="ai-card-name">Veo 3</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">Generación de vídeo cinematográfico.</span>
+            <div class="ai-tech">Vídeo de alta resolución · Consistencia temporal · 1 minuto+.</div>
+            <div class="ai-easy">Una cámara de cine que crea escenas desde una descripción.</div>
+          </div>
+        </div>
+        <div class="ai-card" data-tags="lyria creative audio music deepmind">
+          <div class="ai-card-head"><div class="ai-card-ico"><img src="https://www.gstatic.com/images/branding/product/2x/googleg_48dp.png" alt="Lyria"></div><div class="ai-card-name">Lyria</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">IA para audio y composición musical.</span>
+            <div class="ai-tech">Generación musical · Transformación de voz · Audio de alta fidelidad.</div>
+            <div class="ai-easy">Un compositor y productor musical en una sola herramienta.</div>
+          </div>
+        </div>
+        <div class="ai-card" data-tags="dialogflow cx enterprise chatbot business">
+          <div class="ai-card-head"><div class="ai-card-ico"><img src="https://www.gstatic.com/images/branding/product/2x/dialogflow_48dp.png" alt="Dialogflow CX"></div><div class="ai-card-name">Dialogflow CX</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">IA conversacional avanzada para empresa.</span>
+            <div class="ai-tech">IVR avanzado · Chatbots complejos · Flujos visuales.</div>
+            <div class="ai-easy">Un experto en atención al cliente que nunca duerme.</div>
+          </div>
+        </div>
+        <div class="ai-card" data-tags="appsheet enterprise nocode business apps">
+          <div class="ai-card-head"><div class="ai-card-ico"><img src="https://www.gstatic.com/images/branding/product/2x/appsheet_48dp.png" alt="AppSheet"></div><div class="ai-card-name">AppSheet</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">Creación de apps de negocio sin código.</span>
+            <div class="ai-tech">No-code platform · Automatización con Gemini · Integración GWS.</div>
+            <div class="ai-easy">Crea tus propias herramientas de trabajo sin saber programar.</div>
+          </div>
+        </div>
+        <div class="ai-card" data-tags="looker enterprise bi data business dashboards">
+          <div class="ai-card-head"><div class="ai-card-ico"><img src="https://www.gstatic.com/images/branding/product/2x/looker_48dp.png" alt="Looker"></div><div class="ai-card-name">Looker</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">BI e inteligencia de datos moderna.</span>
+            <div class="ai-tech">Dashboarding · Semántica de datos · IA para insights.</div>
+            <div class="ai-easy">El traductor que convierte tus datos en decisiones claras.</div>
+          </div>
+        </div>
+        <div class="ai-card" data-tags="bigquery ml developer data sql machine learning">
+          <div class="ai-card-head"><div class="ai-card-ico"><img src="https://www.gstatic.com/images/branding/product/2x/bigquery_48dp.png" alt="BigQuery ML"></div><div class="ai-card-name">BigQuery ML</div></div>
+          <div class="ai-card-body">
+            <span class="ai-quick">Machine Learning directamente en SQL.</span>
+            <div class="ai-tech">Modelado predictivo · Data Warehouse · SQL nativo.</div>
+            <div class="ai-easy">Predice el futuro de tu negocio usando tus bases de datos.</div>
           </div>
         </div>
       </div>
@@ -529,7 +619,7 @@ td.hl { background:rgba(26,115,232,.03); }
     <!-- STARTER -->
     <div class="card">
       <div class="card-head">
-        <div class="plan-ico"><img src="Logos Google/gmail.webp" alt="Gmail"></div>
+        <div class="plan-ico"><img src="https://fonts.gstatic.com/s/i/productlogos/workspace/v8/512px.svg" alt="Workspace"></div>
         <div class="plan-name">Business Starter</div>
         <div class="plan-tag">Para autónomos y empresas pequeñas que arrancan</div>
         <div class="price-big"><span class="curr">€</span>8,10<span class="unit">/usuario/mes</span></div>
@@ -561,7 +651,7 @@ td.hl { background:rgba(26,115,232,.03); }
       <div class="pop-badge">Más popular</div>
       <div class="card star">
         <div class="card-head">
-          <div class="plan-ico"><img src="Logos Google/google-meet.webp" alt="Meet"></div>
+          <div class="plan-ico"><img src="https://ssl.gstatic.com/images/branding/product/2x/gmail_512dp.png" alt="Gmail"></div>
           <div class="plan-name">Business Standard</div>
           <div class="plan-tag">El punto dulce para PYMEs y agencias activas</div>
           <div class="price-big"><span class="curr">€</span>16,20<span class="unit">/usuario/mes</span></div>
@@ -591,7 +681,7 @@ td.hl { background:rgba(26,115,232,.03); }
     <!-- PLUS -->
     <div class="card">
       <div class="card-head">
-        <div class="plan-ico"><img src="Logos Google/google-drive.webp" alt="Drive"></div>
+        <div class="plan-ico"><img src="https://ssl.gstatic.com/images/branding/product/2x/drive_512dp.png" alt="Drive"></div>
         <div class="plan-name">Business Plus</div>
         <div class="plan-tag">Para empresas con compliance y retención de datos</div>
         <div class="price-big"><span class="curr">€</span>25,30<span class="unit">/usuario/mes</span></div>
@@ -619,7 +709,7 @@ td.hl { background:rgba(26,115,232,.03); }
     <!-- ENTERPRISE -->
     <div class="card">
       <div class="card-head">
-        <div class="plan-ico"><img src="Logos Google/admin.webp" alt="Admin"></div>
+        <div class="plan-ico"><img src="https://fonts.gstatic.com/s/i/productlogos/meet_2020q1/v1/512px.svg" alt="Meet"></div>
         <div class="plan-name">Enterprise</div>
         <div class="plan-tag">Para grandes corporaciones. Máxima seguridad y control. Sin límite de usuarios.</div>
         <div class="price-big" style="font-size:18px;font-weight:500;padding-top:4px">Precio personalizado</div>
@@ -648,39 +738,6 @@ td.hl { background:rgba(26,115,232,.03); }
   <div class="foot"><strong>Notas:</strong> Precios en euros, España, plan anual (16% dto respecto al plan flexible mensual). Planes Business: máx. 300 usuarios. Enterprise: sin límite. Todos incluyen prueba gratuita 14 días. Gemini ya está integrado sin add-on adicional en todos los planes Business y Enterprise.</div>
 </div>
 
-<!-- ===== COMPARATIVA ===== -->
-<div id="comparativa" class="sec">
-  <div class="stitle">Comparativa detallada</div>
-  <div class="ssub">Todas las características clave por plan de un vistazo.</div>
-  <div class="tbl-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th style="width:200px">Característica</th>
-          <th>Starter · €8,10</th>
-          <th class="hl">Standard · €16,20 ⭐</th>
-          <th>Plus · €25,30</th>
-          <th>Enterprise · Custom</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="cat-row"><td colspan="5">💾 Almacenamiento</td></tr>
-        <tr><td>Storage por usuario</td><td><span class="pill pill-orange">30 GB</span></td><td class="hl"><span class="pill pill-green">2 TB</span></td><td><span class="pill pill-blue">5 TB</span></td><td><span class="pill pill-purple">5 TB+</span></td></tr>
-        <tr class="cat-row"><td colspan="5">📧 Gmail y colaboración</td></tr>
-        <tr><td>Email corporativo @dominio</td><td><span class="ck">✓</span></td><td class="hl"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span> + S/MIME</td></tr>
-        <tr class="cat-row"><td colspan="5">📹 Google Meet</td></tr>
-        <tr><td>Máx. participantes</td><td>100</td><td class="hl"><strong>150</strong></td><td>500</td><td>1.000</td></tr>
-        <tr><td>Grabación en Drive</td><td><span class="cno">—</span></td><td class="hl"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td></tr>
-        <tr class="cat-row"><td colspan="5">🤖 Gemini IA (incluido desde 2025)</td></tr>
-        <tr><td>Gemini en Gmail</td><td><span class="pill pill-orange">Básico</span></td><td class="hl"><span class="pill pill-green">Completo</span></td><td><span class="pill pill-green">Completo</span></td><td><span class="pill pill-green">Completo</span></td></tr>
-        <tr><td>Gemini en Workspace Apps</td><td><span class="cno">—</span></td><td class="hl"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td></tr>
-        <tr class="cat-row"><td colspan="5">🔒 Seguridad y Compliance</td></tr>
-        <tr><td>Google Vault (eDiscovery)</td><td><span class="cno">—</span></td><td class="hl"><span class="cno">—</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td></tr>
-        <tr><td>DLP (prevención pérdida datos)</td><td><span class="cno">—</span></td><td class="hl"><span class="cno">—</span></td><td><span class="cno">—</span></td><td><span class="ck">✓</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
 
 <!-- ===== ADD-ONS ===== -->
 <div id="addons" class="sec">
@@ -689,10 +746,10 @@ td.hl { background:rgba(26,115,232,.03); }
 
   <div class="divider-title">Add-ons de IA (para cuentas corporativas Workspace)</div>
   <div class="grid3" style="margin-bottom:24px">
-    <!-- AI EXPANDED -->
+      <!-- AI EXPANDED -->
     <div class="addon-card">
       <div class="addon-head">
-        <div class="addon-ico" style="background:#e8f0fe"><img src="Logos Google/Gemini-AI-Logo.webp" alt="Gemini"></div>
+        <div class="addon-ico" style="background:#e8f0fe"><img src="https://fonts.gstatic.com/s/i/productlogos/gemini/v1/512px.svg" alt="Gemini"></div>
         <div>
           <div class="addon-name">AI Expanded Access</div>
           <div class="addon-sub">Nuevo en 2026</div>
@@ -708,12 +765,13 @@ td.hl { background:rgba(26,115,232,.03); }
         <div class="af"><span class="yes">✓</span> NotebookLM ampliado</div>
         <div class="af"><span class="yes">✓</span> Traducción en tiempo real en Meet</div>
       </div>
+      <div class="ideal-for">Ideal para: equipos que usan Antigravity/Flow intensivamente pero no quieren pagar AI Ultra</div>
     </div>
 
-    <!-- AI ULTRA ACCESS -->
+      <!-- AI ULTRA ACCESS -->
     <div class="addon-card" style="border-color:#c5d4f5">
       <div class="addon-head">
-        <div class="addon-ico" style="background:linear-gradient(135deg,#4285F4,#8ab4f8)"><img src="Logos Google/Gemini-AI-Logo.webp" alt="Gemini"></div>
+        <div class="addon-ico" style="background:linear-gradient(135deg,#4285F4,#8ab4f8)"><img src="https://fonts.gstatic.com/s/i/productlogos/gemini/v1/512px.svg" alt="Gemini"></div>
         <div>
           <div class="addon-name">AI Ultra Access</div>
           <div class="addon-sub">Máximo nivel IA</div>
@@ -729,12 +787,13 @@ td.hl { background:rgba(26,115,232,.03); }
         <div class="af"><span class="yes">✓</span> 25.000 créditos IA/mes para Flow/Whisk</div>
         <div class="af"><span class="yes">✓</span> Antigravity: límites más altos</div>
       </div>
+      <div class="ideal-for">Ideal para: diseñadores, creadores de contenido, developers con cargas intensivas de IA</div>
     </div>
 
-    <!-- APPSHEET -->
+      <!-- APPSHEET -->
     <div class="addon-card">
       <div class="addon-head">
-        <div class="addon-ico" style="background:#e6f4ea"><img src="Logos Google/google-drive.webp=s48-fcrop64=1,00000000ffffffff-rw" alt="AppSheet"></div>
+        <div class="addon-ico" style="background:#e6f4ea"><img src="https://www.gstatic.com/images/branding/product/2x/appsheet_48dp.png" alt="AppSheet"></div>
         <div>
           <div class="addon-name">AppSheet</div>
           <div class="addon-sub">Crea apps sin código</div>
@@ -749,6 +808,80 @@ td.hl { background:rgba(26,115,232,.03); }
         <div class="af"><span class="yes">✓</span> Automatizaciones básicas y avanzadas</div>
         <div class="af"><span class="yes">✓</span> Integración nativa Workspace</div>
       </div>
+      <div class="ideal-for">Ideal para: digitalizar procesos internos sin programar, flujos de aprobación o formularios manuales</div>
+    </div>
+  </div>
+
+  <div class="divider-title">Add-ons de Seguridad e Infraestructura (Empresa)</div>
+  <div class="grid3" style="margin-bottom:24px">
+    <!-- GOOGLE VAULT -->
+    <div class="addon-card">
+      <div class="addon-head">
+        <div class="addon-ico" style="background:var(--gray-100)"><img src="https://www.gstatic.com/images/branding/product/2x/googleg_48dp.png" alt="Vault"></div>
+        <div>
+          <div class="addon-name">Google Vault</div>
+          <div class="addon-sub">Retención y eDiscovery</div>
+        </div>
+      </div>
+      <div class="addon-price">Sobre Standard <span class="u">u otros</span></div>
+      <div class="plan-desc">
+        <span class="plan-desc-title">¿Qué es?</span>
+        <em>Herramienta de retención de datos para cumplir con requisitos legales y normativos. Permite conservar, archivar, buscar y exportar datos de Workspace.</em>
+      </div>
+      <div class="ideal-for">Ideal para: despachos, gestorías, sector legal/sanitario con obligación de retención de emails</div>
+    </div>
+
+    <!-- GEMINI IN CLOUD -->
+    <div class="addon-card">
+      <div class="addon-head">
+        <div class="addon-ico" style="background:var(--gray-100)"><img src="https://www.gstatic.com/images/branding/product/2x/googleg_48dp.png" alt="Gemini Cloud"></div>
+        <div>
+          <div class="addon-name">Gemini in Google Cloud</div>
+          <div class="addon-sub">IA para desarrollo e infraestructura</div>
+        </div>
+      </div>
+      <div class="addon-price">Consultar <span class="u">Cloud Admin</span></div>
+      <div class="plan-desc">
+        <span class="plan-desc-title">¿Qué es?</span>
+        <em>Antes Duet AI for Cloud. IA que ayuda a gestionar la infraestructura cloud, escribir código, optimizar costes y responder dudas técnicas de Google Cloud.</em>
+      </div>
+      <div class="ideal-for">Ideal para: equipos de IT, administradores cloud y desarrolladores</div>
+    </div>
+
+    <!-- CHROME ENTERPRISE PREMIUM -->
+    <div class="addon-card">
+      <div class="addon-head">
+        <div class="addon-ico" style="background:#e8f0fe"><img src="https://www.gstatic.com/images/branding/product/2x/googleg_48dp.png" alt="Chrome Ent"></div>
+        <div>
+          <div class="addon-name">Chrome Enterprise Premium</div>
+          <div class="addon-sub">Seguridad de navegación avanzada</div>
+        </div>
+      </div>
+      <div class="addon-price">€6 <span class="u">/usuario/mes</span></div>
+      <div class="plan-desc">
+        <span class="plan-desc-title">¿Qué es?</span>
+        <em>Versión ultra-segura del navegador Chrome con DLP (prevención pérdida datos) integrada, escaneo de archivos maliciosos y acceso contextual.</em>
+      </div>
+      <div class="ideal-for">Ideal para: empresas con BYOD o acceso a datos sensibles desde el navegador</div>
+    </div>
+  </div>
+
+  <div class="grid3" style="margin-bottom:24px">
+    <!-- MEET HARDWARE -->
+    <div class="addon-card">
+      <div class="addon-head">
+        <div class="addon-ico" style="background:var(--gray-100)"><img src="https://www.gstatic.com/images/branding/product/2x/googleg_48dp.png" alt="Meet Hardware"></div>
+        <div>
+          <div class="addon-name">Google Meet Hardware</div>
+          <div class="addon-sub">Salas de videoconferencia profesional</div>
+        </div>
+      </div>
+      <div class="addon-price">Licencia <span class="u">anual</span></div>
+      <div class="plan-desc">
+        <span class="plan-desc-title">¿Qué es?</span>
+        <em>Licencia necesaria para gestionar sistemas de sala (Logitech, Asus, Lenovo) desde la consola de Google. Optimiza la experiencia en salas de reuniones.</em>
+      </div>
+      <div class="ideal-for">Ideal para: empresas con salas de reuniones físicas de uso frecuente</div>
     </div>
   </div>
 </div>
@@ -939,109 +1072,182 @@ td.hl { background:rgba(26,115,232,.03); }
 
 <!-- ===== GUÍA DE VENTAS ===== -->
 <div id="guia" class="sec">
-  <div class="stitle">Guía de ventas rápida</div>
-  <div class="ssub">Recomendaciones estratégicas según la necesidad del cliente.</div>
-  <div class="need-grid">
-    <!-- CASE 1 -->
-    <div class="need-card">
-      <div class="need-head" style="background:#f3e8fd">
-        <div class="need-ico" style="width:24px;height:24px"><img src="Logos Google/google-cloud.webp=s48-fcrop64=1,00000000ffffffff-rw" style="width:100%;height:100%;object-fit:contain"></div>
-        <div class="need-label">Quiero crear agentes IA</div>
+  <div class="stitle">🎯 Guía de Ventas beServices</div>
+  <div class="ssub">Estrategias y packs recomendados según el perfil del cliente. BeServices garantiza la activación técnica en tiempo récord.</div>
+
+  <!-- SECCIÓN CLOUD -->
+  <div class="divider-title">☁️ Requerimientos Cloud / Infraestructura</div>
+  <div class="grid2" style="margin-bottom:40px">
+    <div class="pack-box">
+      <div class="pack-header">
+        <div class="pack-title">Sector Regulado / Compliance</div>
+        <div class="beservices-tag">Alta Seguridad</div>
       </div>
-      <div class="need-body">
-        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Gemini Enterprise (€35 add-on)</strong>: Vertex AI + NotebookLM Plus + Agentspace.</div></div>
-        <div class="need-sol"><div class="arrow">⭐</div><div class="sol-text"><strong>Combinación recomendada</strong>: Workspace Standard + Gemini Enterprise.</div></div>
+      <div class="pack-formula">
+        <div class="pack-item">Business Plus</div>
+        <div class="pack-plus">+</div>
+        <div class="pack-item">Gemini Enterprise</div>
       </div>
-    </div>
-    <!-- CASE 2 -->
-    <div class="need-card">
-      <div class="need-head" style="background:#e8f0fe">
-        <div class="need-ico" style="width:24px;height:24px"><img src="Logos Google/Gemini-AI-Logo.webp" style="width:100%;height:100%;object-fit:contain"></div>
-        <div class="need-label">IA en el día a día (correo, docs, reuniones)</div>
-      </div>
-      <div class="need-body">
-        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Standard + Gemini Business (€22 add-on)</strong>: IA integrada en Gmail, Docs, Meet y Sheets para productividad diaria.</div></div>
-      </div>
-    </div>
-    <!-- CASE 3 -->
-    <div class="need-card">
-      <div class="need-head" style="background:#fce8e6">
-        <div class="need-ico" style="width:24px;height:24px"><img src="Logos Google/admin.webp=s48-fcrop64=1,00000000ffffffff-rw" style="width:100%;height:100%;object-fit:contain"></div>
-        <div class="need-label">Equipo grande con datos sensibles</div>
-      </div>
-      <div class="need-body">
-        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Enterprise (precio a consultar)</strong>: DLP + SAML + controles avanzados + Gemini incluido para máxima seguridad.</div></div>
+      <ul class="pack-bullets">
+        <li class="pack-bullet"><i>✓</i> <b>Google Vault</b>: Retención legal de todos los emails.</li>
+        <li class="pack-bullet"><i>✓</i> Control de acceso granular y encriptación S/MIME.</li>
+        <li class="pack-bullet"><i>✓</i> Auditoría de IA para cumplimiento normativo.</li>
+      </ul>
+      <div class="pack-footer">
+        <span>Ideal para: Legales, Salud, Finanzas</span>
+        <span style="font-weight:600;color:var(--blue)">beServices activa en 48h</span>
       </div>
     </div>
-    <!-- CASE 4 -->
-    <div class="need-card">
-      <div class="need-head" style="background:var(--gray-100)">
-        <div class="need-ico" style="width:24px;height:24px"><img src="Logos Google/google-ai.webp=n-w48-h50-fcrop64=1,000005bcfffffa44-rw" style="width:100%;height:100%;object-fit:contain"></div>
-        <div class="need-label">Trabajadores de campo / sin ordenador fijo</div>
+
+    <div class="pack-box">
+      <div class="pack-header">
+        <div class="pack-title">Migración desde M365 / Outlook</div>
+        <div class="beservices-tag">Best Value</div>
       </div>
-      <div class="need-body">
-        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Frontline Starter (€2,23)</strong>: Optimizado para móvil, acceso a herramientas básicas sin apps de escritorio.</div></div>
+      <div class="pack-formula">
+        <div class="pack-item">GWS Standard</div>
+        <div class="pack-plus">+</div>
+        <div class="pack-item">Servicio Migración</div>
       </div>
-    </div>
-    <!-- CASE 5 -->
-    <div class="need-card">
-      <div class="need-head" style="background:var(--gray-50)">
-        <div class="need-ico" style="width:24px;height:24px"><img src="Logos Google/gmail.webp=s48-fcrop64=1,00000000ffffffff-rw" style="width:100%;height:100%;object-fit:contain"></div>
-        <div class="need-label">Solo necesito correo corporativo básico</div>
-      </div>
-      <div class="need-body">
-        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Business Starter (€7,99)</strong>: 30GB de espacio, lo mínimo funcional para presencia profesional.</div></div>
-      </div>
-    </div>
-    <!-- CASE 6 -->
-    <div class="need-card">
-      <div class="need-head" style="background:#e6f4ea">
-        <div class="need-ico" style="width:24px;height:24px"><img src="Logos Google/google-drive.webp=s48-fcrop64=1,00000000ffffffff-rw" style="width:100%;height:100%;object-fit:contain"></div>
-        <div class="need-label">Quiero automatizar procesos internos</div>
-      </div>
-      <div class="need-body">
-        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Standard + AppSheet (desde €5)</strong>: Apps sin código sobre datos de Sheets/Drive para digitalizar procesos.</div></div>
+      <ul class="pack-bullets">
+        <li class="pack-bullet"><i>✓</i> Salto sin fricciones: correos, calendarios y archivos.</li>
+        <li class="pack-bullet"><i>✓</i> Formación técnica BeServices para el equipo.</li>
+        <li class="pack-bullet"><i>✓</i> Configuración de seguridad inicial "Zero Trust".</li>
+      </ul>
+      <div class="pack-footer">
+        <span>Ideal para: Cambio de ecosistema</span>
+        <span style="font-weight:600;color:var(--blue)">Soporte BeServices 24/7</span>
       </div>
     </div>
-    <!-- CASE 7 -->
-    <div class="need-card">
-      <div class="need-head" style="background:#fef3e0">
-        <div class="need-ico" style="width:24px;height:24px"><img src="Logos Google/admin.webp=s48-fcrop64=1,00000000ffffffff-rw" style="width:100%;height:100%;object-fit:contain"></div>
-        <div class="need-label">Sector regulado (sanidad, legal, financiero)</div>
+  </div>
+
+  <!-- SECCIÓN WORKSPACE -->
+  <div class="divider-title">🖥️ Requerimientos Workspace / Productividad</div>
+  <div class="grid3" style="margin-bottom:40px">
+    <div class="pack-box">
+      <div class="pack-header"><div class="pack-title">Básico Corporativo</div></div>
+      <div class="pack-formula"><div class="pack-item">Business Starter</div></div>
+      <ul class="pack-bullets">
+        <li class="pack-bullet"><i>✓</i> Dominio profesional propio.</li>
+        <li class="pack-bullet"><i>✓</i> Colaboración en la nube básica.</li>
+      </ul>
+      <div class="pack-footer"><span>€8,10 /mes</span></div>
+    </div>
+    <div class="pack-box premium">
+      <div class="pop-badge">Recomendado</div>
+      <div class="pack-header"><div class="pack-title">Estándar BeServices</div></div>
+      <div class="pack-formula"><div class="pack-item">Business Standard</div></div>
+      <ul class="pack-bullets">
+        <li class="pack-bullet"><i>✓</i> <b>Gemini IA Full</b>: Incluido nativamente.</li>
+        <li class="pack-bullet"><i>✓</i> 2 TB de almacenamiento.</li>
+        <li class="pack-bullet"><i>✓</i> Grabación de reuniones.</li>
+      </ul>
+      <div class="pack-footer"><span>€16,20 /mes</span></div>
+    </div>
+    <div class="pack-box">
+      <div class="pack-header"><div class="pack-title">Productividad Campo</div></div>
+      <div class="pack-formula"><div class="pack-item">Frontline Starter</div></div>
+      <ul class="pack-bullets">
+        <li class="pack-bullet"><i>✓</i> Optimizado para uso móvil.</li>
+        <li class="pack-bullet"><i>✓</i> Bajo coste para plantillas grandes.</li>
+      </ul>
+      <div class="pack-footer"><span>Ideal Mobile-First</span></div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN IA -->
+  <div class="divider-title">🤖 Requerimientos IA / Automatización</div>
+  
+  <div class="grid2" style="margin-bottom:24px">
+    <!-- ANTIGRAVITY CASE -->
+    <div class="pack-box premium">
+        <div class="pop-badge" style="background:#673ab7">Uso Intensivo IA</div>
+        <div class="pack-header">
+            <div class="pack-title">Quiero usar más Antigravity</div>
+            <div class="pack-price"><div class="pack-price-main">+$249,99</div><div class="pack-price-sub">/usu/mes</div></div>
+        </div>
+        <div class="pack-formula">
+            <div class="pack-item">GWS Standard</div>
+            <div class="pack-plus">+</div>
+            <div class="pack-item">AI Ultra Access</div>
+        </div>
+        <ul class="pack-bullets">
+            <li class="pack-bullet"><i>✓</i> <b>Antigravity sin límites</b> de cuota.</li>
+            <li class="pack-bullet"><i>✓</i> Flow + Whisk con 25.000 créditos/mes.</li>
+            <li class="pack-bullet"><i>✓</i> Gemini 3 Pro + Deep Research ilimitado.</li>
+        </ul>
+        <div class="pack-footer">
+            <span>Solo para cuentas corporativas</span>
+            <span class="beservices-tag">Máxima Potencia</span>
+        </div>
+    </div>
+
+    <div class="pack-box">
+        <div class="pack-header">
+            <div class="pack-title">Google AI Pro (cuenta personal)</div>
+            <div class="pack-price"><div class="pack-price-main">€19,99</div><div class="pack-price-sub">/mes personal</div></div>
+        </div>
+        <div class="pack-formula">
+            <div class="pack-item">Google One AI Pro</div>
+        </div>
+        <ul class="pack-bullets">
+            <li class="pack-bullet"><i>✓</i> Antigravity con límites altos (Advanced).</li>
+            <li class="pack-bullet"><i>✓</i> 2 TB almacenamiento personal.</li>
+            <li class="pack-bullet"><i>⚠️</i> <b>No mezclable</b> con cuenta Workspace.</li>
+        </ul>
+        <div class="pack-footer">
+            <span>Cuentas @gmail.com personales</span>
+        </div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="pack-box">
+      <div class="pack-header">
+        <div class="pack-title">Creación de Agentes IA</div>
+        <div class="pack-price"><div class="pack-price-main">Consultar</div><div class="pack-price-sub">Cloud</div></div>
       </div>
-      <div class="need-body">
-        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Business Plus + Gemini Enterprise</strong>: Vault + eDiscovery + gobernanza del dato asistida por IA.</div></div>
+      <div class="pack-formula">
+        <div class="pack-item">GWS Standard</div>
+        <div class="pack-plus">+</div>
+        <div class="pack-item">Gemini Enterprise</div>
+      </div>
+      <ul class="pack-bullets">
+        <li class="pack-bullet"><i>✓</i> <b>Agent Builder</b>: Agentes no-code corporativos.</li>
+        <li class="pack-bullet"><i>✓</i> Búsqueda unificada en Salesforce, SAP, Jira...</li>
+        <li class="pack-bullet"><i>✓</i> NotebookLM Enterprise con fuentes ilimitadas.</li>
+      </ul>
+      <div class="pack-footer">
+        <span>beServices diseña tu primer agente</span>
       </div>
     </div>
-    <!-- CASE 8 -->
-    <div class="need-card">
-      <div class="need-head" style="background:#e8f0fe">
-        <div class="need-ico" style="width:24px;height:24px"><img src="Logos Google/chrome.webp=s48-fcrop64=1,00000000ffffffff-rw" style="width:100%;height:100%;object-fit:contain"></div>
-        <div class="need-label">Migración desde Microsoft 365</div>
+
+    <div class="pack-box">
+      <div class="pack-header">
+        <div class="pack-title">Automatización de Procesos</div>
+        <div class="pack-price"><div class="pack-price-main">+Desde $5</div><div class="pack-price-sub">/usu/mes</div></div>
       </div>
-      <div class="need-body">
-        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Standard como base</strong> + sesión de migración técnica BeServices incluida para un salto sin fricciones.</div></div>
+      <div class="pack-formula">
+        <div class="pack-item">Business Standard</div>
+        <div class="pack-plus">+</div>
+        <div class="pack-item">AppSheet</div>
+      </div>
+      <ul class="pack-bullets">
+        <li class="pack-bullet"><i>✓</i> Apps sin código sobre tus Sheets y Drive.</li>
+        <li class="pack-bullet"><i>✓</i> Digitaliza partes de trabajo o albaranes.</li>
+        <li class="pack-bullet"><i>✓</i> Automatiza flujos de aprobación por email.</li>
+      </ul>
+      <div class="pack-footer">
+        <span>Modernización de procesos operativos</span>
       </div>
     </div>
-    <!-- CASE 9 -->
-    <div class="need-card">
-      <div class="need-head" style="background:#e6f4ea">
-        <div class="need-ico" style="width:24px;height:24px"><img src="Logos Google/looker.webp=s48-fcrop64=1,00000000ffffffff-rw" style="width:100%;height:100%;object-fit:contain"></div>
-        <div class="need-label">Quiero analizar datos de negocio con IA</div>
-      </div>
-      <div class="need-body">
-        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Standard + Gemini Enterprise + Looker</strong>: Transforma datos en bruto en dashboards dinámicos con IA.</div></div>
-      </div>
-    </div>
-    <!-- CASE 10 -->
-    <div class="need-card">
-      <div class="need-head" style="background:#fce8e6">
-        <div class="need-ico" style="width:24px;height:24px"><img src="Logos Google/admin.webp=s48-fcrop64=1,00000000ffffffff-rw" style="width:100%;height:100%;object-fit:contain"></div>
-        <div class="need-label">Empresa con múltiples sedes o países</div>
-      </div>
-      <div class="need-body">
-        <div class="need-sol"><div class="arrow">→</div><div class="sol-text"><strong>Enterprise</strong>: Gestión centralizada de usuarios, SSO y políticas granulares por unidad organizativa.</div></div>
-      </div>
+  </div>
+
+  <div class="info-box" style="margin-top:32px; background: #fff; border: 2px solid var(--blue);">
+    <div class="ico">🏆</div>
+    <div>
+        <div class="title">BeServices: Tu Partner Google Cloud en España</div>
+        <div class="text">No solo vendemos licencias. <b>Configuramos, migramos y optimizamos</b> tu entorno para que el equipo solo se preocupe de trabajar. Nuestra autoridad en despliegues IA nos permite activar cualquiera de estos packs en menos de 5 días laborables.</div>
     </div>
   </div>
 </div>
