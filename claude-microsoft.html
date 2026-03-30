@@ -276,21 +276,29 @@
     <section id="use-cases" class="py-24">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-extrabold text-corporateNavy mb-4 reveal">60+ Casos de Uso Reales</h2>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-corporateNavy mb-4 reveal">100+ Casos de Uso Reales</h2>
                 <p class="text-mutedGray max-w-2xl mx-auto reveal" style="transition-delay: 200ms">Selecciona un perfil para ver ejemplos visuales de cómo Claude transforma el día a día operativo.</p>
                 
                 <div class="flex flex-wrap justify-center gap-2 md:gap-4 mt-12 mb-12 reveal" style="transition-delay: 400ms">
                     <button onclick="switchProfile('ceo')" class="tab-btn active px-6 md:px-10 py-3 md:py-4 rounded-2xl text-xs md:text-sm font-bold transition-all border border-gray-100 flex items-center gap-2 md:gap-3">
                         <i class="ph ph-user-circle text-xl md:text-2xl"></i>
-                        CEO
+                        CEO - <span class="hidden md:inline">Francisco</span>
                     </button>
                     <button onclick="switchProfile('cfo')" class="tab-btn px-6 md:px-10 py-3 md:py-4 rounded-2xl text-xs md:text-sm font-bold transition-all border border-gray-100 flex items-center gap-2 md:gap-3 bg-gray-50 text-mutedGray">
                         <i class="ph ph-chart-line-up text-xl md:text-2xl"></i>
-                        CFO
+                        CFO - <span class="hidden md:inline">Jorge</span>
                     </button>
                     <button onclick="switchProfile('coo')" class="tab-btn px-6 md:px-10 py-3 md:py-4 rounded-2xl text-xs md:text-sm font-bold transition-all border border-gray-100 flex items-center gap-2 md:gap-3 bg-gray-50 text-mutedGray">
                         <i class="ph ph-gear text-xl md:text-2xl"></i>
-                        COO
+                        COO - <span class="hidden md:inline">Jordi</span>
+                    </button>
+                    <button onclick="switchProfile('rrhh')" class="tab-btn px-6 md:px-10 py-3 md:py-4 rounded-2xl text-xs md:text-sm font-bold transition-all border border-gray-100 flex items-center gap-2 md:gap-3 bg-gray-50 text-mutedGray">
+                        <i class="ph ph-users-three text-xl md:text-2xl"></i>
+                        RRHH - <span class="hidden md:inline">Alberto</span>
+                    </button>
+                    <button onclick="switchProfile('comercial')" class="tab-btn px-6 md:px-10 py-3 md:py-4 rounded-2xl text-xs md:text-sm font-bold transition-all border border-gray-100 flex items-center gap-2 md:gap-3 bg-gray-50 text-mutedGray">
+                        <i class="ph ph-handshake text-xl md:text-2xl"></i>
+                        Comercial - <span class="hidden md:inline">Paula, Hjalmar, Juanjo</span>
                     </button>
                 </div>
             </div>
@@ -312,6 +320,20 @@
             <!-- Profile: COO -->
             <div id="coo-section" class="profile-section hidden">
                 <div id="coo-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Cards will be injected by JS -->
+                </div>
+            </div>
+
+            <!-- Profile: RRHH -->
+            <div id="rrhh-section" class="profile-section hidden">
+                <div id="rrhh-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Cards will be injected by JS -->
+                </div>
+            </div>
+
+            <!-- Profile: Comercial -->
+            <div id="comercial-section" class="profile-section hidden">
+                <div id="comercial-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                     <!-- Cards will be injected by JS -->
                 </div>
             </div>
@@ -432,6 +454,52 @@
             { title: "Renovación Licencias", category: "🔒 Seguridad operativa", triggerIcon: 'ph ph-calendar-x', toolIcon: LOGOS.outlook, desc: "Aviso a 60 días para licencias críticas (Veeam, Datto, etc).", prompt: "Busca licencias técnicas (SonicWall, Veeam) que venzan in los próximos 60 días." }
         ];
 
+        const rrhhCases = [
+            { title: "Redactar oferta de trabajo", category: "📋 Selección y contratación", triggerIcon: 'ph ph-briefcase', toolIcon: LOGOS.word, desc: "Oferta profesional en 5 minutos en vez de 45.", prompt: "Necesito publicar una oferta para un técnico de soporte N1 con experiencia en M365. Redáctame la descripción del puesto, requisitos y qué ofrecemos como empresa." },
+            { title: "Filtrar CVs recibidos", category: "📋 Selección y contratación", triggerIcon: 'ph ph-envelope-simple', toolIcon: LOGOS.outlook, desc: "Preselección sin leer 15 documentos manualmente.", prompt: "He recibido 15 CVs por email para la posición de técnico. Búscalos y dime cuáles encajan mejor con estos requisitos: experiencia en M365, inglés, mínimo 2 años." },
+            { title: "Preguntas entrevista técnica", category: "📋 Selección y contratación", triggerIcon: 'ph ph-chats-teardrop', toolIcon: LOGOS.word, desc: "Entrevista estructurada y consistente.", prompt: "Voy a entrevistar a un candidato para técnico de seguridad con experiencia en Besafe/Defender. Dame 10 preguntas técnicas y 5 de cultura de empresa para BeServices." },
+            { title: "Comparar candidatos", category: "📋 Selección y contratación", triggerIcon: 'ph ph-user-list', toolIcon: LOGOS.outlook, desc: "Decisión basada en datos, no en memoria.", prompt: "Tenemos 3 finalistas para la posición. Busca sus CVs en el email y dime una tabla comparativa con sus puntos fuertes, débiles y fit cultural con BeServices." },
+            { title: "Contrato de prácticas", category: "📄 Contratos y documentación", triggerIcon: 'ph ph-file-text', toolIcon: LOGOS.word, desc: "Contrato listo en 10 minutos.", prompt: "Vamos a incorporar dos becarios técnicos en junio. Basándote en el contrato de prácticas que tenemos en SharePoint, redáctame uno nuevo adaptado para perfil de soporte IT." },
+            { title: "Carta de bienvenida", category: "📄 Contratos y documentación", triggerIcon: 'ph ph-hand-waving', toolIcon: LOGOS.word, desc: "Primera impresión profesional sin esfuerzo.", prompt: "Se incorpora [nombre] el lunes como técnico N2. Redáctame una carta de bienvenida que explique la empresa, el equipo, los primeros días y lo que esperamos de él." },
+            { title: "Actualizar manual empleado", category: "📄 Contratos y documentación", triggerIcon: 'ph ph-read-cv-logo', toolIcon: LOGOS.sharepoint, desc: "Documentación interna siempre vigente.", prompt: "Busca el manual de empleado en SharePoint y dime qué secciones están desactualizadas o faltan según los cambios que hemos hecho este año." },
+            { title: "Checklist de offboarding", category: "📄 Contratos y documentación", triggerIcon: 'ph ph-user-minus', toolIcon: LOGOS.word, desc: "Offboarding sin que se pierda ningún paso crítico.", prompt: "[Nombre] deja la empresa el viernes. Prepárame un checklist de offboarding: accesos a revocar, equipos a devolver, documentación a firmar." },
+            { title: "Consolidar vacaciones", category: "📅 Gestión del equipo", triggerIcon: 'ph ph-calendar-blank', toolIcon: LOGOS.outlook, desc: "Aprobación de vacaciones sin Excel manual.", prompt: "Busca en el email y Teams las peticiones de vacaciones de julio. Dame un resumen de quién pide qué días y detecta si hay conflictos de cobertura técnica." },
+            { title: "Días pendientes", category: "📅 Gestión del equipo", triggerIcon: 'ph ph-list-numbers', toolIcon: LOGOS.sharepoint, desc: "Control de vacaciones actualizado.", prompt: "Busca en los documentos de RRHH cuántos días de vacaciones le quedan a cada persona del equipo técnico a fecha de hoy." },
+            { title: "Detectar ausencias", category: "📅 Gestión del equipo", triggerIcon: 'ph ph-warning', toolIcon: LOGOS.outlook, desc: "Gestión proactiva del bienestar del equipo.", prompt: "Analiza las ausencias y bajas del último trimestre que aparezcan en emails o documentos. ¿Hay algún patrón preocupante?" },
+            { title: "Agenda one-to-one", category: "📅 Gestión del equipo", triggerIcon: 'ph ph-users', toolIcon: LOGOS.teams, desc: "One-to-ones con contexto real, no improvisados.", prompt: "Tengo one-to-one con [técnico] mañana. Busca en Teams y email los temas pendientes con él, los proyectos en los que está y cualquier feedback reciente. Prepárame una agenda." },
+            { title: "Necesidades formación", category: "🎓 Formación y desarrollo", triggerIcon: 'ph ph-student', toolIcon: LOGOS.teams, desc: "Plan de formación basado en necesidades reales.", prompt: "Busca en emails y Teams conversaciones donde el equipo haya mencionado no saber cómo hacer algo técnico o haya pedido ayuda con alguna herramienta. ¿Qué gaps de conocimiento se repiten?" },
+            { title: "Cursos certificación", category: "🎓 Formación y desarrollo", triggerIcon: 'ph ph-certificate', toolIcon: LOGOS.office, desc: "Investigación de formación en minutos.", prompt: "El equipo necesita certificarse en Azure Administrator (AZ-104). Busca en internet las opciones de formación disponibles en España, precios y duración." },
+            { title: "Plan de carrera", category: "🎓 Formación y desarrollo", triggerIcon: 'ph ph-stairs', toolIcon: LOGOS.word, desc: "Retención de talento con propuesta estructurada.", prompt: "Quiero proponer un plan de carrera a [nombre] que lleva 2 años como técnico N1. Basándote en su perfil y en los servicios que ofrece BeServices, redáctame una propuesta de evolución a N2 con objetivos concretos." },
+            { title: "Cierre de nóminas", category: "📊 Nóminas y administración", triggerIcon: 'ph ph-money', toolIcon: LOGOS.outlook, desc: "El cierre mensual de nóminas sin buscar en 10 sitios.", prompt: "Busca en emails y documentos las novedades de nómina de este mes: altas, bajas, cambios de salario, horas extra. Organízalas en un resumen para enviar a la gestoría." },
+            { title: "Seguimiento gastos", category: "📊 Nóminas y administración", triggerIcon: 'ph ph-receipt', toolIcon: LOGOS.outlook, desc: "Conciliación de gastos sin trabajo manual.", prompt: "Busca en el email los justificantes de gastos del equipo de este mes: dietas, transporte, material. Extrae importe, concepto y persona de cada uno." },
+            { title: "Equipos sin asignar", category: "📊 Nóminas y administración", triggerIcon: 'ph ph-laptop', toolIcon: LOGOS.sharepoint, desc: "Control de activos sin inventario manual.", prompt: "Busca en documentos y emails qué equipos corporativos (portátiles, móviles) tenemos sin asignar o que pertenecen a empleados que ya no están." },
+            { title: "Encuesta clima laboral", category: "⚖️ Clima y cultura", triggerIcon: 'ph ph-heart', toolIcon: LOGOS.word, desc: "Encuesta profesional lista en 5 minutos.", prompt: "Quiero hacer una encuesta anónima de satisfacción al equipo. Redáctame 10 preguntas que midan bienestar, carga de trabajo, comunicación interna y satisfacción con la dirección." },
+            { title: "Resumir feedback equipo", category: "⚖️ Clima y cultura", triggerIcon: 'ph ph-chat-circle-dots', toolIcon: LOGOS.outlook, desc: "Análisis de clima sin sesgos ni horas de lectura.", prompt: "He recibido las respuestas de la encuesta de clima por email. Resúmeme los temas positivos y negativos más repetidos sin identificar a nadie en concreto." }
+        ];
+
+        const comercialCases = [
+            { title: "Briefing previo llamada", category: "🎯 Prospección y leads", triggerIcon: 'ph ph-phone-call', toolIcon: LOGOS.outlook, desc: "Llegar a cada llamada con contexto, no a ciegas.", prompt: "Voy a llamar a [empresa] mañana. Búscame todo lo que tenemos sobre ellos en email, Teams y documentos. Si no hay nada, búscala en internet y dame: sector, tamaño estimado, tecnología que usan y posibles dolores IT." },
+            { title: "Email prospección frío", category: "🎯 Prospección y leads", triggerIcon: 'ph ph-envelope-simple-open', toolIcon: LOGOS.outlook, desc: "Email personalizado y con dolor real en 3 minutos.", prompt: "Quiero contactar con despachos de abogados de Barcelona de 20-50 empleados. Redáctame un email de prospección que mencione NIS2, el riesgo de no tener seguridad gestionada y proponga una auditoría gratuita." },
+            { title: "Leads calientes", category: "🎯 Prospección y leads", triggerIcon: 'ph ph-fire', toolIcon: LOGOS.outlook, desc: "Nunca perder un lead por falta de seguimiento.", prompt: "Busca en mi email de los últimos 30 días empresas que hayan preguntado por algún servicio de BeServices pero a las que no hemos dado seguimiento todavía." },
+            { title: "Secuencia seguimiento", category: "🎯 Prospección y leads", triggerIcon: 'ph ph-repeat', toolIcon: LOGOS.outlook, desc: "Persistencia sin ser pesado.", prompt: "El lead [empresa] no respondió a nuestro primer email hace 10 días. Redáctame una secuencia de 3 emails de seguimiento con 5 días entre cada uno, cada uno con un ángulo diferente." },
+            { title: "Propuesta comercial rápida", category: "📝 Propuestas y presupuestos", triggerIcon: 'ph ph-lightning', toolIcon: LOGOS.word, desc: "Propuesta lista antes de salir de la reunión.", prompt: "Tengo reunión con [empresa] y me ha pedido una propuesta de Besafe Essentials + BeHelp Month para 35 usuarios. Redáctame la propuesta con descripción del servicio, qué incluye y próximos pasos." },
+            { title: "Adaptar propuesta", category: "📝 Propuestas y presupuestos", triggerIcon: 'ph ph-copy', toolIcon: LOGOS.sharepoint, desc: "Reutilizar sin copiar — personalización real.", prompt: "Busca la propuesta que enviamos a [cliente X] en SharePoint. Adáptala para [nuevo cliente] cambiando el nombre, el sector y ajustando el mensaje al perfil de empresa de construcción." },
+            { title: "Analizar cierre propuestas", category: "📝 Propuestas y presupuestos", triggerIcon: 'ph ph-chart-line', toolIcon: LOGOS.sharepoint, desc: "Aprender de los patrones de cierre.", prompt: "Busca en SharePoint y email las propuestas que hemos enviado este trimestre. ¿Cuáles se cerraron? ¿Cuáles no? ¿Hay diferencias en estructura o precio entre las que sí y las que no?" },
+            { title: "Calcular precio complejo", category: "📝 Propuestas y presupuestos", triggerIcon: 'ph ph-calculator', toolIcon: LOGOS.excel, desc: "Precio correcto en 30 segundos sin errores.", prompt: "El cliente quiere M365 Business Premium para 40 usuarios + Besafe Essentials + BeHelp Pack 10h. Calcula el coste total mensual y anual con los precios de nuestro catálogo." },
+            { title: "Resumen pipeline activo", category: "🤝 Gestión de oportunidades", triggerIcon: 'ph ph-funnel', toolIcon: LOGOS.outlook, desc: "El pipeline al día sin abrir el CRM.", prompt: "Busca en emails y Teams todas las conversaciones comerciales activas de este mes. Dame un pipeline actualizado: empresa, servicio de interés, última interacción y próximo paso." },
+            { title: "Oportunidades bloqueadas", category: "🤝 Gestión de oportunidades", triggerIcon: 'ph ph-hand-grabbing', toolIcon: LOGOS.outlook, desc: "Reactivar antes de que se enfríen.", prompt: "Busca oportunidades comerciales en mis emails donde la última comunicación fue hace más de 15 días sin respuesta del cliente. ¿Cuáles están paradas?" },
+            { title: "Agenda reunión ventas", category: "🤝 Gestión de oportunidades", triggerIcon: 'ph ph-calendar-plus', toolIcon: LOGOS.outlook, desc: "Reunión preparada en 5 minutos.", prompt: "Tengo reunión de ventas con [empresa] el jueves. Busca todos los emails, documentos y notas de Teams con ellos y dame un briefing: qué tienen ahora, qué han pedido, qué objeciones han puesto." },
+            { title: "Seguimiento post-reunión", category: "🤝 Gestión de oportunidades", triggerIcon: 'ph ph-paper-plane-tilt', toolIcon: LOGOS.outlook, desc: "El seguimiento enviado antes de llegar a la oficina.", prompt: "Acabo de salir de la reunión con [empresa]. Los puntos clave fueron: les interesa Besafe Essentials, tienen 45 usuarios, dudan por el precio. Redáctame el email de seguimiento con resumen y próximos pasos." },
+            { title: "Potencial de upsell", category: "🔄 Renovaciones y upsell", triggerIcon: 'ph ph-arrow-fat-up', toolIcon: LOGOS.sharepoint, desc: "La lista de upsell más obvia de BeServices.", prompt: "Busca en documentos y emails los clientes que solo tienen licencias de M365 o Google Workspace sin ningún servicio de seguridad. Son los candidatos prioritarios para ofrecerles Besafe." },
+            { title: "Propuesta de upgrade", category: "🔄 Renovaciones y upsell", triggerIcon: 'ph ph-sparkle', toolIcon: LOGOS.outlook, desc: "Upsell con argumento personalizado, no genérico.", prompt: "El cliente [empresa] lleva 2 años con M365 Basic y BeHelp. Busca su historial en emails y Teams y redáctame una propuesta de upgrade a Business Premium + Besafe Essentials argumentando el valor para ellos." },
+            { title: "Anticipar renovaciones", category: "🔄 Renovaciones y upsell", triggerIcon: 'ph ph-alarm', toolIcon: LOGOS.sharepoint, desc: "Renovaciones proactivas, nunca reactivas.", prompt: "Busca en contratos y emails qué servicios tienen fecha de renovación en los próximos 30 días. Dame la lista con cliente, servicio y fecha para que pueda contactarles antes." },
+            { title: "Riesgo de churn", category: "🔄 Renovaciones y upsell", triggerIcon: 'ph ph-warning-octagon', toolIcon: LOGOS.outlook, desc: "Retención antes de que sea tarde.", prompt: "Busca en emails y Teams clientes que hayan manifestado quejas, retrasos en pagos o preguntas sobre cancelación en los últimos 60 días. ¿Hay alguno que deba preocuparnos?" },
+            { title: "Informe ventas mensual", category: "📊 Análisis y reporting", triggerIcon: 'ph ph-read-cv-logo', toolIcon: LOGOS.sharepoint, desc: "El informe comercial listo en 10 minutos.", prompt: "Busca en SharePoint y emails los contratos cerrados este mes, las propuestas enviadas y los leads generados. Redáctame el informe de ventas para la reunión de dirección." },
+            { title: "Por qué se perdió cliente", category: "📊 Análisis y reporting", triggerIcon: 'ph ph-magnifying-glass-minus', toolIcon: LOGOS.outlook, desc: "Aprender de cada pérdida sin sesgo.", prompt: "El cliente [empresa] no renovó. Busca en emails y Teams toda la comunicación con ellos del último año. ¿Qué señales de insatisfacción hubo? ¿Qué podríamos haber hecho diferente?" },
+            { title: "Argumentario competidor", category: "📊 Análisis y reporting", triggerIcon: 'ph ph-sword', toolIcon: LOGOS.word, desc: "Argumentario afilado sin improvisar.", prompt: "Un prospecto me ha dicho que está hablando con otro proveedor IT de Barcelona. Redáctame los 5 argumentos más sólidos por los que BeServices es mejor opción para una empresa de 40 empleados sin IT interno." },
+            { title: "Caso de éxito express", category: "📊 Análisis y reporting", triggerIcon: 'ph ph-trophy', toolIcon: LOGOS.sharepoint, desc: "Prueba social lista para enviar.", prompt: "Busca en SharePoint y emails toda la información del proyecto con [cliente]. Redáctame un caso de éxito de 1 página: situación inicial, solución implantada por BeServices y resultados obtenidos." }
+        ];
+
         // Animations on scroll
         function initReveal() {
             const obsOptions = { threshold: 0.1 };
@@ -517,7 +585,14 @@
 
         function renderGrid(profile) {
             const grid = document.getElementById(`${profile}-grid`);
-            const data = profile === 'ceo' ? ceoCases : (profile === 'cfo' ? cfoCases : cooCases);
+            const dataMap = {
+                ceo: ceoCases,
+                cfo: cfoCases,
+                coo: cooCases,
+                rrhh: rrhhCases,
+                comercial: comercialCases
+            };
+            const data = dataMap[profile];
             
             // Group by category
             const grouped = data.reduce((acc, obj) => {
