@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Claude + Microsoft 365 | BeServices Guide</title>
+
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Icons: Phosphor -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: '#0075f2',
+                        corporateNavy: '#001A41',
+                        mutedGray: '#9CA3AF',
+                        electricCyan: '#50cabf',
+                        successGreen: '#10b981',
+                        errorRed: '#ef4444',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcfdfe;
+            color: #001A41;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(0, 26, 65, 0.05);
+        }
+
+        .n8n-node {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .n8n-connector {
+            flex-grow: 1;
+            height: 2px;
+            background: #e5e7eb;
+            position: relative;
+        }
+
+        .n8n-connector::after {
+            content: '';
+            position: absolute;
+            right: -2px;
+            top: -3px;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            border-left: 6px solid #e5e7eb;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #001A41 0%, #0075f2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Tabs styling */
+        .tab-btn.active {
+            background-color: #001A41;
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(0, 26, 65, 0.2);
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <img src="assets/logo.png" alt="BeServices" class="h-8 w-auto mix-blend-multiply" />
+                <div class="h-6 w-px bg-gray-200"></div>
+                <span class="text-xs font-bold uppercase tracking-widest text-corporateNavy opacity-60">AI Strategy</span>
+            </div>
+            <div class="flex gap-6">
+                <a href="#rules" class="text-xs font-bold uppercase tracking-widest text-corporateNavy hover:text-brandBlue transition-colors">Reglas</a>
+                <a href="#ceo" class="text-xs font-bold uppercase tracking-widest text-corporateNavy hover:text-brandBlue transition-colors">CEO</a>
+                <a href="#cfo" class="text-xs font-bold uppercase tracking-widest text-corporateNavy hover:text-brandBlue transition-colors">CFO</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-40 pb-24 overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full -z-10 opacity-20">
+            <svg viewBox="0 0 100 100" class="w-full h-full text-brandBlue/10">
+                <defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" stroke-width="0.5"/></pattern></defs>
+                <rect width="100" height="100" fill="url(#grid)" />
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-corporateNavy/[0.03] border border-corporateNavy/10 mb-8 overflow-hidden">
+                <img src="assets/Logos Microsoft/Microsoft Office.png" class="h-4 w-auto" alt="M365" />
+                <i class="ph ph-plus text-[10px] text-mutedGray"></i>
+                <span class="text-[10px] font-bold tracking-widest text-corporateNavy uppercase text-xs">Claude Integration</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight text-corporateNavy mb-8 reveal" id="hero-title">
+                Claude + <span class="gradient-text">Microsoft 365</span><br/>
+                <span class="text-3xl md:text-4xl font-normal text-mutedGray mt-4 block italic">Guía de uso para dirección</span>
+            </h1>
+
+            <p class="text-xl text-mutedGray max-w-2xl mx-auto mb-12 leading-relaxed reveal" style="transition-delay: 200ms">
+                Potenciando la toma de decisiones con acceso total a vuestro entorno digital. 
+                <span class="text-corporateNavy font-semibold">Eficiencia radical, control absoluto.</span>
+            </p>
+
+            <div class="flex justify-center items-center gap-4 md:gap-12 mb-12 reveal" style="transition-delay: 400ms">
+                <div class="flex flex-col items-center gap-3">
+                    <div class="w-16 h-16 rounded-2xl bg-white border border-gray-100 shadow-xl flex items-center justify-center overflow-hidden">
+                        <img src="assets/Logos Microsoft/Microsoft Office.png" class="w-10 h-auto" alt="M365" />
+                    </div>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-mutedGray">M365 Environment</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-1 h-1 rounded-full bg-brandBlue animate-ping"></div>
+                    <div class="h-px w-8 md:w-20 bg-gradient-to-r from-brandBlue to-electricCyan"></div>
+                </div>
+                <div class="flex flex-col items-center gap-3 scale-125">
+                    <div class="w-20 h-20 rounded-[2rem] bg-corporateNavy shadow-2xl shadow-corporateNavy/20 flex items-center justify-center border-4 border-white">
+                        <i class="ph ph-sparkle text-white text-3xl"></i>
+                    </div>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-corporateNavy">Claude AI</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="h-px w-8 md:w-20 bg-gradient-to-r from-electricCyan to-brandBlue"></div>
+                    <div class="w-1 h-1 rounded-full bg-electricCyan animate-ping"></div>
+                </div>
+                <div class="flex flex-col items-center gap-3">
+                    <div class="w-16 h-16 rounded-2xl bg-white border border-gray-100 shadow-xl flex items-center justify-center overflow-hidden p-3">
+                        <img src="assets/logo.png" class="w-full h-auto object-contain" alt="BeServices" />
+                    </div>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-mutedGray">Resultados</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rules Section -->
+    <section id="rules" class="py-24 bg-gray-50/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- SÍ Puede -->
+                <div class="glass-card p-10 rounded-[2.5rem] border-white/80">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 rounded-full bg-successGreen/10 flex items-center justify-center">
+                            <i class="ph ph-check-circle text-2xl text-successGreen"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-extrabold text-corporateNavy">Qué SÍ puede hacer</h2>
+                            <p class="text-xs text-mutedGray uppercase tracking-widest font-bold mt-1">Capacidades de lectura y análisis</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="ph ph-check text-successGreen mt-1"></i>
+                            <span class="text-sm font-medium text-corporateNavy/80"><strong>Leer y buscar correos</strong> (Todos los buzones accesibles)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="ph ph-check text-successGreen mt-1"></i>
+                            <span class="text-sm font-medium text-corporateNavy/80"><strong>Consultar el calendario</strong> (Reuniones, disponibilidad, conflictos)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="ph ph-check text-successGreen mt-1"></i>
+                            <span class="text-sm font-medium text-corporateNavy/80"><strong>Leer documentos</strong> de SharePoint, OneDrive y Teams</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="ph ph-check text-successGreen mt-1"></i>
+                            <span class="text-sm font-medium text-corporateNavy/80"><strong>Redactar</strong> respuestas, resúmenes y propuestas basadas en datos reales</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="ph ph-check text-successGreen mt-1"></i>
+                            <span class="text-sm font-medium text-corporateNavy/80"><strong>Cruzar información</strong> de distintas fuentes (Teams + Email + Docs)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- NO Puede -->
+                <div class="glass-card p-10 rounded-[2.5rem] border-white/80">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 rounded-full bg-errorRed/10 flex items-center justify-center">
+                            <i class="ph ph-warning-circle text-2xl text-errorRed"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-extrabold text-corporateNavy">Qué NO puede hacer</h2>
+                            <p class="text-xs text-mutedGray uppercase tracking-widest font-bold mt-1">Limitaciones y Seguridad</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="ph ph-x text-errorRed mt-1"></i>
+                            <span class="text-sm font-medium text-corporateNavy/80"><strong>Enviar emails</strong> (Tú los revisas y envías siempre)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="ph ph-x text-errorRed mt-1"></i>
+                            <span class="text-sm font-medium text-corporateNavy/80"><strong>Borrar archivos</strong> o conversaciones permanentemente</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="ph ph-x text-errorRed mt-1"></i>
+                            <span class="text-sm font-medium text-corporateNavy/80"><strong>Acceder a contraseñas</strong> ni credenciales personales</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="ph ph-x text-errorRed mt-1"></i>
+                            <span class="text-sm font-medium text-corporateNavy/80"><strong>Ejecutar transacciones</strong> financieras o acceder a banca</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="ph ph-x text-errorRed mt-1"></i>
+                            <span class="text-sm font-medium text-corporateNavy/80"><strong>Modificar permisos</strong> de seguridad del entorno</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-corporateNavy text-white p-8 rounded-3xl flex items-center gap-6 shadow-2xl shadow-corporateNavy/20">
+                <div class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center flex-shrink-0 animate-pulse">
+                    <i class="ph ph-shield-check text-3xl text-electricCyan"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold">Regla de Oro: Seguridad Primero</h3>
+                    <p class="text-sm text-gray-300">Claude lee, analiza y redacta. <strong>Vosotros decidís y ejecutáis.</strong> Nunca actúa de forma autónoma sin supervisión humana.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section id="use-cases" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-corporateNavy mb-4 reveal">60+ Casos de Uso Reales</h2>
+                <p class="text-mutedGray max-w-2xl mx-auto reveal" style="transition-delay: 200ms">Selecciona un perfil para ver ejemplos visuales de cómo Claude transforma el día a día operativo.</p>
+                
+                <div class="flex flex-wrap justify-center gap-2 md:gap-4 mt-12 mb-12 reveal" style="transition-delay: 400ms">
+                    <button onclick="switchProfile('ceo')" class="tab-btn active px-6 md:px-10 py-3 md:py-4 rounded-2xl text-xs md:text-sm font-bold transition-all border border-gray-100 flex items-center gap-2 md:gap-3">
+                        <i class="ph ph-user-circle text-xl md:text-2xl"></i>
+                        CEO
+                    </button>
+                    <button onclick="switchProfile('cfo')" class="tab-btn px-6 md:px-10 py-3 md:py-4 rounded-2xl text-xs md:text-sm font-bold transition-all border border-gray-100 flex items-center gap-2 md:gap-3 bg-gray-50 text-mutedGray">
+                        <i class="ph ph-chart-line-up text-xl md:text-2xl"></i>
+                        CFO
+                    </button>
+                    <button onclick="switchProfile('coo')" class="tab-btn px-6 md:px-10 py-3 md:py-4 rounded-2xl text-xs md:text-sm font-bold transition-all border border-gray-100 flex items-center gap-2 md:gap-3 bg-gray-50 text-mutedGray">
+                        <i class="ph ph-gear text-xl md:text-2xl"></i>
+                        COO
+                    </button>
+                </div>
+            </div>
+
+            <!-- Profile: CEO -->
+            <div id="ceo-section" class="profile-section block">
+                <div id="ceo-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Cards will be injected by JS -->
+                </div>
+            </div>
+
+            <!-- Profile: CFO -->
+            <div id="cfo-section" class="profile-section hidden">
+                <div id="cfo-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Cards will be injected by JS -->
+                </div>
+            </div>
+
+            <!-- Profile: COO -->
+            <div id="coo-section" class="profile-section hidden">
+                <div id="coo-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Cards will be injected by JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-corporateNavy text-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/10 border border-white/20 mb-8 overflow-hidden reveal">
+                <i class="ph ph-shield-check text-electricCyan"></i>
+                <span class="text-[10px] font-bold tracking-widest uppercase">Recordatorio Final</span>
+            </div>
+            
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-8 reveal">Seguridad & Control</h2>
+            
+            <div class="max-w-3xl mx-auto p-12 rounded-[3.5rem] bg-white/5 border border-white/10 backdrop-blur-xl reveal" style="transition-delay: 200ms">
+                <p class="text-xl md:text-2xl leading-relaxed text-gray-300 italic">
+                    "Claude <span class="text-white font-bold">nunca ejecuta</span> sin que vosotros lo veáis primero. Redacta emails pero no los envía. Analiza documentos pero no los modifica. Prepara listas de pago pero no accede a la banca. Toda acción crítica requiere vuestra confirmación explícita."
+                </p>
+            </div>
+
+            <div class="mt-16 reveal" style="transition-delay: 400ms">
+                <p class="text-xs font-bold uppercase tracking-[0.4em] text-electricCyan/60">Marzo 2026 · BeServices · Victor Torres</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 bg-black text-center">
+        <img src="assets/logo.png" alt="BeServices" class="h-6 w-auto mx-auto brightness-0 invert opacity-40" />
+    </footer>
+
+    <script>
+        // Microsoft Logos Mapping
+        const LOGOS = {
+            outlook: 'assets/Logos Microsoft/Outlook-Icon-FY26.png',
+            teams: 'assets/Logos Microsoft/Teams-Icon-FY26.png',
+            sharepoint: 'assets/Logos Microsoft/SharePoint-Icon-FY26.png',
+            excel: 'assets/Logos Microsoft/Excel-Icon-FY26.png',
+            onedrive: 'assets/Logos Microsoft/OneDrive-Icon-FY26.png',
+            defender: 'assets/Logos Microsoft/Defender-Icon-FY26.png',
+            azure: 'assets/Logos Microsoft/microsoft-azure-1.png',
+            onenote: 'assets/Logos Microsoft/OneNote-Icon-FY26.png',
+            powerbi: 'assets/Logos Microsoft/Power BI.png',
+            office: 'assets/Logos Microsoft/Microsoft Office.png',
+            word: 'assets/Logos Microsoft/Word-Icon-FY26.png',
+            powerpoint: 'assets/Logos Microsoft/PowerPoint-Icon-FY26.png'
+        };
+
+        const ceoCases = [
+            { title: "Resumen diario", category: "📬 Gestión de comunicación", triggerIcon: LOGOS.outlook, toolIcon: LOGOS.outlook, desc: "Ahorra 20-30 min de triaje matutino ordenando por urgencia.", prompt: "Dame un resumen de los emails importantes de hoy, ordenados por urgencia." },
+            { title: "Respuesta a cliente difícil", category: "📬 Gestión de comunicación", triggerIcon: LOGOS.outlook, toolIcon: LOGOS.outlook, desc: "Calibra el tono sin desgaste emocional en respuestas tensas.", prompt: "Lee este email y redáctame una respuesta firme pero amable..." },
+            { title: "Seguimiento sin respuesta", category: "📬 Gestión de comunicación", triggerIcon: LOGOS.outlook, toolIcon: LOGOS.outlook, desc: "Detecta emails enviados la semana pasada que no han tenido respuesta.", prompt: "Busca en mi bandeja los emails que envié la semana pasada sin respuesta." },
+            { title: "Briefing de reunión", category: "📬 Gestión de comunicación", triggerIcon: LOGOS.outlook, toolIcon: LOGOS.sharepoint, desc: "Contexto completo: Emails + Notas Teams + Documentos de los últimos 3 meses.", prompt: "Tengo reunión con [empresa]. Dame un briefing de 5 puntos con el contexto." },
+            { title: "Compromisos pendientes", category: "📬 Gestión de comunicación", triggerIcon: LOGOS.outlook, toolIcon: LOGOS.teams, desc: "Analiza emails de la semana y detecta acuerdos no resueltos.", prompt: "Dime qué compromisos he adquirido con clientes que aún no están resueltos." },
+            { title: "Análisis de tiempo", category: "📅 Agenda y tiempo", triggerIcon: LOGOS.outlook, toolIcon: LOGOS.excel, desc: "Datos sobre reuniones internas vs externas y carga de trabajo.", prompt: "¿Cuánto tiempo dedico a reuniones internas vs externas este mes?" },
+            { title: "Preparar semana", category: "📅 Agenda y tiempo", triggerIcon: LOGOS.outlook, toolIcon: LOGOS.onenote, desc: "Revisa calendario y prepara materiales para la semana siguiente.", prompt: "Revisa mi calendario de la semana que viene y dime qué materiales necesito." },
+            { title: "Hueco estratégico", category: "📅 Agenda y tiempo", triggerIcon: LOGOS.outlook, toolIcon: LOGOS.teams, desc: "Encuentra el mejor momento para una reunión entre varios directivos.", prompt: "Busca 2 horas seguidas con Manu y Jordi esta semana. Propón el mejor momento." },
+            { title: "Carga del equipo", category: "📅 Agenda y tiempo", triggerIcon: LOGOS.teams, toolIcon: LOGOS.excel, desc: "Detecta cuellos de botella por exceso de reuniones en el equipo.", prompt: "¿Cuántas horas de reuniones tiene el equipo técnico? ¿Alguien supera las 20h?" },
+            { title: "Resumen de proyecto", category: "📊 Estrategia y decisiones", triggerIcon: LOGOS.sharepoint, toolIcon: LOGOS.word, desc: "Estado actual, riesgos y próximos pasos resumidos en una página.", prompt: "Lee los documentos de [proyecto X] y dame un resumen ejecutivo de 1 página." },
+            { title: "Patrones de queja", category: "📊 Estrategia y decisiones", triggerIcon: LOGOS.outlook, toolIcon: LOGOS.powerbi || LOGOS.excel, desc: "Inteligencia de negocio extraída directamente del correo de soporte.", prompt: "Analiza emails de soporte. ¿Qué problemas se repiten más este mes?" },
+            { title: "Comparativa comercial", category: "📊 Estrategia y decisiones", triggerIcon: LOGOS.sharepoint, toolIcon: LOGOS.excel, desc: "Aprende de los patrones de cierre comparando propuestas ganadoras.", prompt: "Busca las últimas 10 propuestas. ¿Cuáles se cerraron y por qué?" },
+            { title: "Propuesta estratégica", category: "📊 Estrategia y decisiones", triggerIcon: LOGOS.sharepoint, toolIcon: LOGOS.word, desc: "Redacción de propuestas en 15 min usando info de SharePoint.", prompt: "Con la info de SharePoint sobre [cliente], redáctame una propuesta de 2 páginas." },
+            { title: "Presentación inversor", category: "📊 Estrategia y decisiones", triggerIcon: LOGOS.excel, toolIcon: LOGOS.powerpoint, desc: "Organización de datos de facturación y crecimiento para slides.", prompt: "Busca datos de facturación y crecimiento. Organízalos for una presentación." },
+            { title: "Pulso del equipo", category: "👥 Gestión de equipo", triggerIcon: LOGOS.teams, toolIcon: LOGOS.teams, desc: "Detecta temas recurrentes de bloqueo o frustración en Teams.", prompt: "Lee conversaciones de Teams. ¿Hay algún tema de bloqueo que deba atender?" },
+            { title: "Seguimiento reuniones", category: "👥 Gestión de equipo", triggerIcon: LOGOS.teams, toolIcon: LOGOS.sharepoint, desc: "Verifica si los acuerdos de la reunión de dirección se han ejecutado.", prompt: "En la reunión hubo acuerdos. Busca en Teams y emails si se han ejecutado." },
+            { title: "Onboarding pro", category: "👥 Gestión de equipo", triggerIcon: LOGOS.sharepoint, toolIcon: LOGOS.onedrive, desc: "Documento de bienvenida, accesos y tareas basándose en SharePoint.", prompt: "Prepárame un onboarding para [nombre] con info de SharePoint." },
+            { title: "Auditoría de acceso", category: "🔒 Seguridad y compliance", triggerIcon: LOGOS.sharepoint, toolIcon: LOGOS.defender, desc: "Busca documentos confidenciales mal compartidos en SharePoint.", prompt: "Busca en SharePoint documentos con 'confidencial' compartidos públicamente." },
+            { title: "Preparación NIS2", category: "🔒 Seguridad y compliance", triggerIcon: LOGOS.sharepoint, toolIcon: LOGOS.defender, desc: "Inventario de políticas y procedimientos para demostrar cumplimiento.", prompt: "Busca en SharePoint qué políticas de seguridad tenemos ya creadas para NIS2." },
+            { title: "Alertas de vencimiento", category: "🔒 Seguridad y compliance", triggerIcon: LOGOS.outlook, toolIcon: LOGOS.onedrive, desc: "Nunca más pierdas una renovación de contrato o acuerdo crítico.", prompt: "Busca en emails contratos con fechas de vencimiento en los próximos 90 días." },
+            { title: "Resumen para el Consejo", category: "🔒 Seguridad y compliance", triggerIcon: LOGOS.office, toolIcon: 'assets/Logos Microsoft/PowerPoint-Icon-FY26.png', desc: "Recopilación de hitos, clientes ganados e informes resueltos.", prompt: "Recopila hitos del trimestre (emails, Teams, docs) para el consejo." }
+        ];
+
+        const cfoCases = [
+            { title: "Extraer facturas", category: "📑 Facturas y contabilidad", triggerIcon: LOGOS.outlook, toolIcon: LOGOS.excel, desc: "Convierte 30 min de triaje en 2 min extrayendo datos clave.", prompt: "En mi email hay facturas. Extrae: proveedor, importe y vencimiento en una tabla." },
+            { title: "Pagos pendientes", category: "📑 Facturas y contabilidad", triggerIcon: LOGOS.outlook, toolIcon: LOGOS.excel, desc: "Detecta facturas recibidas sin confirmación de pago en el hilo.", prompt: "Busca facturas sin 'pagado' o 'transferencia' en los últimos 60 días." },
+            { title: "Gestión de cobros", category: "📑 Facturas y contabilidad", triggerIcon: LOGOS.outlook, toolIcon: LOGOS.excel, desc: "Seguimiento activo de impagados analizando hilos de correo.", prompt: "Busca emails de facturas de hace 30 días sin confirmación de pago." },
+            { title: "Remesa semanal", category: "📑 Facturas y contabilidad", triggerIcon: LOGOS.outlook, toolIcon: LOGOS.excel, desc: "Prepara la lista de pagos incluyendo IBAN de los documentos.", prompt: "Busca facturas que vencen en 7 días y prepara la remesa con IBAN si aparece." },
+            { title: "Conciliación rápida", category: "📑 Facturas y contabilidad", triggerIcon: LOGOS.outlook, toolIcon: LOGOS.excel, desc: "Compara justificantes de gastos vs tabla de gastos aprobados.", prompt: "Busca justificantes en el email y compáralos con la tabla de gastos aprobados." },
+            { title: "Informe MRR", category: "📊 Reporting y análisis", triggerIcon: LOGOS.sharepoint, toolIcon: LOGOS.excel, desc: "Análisis de evolución de clientes recurrentes desde SharePoint.", prompt: "Extrae datos de MRR de SharePoint. ¿Qué clientes han subido o bajado?" },
+            { title: "Presupuesto vs Real", category: "📊 Reporting y análisis", triggerIcon: LOGOS.excel, toolIcon: LOGOS.excel, desc: "Detecta desviaciones presupuestarias en Q1 analizando Excel vs Gasto.", prompt: "Busca el presupuesto vs datos reales de Q1. ¿Dónde nos hemos desviado más?" },
+            { title: "Control de suscripciones", category: "📊 Reporting y análisis", triggerIcon: LOGOS.excel, toolIcon: LOGOS.excel, desc: "Elimina el gasto hormiga de servicios no vinculados a proyectos.", prompt: "Analiza gastos recurrentes. ¿Hay suscripciones no vinculadas a proyectos?" },
+            { title: "Proyección Cash Flow", category: "📊 Reporting y análisis", triggerIcon: LOGOS.excel, toolIcon: LOGOS.excel, desc: "Estimación a 30 días con facturas y compromisos reales.", prompt: "Con facturas y pagos comprometidos, dame estimación de cash flow a 30 días." },
+            { title: "Rentabilidad Proyecto", category: "📊 Reporting y análisis", triggerIcon: LOGOS.sharepoint, toolIcon: LOGOS.excel, desc: "Coste real: Horas internas + Proveedores + Licencias.", prompt: "Busca todo sobre [proyecto X] y dime cuánto nos ha costado realmente." },
+            { title: "Resumen condiciones", category: "📝 Contratos y proveedores", triggerIcon: LOGOS.sharepoint, toolIcon: LOGOS.sharepoint, desc: "Encuentra precios y penalizaciones sin leer 20 páginas.", prompt: "Busca contrato con [proveedor] y dime: precio, pago y renovaciones." },
+            { title: "Evolución de costes", category: "📝 Contratos y proveedores", triggerIcon: LOGOS.sharepoint, toolIcon: LOGOS.excel, desc: "Compara versiones del contrato para detectar subidas de precio.", prompt: "Tenemos 3 versiones del contrato. ¿Qué ha cambiado en precio y condiciones?" },
+            { title: "Renovación automática", category: "📝 Contratos y proveedores", triggerIcon: LOGOS.sharepoint, toolIcon: LOGOS.outlook, desc: "Alerta de cláusulas de renovación a 6 meses vista.", prompt: "Busca en contratos cláusulas de renovación automática que venzan pronto." },
+            { title: "Briefing Negociación", category: "📝 Contratos y proveedores", triggerIcon: LOGOS.outlook, toolIcon: LOGOS.office, desc: "Puntos fuertes basados en histórico de pagos e incidencias.", prompt: "Voy a renegociar con [proveedor]. Prepárame puntos fuertes con el histórico." },
+            { title: "Dossier bancario", category: "🏦 Banca y financiación", triggerIcon: LOGOS.sharepoint, toolIcon: LOGOS.sharepoint, desc: "Organización de balances y contratos en un índice profesional.", prompt: "Busca balances y contratos relevantes para el banco y organízalos." },
+            { title: "Mapa de deuda", category: "🏦 Banca y financiación", triggerIcon: LOGOS.sharepoint, toolIcon: LOGOS.excel, desc: "Resumen de líneas de crédito, intereses y vencimientos.", prompt: "Busca términos de líneas de crédito: importe, interés y vencimiento." },
+            { title: "Cierre Trimestral", category: "⚖️ Compliance y fiscal", triggerIcon: LOGOS.outlook, toolIcon: LOGOS.onedrive, desc: "Recopilación de facturas y gastos para gestoría en 15 min.", prompt: "Busca facturas y gastos del trimestre y organízalos para la gestoría." },
+            { title: "Riegos Fiscales", category: "⚖️ Compliance y fiscal", triggerIcon: LOGOS.sharepoint, toolIcon: LOGOS.defender, desc: "Detección de retenciones u operaciones vinculadas en contratos.", prompt: "Revisa contratos y señala cláusulas con implicaciones fiscales o retenciones." },
+            { title: "Gestión Subvenciones", category: "⚖️ Compliance y fiscal", triggerIcon: LOGOS.outlook, toolIcon: LOGOS.sharepoint, desc: "Seguimiento de estado y documentación pendiente de ayudas.", prompt: "Busca en emails el estado de las subvenciones solicitadas. ¿Falta algo?" },
+            { title: "Gastos por Cliente", category: "⚖️ Compliance y fiscal", triggerIcon: LOGOS.excel, toolIcon: LOGOS.excel, desc: "Informe detallado de rentabilidad por cuenta de cliente.", prompt: "Necesito saber gastos (proveedores, docs) vinculados a [cliente X]." },
+            { title: "Reporting Consejo", category: "⚖️ Compliance y fiscal", triggerIcon: LOGOS.office, toolIcon: LOGOS.powerpoint, desc: "Cuadro de mando financiero listo sin preparación manual.", prompt: "Recoge KPIs financieros (MRR, margen) y redácta el cuadro de mando." }
+        ];
+
+        const cooCases = [
+            { title: "Estado de proyectos activos", category: "🔧 Operaciones y proyectos técnicos", triggerIcon: LOGOS.teams, toolIcon: LOGOS.sharepoint, desc: "Dashboard semanal sin reunión previa: cliente, fase y bloqueos.", prompt: "Busca en Teams y SharePoint el estado de cada proyecto técnico activo." },
+            { title: "Alerta de inactividad", category: "🔧 Operaciones y proyectos técnicos", triggerIcon: LOGOS.teams, toolIcon: LOGOS.outlook, desc: "Detecta proyectos sin actividad en 10 días para prevenir bloqueos.", prompt: "Busca proyectos en Teams o SharePoint sin actividad en los últimos 10 días." },
+            { title: "Informe de entrega", category: "🔧 Operaciones y proyectos técnicos", triggerIcon: LOGOS.sharepoint, toolIcon: LOGOS.office, desc: "Redacción profesional de informes de entrega en minutos.", prompt: "Busca todo lo documentado del proyecto [X] y redáctame un informe de entrega." },
+            { title: "Resumen de incidencias", category: "🔧 Operaciones y proyectos técnicos", triggerIcon: LOGOS.outlook, toolIcon: LOGOS.excel, desc: "Patrón de incidencias del mes visible en 5 minutos.", prompt: "Busca incidencias técnicas este mes. Clasifícalas por tipo y dime cuáles se repiten." },
+            { title: "Tickets sin resolver", category: "🔧 Operaciones y proyectos técnicos", triggerIcon: LOGOS.outlook, toolIcon: LOGOS.teams, desc: "Localiza tickets abiertos hace más de 48h sin respuesta técnica.", prompt: "Busca soporte que lleve más de 48h abierto sin respuesta del equipo." },
+            { title: "Balance de carga", category: "🔧 Operaciones y proyectos técnicos", triggerIcon: LOGOS.teams, toolIcon: LOGOS.excel, desc: "Detecta saturación o falta de asignaciones en el equipo técnico.", prompt: "Analiza el calendario y Teams del equipo técnico. ¿Quién está más saturado?" },
+            { title: "Auditoría de promesas", category: "🔧 Operaciones y proyectos técnicos", triggerIcon: LOGOS.teams, toolIcon: LOGOS.outlook, desc: "Lista de compromisos técnicos asumidos con clientes en chats.", prompt: "Busca en emails y Teams promesas hechas a clientes (funcionalidad, plazos)." },
+            { title: "Inventario activo", category: "🏗️ Infraestructura y sistemas", triggerIcon: LOGOS.sharepoint, toolIcon: LOGOS.excel, desc: "Lista actualizada de servicios por cliente (cloud, backup, seguridad).", prompt: "Busca en SharePoint documentos de configuración. Dime qué servicios tiene cada cliente." },
+            { title: "Riesgo Legacy", category: "🏗️ Infraestructura y sistemas", triggerIcon: LOGOS.sharepoint, toolIcon: LOGOS.azure, desc: "Mapa de clientes con servidores físicos o sistemas obsoletos.", prompt: "Busca menciones a servidores físicos o sistemas legacy. ¿Quién sigue en riesgo?" },
+            { title: "Consumo Cloud", category: "🏗️ Infraestructura y sistemas", triggerIcon: LOGOS.azure, toolIcon: LOGOS.excel, desc: "Control de Azure/GCP antes de que llegue la factura sorpresa.", prompt: "Busca informes de consumo cloud. ¿Alguno se acerca al límite o tiene picos?" },
+            { title: "Propuesta de Update", category: "🏗️ Infraestructura y sistemas", triggerIcon: LOGOS.azure, toolIcon: LOGOS.office, desc: "Upsell técnico con argumentos sólidos basados en el setup actual.", prompt: "El cliente [X] lleva 3 años igual. Redáctame una propuesta de actualización." },
+            { title: "Errores de Backup", category: "🏗️ Infraestructura y sistemas", triggerIcon: LOGOS.azure, toolIcon: LOGOS.teams, desc: "Detecta fallos silenciosos en Veeam o Bebackup a tiempo.", prompt: "Busca menciones a errores de backup o alertas de Veeam no resueltas." },
+            { title: "Knowledge Base Clean", category: "👥 Gestión de equipo técnico", triggerIcon: LOGOS.sharepoint, toolIcon: LOGOS.sharepoint, desc: "Detecta documentación técnica no editada en más de 6 meses.", prompt: "Busca documentos técnicos de clientes no editados en 6 meses." },
+            { title: "Onboarding Técnico", category: "👥 Gestión de equipo técnico", triggerIcon: LOGOS.sharepoint, toolIcon: LOGOS.office, desc: "Técnicos productivos desde el primer día con plan estructurado.", prompt: "Prepárame un onboarding técnico para [nombre] con accesos y proyectos." },
+            { title: "Mejora Operativa", category: "👥 Gestión de equipo técnico", triggerIcon: LOGOS.teams, toolIcon: LOGOS.teams, desc: "Detecta fricciones o dudas recurrentes en el equipo sin reuniones.", prompt: "Revisa conversaciones de Teams. ¿Hay temas de fricción o dudas que se repiten?" },
+            { title: "Agenda Reunión Semanal", category: "👥 Gestión de equipo técnico", triggerIcon: LOGOS.teams, toolIcon: LOGOS.office, desc: "Orden del día basada en incidencias y proyectos de la semana.", prompt: "Revisa proyectos e incidencias. Prepárame la agenda de la reunión técnica." },
+            { title: "Rentabilidad por Cliente", category: "👥 Gestión de equipo técnico", triggerIcon: LOGOS.teams, toolIcon: LOGOS.excel, desc: "Identifica qué clientes consumen más tiempo técnico.", prompt: "Busca clientes con más conversaciones de soporte este trimestre." },
+            { title: "Alertas Besafe/Defender", category: "🔒 Seguridad operativa", triggerIcon: LOGOS.defender, toolIcon: LOGOS.teams, desc: "Ninguna alerta de seguridad se pierde entre conversaciones.", prompt: "Busca menciones a alertas de Besafe o SonicWall sin respuesta en 30 días." },
+            { title: "Evidencia de Backups", category: "🔒 Seguridad operativa", triggerIcon: LOGOS.azure, toolIcon: LOGOS.office, desc: "Verificación mensual de backup activo para cada cuenta.", prompt: "Busca confirmaciones de backup exitoso para cada cliente este mes." },
+            { title: "Dossier de Auditoría", category: "🔒 Seguridad operativa", triggerIcon: LOGOS.sharepoint, toolIcon: LOGOS.office, desc: "Recopila evidencias técnicas para auditorías internas de clientes.", prompt: "El cliente pide evidencia de procesos técnicos. Busca procedimientos en SharePoint." },
+            { title: "Renovación Licencias", category: "🔒 Seguridad operativa", triggerIcon: LOGOS.defender, toolIcon: LOGOS.outlook, desc: "Aviso a 60 días para licencias críticas (Veeam, Datto, etc).", prompt: "Busca licencias técnicas (SonicWall, Veeam) que venzan en los próximos 60 días." }
+        ];
+
+        // Animations on scroll
+        function initReveal() {
+            const obsOptions = { threshold: 0.1 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, obsOptions);
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        function switchProfile(profile) {
+            document.querySelectorAll('.profile-section').forEach(s => s.classList.add('hidden'));
+            document.getElementById(`${profile}-section`).classList.remove('hidden');
+            
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('active');
+                b.classList.add('bg-gray-50', 'text-mutedGray');
+            });
+            
+            event.currentTarget.classList.add('active');
+            event.currentTarget.classList.remove('bg-gray-50', 'text-mutedGray');
+            
+            renderGrid(profile);
+        }
+
+        function createCard(data) {
+            const renderIcon = (icon) => {
+                if (!icon) return `<i class="ph ph-question text-lg text-corporateNavy"></i>`;
+                if (icon.startsWith('ph ')) {
+                    return `<i class="${icon} text-lg text-corporateNavy"></i>`;
+                }
+                return `<img src="${icon}" class="w-6 h-6 object-contain" alt="Tool" />`;
+            };
+
+            const renderMainIcon = (icon) => {
+                if (!icon) return `<i class="ph ph-question text-2xl text-corporateNavy"></i>`;
+                if (icon.startsWith('ph ')) {
+                    return `<i class="${icon} text-2xl text-corporateNavy opacity-40 group-hover:opacity-100 group-hover:text-brandBlue transition-all"></i>`;
+                }
+                return `<img src="${icon}" class="w-full h-full object-contain opacity-60 group-hover:opacity-100 transition-all p-1" alt="Tool" />`;
+            };
+
+            return `
+                <div class="glass-card p-6 md:p-8 rounded-[2rem] hover:border-brandBlue/30 hover:shadow-xl transition-all duration-500 group flex flex-col h-full reveal border border-gray-100">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden">
+                            ${renderMainIcon(data.triggerIcon)}
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-corporateNavy mb-3 leading-tight">${data.title}</h3>
+                    <p class="text-sm text-mutedGray mb-6 leading-relaxed flex-grow">${data.desc}</p>
+                    
+                    <div class="bg-gray-50/50 rounded-2xl p-4 mb-6 border border-gray-100">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="ph ph-terminal-window text-brandBlue text-sm"></i>
+                            <span class="text-[9px] font-bold uppercase text-corporateNavy/60">Prompt Sugerido</span>
+                        </div>
+                        <p class="text-[11px] italic text-corporateNavy/80 line-clamp-3 leading-relaxed">"${data.prompt}"</p>
+                    </div>
+
+                    <div class="flex items-center gap-2 mt-auto pt-4 border-t border-gray-50">
+                        <div class="n8n-node w-10 h-10 overflow-hidden p-2">${renderIcon(data.triggerIcon)}</div>
+                        <div class="n8n-connector"></div>
+                        <div class="n8n-node w-10 h-10 bg-corporateNavy border-corporateNavy"><i class="ph ph-sparkle text-lg text-white"></i></div>
+                        <div class="n8n-connector"></div>
+                        <div class="n8n-node w-10 h-10 overflow-hidden p-2">${renderIcon(data.toolIcon)}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderGrid(profile) {
+            const grid = document.getElementById(`${profile}-grid`);
+            const data = profile === 'ceo' ? ceoCases : (profile === 'cfo' ? cfoCases : cooCases);
+            
+            // Group by category
+            const grouped = data.reduce((acc, obj) => {
+                const key = obj.category;
+                if (!acc[key]) acc[key] = [];
+                acc[key].push(obj);
+                return acc;
+            }, {});
+
+            let html = '';
+            for (const [category, cases] of Object.entries(grouped)) {
+                html += `
+                    <div class="col-span-full mt-16 mb-8 first:mt-0">
+                        <div class="flex items-center gap-6 reveal">
+                            <h2 class="text-2xl md:text-3xl font-extrabold text-corporateNavy whitespace-nowrap">${category}</h2>
+                            <div class="h-px bg-gradient-to-r from-gray-200 to-transparent w-full"></div>
+                        </div>
+                    </div>
+                    ${cases.map(c => createCard(c)).join('')}
+                `;
+            }
+            grid.innerHTML = html;
+            
+            // Re-init reveals for new content
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, { threshold: 0.1 });
+            grid.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        window.onload = () => {
+            initReveal();
+            document.getElementById('hero-title').classList.add('active');
+            renderGrid('ceo');
+        };
+    </script>
+</body>
+
+</html>
