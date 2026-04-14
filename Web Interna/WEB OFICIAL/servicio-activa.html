@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ACTIVA - Licencias y Herramientas | beServices</title>
+
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter:wght@700;800;900&display=swap" rel="stylesheet" />
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: '#0075f2',
+                        corporateNavy: '#001A41',
+                        mutedGray: '#9CA3AF',
+                        electricCyan: '#50cabf',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #FFFFFF; color: #001A41; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Inter', sans-serif; font-weight: 800; color: #001A41; letter-spacing: -0.02em; }
+        .glass-navbar { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0, 26, 65, 0.05); }
+        .hero-heading { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; letter-spacing: -0.02em; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-corporateNavy selection:text-white">
+
+    <!-- BEGIN: Navbar -->
+    <nav class="fixed top-0 w-full z-50 glass-navbar transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center">
+                <img src="assets/logo.png" alt="beServices Logo" class="h-8 w-auto mix-blend-multiply" />
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 bg-white/40 border border-corporateNavy/5 px-8 py-2 rounded-full backdrop-blur-md">
+                <a href="index.html#servicios" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">Servicios</a>
+                <a href="#" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">Nosotros</a>
+                <a href="#" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">Casos</a>
+                <a href="#contacto" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">Contacto</a>
+            </div>
+
+            <a href="internal.html" class="hidden md:inline-flex items-center gap-2 justify-center px-6 py-2.5 text-sm font-bold text-white bg-[#001A41] rounded-full hover:bg-[#001A41]/90 transition-colors shadow-lg shadow-[#001A41]/20">Internal Site <span class="opacity-60">→</span></a>
+        </div>
+    </nav>
+
+    <!-- BEGIN: Hero Section -->
+    <section class="relative pt-40 pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="max-w-2xl reveal active">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200 mb-8">
+                        <span class="w-2 h-2 rounded-full bg-[#1A73E8]"></span>
+                        <span class="text-xs font-bold tracking-widest text-[#003399] uppercase">FASE 01</span>
+                    </div>
+                    <h1 class="hero-heading mb-6 font-black uppercase">
+                        ACTIVA tu entorno digital
+                    </h1>
+                    <p class="text-2xl font-bold text-[#1A73E8] mb-6">Licencias y herramientas para tu equipo</p>
+                    <p class="text-lg text-mutedGray leading-relaxed mb-10 max-w-xl">
+                        Te ayudamos a elegir, activar y gestionar las licencias correctas para tu empresa. Microsoft 365, Google Workspace, Azure y mucho más. Sin complicaciones, sin sobrecostes.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contacto" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-[#003399] rounded-full transition-all shadow-xl shadow-[#003399]/20 hover:-translate-y-1">Solicitar propuesta</a>
+                        <a href="#proceso" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-[#003399] bg-white border border-[#003399]/10 rounded-full hover:bg-gray-50 transition-all shadow-sm">¿Qué necesito?</a>
+                    </div>
+                </div>
+                <div class="relative flex justify-center lg:justify-end reveal active" style="transition-delay: 200ms;">
+                    <img src="assets/ICONOS/grandes/1.png" alt="Fase 01 Activa" class="w-full max-w-[400px] h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/400x400?text=Activa+Icon'" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 1 — SELECTOR DE ECOSISTEMA -->
+    <section class="py-16 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200 mb-6 reveal">
+                <span class="text-xs font-bold tracking-widest text-[#001A41] uppercase">ELIGE TU ECOSISTEMA</span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-heading font-black text-corporateNavy mb-12 max-w-3xl mx-auto reveal" style="transition-delay: 100ms;">Somos partner certificado de Microsoft y Google. Tú eliges. Nosotros lo gestionamos.</h2>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4 reveal" style="transition-delay: 200ms;">
+                <button data-tab="microsoft" class="active-tab flex items-center justify-center gap-3 px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-lg bg-[#003399] text-white">
+                    <i class="ph ph-microsoft-logo text-2xl"></i>
+                    Microsoft 365
+                </button>
+                <button data-tab="google" class="flex items-center justify-center gap-3 px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 bg-white border border-gray-200 text-[#001A41] hover:bg-gray-50">
+                    <i class="ph ph-google-logo text-2xl"></i>
+                    Google Workspace
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 2A — PLANES MICROSOFT 365 -->
+    <section data-panel="microsoft" class="py-20 bg-[#F9FAFB] transition-all duration-500 transform translate-y-0 opacity-100">
+        <div class="max-w-[90rem] mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h3 class="text-3xl font-heading font-black text-corporateNavy mb-4">Planes Microsoft 365</h3>
+                <p class="text-lg text-gray-500">Para equipos de cualquier tamaño. Todos incluyen correo Exchange, Teams y OneDrive.</p>
+            </div>
+            
+            <div class="flex overflow-x-auto lg:grid lg:grid-cols-5 gap-6 pb-8 snap-x">
+                <!-- CARD 1 -->
+                <div class="min-w-[300px] lg:min-w-0 bg-white rounded-[2rem] p-8 border border-gray-100 hover:shadow-2xl hover:-translate-y-2 hover:border-[#1A73E8]/40 transition-all duration-500 relative overflow-hidden flex flex-col snap-center reveal" style="transition-delay: 0ms;">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-[#E0F2FE]"></div>
+                    <div class="mb-6 flex-grow">
+                        <h4 class="text-xl font-bold text-corporateNavy mb-2">Business Basic</h4>
+                        <p class="text-sm text-gray-500 italic mb-6">Equipos que solo necesitan correo y Teams</p>
+                        <div class="flex items-end gap-1 mb-6">
+                            <span class="text-3xl font-bold text-corporateNavy">desde 6€</span>
+                            <span class="text-xs text-gray-400 mb-1">usuario / mes</span>
+                        </div>
+                        <div class="w-full h-px bg-gray-100 mb-6"></div>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Gmail corporativo (Exchange)</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Microsoft Teams</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Office en versión web</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> 1 TB OneDrive</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> SharePoint</li>
+                        </ul>
+                    </div>
+                    <a href="#contacto" class="w-full text-center py-3 rounded-full border-2 border-corporateNavy text-corporateNavy font-bold hover:bg-corporateNavy hover:text-white transition-colors mt-auto">Solicitar propuesta</a>
+                </div>
+                
+                <!-- CARD 2 -->
+                <div class="min-w-[300px] lg:min-w-0 bg-white rounded-[2rem] p-8 border border-gray-100 hover:shadow-2xl hover:-translate-y-2 hover:border-[#1A73E8]/40 transition-all duration-500 relative overflow-hidden flex flex-col snap-center reveal" style="transition-delay: 100ms;">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-[#1A73E8]/30"></div>
+                    <div class="mb-6 flex-grow">
+                        <h4 class="text-xl font-bold text-corporateNavy mb-2">Business Standard</h4>
+                        <p class="text-sm text-gray-500 italic mb-6">Para quien necesita Office instalado en el PC</p>
+                        <div class="flex items-end gap-1 mb-6">
+                            <span class="text-3xl font-bold text-corporateNavy">desde 12€</span>
+                            <span class="text-xs text-gray-400 mb-1">usuario / mes</span>
+                        </div>
+                        <div class="w-full h-px bg-gray-100 mb-6"></div>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Todo lo de Basic</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Office instalado (Word, Excel, PowerPoint)</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Grabación de reuniones Teams</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Webinars hasta 300 personas</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> 1 TB OneDrive</li>
+                        </ul>
+                    </div>
+                    <a href="#contacto" class="w-full text-center py-3 rounded-full border-2 border-corporateNavy text-corporateNavy font-bold hover:bg-corporateNavy hover:text-white transition-colors mt-auto">Solicitar propuesta</a>
+                </div>
+
+                <!-- CARD 3 (DESTACADA) -->
+                <div class="min-w-[300px] lg:min-w-0 bg-white rounded-[2rem] p-8 border-2 border-[#003399] shadow-xl shadow-[#003399]/10 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 relative flex flex-col snap-center reveal" style="transition-delay: 200ms;">
+                    <div class="absolute top-0 right-0 transform translate-x-2 -translate-y-4">
+                        <span class="bg-[#003399] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">MÁS CONTRATADO</span>
+                    </div>
+                    <div class="absolute top-0 left-0 w-full h-1 bg-[#003399]"></div>
+                    <div class="mb-6 flex-grow mt-2">
+                        <h4 class="text-xl font-bold text-corporateNavy mb-2">Business Premium</h4>
+                        <p class="text-sm text-gray-500 italic mb-6">El más completo para pymes que necesitan seguridad</p>
+                        <div class="flex items-end gap-1 mb-6">
+                            <span class="text-3xl font-bold text-corporateNavy">desde 22€</span>
+                            <span class="text-xs text-gray-400 mb-1">usuario / mes</span>
+                        </div>
+                        <div class="w-full h-px bg-gray-100 mb-6"></div>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Todo lo de Standard</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Seguridad avanzada (Defender)</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Gestión de dispositivos (Intune)</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Protección de identidades (Entra ID P1)</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Azure Information Protection</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Archivo ilimitado de correo</li>
+                        </ul>
+                    </div>
+                    <a href="#contacto" class="w-full text-center py-3 rounded-full bg-[#003399] text-white font-bold hover:bg-[#003399]/90 transition-colors mt-auto shadow-md">Solicitar propuesta</a>
+                </div>
+
+                <!-- CARD 4 -->
+                <div class="min-w-[300px] lg:min-w-0 bg-white rounded-[2rem] p-8 border border-gray-100 hover:shadow-2xl hover:-translate-y-2 hover:border-[#1A73E8]/40 transition-all duration-500 relative flex flex-col snap-center reveal" style="transition-delay: 300ms;">
+                    <div class="mb-4">
+                        <span class="bg-gray-100 text-gray-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">ENTERPRISE</span>
+                    </div>
+                    <div class="mb-6 flex-grow">
+                        <h4 class="text-xl font-bold text-corporateNavy mb-2">Microsoft 365 E3 / E5</h4>
+                        <p class="text-sm text-gray-500 italic mb-6">Empresas +300 empleados o sectores regulados</p>
+                        <div class="flex items-end gap-1 mb-6">
+                            <span class="text-xl font-bold text-corporateNavy">Precio a medida</span>
+                        </div>
+                        <div class="w-full h-px bg-gray-100 mb-6"></div>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Suite completa de cumplimiento</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> eDiscovery y auditoría avanzada</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Gestión avanzada de identidades (P2)</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Defender for Endpoint incluido</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Power BI Pro incluido (E5)</li>
+                        </ul>
+                    </div>
+                    <a href="#contacto" class="w-full text-center py-3 rounded-full border-2 border-corporateNavy text-corporateNavy font-bold hover:bg-corporateNavy hover:text-white transition-colors mt-auto">Consultar precio</a>
+                </div>
+
+                <!-- CARD 5 -->
+                <div class="min-w-[300px] lg:min-w-0 bg-white rounded-[2rem] p-8 border border-gray-100 hover:shadow-2xl hover:-translate-y-2 hover:border-[#1A73E8]/40 transition-all duration-500 relative flex flex-col snap-center reveal" style="transition-delay: 400ms;">
+                    <div class="mb-4">
+                        <span class="bg-gray-50 text-gray-500 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">BÁSICO</span>
+                    </div>
+                    <div class="mb-6 flex-grow">
+                        <h4 class="text-xl font-bold text-corporateNavy mb-2">Frontline / Correo corporativo</h4>
+                        <p class="text-sm text-gray-500 italic mb-6">Trabajadores en campo o solo correo profesional</p>
+                        <div class="flex items-end gap-1 mb-6">
+                            <span class="text-3xl font-bold text-corporateNavy">desde 2€</span>
+                            <span class="text-xs text-gray-400 mb-1">usuario / mes</span>
+                        </div>
+                        <div class="w-full h-px bg-gray-100 mb-6"></div>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Correo corporativo Microsoft</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Teams básico</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Acceso web a Office</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Ideal para: hostelería, logística, retail</li>
+                        </ul>
+                    </div>
+                    <a href="#contacto" class="w-full text-center py-3 rounded-full border-2 border-corporateNavy text-corporateNavy font-bold hover:bg-corporateNavy hover:text-white transition-colors mt-auto">Solicitar propuesta</a>
+                </div>
+            </div>
+
+            <!-- Add-ons -->
+            <div class="flex flex-wrap justify-center gap-4 mt-8 reveal" style="transition-delay: 500ms;">
+                <span class="bg-[#E0F2FE] text-[#003399] text-xs font-bold px-4 py-2 rounded-full cursor-default">+ Copilot para M365 — IA en Word, Excel y Teams</span>
+                <span class="bg-[#E0F2FE] text-[#003399] text-xs font-bold px-4 py-2 rounded-full cursor-default">+ Teams Premium — Funciones avanzadas de reuniones</span>
+                <span class="bg-[#E0F2FE] text-[#003399] text-xs font-bold px-4 py-2 rounded-full cursor-default">+ Power BI Pro — Dashboards e informes</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 2B — PLANES GOOGLE WORKSPACE -->
+    <section data-panel="google" class="py-20 bg-[#F9FAFB] hidden transition-all duration-500 transform translate-y-8 opacity-0">
+        <div class="max-w-[90rem] mx-auto px-6">
+            <div class="text-center mb-16">
+                <h3 class="text-3xl font-heading font-black text-corporateNavy mb-4">Planes Google Workspace</h3>
+                <p class="text-lg text-gray-500">Para equipos que viven en el navegador. Gmail, Drive, Meet y toda la suite Google.</p>
+            </div>
+            
+            <div class="flex overflow-x-auto lg:grid lg:grid-cols-5 gap-6 pb-8 snap-x">
+                <!-- CARD 1 -->
+                <div class="min-w-[300px] lg:min-w-0 bg-white rounded-[2rem] p-8 border border-gray-100 hover:shadow-2xl hover:-translate-y-2 hover:border-[#1A73E8]/40 transition-all duration-500 relative flex flex-col snap-center">
+                    <div class="mb-6 flex-grow">
+                        <h4 class="text-xl font-bold text-corporateNavy mb-2">Business Starter</h4>
+                        <p class="text-sm text-gray-500 italic mb-6">Para empezar con Google de forma profesional</p>
+                        <div class="flex items-end gap-1 mb-6">
+                            <span class="text-3xl font-bold text-corporateNavy">desde 6€</span>
+                            <span class="text-xs text-gray-400 mb-1">usuario / mes</span>
+                        </div>
+                        <div class="w-full h-px bg-gray-100 mb-6"></div>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Gmail corporativo</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Google Meet (100 participantes)</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Drive 30 GB por usuario</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Docs, Sheets, Slides</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Google Calendar compartido</li>
+                        </ul>
+                    </div>
+                    <a href="#contacto" class="w-full text-center py-3 rounded-full border-2 border-corporateNavy text-corporateNavy font-bold hover:bg-corporateNavy hover:text-white transition-colors mt-auto">Solicitar propuesta</a>
+                </div>
+                
+                <!-- CARD 2 (DESTACADA) -->
+                <div class="min-w-[300px] lg:min-w-0 bg-white rounded-[2rem] p-8 border-2 border-[#003399] shadow-xl shadow-[#003399]/10 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 relative flex flex-col snap-center">
+                    <div class="absolute top-0 right-0 transform translate-x-2 -translate-y-4">
+                        <span class="bg-[#003399] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">MÁS CONTRATADO</span>
+                    </div>
+                    <div class="mb-6 flex-grow mt-2">
+                        <h4 class="text-xl font-bold text-corporateNavy mb-2">Business Standard</h4>
+                        <p class="text-sm text-gray-500 italic mb-6">El punto óptimo entre precio y funcionalidad</p>
+                        <div class="flex items-end gap-1 mb-6">
+                            <span class="text-3xl font-bold text-corporateNavy">desde 12€</span>
+                            <span class="text-xs text-gray-400 mb-1">usuario / mes</span>
+                        </div>
+                        <div class="w-full h-px bg-gray-100 mb-6"></div>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Todo lo de Starter</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Drive 2 TB por usuario</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Meet hasta 150 participantes</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Grabación de reuniones</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> AppSheet (sin código)</li>
+                        </ul>
+                    </div>
+                    <a href="#contacto" class="w-full text-center py-3 rounded-full bg-[#003399] text-white font-bold hover:bg-[#003399]/90 transition-colors mt-auto shadow-md">Solicitar propuesta</a>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="min-w-[300px] lg:min-w-0 bg-white rounded-[2rem] p-8 border border-gray-100 hover:shadow-2xl hover:-translate-y-2 hover:border-[#1A73E8]/40 transition-all duration-500 relative flex flex-col snap-center">
+                    <div class="mb-6 flex-grow">
+                        <h4 class="text-xl font-bold text-corporateNavy mb-2">Business Plus</h4>
+                        <p class="text-sm text-gray-500 italic mb-6">Para empresas que necesitan control y retención de datos</p>
+                        <div class="flex items-end gap-1 mb-6">
+                            <span class="text-3xl font-bold text-corporateNavy">desde 18€</span>
+                            <span class="text-xs text-gray-400 mb-1">usuario / mes</span>
+                        </div>
+                        <div class="w-full h-px bg-gray-100 mb-6"></div>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Todo lo de Standard</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Drive 5 TB por usuario</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> eDiscovery y auditoría</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Google Vault incluido</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Meet hasta 500 participantes</li>
+                        </ul>
+                    </div>
+                    <a href="#contacto" class="w-full text-center py-3 rounded-full border-2 border-corporateNavy text-corporateNavy font-bold hover:bg-corporateNavy hover:text-white transition-colors mt-auto">Solicitar propuesta</a>
+                </div>
+
+                <!-- CARD 4 -->
+                <div class="min-w-[300px] lg:min-w-0 bg-white rounded-[2rem] p-8 border border-gray-100 hover:shadow-2xl hover:-translate-y-2 hover:border-[#1A73E8]/40 transition-all duration-500 relative flex flex-col snap-center">
+                    <div class="mb-4">
+                        <span class="bg-gray-100 text-gray-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">ENTERPRISE</span>
+                    </div>
+                    <div class="mb-6 flex-grow">
+                        <h4 class="text-xl font-bold text-corporateNavy mb-2">Enterprise</h4>
+                        <div class="flex items-end gap-1 mb-6 mt-4">
+                            <span class="text-xl font-bold text-corporateNavy">Precio a medida</span>
+                        </div>
+                        <div class="w-full h-px bg-gray-100 mb-6"></div>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Almacenamiento ilimitado</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> DLP avanzado</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Cloud Identity Premium</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Security Center</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Gemini Enterprise incluido</li>
+                        </ul>
+                    </div>
+                    <a href="#contacto" class="w-full text-center py-3 rounded-full border-2 border-corporateNavy text-corporateNavy font-bold hover:bg-corporateNavy hover:text-white transition-colors mt-auto">Consultar precio</a>
+                </div>
+
+                <!-- CARD 5 -->
+                <div class="min-w-[300px] lg:min-w-0 bg-white rounded-[2rem] p-8 border border-gray-100 hover:shadow-2xl hover:-translate-y-2 hover:border-[#1A73E8]/40 transition-all duration-500 relative flex flex-col snap-center">
+                    <div class="mb-4">
+                        <span class="bg-gray-50 text-gray-500 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">BÁSICO</span>
+                    </div>
+                    <div class="mb-6 flex-grow">
+                        <h4 class="text-xl font-bold text-corporateNavy mb-2">Frontline</h4>
+                        <p class="text-sm text-gray-500 italic mb-6">Trabajadores sin escritorio fijo</p>
+                        <div class="flex items-end gap-1 mb-6">
+                            <span class="text-3xl font-bold text-corporateNavy">desde 2€</span>
+                            <span class="text-xs text-gray-400 mb-1">usuario / mes</span>
+                        </div>
+                        <div class="w-full h-px bg-gray-100 mb-6"></div>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Gmail + Meet básico</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Drive 2 GB</li>
+                            <li class="flex items-start gap-3 text-sm text-corporateNavy"><i class="ph-fill ph-check-circle text-[#1A73E8] text-lg shrink-0"></i> Apps móviles incluidas</li>
+                        </ul>
+                    </div>
+                    <a href="#contacto" class="w-full text-center py-3 rounded-full border-2 border-corporateNavy text-corporateNavy font-bold hover:bg-corporateNavy hover:text-white transition-colors mt-auto">Solicitar propuesta</a>
+                </div>
+            </div>
+
+            <!-- Add-ons -->
+            <div class="flex flex-wrap justify-center gap-4 mt-8">
+                <span class="bg-[#E0F2FE] text-[#003399] text-xs font-bold px-4 py-2 rounded-full cursor-default">+ Gemini Business — IA en Gmail y Docs</span>
+                <span class="bg-[#E0F2FE] text-[#003399] text-xs font-bold px-4 py-2 rounded-full cursor-default">+ Google Vault — Archivado legal</span>
+                <span class="bg-[#E0F2FE] text-[#003399] text-xs font-bold px-4 py-2 rounded-full cursor-default">+ AppSheet — Apps sin código</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3 — COMPARADOR RÁPIDO -->
+    <section class="py-20 bg-white border-t border-gray-100">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-3xl md:text-4xl font-heading font-black text-corporateNavy mb-4">¿No sabes si Microsoft o Google?</h2>
+                <p class="text-lg text-gray-500">Esta tabla te lo deja claro en 30 segundos.</p>
+            </div>
+            
+            <div class="overflow-x-auto rounded-[2rem] shadow-sm border border-gray-100 mb-12 reveal" style="transition-delay: 100ms;">
+                <table class="w-full text-left bg-white min-w-[600px]">
+                    <thead>
+                        <tr class="border-b border-gray-100">
+                            <th class="py-5 px-6 font-bold text-corporateNavy">Feature</th>
+                            <th class="py-5 px-6 font-bold text-corporateNavy border-l border-gray-100">Microsoft 365</th>
+                            <th class="py-5 px-6 font-bold text-corporateNavy border-l border-gray-100">Google Workspace</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-600 text-sm">
+                        <tr class="bg-gray-50/30">
+                            <td class="py-4 px-6 font-medium">Office instalado en PC</td>
+                            <td class="py-4 px-6 border-l border-gray-100"><i class="ph-fill ph-check-circle text-emerald-500 text-lg"></i></td>
+                            <td class="py-4 px-6 border-l border-gray-100"><i class="ph ph-minus text-gray-300 text-lg"></i></td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="py-4 px-6 font-medium">Colaboración en tiempo real</td>
+                            <td class="py-4 px-6 border-l border-gray-100"><i class="ph-fill ph-check-circle text-emerald-500 text-lg"></i></td>
+                            <td class="py-4 px-6 border-l border-gray-100"><i class="ph-fill ph-check-circle text-emerald-500 text-lg"></i></td>
+                        </tr>
+                        <tr class="bg-gray-50/30">
+                            <td class="py-4 px-6 font-medium">Almacenamiento por usuario</td>
+                            <td class="py-4 px-6 border-l border-gray-100">1 TB</td>
+                            <td class="py-4 px-6 border-l border-gray-100">2 TB (Standard)</td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="py-4 px-6 font-medium">Videoconferencias</td>
+                            <td class="py-4 px-6 border-l border-gray-100">Teams</td>
+                            <td class="py-4 px-6 border-l border-gray-100">Meet</td>
+                        </tr>
+                        <tr class="bg-gray-50/30">
+                            <td class="py-4 px-6 font-medium">IA incluida</td>
+                            <td class="py-4 px-6 border-l border-gray-100">Copilot (+coste)</td>
+                            <td class="py-4 px-6 border-l border-gray-100">Gemini (según plan)</td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="py-4 px-6 font-medium">Cumplimiento GDPR avanzado</td>
+                            <td class="py-4 px-6 border-l border-gray-100 flex items-center gap-1"><i class="ph-fill ph-check-circle text-emerald-500 text-lg"></i> (Premium+)</td>
+                            <td class="py-4 px-6 border-l border-gray-100 flex items-center gap-1"><i class="ph-fill ph-check-circle text-emerald-500 text-lg"></i> (Plus+)</td>
+                        </tr>
+                        <tr class="bg-gray-50/30">
+                            <td class="py-4 px-6 font-medium">Facilidad de adopción</td>
+                            <td class="py-4 px-6 border-l border-gray-100">Media</td>
+                            <td class="py-4 px-6 border-l border-gray-100">Alta</td>
+                        </tr>
+                        <tr class="bg-white border-t border-gray-100">
+                            <td class="py-4 px-6 font-bold text-corporateNavy">Mejor para</td>
+                            <td class="py-4 px-6 border-l border-gray-100 font-bold text-[#003399]">Windows + Office users</td>
+                            <td class="py-4 px-6 border-l border-gray-100 font-bold text-[#1A73E8]">Equipos cloud-first</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="bg-[#E0F2FE] rounded-[2rem] p-8 flex flex-col md:flex-row items-center justify-between gap-6 reveal" style="transition-delay: 200ms;">
+                <p class="text-xl font-bold text-corporateNavy max-w-sm">¿Sigues con dudas? En 20 minutos te decimos cuál encaja con tu equipo.</p>
+                <a href="#contacto" class="shrink-0 px-6 py-3 bg-[#003399] text-white font-bold rounded-full hover:bg-corporateNavy transition-colors">Agendar llamada gratuita</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 4 — LICENCIAS COMPLEMENTARIAS -->
+    <section class="py-16 bg-[#F9FAFB] border-t border-gray-100">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-3xl md:text-4xl font-heading font-black text-corporateNavy mb-4">También gestionamos</h2>
+                <p class="text-lg text-gray-500">Licencias de plataforma que completan tu ecosistema.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <!-- AZURE -->
+                <div class="bg-white p-8 rounded-[2rem] border border-gray-100 reveal" style="transition-delay: 100ms;">
+                    <i class="ph ph-cloud-arrow-up text-[#003399] w-8 h-8 text-3xl mb-4"></i>
+                    <h4 class="text-xl font-bold text-corporateNavy mb-4">Microsoft Azure</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-gray-400 rounded-full"></span> Consumo Azure gestionado (CSP)</li>
+                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-gray-400 rounded-full"></span> Entra ID Premium P1 — Acceso condicional y SSO</li>
+                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-gray-400 rounded-full"></span> Entra ID Premium P2 — Identidades privilegiadas (PIM)</li>
+                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-gray-400 rounded-full"></span> Entra Connect — Sync con Active Directory local</li>
+                    </ul>
+                </div>
+                
+                <!-- GCP -->
+                <div class="bg-white p-8 rounded-[2rem] border border-gray-100 reveal" style="transition-delay: 200ms;">
+                    <i class="ph ph-cloud-check text-[#1A73E8] w-8 h-8 text-3xl mb-4"></i>
+                    <h4 class="text-xl font-bold text-corporateNavy mb-4">Google Cloud Platform</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-gray-400 rounded-full"></span> Consumo Google Cloud gestionado (CSP)</li>
+                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-gray-400 rounded-full"></span> Gemini Enterprise Business / Standard / Plus</li>
+                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-gray-400 rounded-full"></span> Google Workspace for Education (consultar)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p class="text-xs text-gray-400 text-center reveal" style="transition-delay: 300ms;">
+                Azure y GCP son plataformas de consumo cloud. Su gestión está cubierta en la <a href="servicio-escala.html" class="text-[#003399] font-bold hover:underline">fase ESCALA →</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- PARA QUIÉN ES -->
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-heading font-black text-corporateNavy mb-16 text-center reveal">¿Esto es para ti si...</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-gray-50 border border-gray-100 p-8 rounded-2xl flex gap-4 items-start reveal">
+                    <i class="ph-fill ph-check-circle text-2xl text-[#1A73E8] shrink-0 mt-1"></i>
+                    <p class="text-corporateNavy font-medium">Tu equipo usa herramientas dispersas y necesitas unificar en una plataforma</p>
+                </div>
+                <div class="bg-gray-50 border border-gray-100 p-8 rounded-2xl flex gap-4 items-start reveal" style="transition-delay: 100ms;">
+                    <i class="ph-fill ph-check-circle text-2xl text-[#1A73E8] shrink-0 mt-1"></i>
+                    <p class="text-corporateNavy font-medium">Tienes licencias Microsoft o Google pero no sabes si estás pagando de más</p>
+                </div>
+                <div class="bg-gray-50 border border-gray-100 p-8 rounded-2xl flex gap-4 items-start reveal" style="transition-delay: 200ms;">
+                    <i class="ph-fill ph-check-circle text-2xl text-[#1A73E8] shrink-0 mt-1"></i>
+                    <p class="text-corporateNavy font-medium">Estás creciendo y necesitas escalar licencias sin gestionar todo tú mismo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CÓMO TRABAJAMOS -->
+    <section id="proceso" class="py-24 bg-[#001A41] text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-heading font-black mb-16 text-center reveal">El proceso</h2>
+            <div class="grid md:grid-cols-4 gap-8 relative">
+                <!-- Decorative line for desktop -->
+                <div class="hidden md:block absolute top-[50px] left-[10%] right-[10%] h-0.5 bg-white/10 z-0"></div>
+                
+                <div class="relative z-10 text-center reveal">
+                    <div class="w-24 h-24 bg-[#003399] border-4 border-[#001A41] rounded-full mx-auto flex items-center justify-center font-heading font-black text-3xl mb-6">1</div>
+                    <h4 class="text-lg font-bold mb-3 tracking-wide">Auditoría de licencias actuales</h4>
+                    <p class="text-sm text-gray-400">Analizamos lo que tienes y lo que necesitas realmente.</p>
+                </div>
+                <div class="relative z-10 text-center reveal" style="transition-delay: 100ms;">
+                    <div class="w-24 h-24 bg-[#003399] border-4 border-[#001A41] rounded-full mx-auto flex items-center justify-center font-heading font-black text-3xl mb-6">2</div>
+                    <h4 class="text-lg font-bold mb-3 tracking-wide">Propuesta ajustada</h4>
+                    <p class="text-sm text-gray-400">Sin productos que no necesitas. Sin letra pequeña.</p>
+                </div>
+                <div class="relative z-10 text-center reveal" style="transition-delay: 200ms;">
+                    <div class="w-24 h-24 bg-[#003399] border-4 border-[#001A41] rounded-full mx-auto flex items-center justify-center font-heading font-black text-3xl mb-6">3</div>
+                    <h4 class="text-lg font-bold mb-3 tracking-wide">Activación y configuración</h4>
+                    <p class="text-sm text-gray-400">Nos encargamos de todo el proceso técnico.</p>
+                </div>
+                <div class="relative z-10 text-center reveal" style="transition-delay: 300ms;">
+                    <div class="w-24 h-24 bg-[#1A73E8] border-4 border-[#001A41] rounded-full mx-auto flex items-center justify-center font-heading font-black text-3xl mb-6">4</div>
+                    <h4 class="text-lg font-bold mb-3 tracking-wide">Gestión continua</h4>
+                    <p class="text-sm text-gray-400">Renovaciones, cambios de plan y optimización mensual.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SECCIÓN 6: CTA FINAL -->
+    <section id="contacto" class="py-24 bg-[#003399] relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(26,115,232,0.15),_transparent_50%)]"></div>
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10 reveal">
+            <h2 class="text-4xl md:text-5xl font-heading font-black text-white mb-6">¿No sabes qué licencias necesitas?</h2>
+            <p class="text-lg text-white/80 mb-10 max-w-2xl mx-auto">En 20 minutos te decimos exactamente qué plan se ajusta a tu equipo y cuánto te costará al mes.</p>
+            <div class="flex justify-center gap-4">
+                <a href="mailto:hola@beservices.es" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-[#003399] bg-white rounded-full hover:bg-gray-50 transition-all shadow-xl hover:-translate-y-1">Agendar llamada gratuita</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BEGIN: Footer -->
+    <footer class="bg-corporateNavy pt-16 pb-8 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-10">
+                <a href="index.html" class="flex items-center bg-white p-2 rounded-lg">
+                    <img src="assets/logo.png" alt="beServices Logo" class="h-8 w-auto mix-blend-multiply" />
+                </a>
+                <div class="flex flex-wrap justify-center gap-6 text-sm font-medium text-gray-400">
+                    <a href="index.html#servicios" class="hover:text-white transition">Servicios</a>
+                    <a href="#contacto" class="hover:text-white transition">Contacto</a>
+                    <a href="#" class="hover:text-white transition">Aviso Legal</a>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-white/10">
+                <p class="text-sm font-bold text-gray-400">Servicios para tu entorno digital</p>
+                <p class="text-sm text-gray-500">© 2026 BeServices</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JS -->
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 50;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        setTimeout(reveal, 100);
+
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.remove('py-2');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.add('py-2');
+            }
+        });
+
+        // Tab Switching Logic
+        const tabs = document.querySelectorAll('[data-tab]');
+        const panels = document.querySelectorAll('[data-panel]');
+        tabs.forEach(tab => tab.addEventListener('click', () => {
+            tabs.forEach(t => {
+                t.classList.remove('active-tab', 'bg-[#003399]', 'text-white', 'shadow-lg');
+                t.classList.add('bg-white', 'border', 'border-gray-200', 'text-[#001A41]');
+            });
+            panels.forEach(p => {
+                p.classList.add('hidden', 'translate-y-8', 'opacity-0');
+                p.classList.remove('translate-y-0', 'opacity-100');
+            });
+            
+            tab.classList.remove('bg-white', 'border', 'border-gray-200', 'text-[#001A41]');
+            tab.classList.add('active-tab', 'bg-[#003399]', 'text-white', 'shadow-lg');
+            
+            const panel = document.querySelector('[data-panel="' + tab.dataset.tab + '"]');
+            panel.classList.remove('hidden');
+            setTimeout(() => {
+                panel.classList.remove('translate-y-8', 'opacity-0');
+                panel.classList.add('translate-y-0', 'opacity-100');
+            }, 10);
+        }));
+        
+        lucide.createIcons();
+    </script>
+</body>
+</html>

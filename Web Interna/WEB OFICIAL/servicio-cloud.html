@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Cloud e Infraestructura - BeServices</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter:wght@700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { brandBlue: '#0075f2', corporateNavy: '#001A41', mutedGray: '#9CA3AF', electricCyan: '#50cabf' }, fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  <style>
+    body { background-color: #FFFFFF; color: #001A41; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Inter', sans-serif; font-weight: 800; color: #001A41; letter-spacing: -0.02em; }
+    .glass-navbar { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0, 26, 65, 0.06); }
+    .text-gradient { background: linear-gradient(135deg, #001A41 0%, #50cabf 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: all 0.75s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    .hero-bg { background: linear-gradient(to bottom, #f8fafc, #ffffff); }
+  </style>
+</head>
+
+<body class="antialiased selection:bg-corporateNavy selection:text-white">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 w-full z-50 glass-navbar transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center">
+        <img src="assets/logo.png" alt="beServices Logo" class="h-8 w-auto mix-blend-multiply" />
+      </a>
+      <a href="catalogo.html" class="inline-flex items-center gap-2 justify-center px-6 py-2.5 text-sm font-bold text-white bg-corporateNavy rounded-full hover:bg-corporateNavy/90 transition-colors shadow-lg shadow-corporateNavy/20">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i> Volver al Catálogo
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative pt-40 pb-20 lg:pt-48 lg:pb-28 overflow-hidden bg-slate-50">
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-electricCyan/5 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3"></div>
+    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brandBlue/5 rounded-full blur-3xl -z-10 -translate-x-1/2 translate-y-1/2"></div>
+    
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-corporateNavy/5 border border-corporateNavy/10 mb-6 reveal active">
+        <i data-lucide="cloud" class="w-4 h-4 text-corporateNavy"></i>
+        <span class="text-[10px] font-bold tracking-widest text-corporateNavy uppercase">Infraestructura y Nube</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-normal text-corporateNavy mb-6 reveal active" style="transition-delay:100ms">
+        Infraestructura cloud <br /><span class="text-gradient font-bold drop-shadow-sm">que no falla</span>
+      </h1>
+      <p class="text-lg text-mutedGray leading-relaxed mb-10 max-w-2xl mx-auto reveal active" style="transition-delay:200ms">
+        Diseñamos, desplegamos y gestionamos tu infraestructura en Azure, Google Cloud o nuestro datacenter privado. Sin interrupciones, sin sorpresas en la factura.
+      </p>
+      
+      <div class="flex flex-wrap items-center justify-center gap-8 mb-12 reveal active" style="transition-delay:250ms">
+        <img src="assets/microsoft-azure-1.png" class="h-8 md:h-10 object-contain mix-blend-multiply opacity-80" alt="Azure">
+        <div class="w-px h-8 bg-gray-300 hidden md:block"></div>
+        <img src="assets/Google Cloud logo color (png).png" class="h-8 md:h-10 object-contain mix-blend-multiply opacity-80 scale-110" alt="Google Cloud">
+        <div class="w-px h-8 bg-gray-300 hidden md:block"></div>
+        <div class="text-xl font-heading font-bold text-corporateNavy flex items-center gap-2"><i data-lucide="cloud-cog" class="w-6 h-6 text-brandBlue"></i> BeCloud</div>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal active" style="transition-delay:300ms">
+         <a href="mailto:hola@beservices.es" class="px-8 py-4 w-full sm:w-auto bg-corporateNavy text-white font-bold rounded-full hover:bg-corporateNavy/90 transition shadow-xl shadow-corporateNavy/20 text-center">Consultar arquitectura</a>
+         <a href="#becloud" class="px-8 py-4 w-full sm:w-auto bg-white text-corporateNavy border border-gray-200 font-bold rounded-full hover:bg-gray-50 transition text-center">Ver opciones BeCloud</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 PERFILES DE CLIENTE -->
+  <section class="py-20 relative bg-white border-t border-gray-100 -mt-10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-8 reveal">
+        <div class="p-8 rounded-3xl bg-white shadow-xl shadow-corporateNavy/5 border border-gray-100 hover:border-electricCyan/30 group transition-all">
+          <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-brandBlue mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="server-crash" class="w-6 h-6"></i>
+          </div>
+          <p class="text-corporateNavy font-medium italic mb-4 leading-relaxed">"Tengo servidores on-premise antiguos que quiero migrar a la nube sin parar la empresa."</p>
+          <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-sm font-bold text-brandBlue">
+            Azure / GCP Migration <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </div>
+        </div>
+        <div class="p-8 rounded-3xl bg-white shadow-xl shadow-corporateNavy/5 border border-gray-100 hover:border-electricCyan/30 group transition-all">
+          <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="monitor-smartphone" class="w-6 h-6"></i>
+          </div>
+          <p class="text-corporateNavy font-medium italic mb-4 leading-relaxed">"Necesito escritorios remotos ágiles para mi equipo o para que accedan al ERP desde casa."</p>
+          <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-sm font-bold text-indigo-600">
+            BeCloud CPD + Citrix <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </div>
+        </div>
+        <div class="p-8 rounded-3xl bg-white shadow-xl shadow-corporateNavy/5 border border-gray-100 hover:border-electricCyan/30 group transition-all">
+          <div class="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center text-teal-600 mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="globe" class="w-6 h-6"></i>
+          </div>
+          <p class="text-corporateNavy font-medium italic mb-4 leading-relaxed">"Necesito hosting, VPS y dominios gestionados para mi app o web corporativa."</p>
+          <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-sm font-bold text-teal-600">
+            VPS + Hosting Gestionado <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AZURE Y GOOGLE CLOUD -->
+  <section class="py-24 bg-slate-50 border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-16 items-center reveal">
+        <div>
+          <h2 class="text-3xl font-heading text-corporateNavy mb-6">Azure y Google Cloud Público</h2>
+          <p class="text-mutedGray text-lg mb-8 leading-relaxed">Infraestructura hiper-escalable diseñada para crecer sin límites y soportar picos masivos de demanda operativa.</p>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start gap-4">
+               <div class="w-6 h-6 rounded-full bg-brandBlue/10 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3 text-brandBlue"></i></div>
+               <div>
+                  <strong class="text-corporateNavy text-sm block">Suscripciones CSP Azure</strong>
+                  <span class="text-mutedGray text-xs">Facturación mensual en euros con soporte oficial incluido.</span>
+               </div>
+            </li>
+            <li class="flex items-start gap-4">
+               <div class="w-6 h-6 rounded-full bg-brandBlue/10 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3 text-brandBlue"></i></div>
+               <div>
+                  <strong class="text-corporateNavy text-sm block">Infraestructura IaaS pura</strong>
+                  <span class="text-mutedGray text-xs">VMs, Storage optimizado, App Services y clusters de Kubernetes (AKS / GKE).</span>
+               </div>
+            </li>
+            <li class="flex items-start gap-4">
+               <div class="w-6 h-6 rounded-full bg-brandBlue/10 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3 text-brandBlue"></i></div>
+               <div>
+                  <strong class="text-corporateNavy text-sm block">Landing Zones</strong>
+                  <span class="text-mutedGray text-xs">Arquitectura de base securizada y estructurada desde el día 1.</span>
+               </div>
+            </li>
+            <li class="flex items-start gap-4">
+               <div class="w-6 h-6 rounded-full bg-brandBlue/10 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3 text-brandBlue"></i></div>
+               <div>
+                  <strong class="text-corporateNavy text-sm block">Optimización Costes (FinOps)</strong>
+                  <span class="text-mutedGray text-xs">Monitorizamos el gasto para evitar que pagues servidores vacíos o licencias inactivas.</span>
+               </div>
+            </li>
+          </ul>
+          <div class="flex flex-wrap items-center gap-4">
+             <div class="px-4 py-2 border border-gray-200 rounded-lg bg-white flex items-center gap-2 shadow-sm text-[10px] font-bold text-corporateNavy uppercase">
+               Microsoft Azure Partner
+             </div>
+             <div class="px-4 py-2 border border-gray-200 rounded-lg bg-white flex items-center gap-2 shadow-sm text-[10px] font-bold text-corporateNavy uppercase">
+               Google Cloud Partner
+             </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-3xl p-10 border border-gray-200 shadow-xl shadow-brandBlue/5 relative overflow-hidden">
+           <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-gray-50 to-transparent"></div>
+           <div class="flex items-center justify-around mb-10 pb-10 border-b border-gray-100">
+             <img src="assets/microsoft-azure-1.png" class="h-10 mix-blend-multiply flex-1 object-contain px-4" alt="Azure">
+             <div class="w-px h-12 bg-gray-200"></div>
+             <img src="assets/Google Cloud logo color (png).png" class="h-10 mix-blend-multiply flex-1 object-contain scale-110 px-4" alt="Google Cloud">
+           </div>
+           <p class="text-center text-sm font-medium text-corporateNavy relative z-10 leading-relaxed">
+             Migraciones "llave en mano" de entornos On-Premise a la nube pública con <strong class="text-brandBlue">Soporte técnico avanzado 8x5 incluido</strong> en nuestra gestión delegada.
+           </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BECLOUD DATACENTER PRIVADO -->
+  <section id="becloud" class="py-24 bg-corporateNavy relative overflow-hidden border-t border-white/5">
+    <div class="absolute inset-0 bg-[url('assets/hero_new.png')] bg-cover bg-center opacity-5 mix-blend-screen"></div>
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-electricCyan/10 rounded-full blur-[100px] -z-0"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl md:text-5xl font-heading text-white mb-6">BeCloud: Nuestro Datacenter Privado</h2>
+        <p class="text-white/70 text-lg max-w-2xl mx-auto">Infraestructura propietaria. Datacenter TIER III+ ubicado en España, con cumplimiento riguroso de normativas y diseñado para aplicaciones legacy, ERPs y escritorios.</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+        <!-- 1 -->
+        <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm hover:-translate-y-2 transition-transform duration-300">
+          <div class="w-12 h-12 bg-electricCyan/20 text-electricCyan flex items-center justify-center rounded-xl mb-6">
+            <i data-lucide="layers" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">BeCloud Multicliente</h3>
+          <p class="text-white/60 text-sm">Escritorios remotos compartidos. Opción más rentable para despachos y gestorías con programas ERP estándar (A3, Sage). Facturado por usuario.</p>
+        </div>
+        <!-- 2 -->
+        <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm hover:-translate-y-2 transition-transform duration-300">
+          <div class="w-12 h-12 bg-blue-500/20 text-blue-400 flex items-center justify-center rounded-xl mb-6">
+            <i data-lucide="server" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">CPD Virtual (be4 - be32)</h3>
+          <p class="text-white/60 text-sm">Servidores virtuales plenamente dedicados. Desde 4 cores iniciales hasta bestias de 32 cores. Entornos aislados con alta disponibilidad real.</p>
+        </div>
+        <!-- 3 -->
+        <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm hover:-translate-y-2 transition-transform duration-300">
+          <div class="w-12 h-12 bg-purple-500/20 text-purple-400 flex items-center justify-center rounded-xl mb-6">
+            <i data-lucide="layout-grid" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Citrix Cloud Apps</h3>
+          <p class="text-white/60 text-sm">Tecnología de virtualización premium de Citrix integrada. Acceso ultrarrápido a aplicaciones locales desde cualquier dispositivo y conexión.</p>
+        </div>
+        <!-- 4 -->
+        <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm hover:-translate-y-2 transition-transform duration-300">
+          <div class="w-12 h-12 bg-green-500/20 text-green-400 flex items-center justify-center rounded-xl mb-6">
+            <i data-lucide="globe" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">VPS & Hosting Libre</h3>
+          <p class="text-white/60 text-sm">Contratación de VPS en Linux/Windows. Hosting clásico web con CPanel, IPs fijas públicas y gestión integral de DNS y SSL.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEGURIDAD Y BACKUP COMPLEMENTARIO -->
+  <section class="py-24 bg-white border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-10 reveal">
+        <!-- Sec Perimeter -->
+        <div class="bg-gray-50 border border-gray-200 rounded-3xl p-10 flex flex-col justify-between">
+          <div>
+             <div class="flex items-center gap-3 mb-6">
+               <div class="w-10 h-10 bg-brandBlue/10 text-brandBlue rounded-lg flex items-center justify-center"><i data-lucide="shield" class="w-5 h-5"></i></div>
+               <h3 class="text-2xl font-bold text-corporateNavy">Seguridad Perimetral</h3>
+             </div>
+             <p class="text-mutedGray text-sm mb-6 leading-relaxed">Las arquitecturas en Cloud (híbrido o dedicado) requieren muros de defensa activos en la red.</p>
+             <ul class="space-y-3 text-sm text-corporateNavy font-medium">
+               <li class="flex items-center gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-electricCyan shrink-0"></i> Firewalls gestionados SonicWall, desde TZ270 a NSA4700.</li>
+               <li class="flex items-center gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-electricCyan shrink-0"></i> Segmentos de VPN corporativa para equipos híbridos y remotos.</li>
+               <li class="flex items-center gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-electricCyan shrink-0"></i> Monitorización profunda DPI de todo el tráfico este-oeste.</li>
+             </ul>
+          </div>
+          <div class="mt-8 pt-6 border-t border-gray-200 flex items-center justify-between">
+            <img src="https://beservices.es/wp-content/uploads/2024/09/SonicWall_logo.svg-1024x175.png" class="h-4 object-contain mix-blend-multiply opacity-50 grayscale" alt="SonicWall">
+            <a href="servicio-seguridad.html" class="text-xs font-bold text-brandBlue hover:text-brandBlue/80 uppercase tracking-widest flex items-center gap-1">Ver Seguridad IT <i data-lucide="chevron-right" class="w-3 h-3"></i></a>
+          </div>
+        </div>
+
+        <!-- Backup -->
+        <div class="bg-gray-50 border border-gray-200 rounded-3xl p-10 flex flex-col justify-between">
+          <div>
+             <div class="flex items-center gap-3 mb-6">
+               <div class="w-10 h-10 bg-green-500/10 text-green-600 rounded-lg flex items-center justify-center"><i data-lucide="database-backup" class="w-5 h-5"></i></div>
+               <h3 class="text-2xl font-bold text-corporateNavy">Backup Continuo y DR</h3>
+             </div>
+             <p class="text-mutedGray text-sm mb-6 leading-relaxed">No existe infraestructura Cloud inmune sin una copia programada, testeada e inyectable en menos de 2h.</p>
+             <ul class="space-y-3 text-sm text-corporateNavy font-medium">
+               <li class="flex items-center gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-green-500 shrink-0"></i> Respaldos intensivos (Veeam B&R) y retenciones granulares.</li>
+               <li class="flex items-center gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-green-500 shrink-0"></i> Planes Disaster Recovery as a Service (DRaaS) conmutables en caliente.</li>
+               <li class="flex items-center gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-green-500 shrink-0"></i> Backup nativo blindado en bovedilla inmutable.</li>
+             </ul>
+          </div>
+          <div class="mt-8 pt-6 border-t border-gray-200 flex items-center justify-between">
+            <!-- Texto Veeam -->
+            <div class="text-xs font-bold text-gray-400 uppercase tracking-widest">Powered by Veeam</div>
+            <a href="servicio-backup.html" class="text-xs font-bold text-green-600 hover:text-green-500 uppercase tracking-widest flex items-center gap-1">Servicios Bedata <i data-lucide="chevron-right" class="w-3 h-3"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASOS DE USO -->
+  <section class="py-24 bg-slate-50 border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl md:text-4xl font-heading text-corporateNavy mb-4">Experiencia cruzada en todo tipo de sector</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8 reveal">
+        <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm relative pt-12">
+          <div class="absolute -top-6 left-8 w-12 h-12 bg-corporateNavy text-white rounded-full flex items-center justify-center shadow-lg"><i data-lucide="file-text" class="w-5 h-5"></i></div>
+          <div class="flex items-center gap-2 mb-4">
+             <span class="text-xs font-bold bg-gray-100 text-corporateNavy px-2 py-1 rounded">Gestoría Mediana</span>
+             <span class="text-xs font-bold bg-brandBlue/10 text-brandBlue px-2 py-1 rounded">BeCloud Multicliente</span>
+          </div>
+          <p class="text-sm text-corporateNavy leading-relaxed italic mb-4">"50 usuarios. Migración íntegra del ERP contable de un servidor local vetusto a BeCloud Multicliente. Acceso remoto de urgencia por COVID sin interrupciones y ahora con coste fijo predecible mes a mes."</p>
+        </div>
+        
+        <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm relative pt-12">
+          <div class="absolute -top-6 left-8 w-12 h-12 bg-white border border-gray-200 text-red-500 rounded-full flex items-center justify-center shadow-lg"><i data-lucide="music" class="w-5 h-5"></i></div>
+          <div class="flex items-center gap-2 mb-4">
+             <span class="text-xs font-bold bg-gray-100 text-corporateNavy px-2 py-1 rounded">Festival Sónar</span>
+             <span class="text-xs font-bold bg-blue-50 text-blue-600 px-2 py-1 rounded">GCP Kubernetes</span>
+          </div>
+          <p class="text-sm text-corporateNavy leading-relaxed italic mb-4">"Implementación de entorno altamente disponible y escalable utilizando Kubernetes en Google Cloud para soportar picos de peticiones de tickets y tráfico web por parte de millones de visitantes en horas punta."</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm relative pt-12">
+          <div class="absolute -top-6 left-8 w-12 h-12 bg-brandBlue text-white rounded-full flex items-center justify-center shadow-lg"><i data-lucide="truck" class="w-5 h-5"></i></div>
+          <div class="flex items-center gap-2 mb-4">
+             <span class="text-xs font-bold bg-gray-100 text-corporateNavy px-2 py-1 rounded">Empresa Logística</span>
+             <span class="text-xs font-bold bg-indigo-50 text-indigo-600 px-2 py-1 rounded">BeCloud be32</span>
+          </div>
+          <p class="text-sm text-corporateNavy leading-relaxed italic mb-4">"Centralización técnica de la red e inventario de 4 grandes almacenes separados geográficamente en un CPD Virtual propietario de 32 cores. Resultado: reducción técnica del 40% en tiempos de respuesta e incidencias logísticas IT."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIESGOS DO IT YOURSELF -->
+  <section class="py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-6 reveal">
+      <div class="bg-red-50 border border-red-100 rounded-3xl p-10 md:p-14 relative overflow-hidden flex flex-col md:flex-row items-center gap-10">
+        <div class="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center shrink-0 shadow-sm relative z-10">
+           <i data-lucide="alert-triangle" class="w-8 h-8"></i>
+        </div>
+        <div class="relative z-10 flex-grow text-center md:text-left">
+          <h3 class="text-2xl font-bold text-corporateNavy mb-6">Los peligros de subir a la nube sin control del experto</h3>
+          <div class="grid sm:grid-cols-3 gap-6">
+            <div>
+              <div class="flex items-center gap-2 font-bold text-red-600 mb-2"><i data-lucide="x-circle" class="w-4 h-4"></i> Despilfarro ciego</div>
+              <p class="text-xs text-corporateNavy">El 32% del gasto cloud IaaS de empresas en España se desperdicia al mes al pagar por servidores y servicios que no están apagándose o ajustándose a la demanda real en Azure y AWS.</p>
+            </div>
+            <div>
+              <div class="flex items-center gap-2 font-bold text-red-600 mb-2"><i data-lucide="x-circle" class="w-4 h-4"></i> Ausencia de DRaaS</div>
+              <p class="text-xs text-corporateNavy">Creer que Cloud = Inmortal. Sin montar un plan propio de RTO de menos de horas y replicación asíncrona, caídas aisladas de Azure borran la facturación y ventas de compañías enteras durante días.</p>
+            </div>
+            <div>
+              <div class="flex items-center gap-2 font-bold text-red-600 mb-2"><i data-lucide="x-circle" class="w-4 h-4"></i> Migraciones a lo bruto</div>
+              <p class="text-xs text-corporateNavy">Hacer Lift & Shift (subir la basura local entera a la nube) de entornos on-premise Legacy a Azure en lugar de rediseñarlos causa letargos insufribles, cuellos de botella y costes absurdos de lectura y proceso.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="py-24 bg-corporateNavy relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 text-center reveal relative z-10">
+      <h2 class="text-3xl md:text-4xl font-heading text-white mb-6">¿Tienes infraestructura antigua (Legacy) que frena tu crecimiento pidiendo a gritos ir a la nube?</h2>
+      <p class="text-white/70 mb-10 text-lg">Déjanos ver cómo funcionas hoy y te haremos una auditoría técnica y un blueprint gratis para migrar sin traumas, indicándote la rentabilidad y el coste preciso mes a mes en un entorno seguro antes de mover un solo byte.</p>
+      <a href="mailto:hola@beservices.es" class="inline-flex items-center justify-center px-8 py-5 text-lg font-bold text-corporateNavy bg-electricCyan rounded-full hover:bg-white transition-all shadow-lg hover:scale-105 group">
+        Solicitar Blueprint de Arquitectura <i data-lucide="arrow-right" class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-corporateNavy pt-16 pb-8 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col items-center justify-center">
+      <img src="assets/logo.png" alt="beServices Logo" class="h-8 w-auto mix-blend-multiply bg-white rounded-lg p-2 mb-4" />
+      <p class="text-white/60 text-sm">© 2026 beServices. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    function reveal() {
+      document.querySelectorAll(".reveal").forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add("active");
+      });
+    }
+    window.addEventListener("scroll", reveal);
+    setTimeout(reveal, 100);
+
+    window.addEventListener('scroll', function () {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 20) navbar.classList.add('shadow-md');
+      else navbar.classList.remove('shadow-md');
+    });
+
+    lucide.createIcons();
+  </script>
+</body>
+</html>

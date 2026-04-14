@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Portal Interno | beServices</title>
+
+    <!-- Google Fonts: Inter & Inter -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Premium Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: '#0075f2',
+                        corporateNavy: '#001A41',
+                        mutedGray: '#9CA3AF',
+                        electricCyan: '#50cabf',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Inter', sans-serif;
+            color: #001A41;
+            letter-spacing: -0.02em;
+        }
+
+        .glass-navbar {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 26, 65, 0.05);
+        }
+
+        .internal-card {
+            background: white;
+            border: 1px solid rgba(0, 26, 65, 0.05);
+            border-radius: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .internal-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 26, 65, 0.1);
+            border-color: rgba(80, 202, 191, 0.3);
+        }
+    </style>
+</head>
+
+<body class="antialiased text-corporateNavy">
+    <!-- BEGIN: Navbar -->
+    <nav class="fixed top-0 w-full z-50 glass-navbar transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="assets/logo.png" alt="beServices Logo" class="h-8 w-auto mix-blend-multiply" />
+                <span
+                    class="text-xs font-bold uppercase tracking-widest text-mutedGray border-l border-gray-300 pl-3">Portal
+                    Interno</span>
+            </a>
+
+            <a href="index.html"
+                class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-corporateNavy rounded-full hover:bg-corporateNavy/90 transition-colors shadow-lg shadow-corporateNavy/20">
+                Volver a la Web Pública
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="pt-32 pb-20 px-6 max-w-7xl mx-auto min-h-screen">
+        <div class="mb-12">
+            <h1 class="text-4xl md:text-5xl font-heading font-normal text-corporateNavy mb-4">Portal de Recursos
+                Internos</h1>
+            <p class="text-lg text-mutedGray max-w-2xl">Acceso restringido a catálogos comerciales, lineamientos de
+                marca y otros recursos confidenciales de beServices.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Catalog Link -->
+            <a href="catalogo.html" class="internal-card p-10 flex flex-col group relative overflow-hidden">
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-electricCyan/5 rounded-bl-full -z-10 group-hover:bg-electricCyan/10 transition-colors">
+                </div>
+                <div
+                    class="w-14 h-14 bg-corporateNavy/5 text-corporateNavy rounded-2xl flex items-center justify-center mb-8">
+                    <i class="ph ph-books text-3xl"></i>
+                </div>
+                <h2 class="text-2xl font-normal mb-3 group-hover:text-electricCyan transition-colors">Catálogo Comercial
+                    Completo</h2>
+                <p class="text-mutedGray text-sm leading-relaxed mb-6 flex-grow">
+                    Lista detallada de servicios CORE, nuevos servicios propuestos, y el producto estrella (BeSafe M365)
+                    junto con sus argumentarios de venta.
+                </p>
+                <div class="flex items-center text-electricCyan font-bold text-sm">
+                    Explorar Catálogo <i
+                        class="ph ph-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- Google Sales Guide Link -->
+            <a href="guia-google-ai.html" class="internal-card p-10 flex flex-col group relative overflow-hidden">
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-brandBlue/5 rounded-bl-full -z-10 group-hover:bg-brandBlue/10 transition-colors">
+                </div>
+                <div
+                    class="w-14 h-14 bg-corporateNavy/5 text-corporateNavy rounded-2xl flex items-center justify-center mb-8">
+                    <i class="ph ph-google-logo text-3xl"></i>
+                </div>
+                <h2 class="text-2xl font-normal mb-3 group-hover:text-brandBlue transition-colors">Guía de Ventas Google AI</h2>
+                <p class="text-mutedGray text-sm leading-relaxed mb-6 flex-grow">
+                    Ecosistema completo: Planes Workspace, Comparativa técnica y el nuevo Universo IA de Google. Actualizado 2026.
+                </p>
+                <div class="flex items-center text-brandBlue font-bold text-sm">
+                    Ver Guía de Ventas <i
+                        class="ph ph-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- Microsoft + Claude Guide Link -->
+            <a href="claude-microsoft.html" class="internal-card p-10 flex flex-col group relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-corporateNavy/5 rounded-bl-full -z-10 group-hover:bg-corporateNavy/10 transition-colors"></div>
+                <div class="w-14 h-14 bg-brandBlue/5 text-brandBlue rounded-2xl flex items-center justify-center mb-8">
+                    <i class="ph ph-sparkle text-3xl"></i>
+                </div>
+                <h2 class="text-2xl font-normal mb-3 group-hover:text-brandBlue transition-colors">Guía Claude + Microsoft 365</h2>
+                <p class="text-mutedGray text-sm leading-relaxed mb-6 flex-grow">
+                    Estrategias y casos de uso para dirección: Automatización de Outlook, Teams y SharePoint mediante Claude AI.
+                </p>
+                <div class="flex items-center text-brandBlue font-bold text-sm">
+                    Acceder a la Guía <i class="ph ph-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+
+            <!-- Graphic Line Link -->
+            <a href="linea-grafica.html" class="internal-card p-10 flex flex-col group relative overflow-hidden">
+
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-corporateNavy/5 rounded-bl-full -z-10 group-hover:bg-corporateNavy/10 transition-colors">
+                </div>
+                <div
+                    class="w-14 h-14 bg-corporateNavy/5 text-corporateNavy rounded-2xl flex items-center justify-center mb-8">
+                    <i class="ph ph-swatches text-3xl"></i>
+                </div>
+                <h2 class="text-2xl font-normal mb-3 group-hover:text-corporateNavy transition-colors">Línea Gráfica
+                    "Tech-Clarity"</h2>
+                <p class="text-mutedGray text-sm leading-relaxed mb-6 flex-grow">
+                    Referencias estéticas, uso de colores, tipografías y ejemplos de imágenes aprobadas para
+                    comunicaciones B2B de beServices.
+                </p>
+                <div class="flex items-center text-corporateNavy font-bold text-sm">
+                    Ver Brand Guidelines <i
+                        class="ph ph-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- Commercial Processes Link -->
+            <a href="procesos-comerciales.html" class="internal-card p-10 flex flex-col group relative overflow-hidden">
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-brandBlue/5 rounded-bl-full -z-10 group-hover:bg-brandBlue/10 transition-colors">
+                </div>
+                <div
+                    class="w-14 h-14 bg-corporateNavy/5 text-corporateNavy rounded-2xl flex items-center justify-center mb-8">
+                    <i class="ph ph-flow-arrow text-3xl"></i>
+                </div>
+                <h2 class="text-2xl font-normal mb-3 group-hover:text-brandBlue transition-colors">Procesos Comerciales</h2>
+                <p class="text-mutedGray text-sm leading-relaxed mb-6 flex-grow">
+                    Definición de pipelines de venta, ciclos de renovaciones, asignación de cuentas y operativa comercial interna.
+                </p>
+                <div class="flex items-center text-brandBlue font-bold text-sm">
+                    Ver Procesos <i
+                        class="ph ph-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Brand Book | beServices Tech-Clarity</title>
+
+    <!-- Google Fonts: Inter 400/500/600 (Arial for headings) -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+
+    <!-- Premium Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: '#0075f2',
+                        corporateNavy: '#001A41',
+                        mutedGray: '#9CA3AF',
+                        electricCyan: '#50cabf',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #001A41;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 40px 0 rgba(0, 26, 65, 0.04);
+            border-radius: 2rem;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUpFade 0.8s forwards cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUpFade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-100 {
+            animation-delay: 100ms;
+        }
+
+        .delay-200 {
+            animation-delay: 200ms;
+        }
+
+        .delay-300 {
+            animation-delay: 300ms;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #001A41 0%, #50cabf 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-corporateNavy selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-corporateNavy/5 transition-all">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="internal.html" class="flex items-center gap-2 group">
+                <div
+                    class="w-8 h-8 rounded-full bg-corporateNavy/5 flex items-center justify-center group-hover:bg-corporateNavy/10 transition-colors">
+                    <i class="ph ph-arrow-left text-lg text-corporateNavy"></i>
+                </div>
+                <span class="font-bold text-sm uppercase tracking-widest text-corporateNavy">Portal Interno</span>
+            </a>
+
+            <span class="text-xs font-bold uppercase tracking-widest text-mutedGray">Brand Book 2026</span>
+        </div>
+    </nav>
+
+    <!-- Hero Concept -->
+    <section class="relative pt-40 pb-24 overflow-hidden">
+        <!-- Abstract Background -->
+        <div
+            class="absolute top-0 right-0 w-[600px] h-[600px] bg-electricCyan/5 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-corporateNavy/5 rounded-full blur-3xl -z-10 -translate-x-1/2 translate-y-1/2">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <span
+                class="inline-block px-4 py-1.5 rounded-full bg-electricCyan/10 border border-electricCyan/20 text-corporateNavy text-xs font-bold tracking-widest uppercase mb-6 reveal">Visual
+                Identity Concept</span>
+            <h1
+                class="text-5xl md:text-7xl font-heading font-normal text-corporateNavy mb-8 reveal delay-100 leading-tight">
+                Tech-<span class="gradient-text">Clarity</span>
+            </h1>
+            <p class="text-xl text-mutedGray max-w-3xl mx-auto leading-relaxed reveal delay-200">
+                El concepto <strong>Tech-Clarity</strong> representa la evolución visual de beServices. Nacido para
+                transmitir autoridad técnica, limpieza absoluta corporativa, y la modernidad propia de una empresa que
+                lidera la transición hacia la Inteligencia Artificial B2B. Es el equilibrio perfecto entre la solidez
+                empresarial y la innovación digital.
+            </p>
+        </div>
+    </section>
+
+    <!-- Color Palette -->
+    <section class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16 md:flex justify-between items-end reveal">
+                <div class="max-w-xl">
+                    <h2 class="text-xs font-normal tracking-widest text-electricCyan uppercase mb-3">01 // Colores</h2>
+                    <h3 class="text-4xl font-heading font-normal text-corporateNavy">El Peso de la Confianza</h3>
+                </div>
+                <p class="text-mutedGray max-w-sm mt-4 md:mt-0 text-sm">Nuestra paleta se reduce a tres vectores
+                    emocionales: Autoridad, Innovación y Espacio. Eliminamos el ruido para que el mensaje destaque.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Navy -->
+                <div class="rounded-3xl overflow-hidden shadow-lg reveal delay-100">
+                    <div class="h-48 bg-corporateNavy flex items-end p-6">
+                        <span class="text-white font-mono text-sm opacity-50">HEX #001A41</span>
+                    </div>
+                    <div class="p-8 bg-white border border-gray-100 border-t-0 rounded-b-3xl">
+                        <h4 class="text-2xl font-normal mb-2">Corporate Navy</h4>
+                        <p class="text-sm text-mutedGray">El ancla de la marca. Transmite madurez, seguridad, protección
+                            de datos y el peso institucional esperado de un partner tecnológico B2B. Se usa en fondos,
+                            titulares principales y footers.</p>
+                    </div>
+                </div>
+
+ 
+                <!-- Brand Blue -->
+                <div class="rounded-3xl overflow-hidden shadow-lg reveal delay-150">
+                    <div class="h-48 bg-brandBlue flex items-end p-6">
+                        <span class="text-white font-mono text-sm opacity-80">HEX #0075f2</span>
+                    </div>
+                    <div class="p-8 bg-white border border-gray-100 border-t-0 rounded-b-3xl h-full">
+                        <h4 class="text-2xl font-normal mb-2">Brand Blue</h4>
+                        <p class="text-sm text-mutedGray">El color secundario oficial de la marca. Establece la identidad propia de beServices, actuando como el puente perfecto entre la oscuridad del Navy corporativo y el destello del Cyan.</p>
+                    </div>
+                </div>
+                               <!-- Cyan -->
+                <div class="rounded-3xl overflow-hidden shadow-lg reveal delay-200">
+                    <div class="h-48 bg-electricCyan flex items-end p-6 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-electricCyan to-cyan-300"></div>
+                        <span class="text-corporateNavy font-mono text-sm opacity-70 relative z-10">HEX #50cabf</span>
+                    </div>
+                    <div class="p-8 bg-white border border-gray-100 border-t-0 rounded-b-3xl">
+                        <h4 class="text-2xl font-normal mb-2">Electric Cyan</h4>
+                        <p class="text-sm text-mutedGray">La chispa visual. Este color evoca tecnología de vanguardia,
+                            inteligencia artificial y digitalización. Actúa como color de acento para guiar el ojo del
+                            usuario a CTA's, iconos y tags destacados.</p>
+                    </div>
+                </div>
+
+                <!-- White/Gray -->
+                <div class="rounded-3xl overflow-hidden shadow-lg reveal delay-300">
+                    <div class="h-48 bg-[#9CA3AF] flex items-end p-6">
+                        <span class="text-white font-mono text-sm opacity-80">HEX #9CA3AF / #FFFFFF</span>
+                    </div>
+                    <div class="p-8 bg-white border border-gray-100 border-t-0 rounded-b-3xl">
+                        <h4 class="text-2xl font-normal mb-2">Muted Grays & White</h4>
+                        <p class="text-sm text-mutedGray">El oxígeno del diseño. Utilizamos fondos blancos puros (o gris
+                            muy tenue) combinados con textos en gris neutro para los bloques de body copy, creando una
+                            lectura limpia y reduciendo la fatiga visual.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Typography -->
+    <section class="py-24 bg-corporateNavy text-white relative overflow-hidden">
+        <div
+            class="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-electricCyan/10 rounded-full blur-[100px] -z-10">
+        </div>
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+
+            <div class="reveal">
+                <h2 class="text-xs font-normal tracking-widest text-electricCyan uppercase mb-3">02 // Tipografía</h2>
+                <h3 class="text-4xl font-heading font-normal mb-8">Estructura y Claridad</h3>
+                <p class="text-gray-300 mb-8 leading-relaxed">
+                    La dualidad tipográfica es esencial en Tech-Clarity. Contrasta una fuente altamente estructurada y
+                    geométrica para los titulares, capaz de hacer un "statement", con una tipografía neo-grotesca
+                    optimizada milimétricamente para pantallas que asegura la escalabilidad.
+                </p>
+
+                <div class="space-y-8">
+                    <div class="bg-white/5 border border-white/10 p-6 rounded-2xl">
+                        <h4 class="font-heading font-normal text-3xl mb-2">Inter (Titulares)</h4>
+                        <p class="text-sm text-electricCyan font-mono mb-4">font-family: 'Inter', sans-serif;</p>
+                        <p class="text-sm text-gray-400">Exclusiva para títulos (H1, H2, H3). Su geometría sólida y peso
+                            "extra-bold" proporcionan anclaje visual a las distintas secciones de la web.</p>
+                    </div>
+
+                    <div class="bg-white/5 border border-white/10 p-6 rounded-2xl">
+                        <h4 class="font-sans font-normal text-3xl mb-2">Inter (400, 500)</h4>
+                        <p class="text-sm text-gray-400 font-mono mb-4">font-family: 'Inter', sans-serif;</p>
+                        <p class="text-sm text-gray-400">Diseñada por Rasmus Andersson, es la fuente de lectura
+                            definitiva. La usamos para todo el texto descriptivo, listas y UI, aportando legibilidad
+                            técnica insuperable.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden lg:flex flex-col gap-6 text-[10rem] font-heading font-black leading-none text-white/5 select-none reveal delay-200">
+                <span class="tracking-tighter">Aa</span>
+                <span class="tracking-tighter font-sans font-normal">Aa</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Glassmorphism Effect -->
+    <section class="py-24 bg-gray-50/50 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-xs font-normal tracking-widest text-electricCyan uppercase mb-3">03 // El Material</h2>
+                <h3 class="text-4xl font-heading font-normal text-corporateNavy mb-6">Glassmorphism B2B</h3>
+                <p class="text-mutedGray max-w-2xl mx-auto">La metáfora visual de "La Nube". Utilizamos sutiles efectos
+                    de cristal esmerilado para jerarquizar las cajas de contenido sin oscurecer los fondos, aportando
+                    sofisticación.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Visual Example -->
+                <div class="relative h-[400px] rounded-3xl overflow-hidden reveal bg-cover bg-center shadow-lg"
+                    style="background-image: url('assets/hero.jpeg');">
+                </div>
+
+                             <!-- Interactive Explanation -->
+                <div class="space-y-4 reveal delay-200" id="brand-accordion">
+                    <!-- Tab 1 -->
+                    <div class="bg-white rounded-[1.5rem] shadow-sm border border-gray-100 overflow-hidden accordion-item active">
+                        <button class="w-full px-6 py-5 text-left font-bold text-corporateNavy flex justify-between items-center bg-gray-50/50 hover:bg-gray-50 transition-colors" onclick="toggleBrandAccordion(this)">
+                            <span class="flex items-center gap-3"><i class="ph ph-target text-xl text-brandBlue"></i> Lo que transmitimos</span>
+                            <i class="ph ph-caret-down transition-transform duration-300 transform rotate-180"></i>
+                        </button>
+                        <div class="px-6 pb-5 pt-2 text-sm text-mutedGray max-h-[500px] opacity-100 overflow-hidden transition-all duration-300 content-body">
+                            <ul class="space-y-2 list-disc list-inside marker:text-electricCyan">
+                                <li><strong>Solidez Enterprise:</strong> Transmitimos gran autoridad técnica e institucional.</li>
+                                <li><strong>Innovación Disruptiva:</strong> Una aproximación moderna y ágil B2B.</li>
+                                <li><strong>Claridad Absoluta:</strong> Diseño limpio lejos del estilo IT tradicional y oscuro.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Tab 2 -->
+                    <div class="bg-white rounded-[1.5rem] shadow-sm border border-gray-100 overflow-hidden accordion-item">
+                        <button class="w-full px-6 py-5 text-left font-bold text-corporateNavy flex justify-between items-center bg-gray-50/50 hover:bg-gray-50 transition-colors" onclick="toggleBrandAccordion(this)">
+                            <span class="flex items-center gap-3"><i class="ph ph-palette text-xl text-electricCyan"></i> El porqué de estos colores</span>
+                            <i class="ph ph-caret-down transition-transform duration-300"></i>
+                        </button>
+                        <div class="px-6 pb-0 pt-0 text-sm text-mutedGray max-h-0 opacity-0 overflow-hidden transition-all duration-300 content-body" style="padding-top:0px; padding-bottom:0px;">
+                            <ul class="space-y-2 list-disc list-inside marker:text-electricCyan">
+                                <li><strong>Corporate Navy (#001A41):</strong> Seriedad B2B y soporte estratégico constante.</li>
+                                <li><strong>Brand Blue (#0075f2) & Electric Cyan (#50cabf):</strong> Chispas tecnológicas que guían la mirada (Call To Actions).</li>
+                                <li><strong>Extremo Contraste:</strong> Marino sobre fondo blanco maximiza legibilidad y elegancia.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Tab 3 -->
+                    <div class="bg-white rounded-[1.5rem] shadow-sm border border-gray-100 overflow-hidden accordion-item">
+                        <button class="w-full px-6 py-5 text-left font-bold text-corporateNavy flex justify-between items-center bg-gray-50/50 hover:bg-gray-50 transition-colors" onclick="toggleBrandAccordion(this)">
+                            <span class="flex items-center gap-3"><i class="ph ph-cube text-xl text-corporateNavy"></i> Efectos Tech, Glassmorphism y 3D</span>
+                            <i class="ph ph-caret-down transition-transform duration-300"></i>
+                        </button>
+                        <div class="px-6 pb-0 pt-0 text-sm text-mutedGray max-h-0 opacity-0 overflow-hidden transition-all duration-300 content-body" style="padding-top:0px; padding-bottom:0px;">
+                            <ul class="space-y-2 list-disc list-inside marker:text-electricCyan">
+                                <li><strong>Interactividad Viva:</strong> La interfaz responde, es una plataforma viva y reactiva.</li>
+                                <li><strong>Backdrop blur (Esmerilado):</strong> Genera sensación táctil y estratificada.</li>
+                                <li><strong>Sombras Suaves & Hover 3D:</strong> Humanizan el software complejo.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Tab 4 -->
+                    <div class="bg-white rounded-[1.5rem] shadow-sm border border-gray-100 overflow-hidden accordion-item">
+                        <button class="w-full px-6 py-5 text-left font-bold text-corporateNavy flex justify-between items-center bg-gray-50/50 hover:bg-gray-50 transition-colors" onclick="toggleBrandAccordion(this)">
+                            <span class="flex items-center gap-3"><i class="ph ph-wind text-xl text-corporateNavy"></i> El rol vital del Espacio en Blanco</span>
+                            <i class="ph ph-caret-down transition-transform duration-300"></i>
+                        </button>
+                        <div class="px-6 pb-0 pt-0 text-sm text-mutedGray max-h-0 opacity-0 overflow-hidden transition-all duration-300 content-body" style="padding-top:0px; padding-bottom:0px;">
+                            <ul class="space-y-2 list-disc list-inside marker:text-electricCyan">
+                                <li><strong>El Oxígeno Estructural:</strong> Los amplios márgenes reducen drásticamente la fatiga visual.</li>
+                                <li><strong>Paz Mental y Enfoque:</strong> Transmite que delegar en nosotros soluciona problemas visualmente (y técnicamente).</li>
+                                <li><strong>Foco absoluto:</strong> Permite jerarquizar solo lo esencial.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <script>
+                        function toggleBrandAccordion(btn) {
+                            const item = btn.parentElement;
+                            const body = item.querySelector('.content-body');
+                            const icon = btn.querySelector('.ph-caret-down');
+                            const isActive = item.classList.contains('active');
+
+                            document.querySelectorAll('.accordion-item').forEach(el => {
+                                el.classList.remove('active');
+                                const b = el.querySelector('.content-body');
+                                b.style.maxHeight = '0px';
+                                b.style.opacity = '0';
+                                b.style.paddingTop = '0px';
+                                b.style.paddingBottom = '0px';
+                                el.querySelector('.ph-caret-down').classList.remove('rotate-180');
+                            });
+
+                            if (!isActive) {
+                                item.classList.add('active');
+                                body.style.maxHeight = '500px';
+                                body.style.opacity = '1';
+                                body.style.paddingTop = '0.5rem';
+                                body.style.paddingBottom = '1.25rem';
+                                icon.classList.add('rotate-180');
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real Applications (Gallery) -->
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16 reveal">
+                <h2 class="text-xs font-normal tracking-widest text-electricCyan uppercase mb-3">04 // Referencias</h2>
+                <h3 class="text-4xl font-heading font-normal text-corporateNavy">Aplicación Real</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal delay-100">
+                <div class="aspect-square rounded-3xl overflow-hidden shadow-sm border border-gray-100 group">
+                    <img src="assets/a-professional-b2b-tech-post-design-feat_B_DWjBiWQCaIrPoq07YV7A_R2c-IN4mTq606yCp_1150Q_sd.jpeg"
+                        alt="Ref 1"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                </div>
+                <div class="aspect-square rounded-3xl overflow-hidden shadow-sm border border-gray-100 group">
+                    <img src="assets/a-professional-square-b2b-tech-social-me_61rx-sdyTvuiYdfJ2ogo9g_R2c-IN4mTq606yCp_1150Q_sd.jpeg"
+                        alt="Ref 2"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                </div>
+                <div class="aspect-square rounded-3xl overflow-hidden shadow-sm border border-gray-100 group">
+                    <img src="assets/a-professional-b2b-tech-social-media-pos_qtcQOEAvS1urAYTxCUGOBQ_R2c-IN4mTq606yCp_1150Q_sd.jpeg"
+                        alt="Ref 3"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                </div>
+            </div>
+
+            <!-- Iconografía (Conceptos beServices) -->
+            <div class="mt-20 mb-16 reveal delay-200">
+                <h4 class="text-2xl font-normal text-corporateNavy mb-8">Iconografía de Concepto</h4>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                    <div class="flex flex-col items-center gap-4 text-center group">
+                        <div class="w-24 h-24 rounded-2xl bg-gray-100/50 flex items-center justify-center p-5 group-hover:scale-110 transition-transform duration-500 border border-gray-200/50">
+                            <img src="assets/ICONOS/ACTIVA.png" alt="Activa" class="w-full h-full object-contain" />
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-corporateNavy/60">Activa</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-4 text-center group">
+                        <div class="w-24 h-24 rounded-2xl bg-gray-100/50 flex items-center justify-center p-5 group-hover:scale-110 transition-transform duration-500 border border-gray-200/50">
+                            <img src="assets/ICONOS/PROTEGE.png" alt="Protege" class="w-full h-full object-contain" />
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-corporateNavy/60">Protege</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-4 text-center group">
+                        <div class="w-24 h-24 rounded-2xl bg-gray-100/50 flex items-center justify-center p-5 group-hover:scale-110 transition-transform duration-500 border border-gray-200/50">
+                            <img src="assets/ICONOS/GESTIONA.png" alt="Gestiona" class="w-full h-full object-contain" />
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-corporateNavy/60">Gestiona</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-4 text-center group">
+                        <div class="w-24 h-24 rounded-2xl bg-gray-100/50 flex items-center justify-center p-5 group-hover:scale-110 transition-transform duration-500 border border-gray-200/50">
+                            <img src="assets/ICONOS/POTENCIA.png" alt="Potencia" class="w-full h-full object-contain" />
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-corporateNavy/60">Potencia</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-4 text-center group">
+                        <div class="w-24 h-24 rounded-2xl bg-gray-100/50 flex items-center justify-center p-5 group-hover:scale-110 transition-transform duration-500 border border-gray-200/50">
+                            <img src="assets/ICONOS/ESCALA.png" alt="Escala" class="w-full h-full object-contain" />
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-corporateNavy/60">Escala</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Custom Application Examples -->
+            <h4 class="text-2xl font-normal text-corporateNavy mt-16 mb-8 reveal">Piezas Corporativas Actualizadas</h4>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 reveal delay-200">
+                
+                <!-- Correo: iframe -->
+                <div class="internal-card overflow-hidden flex flex-col shadow-lg border border-gray-100 rounded-3xl">
+                    <div class="bg-gray-100 text-corporateNavy px-5 py-3 text-sm font-bold flex items-center justify-between border-b border-gray-200">
+                        <span class="flex items-center gap-2"><i class="ph ph-envelope-simple-open uppercase text-lg"></i> Ejemplo de Correo</span>
+                        <div class="flex gap-1.5"><div class="w-3 h-3 rounded-full bg-red-400"></div><div class="w-3 h-3 rounded-full bg-amber-400"></div><div class="w-3 h-3 rounded-full bg-green-400"></div></div>
+                    </div>
+                    <div class="h-[500px] w-full bg-white relative">
+                        <iframe src="correo-seguridad-ejemplo.html" class="w-full h-full absolute inset-0 border-none"></iframe>
+                    </div>
+                </div>
+                
+                <!-- PDF Carousel / Post -->
+                <div class="internal-card overflow-hidden flex flex-col shadow-lg border border-gray-100 rounded-3xl">
+                    <div class="bg-brandBlue text-white px-5 py-3 text-sm font-bold flex items-center gap-2 border-b border-brandBlue/50">
+                        <i class="ph ph-linkedin-logo text-lg"></i> Post LinkedIn (Scroll Vertical)
+                    </div>
+                    <div class="h-[500px] w-full bg-slate-100 overflow-y-auto p-6" id="pdf-carousel-container">
+                        <div id="pdf-loading" class="text-brandBlue font-bold flex justify-center items-center gap-2 h-full">
+                            <i class="ph ph-spinner animate-spin text-2xl"></i> Extrayendo Carrusel...
+                        </div>
+                        <div id="pdf-carousel" class="flex flex-col gap-6 w-full hidden">
+                            <!-- Canvases will be injected here -->
+                        </div>
+                    </div>
+                </div>
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+                <script>
+                    document.addEventListener("DOMContentLoaded", async () => {
+                            const url = 'assets/COPILOT - Acceso Datos_compressed.pdf'; // Versión optimizada
+                            const carousel = document.getElementById('pdf-carousel');
+                            const loading = document.getElementById('pdf-loading');
+                            
+                            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+                            
+                            try {
+                                const pdf = await pdfjsLib.getDocument({
+                                    url: encodeURI(url),
+                                    cMapUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/',
+                                    cMapPacked: true,
+                                }).promise;
+                            for (let i = 1; i <= pdf.numPages; i++) {
+                                const page = await pdf.getPage(i);
+                                
+                                const container = document.createElement('div');
+                                container.className = 'relative w-full shadow-md bg-white rounded-lg overflow-hidden flex items-center justify-center border border-gray-200';
+                                
+                                const canvas = document.createElement('canvas');
+                                const context = canvas.getContext('2d');
+                                
+                                const scale = 1.2; 
+                                const viewport = page.getViewport({ scale: scale });
+                                
+                                canvas.height = viewport.height;
+                                canvas.width = viewport.width;
+                                canvas.className = "w-full h-auto block";
+                                
+                                await page.render({
+                                    canvasContext: context,
+                                    viewport: viewport
+                                }).promise;
+                                
+                                const badge = document.createElement('div');
+                                badge.className = 'absolute bottom-4 right-4 bg-black/60 text-white text-xs font-bold px-2 py-1 rounded-full backdrop-blur-sm';
+                                badge.innerHTML = `${i} / ${pdf.numPages}`;
+                                container.appendChild(badge);
+
+                                container.appendChild(canvas);
+                                carousel.appendChild(container);
+                            }
+                            loading.classList.add('hidden');
+                            carousel.classList.remove('hidden');
+                        } catch (err) {
+                            console.error("PDF load error:", err);
+                            loading.innerHTML = "Error al cargar el carrusel (Fichero de 84MB, puede tardar o fallar en conexiones lentas).";
+                            loading.classList.remove('h-full');
+                        }
+                    });
+                </script>
+
+                <!-- Banner Linkedin -->
+                <div class="internal-card overflow-hidden lg:col-span-2 shadow-lg border border-gray-100 rounded-3xl">
+                    <div class="bg-corporateNavy text-white px-5 py-3 text-sm font-bold flex items-center gap-2">
+                        <i class="ph ph-image text-lg text-electricCyan"></i> Banner Perfil LinkedIn
+                    </div>
+                    <div class="bg-white p-4 md:p-8 flex justify-center items-center">
+                        <img src="assets/Banner Linkedin.png" alt="Banner Linkedin" class="w-full h-auto rounded-xl shadow-md border border-gray-50 object-cover" />
+                    </div>
+                </div>
+
+                <!-- Plantilla Propuesta -->
+                <div class="internal-card overflow-hidden lg:col-span-2 shadow-lg border border-gray-100 rounded-3xl mb-8">
+                    <div class="bg-electricCyan text-corporateNavy px-5 py-3 text-sm font-bold flex items-center gap-2 border-b border-electricCyan/50">
+                        <i class="ph ph-file-text text-lg"></i> Plantilla para Propuestas Comerciales
+                    </div>
+                    <div class="bg-slate-50 p-4 md:p-8 flex justify-center items-center">
+                        <img src="assets/Plantilla Documento.png" alt="Plantilla" class="w-full h-auto max-w-3xl rounded border border-gray-200 shadow-xl object-contain" />
+                    </div>
+                </div>
+
+                <!-- Ejemplo Real Linkedin -->
+                <div class="internal-card overflow-hidden lg:col-span-1 shadow-lg border border-gray-100 rounded-3xl max-w-sm">
+                    <div class="bg-[#0077b5] text-white px-5 py-3 text-sm font-bold flex items-center gap-2">
+                        <i class="ph ph-linkedin-logo text-lg"></i> Post Real LinkedIn
+                    </div>
+                    <div class="bg-white p-4 flex justify-center items-center">
+                        <img src="assets/linkedin-ejemplo.png" alt="LinkedIn Real Example" class="w-full h-auto rounded-xl shadow-md border border-gray-50 object-cover" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

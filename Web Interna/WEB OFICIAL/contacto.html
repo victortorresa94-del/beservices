@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Contacto | BeServices</title>
+
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: '#0075f2',
+                        corporateNavy: '#001A41',
+                        mutedGray: '#9CA3AF',
+                        electricCyan: '#50cabf',
+                        surfaceLow: '#f3f4f5',
+                        iceWhite: '#f8f9fa'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Inter', 'sans-serif'],
+                        space: ['Space Grotesk', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FFFFFF;
+            color: #001A41;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #001A41 0%, #50cabf 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Tab System Styling */
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-corporateNavy selection:text-white">
+
+    <!-- Header / Nav -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-corporateNavy/5 transition-all">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center">
+                <img src="assets/logo.png" alt="beServices Logo" class="h-8 w-auto mix-blend-multiply" />
+            </a>
+            <div class="hidden md:flex items-center gap-8 bg-white/40 border border-corporateNavy/5 px-8 py-2 rounded-full backdrop-blur-md">
+                <a href="index.html#servicios" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">Servicios</a>
+                <a href="#" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">Nosotros</a>
+                <a href="#" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">Casos</a>
+                <a href="contacto.html" class="text-sm font-bold text-corporateNavy transition-colors">Contacto</a>
+            </div>
+            <a href="internal.html" class="hidden md:inline-flex items-center gap-2 justify-center px-6 py-2.5 text-sm font-bold text-white bg-corporateNavy rounded-full hover:bg-corporateNavy/90 transition-all shadow-md">Portal Interno <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+        </div>
+    </nav>
+
+    <!-- Main Section -->
+    <section class="pt-36 pb-24 min-h-screen flex items-center bg-white relative">
+        <div class="max-w-[1300px] mx-auto px-6 lg:px-10 w-full">
+            
+            <div class="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-16 items-start">
+                
+                <!-- LEFT COLUMN: Typography & Info -->
+                <div class="space-y-12">
+                    <div>
+                        <span class="text-[10px] font-bold tracking-[0.2em] text-electricCyan uppercase mb-5 block">Hablemos</span>
+                        <h1 class="font-space font-medium text-corporateNavy leading-[1.05] mb-6 tracking-tight" style="font-size: clamp(2.8rem, 4vw, 4.8rem); letter-spacing: -0.03em;">
+                            Hablemos <br/>
+                            de cómo <br/>
+                            <span class="font-bold">escalar tu IT.</span>
+                        </h1>
+                        <p class="text-sm text-mutedGray leading-relaxed max-w-sm">
+                            Seguridad IT, Cloud y IA de la mano de expertos certificados. Cuéntanos qué necesitas y te responderemos sin rodeos.
+                        </p>
+                    </div>
+
+                    <!-- Contact Details (Cleaner, Circular Icons) -->
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-5 group">
+                            <div class="w-12 h-12 rounded-full bg-surfaceLow flex items-center justify-center shrink-0 group-hover:bg-electricCyan/10 transition-colors">
+                                <i class="ph ph-phone text-2xl text-electricCyan"></i>
+                            </div>
+                            <div class="pt-1">
+                                <p class="text-[10px] font-bold text-mutedGray uppercase tracking-widest mb-1.5">Llámanos</p>
+                                <a href="tel:+34938150338" class="text-lg font-medium text-corporateNavy hover:text-brandBlue transition-colors">+34 938 150 338</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-5 group">
+                            <div class="w-12 h-12 rounded-full bg-surfaceLow flex items-center justify-center shrink-0 group-hover:bg-electricCyan/10 transition-colors">
+                                <i class="ph ph-envelope-simple text-2xl text-electricCyan"></i>
+                            </div>
+                            <div class="pt-1">
+                                <p class="text-[10px] font-bold text-mutedGray uppercase tracking-widest mb-1.5">Escríbenos</p>
+                                <a href="mailto:hola@beservices.es" class="text-lg font-medium text-corporateNavy hover:text-brandBlue transition-colors">hola@beservices.es</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-5 group">
+                            <div class="w-12 h-12 rounded-full bg-surfaceLow flex items-center justify-center shrink-0 group-hover:bg-electricCyan/10 transition-colors">
+                                <i class="ph ph-linkedin-logo text-2xl text-electricCyan"></i>
+                            </div>
+                            <div class="pt-1">
+                                <p class="text-[10px] font-bold text-mutedGray uppercase tracking-widest mb-1.5">Síguenos</p>
+                                <a href="https://www.linkedin.com/company/beservices" target="_blank" class="text-lg font-medium text-corporateNavy hover:text-brandBlue transition-colors">LinkedIn</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-5 group">
+                            <div class="w-12 h-12 rounded-full bg-surfaceLow flex items-center justify-center shrink-0 group-hover:bg-electricCyan/10 transition-colors">
+                                <i class="ph ph-map-pin text-2xl text-electricCyan"></i>
+                            </div>
+                            <div class="pt-1">
+                                <p class="text-[10px] font-bold text-mutedGray uppercase tracking-widest mb-1.5">Visítanos</p>
+                                <p class="text-base font-medium text-corporateNavy leading-relaxed">Carrer de València, 307, 4º 3ª <br>08009 Barcelona, España</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- RIGHT COLUMN: Form Card -->
+                <div class="bg-white rounded-[2.5rem] border border-gray-100 shadow-[0_20px_60px_-15px_rgba(0,26,65,0.05)] p-8 md:p-14 w-full flex flex-col relative overflow-hidden h-fit xl:sticky xl:top-32">
+
+                    <!-- Abstract Background Glow inside card -->
+                    <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-electricCyan/5 rounded-full blur-[80px] pointer-events-none"></div>
+
+                    <div class="relative z-10">
+                        <h3 class="text-3xl font-normal text-corporateNavy mb-2 tracking-tight">Cuéntanos tu caso</h3>
+                        <p class="text-xs text-mutedGray mb-8">Completar este formulario lleva 30 segundos. Te contactaremos en menos de 2 horas laborables.</p>
+
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-[10px] font-bold text-mutedGray mb-2.5 uppercase tracking-widest">Nombre y Apellidos</label>
+                                    <input type="text" class="w-full bg-iceWhite border border-gray-100/50 rounded-xl px-4 py-3.5 text-sm focus:bg-white focus:ring-2 focus:ring-electricCyan focus:border-transparent transition-all placeholder-gray-400" placeholder="Ej. Ana García">
+                                </div>
+                                <div>
+                                    <label class="block text-[10px] font-bold text-mutedGray mb-2.5 uppercase tracking-widest">Email Corporativo</label>
+                                    <input type="email" class="w-full bg-iceWhite border border-gray-100/50 rounded-xl px-4 py-3.5 text-sm focus:bg-white focus:ring-2 focus:ring-electricCyan focus:border-transparent transition-all placeholder-gray-400" placeholder="ana@tuempresa.es">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-mutedGray mb-2.5 uppercase tracking-widest">Empresa y Teléfono</label>
+                                <div class="grid grid-cols-[2fr_1fr] gap-4">
+                                    <input type="text" class="w-full bg-iceWhite border border-gray-100/50 rounded-xl px-4 py-3.5 text-sm focus:bg-white focus:ring-2 focus:ring-electricCyan focus:border-transparent transition-all placeholder-gray-400" placeholder="Nombre de tu empresa">
+                                    <input type="tel" class="w-full bg-iceWhite border border-gray-100/50 rounded-xl px-4 py-3.5 text-sm focus:bg-white focus:ring-2 focus:ring-electricCyan focus:border-transparent transition-all placeholder-gray-400" placeholder="+34">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-mutedGray mb-2.5 uppercase tracking-widest">¿Qué necesitas resolver?</label>
+                                <textarea rows="4" class="w-full bg-iceWhite border border-gray-100/50 rounded-xl px-4 py-3.5 text-sm focus:bg-white focus:ring-2 focus:ring-electricCyan focus:border-transparent transition-all placeholder-gray-400 resize-none" placeholder="Añade aquí los detalles de tu consulta..."></textarea>
+                            </div>
+                            <button type="button" class="w-full py-4 mt-2 rounded-xl bg-corporateNavy text-white text-sm font-bold shadow-lg shadow-corporateNavy/20 hover:bg-brandBlue hover:-translate-y-0.5 transition-all">Enviar mensaje</button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar Section -->
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-[1300px] mx-auto px-6 lg:px-10">
+            <div class="mb-12">
+                <span class="text-[10px] font-bold tracking-[0.2em] text-electricCyan uppercase mb-4 block">Agenda tu reunión</span>
+                <h2 class="font-space font-medium text-corporateNavy leading-tight tracking-tight mb-3" style="font-size: clamp(2rem, 3vw, 2.8rem);">Elige día y hora directamente</h2>
+                <p class="text-sm text-mutedGray max-w-md">Sin correos de ida y vuelta. Reserva un slot en nuestro calendario y hablamos cuando mejor te venga.</p>
+            </div>
+
+            <!-- Custom Calendar UI -->
+            <div class="grid lg:grid-cols-[1fr_1fr] gap-8 items-start">
+
+                <!-- Left: Month Calendar -->
+                <div class="bg-white rounded-[2rem] border border-gray-100 shadow-[0_20px_60px_-15px_rgba(0,26,65,0.05)] p-8">
+                    <!-- Calendar Header -->
+                    <div class="flex items-center justify-between mb-8">
+                        <button onclick="calPrev()" class="w-9 h-9 rounded-full bg-surfaceLow flex items-center justify-center hover:bg-electricCyan/10 transition-colors">
+                            <i class="ph ph-caret-left text-corporateNavy"></i>
+                        </button>
+                        <h3 id="cal-month-label" class="font-space font-medium text-corporateNavy text-lg tracking-tight"></h3>
+                        <button onclick="calNext()" class="w-9 h-9 rounded-full bg-surfaceLow flex items-center justify-center hover:bg-electricCyan/10 transition-colors">
+                            <i class="ph ph-caret-right text-corporateNavy"></i>
+                        </button>
+                    </div>
+                    <!-- Day headers -->
+                    <div class="grid grid-cols-7 mb-3">
+                        <div class="text-[10px] font-bold text-mutedGray uppercase tracking-wider text-center py-1">Lu</div>
+                        <div class="text-[10px] font-bold text-mutedGray uppercase tracking-wider text-center py-1">Ma</div>
+                        <div class="text-[10px] font-bold text-mutedGray uppercase tracking-wider text-center py-1">Mi</div>
+                        <div class="text-[10px] font-bold text-mutedGray uppercase tracking-wider text-center py-1">Ju</div>
+                        <div class="text-[10px] font-bold text-mutedGray uppercase tracking-wider text-center py-1">Vi</div>
+                        <div class="text-[10px] font-bold text-mutedGray uppercase tracking-wider text-center py-1 opacity-30">Sa</div>
+                        <div class="text-[10px] font-bold text-mutedGray uppercase tracking-wider text-center py-1 opacity-30">Do</div>
+                    </div>
+                    <!-- Days grid -->
+                    <div id="cal-days" class="grid grid-cols-7 gap-1"></div>
+                    <!-- Legend -->
+                    <div class="flex items-center gap-6 mt-6 pt-5 border-t border-gray-100">
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-electricCyan/20 border border-electricCyan/40"></div>
+                            <span class="text-[10px] text-mutedGray">Disponible</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-corporateNavy"></div>
+                            <span class="text-[10px] text-mutedGray">Seleccionado</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-gray-100"></div>
+                            <span class="text-[10px] text-mutedGray">No disponible</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Time slots + CTA -->
+                <div id="cal-slots-panel" class="bg-white rounded-[2rem] border border-gray-100 shadow-[0_20px_60px_-15px_rgba(0,26,65,0.05)] p-8 flex flex-col">
+                    <!-- Empty state -->
+                    <div id="cal-empty" class="flex flex-col items-center justify-center h-full py-16 text-center">
+                        <div class="w-16 h-16 rounded-full bg-surfaceLow flex items-center justify-center mb-4">
+                            <i class="ph ph-calendar-blank text-3xl text-electricCyan"></i>
+                        </div>
+                        <p class="text-sm font-medium text-corporateNavy mb-1">Selecciona un día</p>
+                        <p class="text-xs text-mutedGray">Elige una fecha disponible en el calendario para ver los horarios libres.</p>
+                    </div>
+                    <!-- Slots state (hidden by default) -->
+                    <div id="cal-slots" class="hidden">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-8 h-8 rounded-full bg-electricCyan/10 flex items-center justify-center">
+                                <i class="ph ph-calendar-check text-electricCyan text-lg"></i>
+                            </div>
+                            <div>
+                                <p id="cal-selected-label" class="text-sm font-bold text-corporateNavy"></p>
+                                <p class="text-[10px] text-mutedGray uppercase tracking-wider">Elige hora · Reunión de descubrimiento (30 min)</p>
+                            </div>
+                        </div>
+                        <div id="cal-slots-grid" class="grid grid-cols-2 gap-3 mb-8"></div>
+                        <div class="p-4 bg-iceWhite rounded-2xl border border-gray-100 flex items-start gap-3">
+                            <i class="ph ph-video-camera text-electricCyan text-lg mt-0.5"></i>
+                            <div>
+                                <p class="text-xs font-bold text-corporateNavy mb-0.5">Videollamada · Microsoft Teams</p>
+                                <p class="text-[10px] text-mutedGray">Recibirás el enlace por email tras confirmar la reserva.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    // ── BeServices Custom Calendar ──────────────────────────────────────────
+    const BOOKINGS_URL = 'https://outlook.office.com/book/ReunindedescubrimientoBeservices@beservices.es/';
+    const MONTHS_ES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+    const DAYS_ES   = ['Lu','Ma','Mi','Ju','Vi','Sa','Do'];
+    const SLOTS     = ['09:00','10:00','11:00','12:00','15:00','16:00','17:00','18:00'];
+    // Simulate some busy slots per weekday (0=Mon…4=Fri)
+    const BUSY      = { 0:[0,3], 1:[1,5], 2:[2,6], 3:[0,4], 4:[1,3,7] };
+
+    let calDate = new Date();
+    calDate.setDate(1);
+    let selectedDay = null;
+
+    function calRender() {
+        const y = calDate.getFullYear(), m = calDate.getMonth();
+        document.getElementById('cal-month-label').textContent = MONTHS_ES[m] + ' ' + y;
+
+        const today = new Date(); today.setHours(0,0,0,0);
+        const firstDay = new Date(y, m, 1);
+        // Monday-based offset
+        const startOffset = (firstDay.getDay() + 6) % 7;
+        const daysInMonth = new Date(y, m+1, 0).getDate();
+
+        let html = '';
+        for (let i = 0; i < startOffset; i++) html += '<div></div>';
+
+        for (let d = 1; d <= daysInMonth; d++) {
+            const date = new Date(y, m, d);
+            const dow  = date.getDay(); // 0=Sun,1=Mon…6=Sat
+            const isWeekend = dow === 0 || dow === 6;
+            const isPast    = date < today;
+            const isSelected = selectedDay && date.toDateString() === selectedDay.toDateString();
+            const isToday   = date.toDateString() === today.toDateString();
+
+            if (isWeekend || isPast) {
+                html += `<div class="aspect-square flex items-center justify-center rounded-full text-sm text-gray-300 cursor-default">${d}</div>`;
+            } else if (isSelected) {
+                html += `<button onclick="calSelect(${d})" class="aspect-square flex items-center justify-center rounded-full text-sm font-bold bg-corporateNavy text-white transition-all">${d}</button>`;
+            } else {
+                const todayRing = isToday ? 'ring-2 ring-electricCyan/40' : '';
+                html += `<button onclick="calSelect(${d})" class="aspect-square flex items-center justify-center rounded-full text-sm font-medium bg-electricCyan/10 text-corporateNavy hover:bg-electricCyan/30 transition-all ${todayRing}">${d}</button>`;
+            }
+        }
+        document.getElementById('cal-days').innerHTML = html;
+    }
+
+    function calSelect(d) {
+        const y = calDate.getFullYear(), m = calDate.getMonth();
+        selectedDay = new Date(y, m, d);
+        calRender();
+        showSlots(selectedDay);
+    }
+
+    function showSlots(date) {
+        const dow = (date.getDay() + 6) % 7; // Mon=0
+        const busyIdx = BUSY[dow] || [];
+        const dayStr  = date.toLocaleDateString('es-ES', { weekday:'long', day:'numeric', month:'long' });
+        document.getElementById('cal-selected-label').textContent = dayStr.charAt(0).toUpperCase() + dayStr.slice(1);
+
+        let html = '';
+        SLOTS.forEach((s, i) => {
+            if (busyIdx.includes(i)) {
+                html += `<div class="py-3 px-4 rounded-xl bg-gray-50 text-sm text-gray-300 text-center cursor-default line-through">${s}</div>`;
+            } else {
+                html += `<button onclick="bookSlot('${s}')" class="py-3 px-4 rounded-xl bg-iceWhite border border-gray-100 text-sm font-medium text-corporateNavy hover:bg-electricCyan/10 hover:border-electricCyan/30 transition-all">${s}</button>`;
+            }
+        });
+        document.getElementById('cal-slots-grid').innerHTML = html;
+        document.getElementById('cal-empty').classList.add('hidden');
+        document.getElementById('cal-slots').classList.remove('hidden');
+    }
+
+    function bookSlot(time) {
+        window.open(BOOKINGS_URL, '_blank');
+    }
+
+    function calPrev() {
+        calDate.setMonth(calDate.getMonth() - 1);
+        selectedDay = null;
+        document.getElementById('cal-empty').classList.remove('hidden');
+        document.getElementById('cal-slots').classList.add('hidden');
+        calRender();
+    }
+    function calNext() {
+        calDate.setMonth(calDate.getMonth() + 1);
+        selectedDay = null;
+        document.getElementById('cal-empty').classList.remove('hidden');
+        document.getElementById('cal-slots').classList.add('hidden');
+        calRender();
+    }
+
+    calRender();
+    // ────────────────────────────────────────────────────────────────────────
+    </script>
+
+    <!-- Partners Strip Footer (Grayscale to Color) -->
+    <section class="py-12 border-t border-gray-100 bg-white">
+        <div class="max-w-[1300px] mx-auto px-6 lg:px-10">
+            <div class="flex flex-wrap items-center justify-center md:justify-start gap-10 md:gap-14 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-700">
+                <span class="text-[10px] font-bold text-gray-400 tracking-widest uppercase hidden md:inline-block">Trabajamos con</span>
+                <img src="https://beservices.es/wp-content/uploads/2024/09/Microsoft_365_logo-1024x169.png" class="h-5 object-contain" alt="Microsoft" />
+                <img src="https://beservices.es/wp-content/uploads/2024/09/Google-Workspace.png" class="h-6 object-contain" alt="Google" />
+                <img src="https://beservices.es/wp-content/uploads/2024/09/SonicWall_logo.svg-1024x175.png" class="h-5 object-contain" alt="SonicWall" />
+                <img src="https://beservices.es/wp-content/uploads/2024/09/veeam.png" class="h-4 object-contain" alt="Veeam" />
+                <img src="https://www.datto.com/images/datto-logo.svg" class="h-4 object-contain" alt="Datto" onerror="this.style.display='none'" />
+            </div>
+        </div>
+    </section>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

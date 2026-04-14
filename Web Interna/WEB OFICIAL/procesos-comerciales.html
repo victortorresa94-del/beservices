@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Procesos Comerciales | beServices</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBlue: '#0075f2',
+            corporateNavy: '#001A41',
+            mutedGray: '#9CA3AF',
+            electricCyan: '#50cabf',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #001A41;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Inter', sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    .glass-navbar {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0, 26, 65, 0.05);
+    }
+
+    .internal-card {
+      background: white;
+      border: 1px solid rgba(0, 26, 65, 0.05);
+      border-radius: 1.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .internal-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px -5px rgba(0, 26, 65, 0.1);
+      border-color: rgba(80, 202, 191, 0.3);
+    }
+
+    /* Patterns */
+    .hero-pattern {
+      background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    /* Pipeline arrows */
+    .pipeline-arrow::after {
+      content: '→';
+      display: inline-block;
+      margin-left: 1rem;
+      color: #9CA3AF;
+      font-size: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .pipeline-arrow::after {
+        content: '↓';
+        margin-left: 0;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    .step-card {
+      background-color: white;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      border: 1px solid #f3f4f6;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .step-card:hover {
+      border-color: rgba(0, 117, 242, 0.3);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Scroll Margin */
+    section {
+      scroll-margin-top: 100px;
+    }
+
+    /* Custom scrollbar for horizontal segments */
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 10px;
+    }
+
+    /* Accordion transitions */
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+    .accordion-content.open {
+      max-height: 500px;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- BEGIN: Navbar -->
+  <nav class="fixed top-0 w-full z-50 glass-navbar transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="assets/logo.png" alt="beServices Logo" class="h-8 w-auto mix-blend-multiply"/>
+        <span class="text-xs font-bold uppercase tracking-widest text-mutedGray border-l border-gray-300 pl-3">Portal Interno</span>
+      </a>
+      <div class="flex items-center gap-4">
+        <a href="internal.html" class="text-sm text-mutedGray hover:text-corporateNavy transition-colors font-medium">← Portal Interno</a>
+        <a href="index.html" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-corporateNavy rounded-full hover:bg-corporateNavy/90 transition-colors shadow-lg shadow-corporateNavy/20">
+          Volver a la Web Pública
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="bg-corporateNavy pt-40 pb-24 relative overflow-hidden">
+    <div class="absolute inset-0 hero-pattern opacity-20"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <nav class="flex mb-6 text-sm text-mutedGray/80" aria-label="Breadcrumb">
+        <ol class="flex items-center space-x-2">
+          <li><a href="internal.html" class="hover:text-electricCyan transition-colors">Portal Interno</a></li>
+          <li><i class="ph ph-caret-right text-xs"></i></li>
+          <li class="text-white">Procesos Comerciales</li>
+        </ol>
+      </nav>
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Proceso Comercial</h1>
+      <p class="text-electricCyan font-medium text-lg mb-10 flex items-center gap-2">
+        <i class="ph ph-info"></i>
+        BeServices · Versión 1.0 · Marzo 2026
+      </p>
+
+      <div class="flex flex-wrap gap-3">
+        <a href="#ciclo-ventas" class="px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white rounded-full text-sm font-bold backdrop-blur-sm transition-all border border-white/10">Ciclo de Ventas</a>
+        <a href="#renovaciones" class="px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white rounded-full text-sm font-bold backdrop-blur-sm transition-all border border-white/10">Renovaciones</a>
+        <a href="#upsell" class="px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white rounded-full text-sm font-bold backdrop-blur-sm transition-all border border-white/10">Upsell</a>
+        <a href="#segmentos" class="px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white rounded-full text-sm font-bold backdrop-blur-sm transition-all border border-white/10">Segmentos</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-7xl mx-auto px-6 py-16 space-y-24">
+
+    <!-- Section 1: Segmentos -->
+    <section id="segmentos">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <h2 class="text-3xl font-bold text-corporateNavy">Segmentos de Contactos</h2>
+          <p class="text-mutedGray mt-2">Clasificación maestra de la base de datos en Odoo</p>
+        </div>
+        <div class="w-12 h-12 bg-corporateNavy/5 rounded-2xl flex items-center justify-center text-corporateNavy">
+          <i class="ph ph-users-three text-2xl"></i>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 pb-6">
+        <!-- Segment A -->
+        <div class="internal-card p-5 flex flex-col border-t-4 border-t-electricCyan hover:-translate-y-1 transition-transform">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="font-bold text-corporateNavy leading-tight text-sm pr-2">Clientes con proyecto</h3>
+            <span class="text-2xl font-black text-electricCyan/30">A</span>
+          </div>
+          <p class="text-xs text-mutedGray mb-4 flex-grow leading-relaxed">Contratado servicio activo: seguridad, backup, cloud o IA. Clientes plenos.</p>
+          <div class="mt-auto">
+             <span class="bg-electricCyan/10 text-electricCyan text-[10px] uppercase tracking-wider font-bold px-2 py-1.5 rounded block text-center truncate">Newsletter + Revisión</span>
+          </div>
+        </div>
+
+        <!-- Segment B -->
+        <div class="internal-card p-5 flex flex-col border-t-4 border-t-brandBlue hover:-translate-y-1 transition-transform">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="font-bold text-corporateNavy leading-tight text-sm pr-2">Solo licencias</h3>
+            <span class="text-2xl font-black text-brandBlue/30">B</span>
+          </div>
+          <p class="text-xs text-mutedGray mb-4 flex-grow leading-relaxed">M365 o Google Workspace sin servicios extra. Alto potencial Upsell.</p>
+          <div class="mt-auto">
+             <span class="bg-brandBlue/10 text-brandBlue text-[10px] uppercase tracking-wider font-bold px-2 py-1.5 rounded block text-center truncate">Email x Producto</span>
+          </div>
+        </div>
+
+        <!-- Segment C -->
+        <div class="internal-card p-5 flex flex-col border-t-4 border-t-amber-500 hover:-translate-y-1 transition-transform">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="font-bold text-corporateNavy leading-tight text-sm pr-2">Leads Calientes</h3>
+            <span class="text-2xl font-black text-amber-500/30">C</span>
+          </div>
+          <p class="text-xs text-mutedGray mb-4 flex-grow leading-relaxed">Interés reciente: respuesta email, visita landing. Listos para negociar.</p>
+          <div class="mt-auto">
+             <span class="bg-amber-500/10 text-amber-600 text-[10px] uppercase tracking-wider font-bold px-2 py-1.5 rounded block text-center truncate">Secuencia 7 días</span>
+          </div>
+        </div>
+
+        <!-- Segment D -->
+        <div class="internal-card p-5 flex flex-col border-t-4 border-t-mutedGray hover:-translate-y-1 transition-transform">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="font-bold text-corporateNavy leading-tight text-sm pr-2">Leads Fríos</h3>
+            <span class="text-2xl font-black text-mutedGray/30">D</span>
+          </div>
+          <p class="text-xs text-mutedGray mb-4 flex-grow leading-relaxed">Base histórica (~12k). Sin señales recientes. Necesitan calentamiento.</p>
+          <div class="mt-auto">
+             <span class="bg-mutedGray/10 text-mutedGray text-[10px] uppercase tracking-wider font-bold px-2 py-1.5 rounded block text-center truncate">Warm-up Educativo</span>
+          </div>
+        </div>
+
+        <!-- Segment E -->
+        <div class="internal-card p-5 flex flex-col border-t-4 border-t-red-400 hover:-translate-y-1 transition-transform">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="font-bold text-corporateNavy leading-tight text-sm pr-2">Descartados</h3>
+            <span class="text-2xl font-black text-red-400/30">E</span>
+          </div>
+          <p class="text-xs text-mutedGray mb-4 flex-grow leading-relaxed">Fuera de ICP: competencia, particulares, o baja solicitada.</p>
+          <div class="mt-auto">
+             <span class="bg-red-400/10 text-red-500 text-[10px] uppercase tracking-wider font-bold px-2 py-1.5 rounded block text-center truncate">Excluidos Campañas</span>
+          </div>
+        </div>
+      </div>
+      <p class="text-sm text-mutedGray italic mt-2">Nota: las sublistas por campaña siempre deben vincularse a su segmento madre.</p>
+    </section>
+
+    <!-- Section 2: Ciclo de Ventas -->
+    <section id="ciclo-ventas">
+      <div class="flex items-center gap-4 mb-12">
+        <div class="w-12 h-12 bg-brandBlue/10 rounded-2xl flex items-center justify-center text-brandBlue">
+          <i class="ph ph-funnel text-2xl"></i>
+        </div>
+        <h2 class="text-3xl font-bold text-corporateNavy">Ciclo de Ventas</h2>
+      </div>
+
+      <!-- Pipeline: Leads Fríos -->
+      <div class="mb-16">
+        <h3 class="text-sm font-bold uppercase tracking-widest text-mutedGray mb-6 px-1">Pipeline A: Calificación de Leads Fríos</h3>
+        <div class="grid grid-cols-1 md:flex items-center gap-4 md:gap-0">
+          <!-- Step 1 -->
+          <div class="flex-1 step-card pipeline-arrow">
+            <span class="text-[10px] font-bold text-brandBlue block mb-1">FASE 01</span>
+            <h4 class="font-bold text-sm mb-1">Nuevo</h4>
+            <p class="text-[11px] text-mutedGray leading-tight">Empresa real + email válido. Criterio ICP cumplido.</p>
+          </div>
+          <!-- Step 2 -->
+          <div class="flex-1 step-card pipeline-arrow">
+            <span class="text-[10px] font-bold text-brandBlue block mb-1">FASE 02</span>
+            <h4 class="font-bold text-sm mb-1">Contactado</h4>
+            <p class="text-[11px] text-mutedGray leading-tight">Envío de email o llamada. Mínimo 3 intentos en 10 días.</p>
+          </div>
+          <!-- Step 3 -->
+          <div class="flex-1 step-card pipeline-arrow relative">
+            <span class="text-[10px] font-bold text-brandBlue block mb-1">FASE 03</span>
+            <h4 class="font-bold text-sm mb-1">Descubrimiento</h4>
+            <p class="text-[11px] text-mutedGray leading-tight">Entender situación actual y puntos de dolor. No vender.</p>
+            <!-- Branch to Paula -->
+            <div class="hidden lg:block absolute -top-20 left-1/2 -translate-x-1/2 w-48 p-3 bg-amber-50 border border-amber-200 rounded-xl shadow-sm">
+                <p class="text-[9px] font-bold text-amber-700 mb-1 uppercase">Solo Licencias</p>
+                <p class="text-[10px] text-amber-900 leading-tight">Asignación directa a <span class="font-bold">Paula</span> (Cierre rápido)</p>
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-px h-6 bg-amber-200"></div>
+            </div>
+          </div>
+          <!-- Step 4 -->
+          <div class="flex-1 step-card pipeline-arrow">
+            <span class="text-[10px] font-bold text-brandBlue block mb-1">FASE 04</span>
+            <h4 class="font-bold text-sm mb-1">Asignación</h4>
+            <p class="text-[11px] text-mutedGray leading-tight">Se deriva a comercial transversal o especialista (Manu).</p>
+          </div>
+          <!-- Step 5 -->
+          <div class="flex-1 step-card">
+            <span class="text-[10px] font-bold text-brandBlue block mb-1">FASE 05</span>
+            <h4 class="font-bold text-sm mb-1">Calificación</h4>
+            <p class="text-[11px] text-mutedGray leading-tight">Comercial valida presupuesto y urgencia. Pasa a Negocios.</p>
+          </div>
+          <!-- Drop out -->
+          <div class="md:ml-8 flex flex-col gap-2">
+            <div class="px-4 py-2 bg-red-50 border border-red-100 rounded-lg text-center">
+                <p class="text-[10px] font-bold text-red-600">No calificado</p>
+                <p class="text-[9px] text-red-400">Motivo obligatorio</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pipeline: Negocios / Oportunidades -->
+      <div class="mb-8">
+        <h3 class="text-sm font-bold uppercase tracking-widest text-mutedGray mb-6 px-1">Pipeline B: Negocios y Oportunidades (Hot Leads)</h3>
+        <div class="grid grid-cols-1 md:flex items-center gap-4 md:gap-0">
+          <!-- Step 1 -->
+          <div class="flex-1 step-card pipeline-arrow">
+            <span class="text-[10px] font-bold text-brandBlue block mb-1">FASE 01</span>
+            <h4 class="font-bold text-sm mb-1">Oportunidad Abierta</h4>
+            <p class="text-[11px] text-mutedGray leading-tight">Negocio creado en Odoo. Valor orientativo definido.</p>
+          </div>
+          <!-- Step 2 -->
+          <div class="flex-1 step-card pipeline-arrow">
+            <span class="text-[10px] font-bold text-brandBlue block mb-1">FASE 02</span>
+            <h4 class="font-bold text-sm mb-1">Propuesta</h4>
+            <p class="text-[11px] text-mutedGray leading-tight">El comercial elabora/envía propuesta formal.</p>
+          </div>
+          <!-- Step 3 -->
+          <div class="flex-1 step-card pipeline-arrow">
+            <span class="text-[10px] font-bold text-brandBlue block mb-1">FASE 03</span>
+            <h4 class="font-bold text-sm mb-1">Negociación</h4>
+            <p class="text-[11px] text-mutedGray leading-tight">Gestión objeciones. Posible visita presencial.</p>
+          </div>
+          <!-- Step 4: Seguimiento with Expandable -->
+          <div class="flex-1 step-card pipeline-arrow cursor-pointer group" onclick="toggleAccordion('seg-process')">
+            <div class="flex justify-between items-start mb-1">
+                <span class="text-[10px] font-bold text-brandBlue uppercase">FASE 04</span>
+                <span class="text-[9px] bg-red-100 text-red-600 px-1.5 py-0.5 rounded font-bold">⚠ Riesgo</span>
+            </div>
+            <h4 class="font-bold text-sm mb-1 group-hover:text-brandBlue transition-colors">Seguimiento</h4>
+            <p class="text-[11px] text-mutedGray leading-tight">Proceso crítico. Clic para ver micro-pasos.</p>
+            <div id="seg-process" class="accordion-content mt-3 space-y-2 border-t pt-2">
+                <p class="text-[11px]"><span class="font-bold">D0:</span> Email confirmación envío.</p>
+                <p class="text-[11px]"><span class="font-bold">D3:</span> Llamada seguimiento.</p>
+                <p class="text-[11px]"><span class="font-bold">D7:</span> Email si no hay respuesta.</p>
+                <p class="text-[11px]"><span class="font-bold">D14:</span> Último intento CTA claro.</p>
+                <p class="text-[11px]"><span class="font-bold">D21:</span> Cierre por falta de interés.</p>
+            </div>
+          </div>
+          <!-- Step 5 -->
+          <div class="flex-1 step-card border-electricCyan/20 bg-electricCyan/5">
+            <span class="text-[10px] font-bold text-electricCyan block mb-1">FASE 05</span>
+            <h4 class="font-bold text-sm mb-1">Cliente Ganado</h4>
+            <p class="text-[11px] text-mutedGray leading-tight">Activación onboarding técnico + Contrato.</p>
+          </div>
+          <!-- Drop out -->
+          <div class="md:ml-8 flex flex-col gap-2">
+            <div class="px-4 py-2 bg-red-50 border border-red-100 rounded-lg text-center">
+                <p class="text-[10px] font-bold text-red-600">Perdido</p>
+                <p class="text-[9px] text-red-400">Registrar motivo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Renovaciones -->
+    <section id="renovaciones" class="bg-emerald-50/50 -mx-6 px-6 py-16 border-y border-emerald-100/50">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center justify-between mb-12">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600">
+                    <i class="ph ph-calendar-check text-2xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-corporateNavy">Ciclo de Renovaciones</h2>
+                    <p class="text-mutedGray text-sm mt-1">Gestión proactiva de licenciamiento y cloud</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="text-xs font-bold text-mutedGray uppercase tracking-widest">Responsables:</span>
+                <span class="bg-brandBlue/10 text-brandBlue px-3 py-1 rounded-full text-[10px] font-bold">Paula (Licencias)</span>
+                <span class="bg-electricCyan/10 text-electricCyan px-3 py-1 rounded-full text-[10px] font-bold">Manu (Cloud)</span>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-4 mb-10">
+            <!-- Step 1 -->
+            <div class="bg-white p-6 rounded-2xl border border-emerald-200/50 shadow-sm relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-10">
+                    <span class="text-4xl font-bold">01</span>
+                </div>
+                <h4 class="font-bold text-corporateNavy mb-2">Informar</h4>
+                <p class="text-xs text-mutedGray leading-relaxed">Notificar con <span class="text-emerald-600 font-bold">60 días</span> de antelación. Indicar subidas de precios M365/Google.</p>
+            </div>
+            <!-- Step 2 -->
+            <div class="bg-white p-6 rounded-2xl border border-emerald-200/50 shadow-sm relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-10">
+                    <span class="text-4xl font-bold">02</span>
+                </div>
+                <h4 class="font-bold text-corporateNavy mb-2">Negociación</h4>
+                <p class="text-xs text-mutedGray leading-relaxed">Cambios de tier, ampliación de usuarios o dudas de precio. Momento de proponer <span class="font-bold">Upgrade</span>.</p>
+            </div>
+            <!-- Step 3 -->
+            <div class="bg-white p-6 rounded-2xl border border-emerald-200/50 shadow-sm relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-10">
+                    <span class="text-4xl font-bold">03</span>
+                </div>
+                <h4 class="font-bold text-corporateNavy mb-2">Propuesta</h4>
+                <p class="text-xs text-mutedGray leading-relaxed">Generación de propuesta formal si hay cambios de alcance. Confirmación por email si es renovación igual.</p>
+            </div>
+            <!-- Step 4 -->
+            <div class="bg-emerald-600 p-6 rounded-2xl border border-emerald-700 shadow-md relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-20 text-white">
+                    <span class="text-4xl font-bold">04</span>
+                </div>
+                <h4 class="font-bold text-white mb-2">Cierre</h4>
+                <p class="text-xs text-emerald-50 leading-relaxed">Actualización en Odoo. Notificación a administración para facturación recurrente.</p>
+            </div>
+        </div>
+
+        <div class="bg-white border-l-4 border-electricCyan p-5 rounded-r-2xl shadow-sm text-sm">
+            <div class="flex items-center gap-3">
+                <i class="ph ph-bell-ringing text-electricCyan text-xl"></i>
+                <p class="text-corporateNavy"><strong>Alerta automática Odoo:</strong> Disparador configurado a 60 días antes de la fecha de expiración del contrato/suscripción.</p>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Upsell -->
+    <section id="upsell">
+      <div class="flex items-center gap-4 mb-12 text-corporateNavy">
+        <div class="w-12 h-12 bg-corporateNavy/5 rounded-2xl flex items-center justify-center">
+          <i class="ph ph-graph text-2xl"></i>
+        </div>
+        <h2 class="text-3xl font-bold">Pipeline de Upsell</h2>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-12">
+        <!-- Upsell Inputs -->
+        <div class="space-y-6">
+            <h3 class="text-sm font-bold uppercase text-mutedGray tracking-wider px-1">Entradas de Oportunidad</h3>
+            <div class="p-5 bg-white rounded-2xl border border-gray-100 flex gap-4">
+                <div class="w-10 h-10 bg-brandBlue/10 rounded-xl flex items-center justify-center text-brandBlue shrink-0">
+                    <i class="ph ph-ticket text-xl"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm mb-1">Desde Ticket</h4>
+                    <p class="text-xs text-mutedGray">Técnico detecta necesidad de ampliación o nuevo servicio en soporte.</p>
+                </div>
+            </div>
+            <div class="p-5 bg-white rounded-2xl border border-gray-100 flex gap-4">
+                <div class="w-10 h-10 bg-electricCyan/10 rounded-xl flex items-center justify-center text-electricCyan shrink-0">
+                    <i class="ph ph-binoculars text-xl"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm mb-1">Revisión Proactiva</h4>
+                    <p class="text-xs text-mutedGray">Comercial identifica gaps en cartera (ej. cliente sin backup).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upsell Steps -->
+        <div class="lg:col-span-2">
+            <h3 class="text-sm font-bold uppercase text-mutedGray tracking-wider mb-6">Fases del Pipeline</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 text-center">
+                    <span class="text-[10px] font-bold text-mutedGray block mb-2">01</span>
+                    <h5 class="font-bold text-xs mb-1">Detectada</h5>
+                    <p class="text-[10px] text-mutedGray">Creación negocio Odoo</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 text-center">
+                    <span class="text-[10px] font-bold text-mutedGray block mb-2">02</span>
+                    <h5 class="font-bold text-xs mb-1">Conversación</h5>
+                    <p class="text-[10px] text-mutedGray">Contacto inicial validación</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 text-center">
+                    <span class="text-[10px] font-bold text-mutedGray block mb-2">03</span>
+                    <h5 class="font-bold text-xs mb-1">Propuesta</h5>
+                    <p class="text-[10px] text-mutedGray">Oferta formal enviada</p>
+                </div>
+                <div class="p-4 bg-corporateNavy rounded-xl border border-corporateNavy text-center text-white">
+                    <span class="text-[10px] font-bold text-white/50 block mb-2">04</span>
+                    <h5 class="font-bold text-xs mb-1 text-white">Cerrado</h5>
+                    <p class="text-[10px] text-white/70">Victoria o motivo pérdida</p>
+                </div>
+            </div>
+
+            <!-- Proactive ideas -->
+            <div class="mt-8">
+                <h4 class="text-sm font-bold mb-4 flex items-center gap-2">
+                    <i class="ph ph-lightbulb-filament text-amber-500"></i>
+                    Ideas para Generación Proactiva
+                </h4>
+                <div class="grid md:grid-cols-2 gap-3">
+                    <div class="p-3 bg-white border border-gray-100 rounded-xl text-[11px] flex gap-3 items-start">
+                        <i class="ph ph-shield-check text-electricCyan text-lg"></i>
+                        <span>Auditorías gratuitas de seguridad M365/Google como gancho.</span>
+                    </div>
+                    <div class="p-3 bg-white border border-gray-100 rounded-xl text-[11px] flex gap-3 items-start">
+                        <i class="ph ph-user-circle text-brandBlue text-lg"></i>
+                        <span>Revisión anual de cuenta proactiva con cada cliente activo.</span>
+                    </div>
+                    <div class="p-3 bg-white border border-gray-100 rounded-xl text-[11px] flex gap-3 items-start">
+                        <i class="ph ph-info text-amber-500 text-lg"></i>
+                        <span>Alertas sobre lanzamientos: Copilot, Gemini o BeSafe Advanced.</span>
+                    </div>
+                    <div class="p-3 bg-white border border-gray-100 rounded-xl text-[11px] flex gap-3 items-start">
+                        <i class="ph ph-list-numbers text-mutedGray text-lg"></i>
+                        <span>Listados de "Clientes sin backup" o "Licencias sin seguridad".</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Asignación -->
+    <section id="asignacion">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
+        <div>
+          <h2 class="text-3xl font-bold text-corporateNavy">Asignación de Comerciales</h2>
+          <p class="text-mutedGray mt-2">Matriz de responsabilidad según área y complejidad</p>
+        </div>
+        <div class="flex gap-2">
+          <span class="text-[10px] font-bold text-mutedGray uppercase bg-gray-100 px-3 py-1 rounded-full">Actualizado: Marzo 2026</span>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-corporateNavy text-white">
+              <th class="px-8 py-5 text-xs font-bold uppercase tracking-widest">Área / Solicitud</th>
+              <th class="px-8 py-5 text-xs font-bold uppercase tracking-widest">Asignado a</th>
+              <th class="px-8 py-5 text-xs font-bold uppercase tracking-widest">Protocolo</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-50">
+            <tr>
+              <td class="px-8 py-5 font-bold text-sm">Licencias M365 / Workspace</td>
+              <td class="px-8 py-5">
+                <span class="bg-brandBlue/10 text-brandBlue px-3 py-1 rounded-full text-[11px] font-bold">Paula</span>
+              </td>
+              <td class="px-8 py-5 text-xs text-mutedGray">Altas, bajas, renovaciones y dudas de precio.</td>
+            </tr>
+            <tr>
+              <td class="px-8 py-5 font-bold text-sm">Cloud / BeCloud / Azure / CPD</td>
+              <td class="px-8 py-5">
+                <span class="bg-electricCyan/10 text-electricCyan px-3 py-1 rounded-full text-[11px] font-bold font-medium">Manu (CIO)</span>
+              </td>
+              <td class="px-8 py-5 text-xs text-mutedGray">Infraestructura y arquitectura cloud compleja.</td>
+            </tr>
+            <tr>
+              <td class="px-8 py-5 font-bold text-sm">Seguridad (Besafe) / Proyectos</td>
+              <td class="px-8 py-5">
+                <span class="bg-gray-100 text-corporateNavy px-3 py-1 rounded-full text-[11px] font-bold">Comercial Transversal</span>
+              </td>
+              <td class="px-8 py-5 text-xs text-mutedGray">Migraciones, Intune, Entra ID y seguridad.</td>
+            </tr>
+            <tr>
+              <td class="px-8 py-5 font-bold text-sm">Backup / Monitorización</td>
+              <td class="px-8 py-5">
+                <span class="bg-gray-100 text-corporateNavy px-3 py-1 rounded-full text-[11px] font-bold">Comercial Transversal</span>
+              </td>
+              <td class="px-8 py-5 text-xs text-mutedGray">Soluciones de backup M365/Google o sistemas.</td>
+            </tr>
+            <tr>
+              <td class="px-8 py-5 font-bold text-sm">IA / Copilot / Gemini</td>
+              <td class="px-8 py-5">
+                <span class="bg-gray-100 text-corporateNavy px-3 py-1 rounded-full text-[11px] font-bold">Comercial Transversal</span>
+              </td>
+              <td class="px-8 py-5 text-xs text-mutedGray">Adopción y formación. Revisar con CIO si hay Data Gov.</td>
+            </tr>
+            <tr class="bg-amber-50">
+                <td class="px-8 py-5 font-bold text-sm">Azure Avanzado / Dev</td>
+                <td class="px-8 py-5">
+                  <span class="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-[11px] font-bold flex items-center gap-1">
+                    <i class="ph ph-warning"></i> Gap identificado
+                  </span>
+                </td>
+                <td class="px-8 py-5 text-xs text-amber-800">Pendiente valorar comercial especialista para Q3.</td>
+            </tr>
+            <tr>
+              <td class="px-8 py-5 font-bold text-sm">Filtro inicial de Leads</td>
+              <td class="px-8 py-5">
+                <span class="bg-corporateNavy/5 text-corporateNavy px-3 py-1 rounded-full text-[11px] font-bold">Victor (Marketing)</span>
+              </td>
+              <td class="px-8 py-5 text-xs text-mutedGray">Calificación inicial antes de entrar en pipeline.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 6: Migración -->
+    <section id="migracion">
+        <div class="bg-corporateNavy rounded-[2.5rem] p-12 text-white relative overflow-hidden">
+            <div class="absolute inset-0 hero-pattern opacity-10"></div>
+            <div class="relative z-10">
+                <div class="flex items-center gap-4 mb-10">
+                    <div class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-electricCyan">
+                        <i class="ph ph-database text-2xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-heading font-normal">Migración Hubspot → Odoo</h2>
+                        <p class="text-white/60 text-sm mt-1">Estado de integración y limpieza de datos</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <!-- Issues -->
+                    <div class="space-y-4">
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-red-400">Problemas Detectados</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-sm text-white/80">
+                                <i class="ph ph-warning-circle text-red-500 text-lg"></i>
+                                Mix de contactos y negocios en lista única (Odoo View).
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-white/80">
+                                <i class="ph ph-warning-circle text-red-500 text-lg"></i>
+                                Pipelines obsoletos de la etapa previa (8 comerciales).
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-white/80">
+                                <i class="ph ph-warning-circle text-red-500 text-lg"></i>
+                                Listas sin segmentación lógica (basadas en campañas sueltas).
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Plan -->
+                    <div class="space-y-4">
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-emerald-400">Plan de Limpieza</h4>
+                        <ol class="space-y-3">
+                            <li class="flex items-start gap-3 text-sm text-white/80">
+                                <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] flex items-center justify-center border border-emerald-500/30 flex-shrink-0">1</span>
+                                Cruzar con ERP para identificar Clientes Activos.
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-white/80">
+                                <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] flex items-center justify-center border border-emerald-500/30 flex-shrink-0">2</span>
+                                Descarte masivo (Particulares, Competencia, Internacional).
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-white/80">
+                                <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] flex items-center justify-center border border-emerald-500/30 flex-shrink-0">3</span>
+                                Depuración ICP por tamaño y sector prioritario.
+                            </li>
+                        </ol>
+                    </div>
+                    <!-- Target -->
+                    <div class="space-y-4">
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-electricCyan">Resultado Esperado</h4>
+                        <div class="p-6 bg-white/5 rounded-2xl border border-white/10">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-xs">Progreso Integración</span>
+                                <span class="text-xs font-bold text-electricCyan">20%</span>
+                            </div>
+                            <div class="w-full h-2 bg-white/10 rounded-full mb-6">
+                                <div class="w-1/5 h-full bg-electricCyan rounded-full"></div>
+                            </div>
+                            <p class="text-[11px] italic text-white/50">"Base activa limpia: Empresa ES + Email válido + Contexto real".</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Estructura de Listas Odoo -->
+    <style>
+      /* --- SECTION 1: EDITOR STYLES --- */
+      .substate-item { position: relative; }
+      .substate-item .delete-btn { opacity: 0; pointer-events: none; transition: all 0.2s; }
+      .substate-item:hover .delete-btn { opacity: 1; pointer-events: auto; }
+      .color-dropdown { display: none; position: absolute; top: 100%; left: 0; z-index: 60; background: white; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 0.75rem; padding: 0.6rem; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+      .color-dropdown.show { display: grid; }
+      .tab-active-A { border-bottom: 2px solid #50cabf !important; color: #50cabf !important; }
+      .tab-active-B { border-bottom: 2px solid #0075f2 !important; color: #0075f2 !important; }
+      .tab-active-C { border-bottom: 2px solid #f59e0b !important; color: #f59e0b !important; }
+      .tab-active-D { border-bottom: 2px solid #9CA3AF !important; color: #9CA3AF !important; }
+      .tab-active-E { border-bottom: 2px solid #ef4444 !important; color: #ef4444 !important; }
+      .kanban-scroll { display: flex; overflow-x: auto; padding: 1.5rem 0; gap: 1rem; }
+      .kanban-col { flex: 0 0 250px; background: #f8fafc; border-radius: 1rem; border: 1px solid rgba(0,26,65,0.03); display: flex; flex-direction: column; height: 500px; }
+      .kanban-card { transition: all 0.2s ease; border-left-width: 4px; border-left-color: transparent; }
+      .kanban-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px -2px rgba(0,0,0,0.08); }
+      .st-dot { width: 10px; height: 10px; border-radius: 9999px; cursor: pointer; border: 1px solid rgba(0,0,0,0.05); }
+      .scrollbar-hide::-webkit-scrollbar { display: none; }
+      .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+      .active-view-btn { background-color: #001A41 !important; color: white !important; border-color: #001A41 !important; }
+    </style>
+
+    <section id="sub-estados" class="py-16">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+        <div>
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-12 h-12 bg-corporateNavy/5 rounded-2xl flex items-center justify-center text-corporateNavy"><i class="ph ph-sliders text-2xl"></i></div>
+            <h2 class="text-3xl font-bold text-corporateNavy font-heading">Sub-estados por pipeline</h2>
+          </div>
+          <p class="text-mutedGray text-sm">Define los estados internos de cada etapa. Se sincroniza con localStorage.</p>
+        </div>
+        <div class="bg-emerald-50 text-emerald-600 px-4 py-2 rounded-full flex items-center gap-2 border border-emerald-100 h-fit">
+          <i class="ph ph-check-circle-fill"></i><span class="text-xs font-bold">Auto-save habilitado</span>
+        </div>
+      </div>
+      <div id="pipelines-editor-container" class="space-y-12"></div>
+    </section>
+
+    <section id="listas-odoo" class="py-16 scroll-mt-24">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+        <div>
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-12 h-12 bg-corporateNavy/5 rounded-2xl flex items-center justify-center text-corporateNavy"><i class="ph ph-database text-2xl"></i></div>
+            <h2 class="text-3xl font-bold text-corporateNavy font-heading">Estructura Odoo (Tabla/Kanban)</h2>
+          </div>
+          <p class="text-mutedGray text-sm">Visualización avanzada de contactos segmentados con doble vista.</p>
+        </div>
+        <div class="bg-corporateNavy/5 border border-corporateNavy/10 px-4 py-2 rounded-full h-fit flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-brandBlue animate-pulse"></span>
+          <span class="text-xs font-bold text-corporateNavy">~12.000 registros</span>
+        </div>
+      </div>
+      <div class="tabs-wrapper mb-8 border-b border-gray-100 overflow-x-auto scrollbar-hide flex">
+        <div class="flex min-w-full md:min-w-0" id="segment-tabs-container"></div>
+      </div>
+      <div class="internal-card overflow-hidden">
+        <div class="p-6 border-b border-gray-50 flex flex-wrap items-center justify-between gap-4" id="panel-header"></div>
+        <div class="p-0 transition-all duration-300 min-h-[400px]" id="view-container"></div>
+        <div class="p-6 border-t border-gray-50 bg-slate-50/50" id="quick-actions-container"></div>
+      </div>
+      <div class="mt-8 bg-white border-l-4 border-electricCyan p-5 rounded-r-2xl shadow-sm text-sm italic flex items-start gap-4 text-corporateNavy">
+        <i class="ph ph-info font-bold text-electricCyan text-xl"></i>
+        <p>Los datos mostrados son ejemplos realistas para ilustrar la arquitectura del CRM post-limpieza.</p>
+      </div>
+
+      <script>
+        const COLOR_MAP = { gray: { hex: '#9CA3AF' }, blue: { hex: '#0075f2' }, amber: { hex: '#f59e0b' }, red: { hex: '#ef4444' }, teal: { hex: '#50cabf' } };
+        const INITIAL_STATES = {
+          p1: { 
+            name: "Leads Fríos", 
+            badge: "bg-blue-100 text-blue-700", 
+            stages: ["Nuevo", "Contactado", "Reunión descubrimiento", "Asignación", "Calificación"], 
+            data: { 
+              0: [{id: 's1', text: "Sin contactar", color: "gray"}, {id: 's2', text: "En revisión ICP", color: "gray"}], 
+              1: [{id: 's3', text: "Email enviado", color: "blue"}, {id: 's4', text: "Llamada realizada", color: "blue"}, {id: 's5', text: "Sin respuesta", color: "amber"}], 
+              2: [{id: 's6', text: "Pendiente agendar", color: "amber"}, {id: 's7', text: "Agendada", color: "blue"}, {id: 's8', text: "Realizada", color: "teal"}], 
+              3: [{id: 's9', text: "Pendiente asignar", color: "amber"}, {id: 's10', text: "Asignado a comercial", color: "blue"}, {id: 's11', text: "Solo licencias → Paula", color: "blue"}], 
+              4: [{id: 's12', text: "1ª reunión realizada", color: "blue"}, {id: 's13', text: "Calificado ✓", color: "teal"}, {id: 's14', text: "No calificado ✗", color: "red"}] 
+            } 
+          },
+          p2: { 
+            name: "Negocios / Oportunidades", 
+            badge: "bg-emerald-100 text-emerald-700", 
+            stages: ["Oportunidad abierta", "Propuesta", "Negociación", "Seguimiento", "Cierre"], 
+            data: { 
+              0: [{id: 's15', text: "Pack identificado", color: "blue"}, {id: 's16', text: "Pack por definir", color: "amber"}], 
+              1: [{id: 's17', text: "En elaboración", color: "amber"}, {id: 's18', text: "Enviada", color: "blue"}, {id: 's19', text: "Revisión cliente", color: "blue"}], 
+              2: [{id: 's20', text: "Objeción precio", color: "amber"}, {id: 's21', text: "Objeción alcance", color: "amber"}, {id: 's22', text: "Visita agendada", color: "blue"}, {id: 's23', text: "Revisando ajustes", color: "blue"}], 
+              3: [{id: 's24', text: "Día 3 — llamada", color: "amber"}, {id: 's25', text: "Día 7 — email", color: "amber"}, {id: 's26', text: "Día 14 — último intento", color: "red"}, {id: 's27', text: "Día 21 — sin respuesta", color: "red"}], 
+              4: [{id: 's28', text: "Ganado ✓", color: "teal"}, {id: 's29', text: "Perdido — precio", color: "red"}, {id: 's30', text: "Perdido — timing", color: "red"}, {id: 's31', text: "Perdido — competencia", color: "red"}, {id: 's32', text: "Perdido — sin respuesta", color: "red"}] 
+            } 
+          },
+          p3: { 
+            name: "Renovaciones", 
+            badge: "bg-teal-100 text-teal-700", 
+            stages: ["Informar", "Negociación", "Propuesta", "Cierre"], 
+            data: { 
+              0: [{id: 's33', text: "Alerta 60 días", color: "amber"}, {id: 's34', text: "Email enviado", color: "blue"}, {id: 's35', text: "Confirmado sin cambios", color: "teal"}], 
+              1: [{id: 's36', text: "Quiere cambiar tier", color: "amber"}, {id: 's37', text: "Quiere ampliar usuarios", color: "amber"}, {id: 's38', text: "Revisando oferta", color: "blue"}], 
+              2: [{id: 's39', text: "Propuesta enviada", color: "blue"}, {id: 's40', text: "Pendiente firma", color: "amber"}], 
+              3: [{id: 's41', text: "Renovado igual", color: "teal"}, {id: 's42', text: "Renovado con upgrade", color: "teal"}, {id: 's43', text: "Baja — motivo", color: "red"}] 
+            } 
+          },
+          p4: { 
+            name: "Upsell", 
+            badge: "bg-amber-100 text-amber-700", 
+            stages: ["Oportunidad detectada", "Conversación abierta", "Propuesta / Oferta", "Cierre"], 
+            data: { 
+              0: [{id: 's44', text: "Por ticket cliente", color: "amber"}, {id: 's45', text: "Revisión proactiva", color: "amber"}], 
+              1: [{id: 's46', text: "Contacto realizado", color: "blue"}, {id: 's47', text: "Interés confirmado", color: "blue"}, {id: 's48', text: "Pendiente respuesta", color: "amber"}], 
+              2: [{id: 's49', text: "Propuesta enviada", color: "blue"}, {id: 's50', text: "Pendiente firma", color: "amber"}, {id: 's51', text: "En negociación", color: "amber"}], 
+              3: [{id: 's52', text: "Ganado — servicio activado", color: "teal"}, {id: 's53', text: "Perdido — recontacto 6m", color: "red"}] 
+            } 
+          }
+        };
+        const CONTACTS = {
+          A: [
+            {company: "Asesoría Inter SL", contact: "Carmen Vidal", role: "Gerente", product: "M365 BP", pipeName: "Upsell", pipeline: "p4", stage: 1, sub: "Interés confirmado", color: "blue", commercial: "V"},
+            {company: "Clínica Dental Pujol", contact: "Dr. Marc Pujol", role: "Director", product: "BeCloud + Backup", pipeName: "Renovaciones", pipeline: "p3", stage: 0, sub: "Alerta 60 días", color: "amber", commercial: "M"},
+            {company: "Gestoría Fernández", contact: "Luis Fernández", role: "Socio", product: "M365 BP + Besafe", pipeName: "Upsell", pipeline: "p4", stage: 2, sub: "Propuesta enviada", color: "blue", commercial: "V"},
+            {company: "Distribuciones Llevant", contact: "Nuria Soler", role: "IT Manager", product: "Azure + Monitorización", pipeName: "Renovaciones", pipeline: "p3", stage: 1, sub: "Revisando oferta", color: "blue", commercial: "M"},
+            {company: "Despacho Roca", contact: "Ana Roca", role: "Socia", product: "Copilot + Besafe", pipeName: "Upsell", pipeline: "p4", stage: 1, sub: "Contacto realizado", color: "blue", commercial: "V"},
+            {company: "Academia Digital BCN", contact: "Jordi Mas", role: "Director", product: "Google Work. + Backup", pipeName: "Renovaciones", pipeline: "p3", stage: 0, sub: "Confirmado sin cambios", color: "teal", commercial: "P"}
+          ],
+          B: [
+            {company: "Transportes Garriga SL", contact: "Pere Garriga", role: "Gerente", product: "M365 Basic", pipeName: "Renovaciones", pipeline: "p3", stage: 0, sub: "Alerta 60 días", color: "amber", commercial: "P"},
+            {company: "Inmobiliaria Martí", contact: "Rosa Martí", role: "Directora", product: "M365 Standard", pipeName: "Upsell", pipeline: "p4", stage: 0, sub: "Revisión proactiva", color: "amber", commercial: "P"},
+            {company: "Constructora Puig", contact: "Joan Puig", role: "Admin", product: "Google Workspace", pipeName: "Renovaciones", pipeline: "p3", stage: 2, sub: "Pendiente firma", color: "amber", commercial: "P"},
+            {company: "Farmacia Badalona", contact: "Sandra Díez", role: "Prop", product: "M365 Basic", pipeName: "Upsell", pipeline: "p4", stage: 1, sub: "Pendiente respuesta", color: "amber", commercial: "P"},
+            {company: "RH Nexus", contact: "David Moreno", role: "CEO", product: "M365 Premium", pipeName: "Upsell", pipeline: "p4", stage: 2, sub: "Propuesta enviada", color: "blue", commercial: "V"},
+            {company: "Editorial Atlàntida", contact: "Marta Camps", role: "Dir", product: "Google Workspace", pipeName: "Renovaciones", pipeline: "p3", stage: 1, sub: "Quiere ampliar usuarios", color: "amber", commercial: "P"}
+          ],
+          C: [
+            {company: "Bufete Sánchez", contact: "Ignacio M.", role: "Socio", product: "—", pipeName: "Negocios", pipeline: "p2", stage: 1, sub: "Enviada", color: "blue", commercial: "V"},
+            {company: "Clínica Grau", contact: "Elena Grau", role: "Prop", product: "—", pipeName: "Negocios", pipeline: "p2", stage: 2, sub: "Visita agendada", color: "blue", commercial: "V"},
+            {company: "Tech Solutions", contact: "Ricard Olivé", role: "CTO", product: "—", pipeName: "Negocios", pipeline: "p2", stage: 4, sub: "Ganado ✓", color: "teal", commercial: "M"},
+            {company: "Notaría Vilafranca", contact: "Tomàs Serra", role: "Notario", product: "—", pipeName: "Negocios", pipeline: "p2", stage: 1, sub: "En elaboración", color: "amber", commercial: "V"},
+            {company: "Correduría Sur", contact: "Manuela Ortiz", role: "Dir", product: "—", pipeName: "Negocios", pipeline: "p2", stage: 3, sub: "Día 7 — email", color: "amber", commercial: "V"}
+          ],
+          D: [
+            {company: "Construcciones Ibáñez", contact: "—", role: "—", product: "—", pipeName: "Leads fríos", pipeline: "p1", stage: 0, sub: "Sin contactar", color: "gray", commercial: "—"},
+            {company: "Hostelería Vallès", contact: "Antonio Ruiz", role: "Gerente", product: "—", pipeName: "Leads fríos", pipeline: "p1", stage: 1, sub: "Email enviado", color: "blue", commercial: "—"},
+            {company: "Óptica Visió", contact: "—", role: "—", product: "—", pipeName: "Leads fríos", pipeline: "p1", stage: 0, sub: "En revisión ICP", color: "gray", commercial: "—"},
+            {company: "Autoescuela Vidal", contact: "Paco Vidal", role: "Prop", product: "—", pipeName: "Leads fríos", pipeline: "p1", stage: 2, sub: "Agendada", color: "blue", commercial: "—"},
+            {company: "Logística Nord", contact: "—", role: "—", product: "—", pipeName: "Leads fríos", pipeline: "p1", stage: 3, sub: "Pendiente asignar", color: "amber", commercial: "—"},
+            {company: "... y ~11.594 más", contact: "—", role: "—", product: "—", pipeName: "Leads fríos", pipeline: "p1", stage: 4, sub: "No calificado ✗", color: "red", commercial: "—"}
+          ],
+          E: [
+            {company: "Competencia IT", contact: "—", motive: "Empresa competidora", date: "2026"},
+            {company: "Juan García", contact: "Juan García", motive: "Particular (No empresa)", date: "2026"},
+            {company: "Amazon ES", contact: "—", motive: "Fuera de ICP (Grande)", date: "2026"},
+            {company: "Empresa Polonia", contact: "—", motive: "Fuera de España", date: "2026"}
+          ]
+        };
+        const SEGMENTS = {
+          A: {title: "proyectos", color: "#50cabf", count: 47, pipe: "Upsell+Renov", actions: [['ph-calendar-check','Revisión anual', 'electricCyan']]},
+          B: {title: "Licencias", color: "#0075f2", count: 123, pipe: "Upsell+Renov", actions: [['ph-lightning','Campaña upsell', 'brandBlue']]},
+          C: {title: "Calientes", color: "#f59e0b", count: 38, pipe: "Negocios", actions: [['ph-envelope','Secuencia hot', 'amber']]},
+          D: {title: "Frios", color: "#9CA3AF", count: "11.6k", pipe: "Leads Fríos", actions: [['ph-megaphone','Reactivación', 'mutedGray']]},
+          E: {title: "Descartados", color: "#ef4444", count: 180, pipe: "Ninguno", actions: [['ph-eye','Motivos', 'red']]}
+        };
+        let currentSubStates = JSON.parse(localStorage.getItem('besv1')) || INITIAL_STATES;
+        let activeTab = 'A', currentView = 'table', kanbanPipe = 'p4';
+        function save() { localStorage.setItem('besv1', JSON.stringify(currentSubStates)); }
+        function renderEditor() {
+          const container = document.getElementById('pipelines-editor-container');
+          container.innerHTML = Object.keys(currentSubStates).map(pKey => {
+            const p = currentSubStates[pKey];
+            return `<div class="internal-card overflow-hidden"><div class="px-6 py-3 border-b border-gray-50 flex items-center justify-between bg-slate-50"><span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase ${p.badge}">${p.name}</span></div><div class="p-6 overflow-x-auto scrollbar-hide"><div class="flex gap-6 min-w-max">${p.stages.map((stage, idx) => `<div class="w-48 shrink-0"><h4 class="text-[9px] font-bold uppercase text-mutedGray mb-3">${stage}</h4><div class="space-y-2 mb-3">${(p.data[idx] || []).map(item => `<div class="substate-item flex items-center gap-2 group text-[11px]"><div class="relative"><div onclick="togglePicker(event, '${item.id}')" class="st-dot" style="background-color: ${COLOR_MAP[item.color].hex}"></div><div id="picker-${item.id}" class="color-dropdown">${Object.keys(COLOR_MAP).map(ck => `<div onclick="setCol('${pKey}', ${idx}, '${item.id}', '${ck}')" class="w-4 h-4 rounded-full" style="background-color: ${COLOR_MAP[ck].hex}"></div>`).join('')}</div></div><span class="font-semibold text-corporateNavy flex-1" ondblclick="editTxt('${pKey}', ${idx}, '${item.id}', this)">${item.text}</span><button onclick="remI('${pKey}', ${idx}, '${item.id}')" class="delete-btn text-red-400 p-1"><i class="ph ph-x"></i></button></div>`).join('')}</div><button onclick="addI('${pKey}', ${idx})" class="w-full py-1.5 border border-dashed border-gray-200 rounded-lg text-[9px] font-bold text-mutedGray hover:text-brandBlue"><i class="ph ph-plus"></i>Añadir</button></div>`).join('')}</div></div></div>`;
+          }).join('');
+        }
+        window.togglePicker = (e, id) => { e.stopPropagation(); document.querySelectorAll('.color-dropdown').forEach(d => { if(d.id !== 'picker-'+id) d.classList.remove('show'); }); document.getElementById('picker-'+id).classList.toggle('show'); };
+        window.setCol = (pk, si, id, col) => { const i = currentSubStates[pk].data[si].find(x => x.id === id); if(i) i.color = col; save(); renderEditor(); renderContent(); };
+        window.addI = (pk, si) => { if(!currentSubStates[pk].data[si]) currentSubStates[pk].data[si] = []; currentSubStates[pk].data[si].push({id: 's'+Date.now(), text: 'Nuevo', color: 'gray'}); save(); renderEditor(); renderContent(); };
+        window.remI = (pk, si, id) => { currentSubStates[pk].data[si] = currentSubStates[pk].data[si].filter(x => x.id !== id); save(); renderEditor(); renderContent(); };
+        window.editTxt = (pk, si, id, el) => { const v = el.innerText; const inp = document.createElement('input'); inp.value = v; inp.className = 'text-[11px] w-full border rounded outline-none'; el.parentNode.replaceChild(inp, el); inp.focus(); inp.onblur = () => { const nt = inp.value.trim() || v; const i = currentSubStates[pk].data[si].find(x => x.id === id); if(i) i.text = nt; save(); renderEditor(); renderContent(); }; };
+        function renderTabs() { 
+          const c = document.getElementById('segment-tabs-container');
+          c.innerHTML = Object.keys(SEGMENTS).map(k => { const s = SEGMENTS[k]; const act = activeTab === k; return `<button onclick="setTab('${k}')" class="px-8 py-5 border-b-2 border-transparent ${act ? 'tab-active-'+k : 'opacity-40'} transition-all shrink-0"><span class="block text-xl font-bold" style="color:${s.color}">${k}</span><span class="block text-[10px] font-bold uppercase tracking-tighter">${s.title}</span></button>`; }).join('');
+        }
+        function renderHeader() { const s = SEGMENTS[activeTab]; document.getElementById('panel-header').innerHTML = `<div><h3 class="font-bold text-corporateNavy">Lista ${activeTab}: ${s.title}</h3><p class="text-[11px] text-mutedGray">Pipe: ${s.pipe}</p></div><div class="flex items-center bg-slate-100 p-1 rounded-lg"><button onclick="setV('table')" class="px-3 py-1.5 rounded-md text-[10px] font-bold ${currentView==='table'?'active-view-btn':''}">Tabla</button><button onclick="setV('kanban')" class="px-3 py-1.5 rounded-md text-[10px] font-bold ${currentView==='kanban'?'active-view-btn':''}">Kanban</button></div>`; }
+        function renderContent() {
+          const c = document.getElementById('view-container');
+          if(currentView === 'table') {
+            const data = CONTACTS[activeTab]; const isE = activeTab==='E';
+            c.innerHTML = `<div class="overflow-x-auto"><table class="w-full text-[11px] text-left"><thead class="bg-slate-50 uppercase font-bold text-corporateNavy border-b"><tr><th class="p-4">Empresa</th><th class="p-4">Contacto</th>${isE?'<th class="p-4">Motivo</th>':'<th class="p-4 uppercase tracking-wider">Etapa Pipeline</th><th class="p-4 capitalize">Estado</th>'}</tr></thead><tbody class="divide-y">${data.map(x => {
+              const pipe = currentSubStates[x.pipeline];
+              const stageName = pipe ? pipe.stages[x.stage] : '—';
+              return `<tr><td class="p-4 font-bold">${x.company}</td><td class="p-4">${x.contact}</td>${isE?`<td class="p-4 text-red-500">${x.motive}</td>`:`<td class="p-4"><span class="px-2 py-0.5 rounded text-[9px] font-bold ${pipe?.badge || ''}">${stageName}</span></td><td class="p-4"><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background-color:${COLOR_MAP[x.color].hex}"></span>${x.sub}</div></td>`}</tr>`
+            }).join('')}</tbody></table></div>`;
+          } else {
+            if(activeTab==='E') { c.innerHTML = '<p class="p-10 text-center text-mutedGray">Sin pipeline para descartados.</p>'; }
+            else {
+              let pid = SEGMENTS[activeTab].pipe === 'Negocios' ? 'p2' : (SEGMENTS[activeTab].pipe === 'Leads Fríos' ? 'p1' : kanbanPipe);
+              const p = currentSubStates[pid]; const items = CONTACTS[activeTab].filter(x => x.pipeline === pid);
+              c.innerHTML = `<div class="kanban-scroll px-6">${p.stages.map((st, i) => { const sData = items.filter(x => x.stage === i); return `<div class="kanban-col p-3"><h5 class="text-[10px] uppercase font-bold text-corporateNavy mb-3">${st} (${sData.length})</h5><div class="space-y-2">${sData.map(x => `<div class="kanban-card bg-white p-3 rounded-xl border" style="border-left-color:${COLOR_MAP[x.color].hex}"><h6 class="font-bold text-corporateNavy">${x.company}</h6><p class="text-[10px] text-mutedGray">${x.sub}</p></div>`).join('')}</div></div>`; }).join('')}</div>`;
+            }
+          }
+          document.getElementById('quick-actions-container').innerHTML = `<div class="flex gap-3">${SEGMENTS[activeTab].actions.map(a => `<button class="px-4 py-2 border rounded-xl text-[11px] font-bold text-corporateNavy hover:bg-white"><i class="ph ${a[0]} mr-1 text-brandBlue"></i>${a[1]}</button>`).join('')}</div>`;
+        }
+        window.setTab = (k) => { activeTab = k; renderTabs(); renderHeader(); renderContent(); };
+        window.setV = (v) => { currentView = v; renderHeader(); renderContent(); };
+        document.addEventListener('DOMContentLoaded', () => { renderEditor(); renderTabs(); renderHeader(); renderContent(); window.onclick = () => document.querySelectorAll('.color-dropdown').forEach(d => d.classList.remove('show')); });
+      </script>
+    </section>
+
+    <!-- Section 7: To-Do -->
+    <section id="todo">
+      <div class="mb-10 text-center">
+        <h2 class="text-3xl font-bold text-corporateNavy">To-Do: Acciones Pendientes</h2>
+        <p class="text-mutedGray mt-2">Próximos pasos para habilitar la operativa Q1-Q2</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Urgent -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-2 h-2 rounded-full bg-red-500"></span>
+            <h3 class="text-xs font-bold uppercase tracking-widest text-corporateNavy">Urgente</h3>
+          </div>
+          <div class="internal-card p-5 border-l-4 border-l-red-500 space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="mt-1 w-4 h-4 rounded border border-gray-300"></div>
+              <p class="text-xs font-medium">Asignar comerciales en Odoo por defecto.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="mt-1 w-4 h-4 rounded border border-gray-300"></div>
+              <p class="text-xs font-medium">Validar catálogo de servicios y precios orientativos.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="mt-1 w-4 h-4 rounded border border-gray-300"></div>
+              <p class="text-xs font-medium">Cruzar Odoo con ERP (Clientes Activos).</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="mt-1 w-4 h-4 rounded border border-gray-300"></div>
+              <p class="text-xs font-medium">Configurar Pipelines: Leads fríos, Negocios, Renovaciones.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- High Priority -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-2 h-2 rounded-full bg-brandBlue"></span>
+            <h3 class="text-xs font-bold uppercase tracking-widest text-corporateNavy">Alta Prioridad</h3>
+          </div>
+          <div class="internal-card p-5 border-l-4 border-l-brandBlue space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="mt-1 w-4 h-4 rounded border border-gray-300"></div>
+              <p class="text-xs font-medium">Definir flujo Técnico (Ticket) → Comercial (Upsell).</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="mt-1 w-4 h-4 rounded border border-gray-300"></div>
+              <p class="text-xs font-medium">Doc de calificación: preguntas para reunión descubrimiento.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="mt-1 w-4 h-4 rounded border border-gray-300"></div>
+              <p class="text-xs font-medium">Plantilla base de propuesta comercial rápida.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="mt-1 w-4 h-4 rounded border border-gray-300"></div>
+              <p class="text-xs font-medium">Automatizar alertas renovaciones (60 días).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Medium Term -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-2 h-2 rounded-full bg-electricCyan"></span>
+            <h3 class="text-xs font-bold uppercase tracking-widest text-corporateNavy">Medio Plazo</h3>
+          </div>
+          <div class="internal-card p-5 border-l-4 border-l-electricCyan space-y-4">
+            <div class="flex items-start gap-3 text-mutedGray">
+              <div class="mt-1 w-4 h-4 rounded border border-gray-300"></div>
+              <p class="text-xs font-medium">Valorar especialista Azure (Q3).</p>
+            </div>
+            <div class="flex items-start gap-3 text-mutedGray">
+              <div class="mt-1 w-4 h-4 rounded border border-gray-300"></div>
+              <p class="text-xs font-medium">Protocolo formal auditorías gratuitas.</p>
+            </div>
+            <div class="flex items-start gap-3 text-mutedGray">
+              <div class="mt-1 w-4 h-4 rounded border border-gray-300"></div>
+              <p class="text-xs font-medium">Pipeline Upsell proactivo habilitado.</p>
+            </div>
+            <div class="flex items-start gap-3 text-mutedGray">
+              <div class="mt-1 w-4 h-4 rounded border border-gray-300"></div>
+              <p class="text-xs font-medium">Review estructura de segmentos (90 días).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-corporateNavy py-12 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 text-center space-y-4">
+      <p class="text-white/40 text-xs font-bold uppercase tracking-[0.2em]">Documento Interno · Versión 1.0</p>
+      <p class="text-white/60 text-sm">Uso exclusivo del equipo comercial y marketing de <span class="text-white font-bold">beServices</span></p>
+      <div class="pt-6">
+        <a href="internal.html" class="text-electricCyan hover:text-white transition-colors text-sm font-bold inline-flex items-center gap-2">
+            <i class="ph ph-arrow-left"></i> Volver al Portal de Recursos
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleAccordion(id) {
+        const content = document.getElementById(id);
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+        } else {
+            content.classList.add('open');
+        }
+    }
+  </script>
+
+</body>
+</html>

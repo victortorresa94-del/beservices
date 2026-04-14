@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ESCALA - Cloud e Infraestructura | beServices</title>
+
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter:wght@700;800;900&display=swap" rel="stylesheet" />
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: '#0075f2',
+                        corporateNavy: '#001A41',
+                        mutedGray: '#9CA3AF',
+                        electricCyan: '#50cabf',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #FFFFFF; color: #001A41; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Inter', sans-serif; font-weight: 800; color: #001A41; letter-spacing: -0.02em; }
+        .glass-navbar { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0, 26, 65, 0.05); }
+        .hero-heading { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; letter-spacing: -0.02em; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-corporateNavy selection:text-white">
+
+    <!-- BEGIN: Navbar -->
+    <nav class="fixed top-0 w-full z-50 glass-navbar transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center">
+                <img src="assets/logo.png" alt="beServices Logo" class="h-8 w-auto mix-blend-multiply" />
+            </a>
+            <div class="hidden md:flex items-center gap-8 bg-white/40 border border-corporateNavy/5 px-8 py-2 rounded-full backdrop-blur-md">
+                <a href="servicio-activa.html" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">ACTIVA</a>
+                <a href="servicio-escala.html" class="text-sm font-bold text-corporateNavy transition-colors">ESCALA</a>
+                <a href="servicio-protege.html" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">PROTEGE</a>
+                <a href="servicio-potencia.html" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">POTENCIA</a>
+                <a href="servicio-gestiona.html" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">GESTIONA</a>
+                <a href="#contacto" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">Contacto</a>
+            </div>
+            <a href="#contacto" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-[#003399] rounded-full hover:bg-[#003399]/90 transition-colors shadow-lg shadow-[#003399]/20">Habla con nosotros</a>
+        </div>
+    </nav>
+
+    <!-- BEGIN: Hero Section -->
+    <section class="relative pt-40 pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="max-w-2xl reveal active">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200 mb-8">
+                        <span class="w-2 h-2 rounded-full bg-[#1A73E8]"></span>
+                        <span class="text-xs font-bold tracking-widest text-[#003399] uppercase">FASE 02</span>
+                    </div>
+                    <h1 class="hero-heading mb-6 font-black uppercase">
+                        ESCALA tu infraestructura
+                    </h1>
+                    <p class="text-2xl font-bold text-[#1A73E8] mb-6">Cloud, migraciones y despliegues</p>
+                    <p class="text-lg text-mutedGray leading-relaxed mb-10 max-w-xl">
+                        Migramos tu empresa a la nube, desplegamos Azure o Google Cloud y gestionamos tu infraestructura privada. Sin sorpresas técnicas ni facturas imprevisibles.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contacto" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-[#003399] rounded-full transition-all shadow-xl shadow-[#003399]/20 hover:-translate-y-1">Solicitar diagnóstico</a>
+                        <a href="#incluye" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-[#003399] bg-white border border-[#003399]/10 rounded-full hover:bg-gray-50 transition-all shadow-sm">Ver qué incluye</a>
+                    </div>
+                </div>
+                <div class="relative flex justify-center lg:justify-end reveal active" style="transition-delay: 200ms;">
+                    <img src="assets/ICONOS/grandes/2.png" alt="Fase 02 Escala" class="w-full max-w-[400px] h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/400x400?text=Escala+Icon'" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUÉ INCLUYE ESCALA -->
+    <section id="incluye" class="py-24 bg-gray-50/50 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-heading font-black text-corporateNavy mb-16 text-center reveal">Todo lo que incluye esta fase</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- Bloque 1 -->
+                <div class="bg-[#E0F2FE] p-8 rounded-[2rem] shadow-sm border border-[#E0F2FE] hover:shadow-xl transition-all group reveal">
+                    <div class="w-12 h-12 flex items-center justify-center text-[#1A73E8] bg-white/70 rounded-xl mb-6">
+                        <i class="ph ph-hard-drives text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-corporateNavy mb-6 uppercase">CLOUD PRIVADO (BECLOUD)</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-2 text-sm text-corporateNavy/70 font-medium"><i class="ph-fill ph-check-circle text-[#1A73E8] mt-0.5 shrink-0"></i> CPD Virtual BeCloud — 4, 8, 16 y 32 vCPU</li>
+                        <li class="flex items-start gap-2 text-sm text-corporateNavy/70 font-medium"><i class="ph-fill ph-check-circle text-[#1A73E8] mt-0.5 shrink-0"></i> Servidores Dedicados Básico / Avanzado / Premium</li>
+                        <li class="flex items-start gap-2 text-sm text-corporateNavy/70 font-medium"><i class="ph-fill ph-check-circle text-[#1A73E8] mt-0.5 shrink-0"></i> Escritorios Compartidos</li>
+                        <li class="flex items-start gap-2 text-sm text-corporateNavy/70 font-medium"><i class="ph-fill ph-check-circle text-[#1A73E8] mt-0.5 shrink-0"></i> Acceso Remoto: VPS, Escritorio Remoto Windows, Citrix</li>
+                        <li class="flex items-start gap-2 text-sm text-corporateNavy/70 font-medium"><i class="ph-fill ph-check-circle text-[#1A73E8] mt-0.5 shrink-0"></i> Bases de datos en BeCloud</li>
+                    </ul>
+                </div>
+                <!-- Bloque 2 -->
+                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-xl transition-all group reveal" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 flex items-center justify-center text-[#1A73E8] bg-[#1A73E8]/10 rounded-xl mb-6">
+                        <i class="ph ph-cloud-gear text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-corporateNavy mb-6 uppercase">DESPLIEGUES EN AZURE Y GOOGLE CLOUD</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="ph-fill ph-check-circle text-gray-300 mt-0.5 shrink-0"></i> Diseño de arquitectura cloud</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="ph-fill ph-check-circle text-gray-300 mt-0.5 shrink-0"></i> Servidores y escritorios virtuales en Azure (AVD)</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="ph-fill ph-check-circle text-gray-300 mt-0.5 shrink-0"></i> Bases de datos en Azure y Google Cloud</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="ph-fill ph-check-circle text-gray-300 mt-0.5 shrink-0"></i> Sincronización con Active Directory local</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="ph-fill ph-check-circle text-gray-300 mt-0.5 shrink-0"></i> Activación Google Workspace y Microsoft 365</li>
+                    </ul>
+                </div>
+                <!-- Bloque 3 -->
+                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-xl transition-all group reveal" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 flex items-center justify-center text-[#1A73E8] bg-[#1A73E8]/10 rounded-xl mb-6">
+                        <i class="ph ph-arrows-right-left text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-corporateNavy mb-6 uppercase">MIGRACIONES</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="ph-fill ph-check-circle text-gray-300 mt-0.5 shrink-0"></i> Migración de correo a Microsoft 365 o Google Workspace</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="ph-fill ph-check-circle text-gray-300 mt-0.5 shrink-0"></i> Migración del servidor de archivos a la nube</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="ph-fill ph-check-circle text-gray-300 mt-0.5 shrink-0"></i> Telefonía integrada en Microsoft Teams</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="ph-fill ph-check-circle text-gray-300 mt-0.5 shrink-0"></i> Despliegue automático de equipos (Autopilot)</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="ph-fill ph-check-circle text-gray-300 mt-0.5 shrink-0"></i> Migración de infraestructura a Azure o Google Cloud</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="ph-fill ph-check-circle text-gray-300 mt-0.5 shrink-0"></i> Migración de servidores físicos a BeCloud</li>
+                    </ul>
+                </div>
+                <!-- Bloque 4 -->
+                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-xl transition-all group reveal" style="transition-delay: 300ms;">
+                    <div class="w-12 h-12 flex items-center justify-center text-[#1A73E8] bg-[#1A73E8]/10 rounded-xl mb-6">
+                        <i class="ph ph-gauge text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-corporateNavy mb-6 uppercase">CONSUMO CLOUD GESTIONADO</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="ph-fill ph-check-circle text-gray-300 mt-0.5 shrink-0"></i> Consumo Microsoft Azure gestionado</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="ph-fill ph-check-circle text-gray-300 mt-0.5 shrink-0"></i> Consumo Google Cloud gestionado</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="ph-fill ph-check-circle text-gray-300 mt-0.5 shrink-0"></i> Optimización de costes y reporting mensual</li>
+                    </ul>
+                </div>
+                <!-- Bloque 5 (Centrado si es impar) -->
+                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-xl transition-all group reveal md:col-span-2 lg:col-span-1 lg:col-start-1 lg:col-end-3 max-w-[600px] mx-auto w-full">
+                    <div class="w-12 h-12 flex items-center justify-center text-[#1A73E8] bg-[#1A73E8]/10 rounded-xl mb-6">
+                        <i class="ph ph-globe text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-corporateNavy mb-6 uppercase">INFRAESTRUCTURA WEB</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="ph-fill ph-check-circle text-gray-300 mt-0.5 shrink-0"></i> Servidor privado virtual (VPS)</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="ph-fill ph-check-circle text-gray-300 mt-0.5 shrink-0"></i> Hosting web gestionado</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="ph-fill ph-check-circle text-gray-300 mt-0.5 shrink-0"></i> Registro de dominio y SSL</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="ph-fill ph-check-circle text-gray-300 mt-0.5 shrink-0"></i> IP pública fija</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="ph-fill ph-check-circle text-gray-300 mt-0.5 shrink-0"></i> Centralita IP Pippol</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLOUD PRIVADO BECLOUD -->
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="bg-[#003399] p-12 md:p-16 rounded-[3rem] shadow-2xl reveal relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4"></div>
+                <h3 class="text-3xl font-heading font-black text-white mb-6">BeCloud — Infraestructura privada en España</h3>
+                <p class="text-white/80 text-lg leading-relaxed mb-10 max-w-3xl">Nuestro CPD virtual está alojado en España, con garantías de disponibilidad, soporte directo y sin dependencia de fabricantes globales. Para empresas que necesitan rendimiento predecible y control total.</p>
+                <div class="flex flex-wrap gap-4 mb-10">
+                    <span class="px-5 py-2.5 bg-white/10 border border-white/20 rounded-full text-sm font-bold text-white shadow-sm backdrop-blur-sm">Latencia optimizada</span>
+                    <span class="px-5 py-2.5 bg-white/10 border border-white/20 rounded-full text-sm font-bold text-white shadow-sm backdrop-blur-sm">Datos en España</span>
+                    <span class="px-5 py-2.5 bg-white/10 border border-white/20 rounded-full text-sm font-bold text-white shadow-sm backdrop-blur-sm">Soporte directo</span>
+                </div>
+                <a href="#contacto" class="inline-flex items-center justify-center px-8 py-3 text-sm font-bold text-white border-2 border-white rounded-full hover:bg-white hover:text-[#003399] transition-all">Ver planes BeCloud</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARA QUIÉN ES -->
+    <section class="py-24 bg-gray-50/50 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-heading font-black text-corporateNavy mb-16 text-center reveal">¿Esto es para ti si...</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white border border-gray-100 p-8 rounded-2xl flex gap-4 items-start shadow-sm reveal">
+                    <i class="ph-fill ph-check-circle text-2xl text-[#1A73E8] shrink-0 mt-1"></i>
+                    <p class="text-corporateNavy font-medium">Tienes servidores físicos en la oficina que dan problemas o son costosos de mantener.</p>
+                </div>
+                <div class="bg-white border border-gray-100 p-8 rounded-2xl flex gap-4 items-start shadow-sm reveal" style="transition-delay: 100ms;">
+                    <i class="ph-fill ph-check-circle text-2xl text-[#1A73E8] shrink-0 mt-1"></i>
+                    <p class="text-corporateNavy font-medium">Necesitas acceso remoto seguro para tu equipo y no tienes infraestructura para ello.</p>
+                </div>
+                <div class="bg-white border border-gray-100 p-8 rounded-2xl flex gap-4 items-start shadow-sm reveal" style="transition-delay: 200ms;">
+                    <i class="ph-fill ph-check-circle text-2xl text-[#1A73E8] shrink-0 mt-1"></i>
+                    <p class="text-corporateNavy font-medium">Quieres migrar a Azure o Google Cloud pero no sabes por dónde empezar.</p>
+                </div>
+                <div class="bg-white border border-gray-100 p-8 rounded-2xl flex gap-4 items-start shadow-sm reveal" style="transition-delay: 300ms;">
+                    <i class="ph-fill ph-check-circle text-2xl text-[#1A73E8] shrink-0 mt-1"></i>
+                    <p class="text-corporateNavy font-medium">Tu empresa crece y la infraestructura actual no escala contigo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CÓMO TRABAJAMOS -->
+    <section class="py-24 bg-[#001A41] text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-heading font-black mb-16 text-center reveal">El proceso</h2>
+            <div class="grid md:grid-cols-4 gap-8 relative">
+                <!-- Decorative line for desktop -->
+                <div class="hidden md:block absolute top-[50px] left-[10%] right-[10%] h-0.5 bg-white/10 z-0"></div>
+                
+                <div class="relative z-10 text-center reveal">
+                    <div class="w-24 h-24 bg-[#003399] border-4 border-[#001A41] rounded-full mx-auto flex items-center justify-center font-heading font-black text-3xl mb-6">1</div>
+                    <h4 class="text-base font-bold mb-3 tracking-wide">Evaluación de la infraestructura actual</h4>
+                </div>
+                <div class="relative z-10 text-center reveal" style="transition-delay: 100ms;">
+                    <div class="w-24 h-24 bg-[#003399] border-4 border-[#001A41] rounded-full mx-auto flex items-center justify-center font-heading font-black text-3xl mb-6">2</div>
+                    <h4 class="text-base font-bold mb-3 tracking-wide">Diseño de la arquitectura destino</h4>
+                </div>
+                <div class="relative z-10 text-center reveal" style="transition-delay: 200ms;">
+                    <div class="w-24 h-24 bg-[#003399] border-4 border-[#001A41] rounded-full mx-auto flex items-center justify-center font-heading font-black text-3xl mb-6">3</div>
+                    <h4 class="text-base font-bold mb-3 tracking-wide">Migración planificada sin interrupciones</h4>
+                </div>
+                <div class="relative z-10 text-center reveal" style="transition-delay: 300ms;">
+                    <div class="w-24 h-24 bg-[#1A73E8] border-4 border-[#001A41] rounded-full mx-auto flex items-center justify-center font-heading font-black text-3xl mb-6">4</div>
+                    <h4 class="text-base font-bold mb-3 tracking-wide">Monitorización y optimización continua</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 6: CTA FINAL -->
+    <section id="contacto" class="py-24 bg-[#003399] relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(26,115,232,0.15),_transparent_50%)]"></div>
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10 reveal">
+            <h2 class="text-4xl md:text-5xl font-heading font-black text-white mb-6">¿Tienes servidores en la oficina que quieres modernizar?</h2>
+            <p class="text-lg text-white/80 mb-10 max-w-2xl mx-auto">Te preparamos un análisis de migración en 48h. Sin coste.</p>
+            <div class="flex justify-center gap-4">
+                <a href="mailto:hola@beservices.es" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-[#003399] bg-white rounded-full hover:bg-gray-50 transition-all shadow-xl hover:-translate-y-1">Solicitar análisis gratuito</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BEGIN: Footer -->
+    <footer class="bg-corporateNavy pt-16 pb-8 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-10">
+                <a href="index.html" class="flex items-center bg-white p-2 rounded-lg">
+                    <img src="assets/logo.png" alt="beServices Logo" class="h-8 w-auto mix-blend-multiply" />
+                </a>
+                <div class="flex flex-wrap justify-center gap-6 text-sm font-medium text-gray-400">
+                    <a href="index.html#servicios" class="hover:text-white transition">Servicios</a>
+                    <a href="#contacto" class="hover:text-white transition">Contacto</a>
+                    <a href="#" class="hover:text-white transition">Aviso Legal</a>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-white/10">
+                <p class="text-sm font-bold text-gray-400">Servicios para tu entorno digital</p>
+                <p class="text-sm text-gray-500">© 2026 BeServices</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 50;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        setTimeout(reveal, 100);
+
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.remove('py-2');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.add('py-2');
+            }
+        });
+        
+        lucide.createIcons();
+    </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+
+<style id="bsc-styles">
+.bsc-tab{display:none!important}
+.bsc-tab.active{display:block!important;animation:bscIn 0.35s ease forwards}
+@keyframes bscIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+input:focus,textarea:focus{outline:none!important;background:#fff!important;border-color:#50cabf!important}
+@media(max-width:900px){.bsc-grid{grid-template-columns:1fr!important;gap:2.5rem!important}}
+</style>
+
+<div style="background:#fff;font-family:'Inter',sans-serif;color:#001A41;padding:5rem 2rem 4rem;max-width:1300px;margin:0 auto;box-sizing:border-box;">
+
+  <div class="bsc-grid" style="display:grid!important;grid-template-columns:1fr 1.5fr!important;gap:5rem!important;align-items:center!important;width:100%!important;">
+
+    <!-- COLUMNA IZQUIERDA -->
+    <div style="display:flex;flex-direction:column;gap:2.5rem;">
+
+      <div>
+        <span style="font-size:10px;font-weight:700;letter-spacing:.2em;color:#50cabf;text-transform:uppercase;display:block;margin-bottom:1.25rem;">Hablemos</span>
+        <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(3rem,5.5vw,5.5rem);font-weight:500;color:#001A41;line-height:1.05;letter-spacing:-0.03em;margin:0 0 1.25rem;">
+          Hablemos<br>de cómo<br><strong style="font-weight:700;">escalar tu IT.</strong>
+        </h1>
+        <p style="font-size:.875rem;color:#9CA3AF;line-height:1.75;max-width:22rem;margin:0;">
+          Seguridad IT, Cloud y IA de la mano de expertos certificados. Cuéntanos qué necesitas y te responderemos sin rodeos.
+        </p>
+      </div>
+
+      <!-- Datos de contacto -->
+      <div style="display:flex;flex-direction:column;gap:1.75rem;">
+
+        <div style="display:flex;align-items:flex-start;gap:1.25rem;">
+          <div style="width:48px;height:48px;border-radius:50%;background:#f3f4f5;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i class="ph ph-phone" style="font-size:1.4rem;color:#50cabf;"></i>
+          </div>
+          <div style="padding-top:4px;">
+            <p style="font-size:10px;font-weight:700;color:#9CA3AF;text-transform:uppercase;letter-spacing:.15em;margin:0 0 5px;">Llámanos</p>
+            <a href="tel:+34938150338" style="font-size:1.1rem;font-weight:500;color:#001A41;text-decoration:none;">+34 938 150 338</a>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:1.25rem;">
+          <div style="width:48px;height:48px;border-radius:50%;background:#f3f4f5;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i class="ph ph-envelope-simple" style="font-size:1.4rem;color:#50cabf;"></i>
+          </div>
+          <div style="padding-top:4px;">
+            <p style="font-size:10px;font-weight:700;color:#9CA3AF;text-transform:uppercase;letter-spacing:.15em;margin:0 0 5px;">Escríbenos</p>
+            <a href="mailto:hola@beservices.es" style="font-size:1.1rem;font-weight:500;color:#001A41;text-decoration:none;">hola@beservices.es</a>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:1.25rem;">
+          <div style="width:48px;height:48px;border-radius:50%;background:#f3f4f5;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i class="ph ph-linkedin-logo" style="font-size:1.4rem;color:#50cabf;"></i>
+          </div>
+          <div style="padding-top:4px;">
+            <p style="font-size:10px;font-weight:700;color:#9CA3AF;text-transform:uppercase;letter-spacing:.15em;margin:0 0 5px;">Síguenos</p>
+            <a href="https://www.linkedin.com/company/beservices" target="_blank" rel="noopener" style="font-size:1.1rem;font-weight:500;color:#001A41;text-decoration:none;">LinkedIn</a>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:1.25rem;">
+          <div style="width:48px;height:48px;border-radius:50%;background:#f3f4f5;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i class="ph ph-map-pin" style="font-size:1.4rem;color:#50cabf;"></i>
+          </div>
+          <div style="padding-top:4px;">
+            <p style="font-size:10px;font-weight:700;color:#9CA3AF;text-transform:uppercase;letter-spacing:.15em;margin:0 0 5px;">Visítanos</p>
+            <p style="font-size:1rem;font-weight:500;color:#001A41;line-height:1.6;margin:0;">Carrer de València, 307, 4º 3ª<br>08009 Barcelona, España</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- COLUMNA DERECHA -->
+    <div style="background:#fff;border-radius:2rem;border:1px solid #f0f0f0;box-shadow:0 20px 60px -15px rgba(0,26,65,0.06);padding:3rem;position:relative;overflow:hidden;">
+      <div style="position:absolute;bottom:-8rem;right:-8rem;width:20rem;height:20rem;background:rgba(80,202,191,0.05);border-radius:50%;filter:blur(4rem);pointer-events:none;"></div>
+
+      <!-- Tabs -->
+      <div style="display:flex;padding:5px;background:#f3f4f5;border-radius:9999px;margin-bottom:2rem;width:fit-content;position:relative;z-index:10;">
+        <button id="bsc-btn-form" onclick="bscTab('form')" style="padding:10px 22px;border-radius:9999px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;background:#fff;color:#001A41;box-shadow:0 1px 4px rgba(0,0,0,0.12);border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;">Enviar Mensaje</button>
+        <button id="bsc-btn-calendar" onclick="bscTab('calendar')" style="padding:10px 22px;border-radius:9999px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;background:transparent;color:#9CA3AF;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;">Agendar Llamada</button>
+      </div>
+
+      <!-- TAB: Formulario -->
+      <div id="bsc-tab-form" class="bsc-tab active" style="position:relative;z-index:10;">
+        <h3 style="font-size:1.75rem;font-weight:400;color:#001A41;margin:0 0 .5rem;letter-spacing:-.01em;">Cuéntanos tu caso</h3>
+        <p style="font-size:.75rem;color:#9CA3AF;margin:0 0 1.75rem;">Completar este formulario lleva 30 segundos. Te contactaremos en menos de 2 horas laborables.</p>
+
+        <form style="display:flex;flex-direction:column;gap:1.25rem;" onsubmit="return false;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+            <div>
+              <label style="display:block;font-size:10px;font-weight:700;color:#9CA3AF;text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px;">Nombre y Apellidos</label>
+              <input type="text" placeholder="Ej. Ana García" style="width:100%;box-sizing:border-box;background:#f8f9fa;border:1px solid rgba(0,0,0,0.07);border-radius:.75rem;padding:13px 15px;font-size:.875rem;font-family:'Inter',sans-serif;color:#001A41;transition:all .2s;" onfocus="this.style.background='#fff';this.style.borderColor='#50cabf';" onblur="this.style.background='#f8f9fa';this.style.borderColor='rgba(0,0,0,0.07)';" />
+            </div>
+            <div>
+              <label style="display:block;font-size:10px;font-weight:700;color:#9CA3AF;text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px;">Email Corporativo</label>
+              <input type="email" placeholder="ana@tuempresa.es" style="width:100%;box-sizing:border-box;background:#f8f9fa;border:1px solid rgba(0,0,0,0.07);border-radius:.75rem;padding:13px 15px;font-size:.875rem;font-family:'Inter',sans-serif;color:#001A41;transition:all .2s;" onfocus="this.style.background='#fff';this.style.borderColor='#50cabf';" onblur="this.style.background='#f8f9fa';this.style.borderColor='rgba(0,0,0,0.07)';" />
+            </div>
+          </div>
+          <div>
+            <label style="display:block;font-size:10px;font-weight:700;color:#9CA3AF;text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px;">Empresa y Teléfono</label>
+            <div style="display:grid;grid-template-columns:2fr 1fr;gap:1rem;">
+              <input type="text" placeholder="Nombre de tu empresa" style="width:100%;box-sizing:border-box;background:#f8f9fa;border:1px solid rgba(0,0,0,0.07);border-radius:.75rem;padding:13px 15px;font-size:.875rem;font-family:'Inter',sans-serif;color:#001A41;transition:all .2s;" onfocus="this.style.background='#fff';this.style.borderColor='#50cabf';" onblur="this.style.background='#f8f9fa';this.style.borderColor='rgba(0,0,0,0.07)';" />
+              <input type="tel" placeholder="+34" style="width:100%;box-sizing:border-box;background:#f8f9fa;border:1px solid rgba(0,0,0,0.07);border-radius:.75rem;padding:13px 15px;font-size:.875rem;font-family:'Inter',sans-serif;color:#001A41;transition:all .2s;" onfocus="this.style.background='#fff';this.style.borderColor='#50cabf';" onblur="this.style.background='#f8f9fa';this.style.borderColor='rgba(0,0,0,0.07)';" />
+            </div>
+          </div>
+          <div>
+            <label style="display:block;font-size:10px;font-weight:700;color:#9CA3AF;text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px;">¿Qué necesitas resolver?</label>
+            <textarea rows="4" placeholder="Añade aquí los detalles de tu consulta..." style="width:100%;box-sizing:border-box;background:#f8f9fa;border:1px solid rgba(0,0,0,0.07);border-radius:.75rem;padding:13px 15px;font-size:.875rem;font-family:'Inter',sans-serif;color:#001A41;resize:none;transition:all .2s;" onfocus="this.style.background='#fff';this.style.borderColor='#50cabf';" onblur="this.style.background='#f8f9fa';this.style.borderColor='rgba(0,0,0,0.07)';"></textarea>
+          </div>
+          <button type="submit" style="width:100%;padding:1rem;border-radius:.75rem;background:#001A41;color:#fff;font-size:.875rem;font-weight:700;font-family:'Inter',sans-serif;border:none;cursor:pointer;box-shadow:0 10px 30px -5px rgba(0,26,65,0.2);transition:all .2s;" onmouseover="this.style.background='#0075f2';" onmouseout="this.style.background='#001A41';">Enviar mensaje</button>
+        </form>
+      </div>
+
+      <!-- TAB: Calendario -->
+      <div id="bsc-tab-calendar" class="bsc-tab" style="position:relative;z-index:10;width:100%;">
+        <h3 style="font-size:1.75rem;font-weight:400;color:#001A41;margin:0 0 .5rem;letter-spacing:-.01em;">Agenda tu sesión</h3>
+        <p style="font-size:.75rem;color:#9CA3AF;margin:0 0 1.75rem;">Elige el día y la hora que mejor te encaje directamente en nuestro calendario.</p>
+        <div style="width:100%;height:750px;background:#f8f9fa;border-radius:1.25rem;overflow:hidden;">
+          <iframe src="https://outlook.office.com/book/ReunindedescubrimientoBeservices@beservices.es/" width="100%" height="100%" frameborder="0" style="border:none;display:block;"></iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  function bscTab(id){
+    var tabs = document.querySelectorAll('.bsc-tab');
+    for(var i=0;i<tabs.length;i++) tabs[i].classList.remove('active');
+    document.getElementById('bsc-tab-'+id).classList.add('active');
+    var aS='padding:10px 22px;border-radius:9999px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;background:#fff;color:#001A41;box-shadow:0 1px 4px rgba(0,0,0,0.12);border:none;cursor:pointer;font-family:Inter,sans-serif;';
+    var iS='padding:10px 22px;border-radius:9999px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;background:transparent;color:#9CA3AF;border:none;cursor:pointer;font-family:Inter,sans-serif;';
+    document.getElementById('bsc-btn-form').style.cssText=(id==='form')?aS:iS;
+    document.getElementById('bsc-btn-calendar').style.cssText=(id==='calendar')?aS:iS;
+  }
+  window.bscTab = bscTab;
+})();
+</script>
