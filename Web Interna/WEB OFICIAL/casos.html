@@ -57,7 +57,7 @@
       transform: translateY(28px);
       transition: opacity 0.55s cubic-bezier(.22,.61,.36,1), transform 0.55s cubic-bezier(.22,.61,.36,1);
     }
-    .reveal.visible {
+    .reveal.active {
       opacity: 1;
       transform: translateY(0);
     }
@@ -637,7 +637,7 @@
       const io = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            entry.target.classList.add('active');
             io.unobserve(entry.target);
           }
         });

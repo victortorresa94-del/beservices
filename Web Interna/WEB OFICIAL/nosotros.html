@@ -65,7 +65,7 @@
       transform: translateY(28px);
       transition: opacity .6s ease, transform .6s ease;
     }
-    .reveal.visible {
+    .reveal.active {
       opacity: 1;
       transform: translateY(0);
     }
@@ -211,9 +211,6 @@
   <!-- ── Navigation (shared component) ── -->
   <nav id="main-nav" data-active="nosotros"></nav>
   <script src="nav-component.js"></script>
-
-  <!-- Spacer for fixed nav -->
-  <div style="height:4.5rem;"></div>
 
   <main>
 
@@ -670,7 +667,7 @@
         function (entries) {
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
+              entry.target.classList.add('active');
               observer.unobserve(entry.target);
             }
           });
