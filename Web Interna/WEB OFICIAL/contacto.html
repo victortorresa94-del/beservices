@@ -72,20 +72,8 @@
 <body class="antialiased selection:bg-corporateNavy selection:text-white">
 
     <!-- Header / Nav -->
-    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-corporateNavy/5 transition-all">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="flex items-center">
-                <img src="assets/logo.png" alt="beServices Logo" class="h-8 w-auto mix-blend-multiply" />
-            </a>
-            <div class="hidden md:flex items-center gap-8 bg-white/40 border border-corporateNavy/5 px-8 py-2 rounded-full backdrop-blur-md">
-                <a href="index.html#servicios" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">Servicios</a>
-                <a href="#" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">Nosotros</a>
-                <a href="#" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">Casos</a>
-                <a href="contacto.html" class="text-sm font-bold text-corporateNavy transition-colors">Contacto</a>
-            </div>
-            <a href="internal.html" class="hidden md:inline-flex items-center gap-2 justify-center px-6 py-2.5 text-sm font-bold text-white bg-corporateNavy rounded-full hover:bg-corporateNavy/90 transition-all shadow-md">Portal Interno <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
-        </div>
-    </nav>
+    <nav id="main-nav" data-active="contacto"></nav>
+<script src="nav-component.js"></script>
 
     <!-- Main Section -->
     <section class="pt-36 pb-24 min-h-screen flex items-center bg-white relative">

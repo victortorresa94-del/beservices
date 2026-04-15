@@ -44,22 +44,8 @@
 <body class="antialiased selection:bg-corporateNavy selection:text-white">
 
     <!-- BEGIN: Navbar -->
-    <nav class="fixed top-0 w-full z-50 glass-navbar transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="flex items-center">
-                <img src="assets/logo.png" alt="beServices Logo" class="h-8 w-auto mix-blend-multiply" />
-            </a>
-            <div class="hidden md:flex items-center gap-8 bg-white/40 border border-corporateNavy/5 px-8 py-2 rounded-full backdrop-blur-md">
-                <a href="servicio-activa.html" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">ACTIVA</a>
-                <a href="servicio-escala.html" class="text-sm font-bold text-corporateNavy transition-colors">ESCALA</a>
-                <a href="servicio-protege.html" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">PROTEGE</a>
-                <a href="servicio-potencia.html" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">POTENCIA</a>
-                <a href="servicio-gestiona.html" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">GESTIONA</a>
-                <a href="#contacto" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">Contacto</a>
-            </div>
-            <a href="#contacto" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-[#003399] rounded-full hover:bg-[#003399]/90 transition-colors shadow-lg shadow-[#003399]/20">Habla con nosotros</a>
-        </div>
-    </nav>
+    <nav id="main-nav" data-active="servicios"></nav>
+<script src="nav-component.js"></script>
 
     <!-- BEGIN: Hero Section -->
     <section class="relative pt-40 pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-white">

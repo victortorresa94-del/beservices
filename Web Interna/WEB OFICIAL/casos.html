@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Casos de éxito | Empresas que han confiado en BeServices para su IT</title>
+  <meta name="description" content="Cómo ayudamos a empresas de 10 a 200 empleados a migrar a Microsoft 365, implantar ciberseguridad, adoptar IA con Copilot y reducir su coste tecnológico." />
+  <link rel="canonical" href="https://beservices.es/casos-exito/" />
+  <meta property="og:title" content="Casos de éxito — BeServices" />
+  <meta property="og:description" content="Más de 150 proyectos de IT completados. Migraciones, ciberseguridad, IA y cloud para empresas de 10 a 200 empleados en España." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBlue: '#0075f2',
+            corporateNavy: '#001A41',
+            mutedGray: '#9CA3AF',
+            electricCyan: '#50cabf',
+            surfaceLow: '#f3f4f5',
+            iceWhite: '#f8f9fa'
+          },
+          fontFamily: {
+            space: ["'Space Grotesk'", "sans-serif"],
+            sans: ["'Inter'", "system-ui", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #fff;
+      color: #001A41;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.55s cubic-bezier(.22,.61,.36,1), transform 0.55s cubic-bezier(.22,.61,.36,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+    .reveal-delay-5 { transition-delay: 0.40s; }
+    .reveal-delay-6 { transition-delay: 0.48s; }
+
+    /* Filter pills */
+    .filter-pill {
+      cursor: pointer;
+      padding: .375rem 1rem;
+      border-radius: 99px;
+      font-size: .8125rem;
+      font-weight: 600;
+      border: 1.5px solid #e5e7eb;
+      color: #6B7280;
+      background: #fff;
+      transition: all .2s ease;
+      white-space: nowrap;
+      user-select: none;
+    }
+    .filter-pill:hover {
+      border-color: #50cabf;
+      color: #001A41;
+    }
+    .filter-pill.active {
+      background: #001A41;
+      border-color: #001A41;
+      color: #fff;
+    }
+
+    /* Case cards hidden state */
+    .case-card {
+      transition: opacity .3s ease, transform .3s ease, box-shadow .3s ease;
+    }
+    .case-card.hidden-card {
+      display: none;
+    }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #001A41 0%, #50cabf 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Testimonial quote decoration */
+    .quote-card {
+      position: relative;
+    }
+    .quote-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 2rem;
+      background: linear-gradient(145deg, rgba(80,202,191,.04) 0%, rgba(0,117,242,.03) 100%);
+      pointer-events: none;
+    }
+
+    /* Sticky filter bar */
+    #filter-bar {
+      position: sticky;
+      top: 72px;
+      z-index: 40;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0,26,65,.06);
+    }
+  </style>
+</head>
+
+<body class="antialiased selection:bg-corporateNavy selection:text-white">
+
+  <!-- Navigation (shared component) -->
+  <nav id="main-nav" data-active="casos"></nav>
+  <script src="nav-component.js"></script>
+
+  <!-- ─────────────────────────── HERO ─────────────────────────── -->
+  <section class="pt-32 pb-16 bg-white relative overflow-hidden">
+    <!-- Subtle background glow -->
+    <div class="absolute -top-40 -right-40 w-[600px] h-[600px] bg-electricCyan/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-brandBlue/4 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="max-w-[1300px] mx-auto px-6 lg:px-10 relative">
+      <!-- Overline -->
+      <span class="text-[10px] font-bold tracking-[0.2em] text-electricCyan uppercase mb-5 block reveal">Resultados reales</span>
+
+      <!-- H1 -->
+      <h1 class="font-space font-medium text-corporateNavy leading-[1.05] tracking-tight mb-6 reveal reveal-delay-1" style="font-size: clamp(3rem,5vw,4.8rem); letter-spacing:-0.03em; max-width:750px;">
+        Empresas que han transformado<br>su tecnología con nosotros.
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-base text-mutedGray leading-relaxed max-w-xl mb-10 reveal reveal-delay-2">
+        Más de 150 proyectos de IT completados. Aquí tienes algunos ejemplos reales — con nombres cambiados para proteger la confidencialidad.
+      </p>
+
+      <!-- Highlight pills -->
+      <div class="flex flex-wrap items-center gap-3 reveal reveal-delay-3">
+        <div class="inline-flex items-center gap-2 bg-iceWhite border border-gray-100 rounded-full px-5 py-2.5">
+          <span class="w-2 h-2 rounded-full bg-electricCyan flex-shrink-0"></span>
+          <span class="text-sm font-semibold text-corporateNavy">Migración en 48h</span>
+        </div>
+        <div class="inline-flex items-center gap-2 bg-iceWhite border border-gray-100 rounded-full px-5 py-2.5">
+          <span class="w-2 h-2 rounded-full bg-electricCyan flex-shrink-0"></span>
+          <span class="text-sm font-semibold text-corporateNavy">0 incidentes de seguridad críticos</span>
+        </div>
+        <div class="inline-flex items-center gap-2 bg-iceWhite border border-gray-100 rounded-full px-5 py-2.5">
+          <span class="w-2 h-2 rounded-full bg-electricCyan flex-shrink-0"></span>
+          <span class="text-sm font-semibold text-corporateNavy">ROI medio 3x</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────── FILTROS ─────────────────────────── -->
+  <div id="filter-bar" class="py-5">
+    <div class="max-w-[1300px] mx-auto px-6 lg:px-10">
+      <div class="flex flex-wrap items-center gap-2" id="filter-pills">
+        <button class="filter-pill active" data-filter="todos">Todos</button>
+        <button class="filter-pill" data-filter="microsoft">Microsoft 365</button>
+        <button class="filter-pill" data-filter="google">Google Workspace</button>
+        <button class="filter-pill" data-filter="seguridad">Ciberseguridad</button>
+        <button class="filter-pill" data-filter="cloud">Cloud</button>
+        <button class="filter-pill" data-filter="ia">IA y Copilot</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────── GRID DE CASOS ─────────────────────────── -->
+  <section class="py-16 bg-iceWhite">
+    <div class="max-w-[1300px] mx-auto px-6 lg:px-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="cases-grid">
+
+        <!-- Case 1: Microsoft 365 -->
+        <div class="case-card reveal reveal-delay-1" data-category="microsoft">
+          <div class="h-full bg-white rounded-[2rem] border border-gray-100 p-8 flex flex-col gap-5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-1.5 self-start px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide" style="background:rgba(80,202,191,.1);color:#50cabf;">
+              <i class="ph ph-microsoft-teams-logo text-sm"></i>
+              Microsoft 365
+            </div>
+            <!-- Title -->
+            <h2 class="text-xl font-bold text-corporateNavy leading-snug">Empresa de distribución, 80 empleados</h2>
+            <!-- Description -->
+            <p class="text-sm text-mutedGray leading-relaxed">Migraron de Exchange on-premise a Microsoft 365 con zero downtime.</p>
+            <!-- Results -->
+            <ul class="space-y-3 flex-1">
+              <li class="flex items-start gap-3 text-sm text-corporateNavy/80">
+                <i class="ph ph-check-circle text-electricCyan text-lg shrink-0 mt-0.5"></i>
+                Reducción del 40% en coste de infraestructura
+              </li>
+              <li class="flex items-start gap-3 text-sm text-corporateNavy/80">
+                <i class="ph ph-check-circle text-electricCyan text-lg shrink-0 mt-0.5"></i>
+                Implementación de MFA en 48h
+              </li>
+              <li class="flex items-start gap-3 text-sm text-corporateNavy/80">
+                <i class="ph ph-check-circle text-electricCyan text-lg shrink-0 mt-0.5"></i>
+                +30 usuarios formados en Teams y SharePoint
+              </li>
+            </ul>
+            <!-- CTA -->
+            <div class="pt-3 border-t border-gray-100">
+              <a href="contacto.html" class="text-sm font-semibold text-brandBlue hover:text-corporateNavy transition-colors inline-flex items-center gap-1">
+                Ver detalles <i class="ph ph-arrow-right text-sm"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 2: Ciberseguridad -->
+        <div class="case-card reveal reveal-delay-2" data-category="seguridad">
+          <div class="h-full bg-white rounded-[2rem] border border-gray-100 p-8 flex flex-col gap-5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <div class="inline-flex items-center gap-1.5 self-start px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide" style="background:rgba(80,202,191,.1);color:#50cabf;">
+              <i class="ph ph-shield-check text-sm"></i>
+              Ciberseguridad
+            </div>
+            <h2 class="text-xl font-bold text-corporateNavy leading-snug">Despacho jurídico, 25 empleados</h2>
+            <p class="text-sm text-mutedGray leading-relaxed">Implantación completa de seguridad tras un intento de ransomware.</p>
+            <ul class="space-y-3 flex-1">
+              <li class="flex items-start gap-3 text-sm text-corporateNavy/80">
+                <i class="ph ph-check-circle text-electricCyan text-lg shrink-0 mt-0.5"></i>
+                SonicWall + EDR instalado en 72h
+              </li>
+              <li class="flex items-start gap-3 text-sm text-corporateNavy/80">
+                <i class="ph ph-check-circle text-electricCyan text-lg shrink-0 mt-0.5"></i>
+                Certificación NIS2 conseguida
+              </li>
+              <li class="flex items-start gap-3 text-sm text-corporateNavy/80">
+                <i class="ph ph-check-circle text-electricCyan text-lg shrink-0 mt-0.5"></i>
+                Backup diario automático con retención 30 días
+              </li>
+            </ul>
+            <div class="pt-3 border-t border-gray-100">
+              <a href="contacto.html" class="text-sm font-semibold text-brandBlue hover:text-corporateNavy transition-colors inline-flex items-center gap-1">
+                Ver detalles <i class="ph ph-arrow-right text-sm"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 3: Google Workspace -->
+        <div class="case-card reveal reveal-delay-3" data-category="google">
+          <div class="h-full bg-white rounded-[2rem] border border-gray-100 p-8 flex flex-col gap-5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <div class="inline-flex items-center gap-1.5 self-start px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide" style="background:rgba(80,202,191,.1);color:#50cabf;">
+              <i class="ph ph-google-logo text-sm"></i>
+              Google Workspace
+            </div>
+            <h2 class="text-xl font-bold text-corporateNavy leading-snug">Agencia creativa, 45 empleados</h2>
+            <p class="text-sm text-mutedGray leading-relaxed">Migración de Gmail free a Google Workspace Business Plus.</p>
+            <ul class="space-y-3 flex-1">
+              <li class="flex items-start gap-3 text-sm text-corporateNavy/80">
+                <i class="ph ph-check-circle text-electricCyan text-lg shrink-0 mt-0.5"></i>
+                100% del equipo onboardeado en 1 semana
+              </li>
+              <li class="flex items-start gap-3 text-sm text-corporateNavy/80">
+                <i class="ph ph-check-circle text-electricCyan text-lg shrink-0 mt-0.5"></i>
+                Integración con herramientas de diseño existentes
+              </li>
+              <li class="flex items-start gap-3 text-sm text-corporateNavy/80">
+                <i class="ph ph-check-circle text-electricCyan text-lg shrink-0 mt-0.5"></i>
+                Ahorro €3.200/año vs solución anterior
+              </li>
+            </ul>
+            <div class="pt-3 border-t border-gray-100">
+              <a href="contacto.html" class="text-sm font-semibold text-brandBlue hover:text-corporateNavy transition-colors inline-flex items-center gap-1">
+                Ver detalles <i class="ph ph-arrow-right text-sm"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 4: IA y Copilot -->
+        <div class="case-card reveal reveal-delay-4" data-category="ia">
+          <div class="h-full bg-white rounded-[2rem] border border-gray-100 p-8 flex flex-col gap-5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <div class="inline-flex items-center gap-1.5 self-start px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide" style="background:rgba(80,202,191,.1);color:#50cabf;">
+              <i class="ph ph-robot text-sm"></i>
+              IA y Copilot
+            </div>
+            <h2 class="text-xl font-bold text-corporateNavy leading-snug">Empresa de consultoría, 60 empleados</h2>
+            <p class="text-sm text-mutedGray leading-relaxed">Implantación de Microsoft Copilot 365 para el equipo comercial.</p>
+            <ul class="space-y-3 flex-1">
+              <li class="flex items-start gap-3 text-sm text-corporateNavy/80">
+                <i class="ph ph-check-circle text-electricCyan text-lg shrink-0 mt-0.5"></i>
+                Reducción del 35% en tiempo de elaboración de propuestas
+              </li>
+              <li class="flex items-start gap-3 text-sm text-corporateNavy/80">
+                <i class="ph ph-check-circle text-electricCyan text-lg shrink-0 mt-0.5"></i>
+                Formación de 60 usuarios en 2 semanas
+              </li>
+              <li class="flex items-start gap-3 text-sm text-corporateNavy/80">
+                <i class="ph ph-check-circle text-electricCyan text-lg shrink-0 mt-0.5"></i>
+                ROI positivo en el primer trimestre
+              </li>
+            </ul>
+            <div class="pt-3 border-t border-gray-100">
+              <a href="contacto.html" class="text-sm font-semibold text-brandBlue hover:text-corporateNavy transition-colors inline-flex items-center gap-1">
+                Ver detalles <i class="ph ph-arrow-right text-sm"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 5: Cloud -->
+        <div class="case-card reveal reveal-delay-5" data-category="cloud">
+          <div class="h-full bg-white rounded-[2rem] border border-gray-100 p-8 flex flex-col gap-5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <div class="inline-flex items-center gap-1.5 self-start px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide" style="background:rgba(80,202,191,.1);color:#50cabf;">
+              <i class="ph ph-cloud text-sm"></i>
+              Cloud
+            </div>
+            <h2 class="text-xl font-bold text-corporateNavy leading-snug">Laboratorio farmacéutico, 120 empleados</h2>
+            <p class="text-sm text-mutedGray leading-relaxed">Migración de servidores físicos a BeCenter (nube privada).</p>
+            <ul class="space-y-3 flex-1">
+              <li class="flex items-start gap-3 text-sm text-corporateNavy/80">
+                <i class="ph ph-check-circle text-electricCyan text-lg shrink-0 mt-0.5"></i>
+                99.9% uptime garantizado contractualmente
+              </li>
+              <li class="flex items-start gap-3 text-sm text-corporateNavy/80">
+                <i class="ph ph-check-circle text-electricCyan text-lg shrink-0 mt-0.5"></i>
+                Reducción de 6 servidores físicos a 0
+              </li>
+              <li class="flex items-start gap-3 text-sm text-corporateNavy/80">
+                <i class="ph ph-check-circle text-electricCyan text-lg shrink-0 mt-0.5"></i>
+                Backup automático con RPO &lt; 1 hora
+              </li>
+            </ul>
+            <div class="pt-3 border-t border-gray-100">
+              <a href="contacto.html" class="text-sm font-semibold text-brandBlue hover:text-corporateNavy transition-colors inline-flex items-center gap-1">
+                Ver detalles <i class="ph ph-arrow-right text-sm"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 6: Microsoft 365 -->
+        <div class="case-card reveal reveal-delay-6" data-category="microsoft">
+          <div class="h-full bg-white rounded-[2rem] border border-gray-100 p-8 flex flex-col gap-5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <div class="inline-flex items-center gap-1.5 self-start px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide" style="background:rgba(80,202,191,.1);color:#50cabf;">
+              <i class="ph ph-microsoft-teams-logo text-sm"></i>
+              Microsoft 365
+            </div>
+            <h2 class="text-xl font-bold text-corporateNavy leading-snug">Cadena de retail, 200 empleados</h2>
+            <p class="text-sm text-mutedGray leading-relaxed">Despliegue de Microsoft 365 E3 en 4 tiendas simultáneas.</p>
+            <ul class="space-y-3 flex-1">
+              <li class="flex items-start gap-3 text-sm text-corporateNavy/80">
+                <i class="ph ph-check-circle text-electricCyan text-lg shrink-0 mt-0.5"></i>
+                4 tiendas migradas en un fin de semana
+              </li>
+              <li class="flex items-start gap-3 text-sm text-corporateNavy/80">
+                <i class="ph ph-check-circle text-electricCyan text-lg shrink-0 mt-0.5"></i>
+                Intune para gestión de 200 dispositivos
+              </li>
+              <li class="flex items-start gap-3 text-sm text-corporateNavy/80">
+                <i class="ph ph-check-circle text-electricCyan text-lg shrink-0 mt-0.5"></i>
+                Helpdesk IT externalizado a BeServices
+              </li>
+            </ul>
+            <div class="pt-3 border-t border-gray-100">
+              <a href="contacto.html" class="text-sm font-semibold text-brandBlue hover:text-corporateNavy transition-colors inline-flex items-center gap-1">
+                Ver detalles <i class="ph ph-arrow-right text-sm"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Empty state (hidden by default) -->
+      <div id="no-results" class="hidden text-center py-20">
+        <div class="w-16 h-16 rounded-full bg-white border border-gray-100 flex items-center justify-center mx-auto mb-4">
+          <i class="ph ph-magnifying-glass text-3xl text-electricCyan"></i>
+        </div>
+        <p class="text-base font-semibold text-corporateNavy mb-1">No hay casos en esta categoría</p>
+        <p class="text-sm text-mutedGray">Pronto añadiremos más. Mientras tanto, <a href="contacto.html" class="text-brandBlue font-semibold hover:underline">cuéntanos tu caso</a>.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─────────────────────────── TESTIMONIALES ─────────────────────────── -->
+  <section class="py-24 bg-white">
+    <div class="max-w-[1300px] mx-auto px-6 lg:px-10">
+
+      <!-- Header -->
+      <div class="text-center mb-16 reveal">
+        <span class="text-[10px] font-bold tracking-[0.2em] text-electricCyan uppercase mb-4 block">Lo que dicen</span>
+        <h2 class="font-space font-medium text-corporateNavy tracking-tight leading-tight" style="font-size: clamp(2rem,3.5vw,3rem); letter-spacing:-0.025em;">
+          Lo que dicen nuestros clientes
+        </h2>
+      </div>
+
+      <!-- Testimonials grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Testimonial 1 -->
+        <div class="quote-card bg-white rounded-[2rem] border border-gray-100 p-8 flex flex-col gap-5 reveal reveal-delay-1">
+          <i class="ph ph-quotes text-4xl text-electricCyan"></i>
+          <blockquote class="flex-1">
+            <p class="text-base italic text-gray-600 leading-relaxed">
+              "BeServices no nos vendió tecnología, nos ayudó a entender qué necesitábamos de verdad. Eso marca la diferencia."
+            </p>
+          </blockquote>
+          <div class="pt-4 border-t border-gray-100">
+            <p class="text-sm font-bold text-corporateNavy">Director General</p>
+            <p class="text-xs text-mutedGray mt-0.5">Empresa logística, 90 empleados</p>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="quote-card bg-white rounded-[2rem] border border-gray-100 p-8 flex flex-col gap-5 reveal reveal-delay-2">
+          <i class="ph ph-quotes text-4xl text-electricCyan"></i>
+          <blockquote class="flex-1">
+            <p class="text-base italic text-gray-600 leading-relaxed">
+              "Migración perfecta. Ni un email perdido, ni una hora de inactividad. Y en 48 horas."
+            </p>
+          </blockquote>
+          <div class="pt-4 border-t border-gray-100">
+            <p class="text-sm font-bold text-corporateNavy">IT Manager</p>
+            <p class="text-xs text-mutedGray mt-0.5">Distribuidora, 80 empleados</p>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="quote-card bg-white rounded-[2rem] border border-gray-100 p-8 flex flex-col gap-5 reveal reveal-delay-3">
+          <i class="ph ph-quotes text-4xl text-electricCyan"></i>
+          <blockquote class="flex-1">
+            <p class="text-base italic text-gray-600 leading-relaxed">
+              "El soporte es increíble. Responden en menos de 2 horas y siempre con solución."
+            </p>
+          </blockquote>
+          <div class="pt-4 border-t border-gray-100">
+            <p class="text-sm font-bold text-corporateNavy">CEO</p>
+            <p class="text-xs text-mutedGray mt-0.5">Agencia de marketing, 45 empleados</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────── CTA ─────────────────────────── -->
+  <section class="py-24 bg-corporateNavy relative overflow-hidden">
+    <!-- Decorative glow -->
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-electricCyan/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brandBlue/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="max-w-[1300px] mx-auto px-6 lg:px-10 relative text-center">
+      <!-- Overline -->
+      <span class="text-[10px] font-bold tracking-[0.2em] text-electricCyan uppercase mb-6 block reveal">Tu empresa</span>
+
+      <!-- Heading -->
+      <h2 class="font-space font-medium text-white leading-tight tracking-tight mb-5 reveal reveal-delay-1" style="font-size: clamp(2rem,4vw,3.5rem); letter-spacing:-0.025em; max-width:700px; margin-left:auto; margin-right:auto;">
+        ¿Tu empresa podría ser el próximo caso de éxito?
+      </h2>
+
+      <!-- Subtext -->
+      <p class="text-white/60 text-base leading-relaxed max-w-md mx-auto mb-10 reveal reveal-delay-2">
+        Cuéntanos tu situación y en 24h te decimos cómo podemos ayudarte.
+      </p>
+
+      <!-- Button -->
+      <div class="reveal reveal-delay-3">
+        <a href="contacto.html" class="inline-flex items-center gap-2 px-8 py-4 bg-electricCyan text-corporateNavy text-sm font-bold rounded-full shadow-lg shadow-electricCyan/20 hover:bg-white hover:-translate-y-0.5 transition-all duration-300">
+          Hablar con un experto
+          <i class="ph ph-arrow-right text-base"></i>
+        </a>
+      </div>
+
+      <!-- Trust indicators -->
+      <div class="flex flex-wrap items-center justify-center gap-8 mt-14 reveal reveal-delay-4">
+        <div class="flex items-center gap-2.5">
+          <i class="ph ph-clock text-electricCyan/60 text-xl"></i>
+          <span class="text-xs text-white/40 font-medium">Respuesta en &lt;24h</span>
+        </div>
+        <div class="w-px h-4 bg-white/10 hidden md:block"></div>
+        <div class="flex items-center gap-2.5">
+          <i class="ph ph-certificate text-electricCyan/60 text-xl"></i>
+          <span class="text-xs text-white/40 font-medium">Partner certificado Microsoft &amp; Google</span>
+        </div>
+        <div class="w-px h-4 bg-white/10 hidden md:block"></div>
+        <div class="flex items-center gap-2.5">
+          <i class="ph ph-shield-check text-electricCyan/60 text-xl"></i>
+          <span class="text-xs text-white/40 font-medium">Sin permanencia</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────── FOOTER ─────────────────────────── -->
+  <footer class="bg-corporateNavy border-t border-white/5 pt-16 pb-8">
+    <div class="max-w-[1300px] mx-auto px-6 lg:px-10">
+
+      <!-- Top row: logo + cols -->
+      <div class="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr_1fr_1fr] gap-10 mb-12">
+
+        <!-- Brand -->
+        <div class="flex flex-col gap-5">
+          <a href="index.html">
+            <img src="assets/logo.png" alt="BeServices" class="h-8 w-auto mix-blend-multiply bg-white rounded-lg p-2" />
+          </a>
+          <p class="text-xs text-white/40 leading-relaxed max-w-xs">
+            Partner IT certificado Microsoft y Google para empresas de 10 a 200 empleados en España.
+          </p>
+          <div class="flex items-center gap-3 mt-1">
+            <a href="https://www.linkedin.com/company/beservices" target="_blank" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors" aria-label="LinkedIn">
+              <i class="ph ph-linkedin-logo text-white/50 text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Servicios -->
+        <div>
+          <p class="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-4">Servicios</p>
+          <ul class="space-y-2.5">
+            <li><a href="servicio-activa.html" class="text-xs text-white/50 hover:text-white transition-colors">ACTIVA — Licencias</a></li>
+            <li><a href="servicio-escala.html" class="text-xs text-white/50 hover:text-white transition-colors">ESCALA — Cloud</a></li>
+            <li><a href="servicio-protege.html" class="text-xs text-white/50 hover:text-white transition-colors">PROTEGE — Seguridad</a></li>
+            <li><a href="servicio-potencia.html" class="text-xs text-white/50 hover:text-white transition-colors">POTENCIA — IA</a></li>
+            <li><a href="servicio-gestiona.html" class="text-xs text-white/50 hover:text-white transition-colors">GESTIONA — Soporte</a></li>
+          </ul>
+        </div>
+
+        <!-- Soluciones -->
+        <div>
+          <p class="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-4">Soluciones</p>
+          <ul class="space-y-2.5">
+            <li><a href="microsoft.html" class="text-xs text-white/50 hover:text-white transition-colors">Microsoft 365</a></li>
+            <li><a href="google.html" class="text-xs text-white/50 hover:text-white transition-colors">Google Workspace</a></li>
+            <li><a href="servicio-cloud.html" class="text-xs text-white/50 hover:text-white transition-colors">BeCenter</a></li>
+            <li><a href="servicio-backup.html" class="text-xs text-white/50 hover:text-white transition-colors">BeDataCenter</a></li>
+          </ul>
+        </div>
+
+        <!-- Empresa -->
+        <div>
+          <p class="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-4">Empresa</p>
+          <ul class="space-y-2.5">
+            <li><a href="nosotros.html" class="text-xs text-white/50 hover:text-white transition-colors">Nosotros</a></li>
+            <li><a href="casos.html" class="text-xs text-white transition-colors font-semibold">Casos de éxito</a></li>
+            <li><a href="blog.html" class="text-xs text-white/50 hover:text-white transition-colors">Blog</a></li>
+            <li><a href="contacto.html" class="text-xs text-white/50 hover:text-white transition-colors">Contacto</a></li>
+          </ul>
+        </div>
+
+        <!-- Contacto -->
+        <div>
+          <p class="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-4">Contacto</p>
+          <ul class="space-y-2.5">
+            <li><a href="tel:+34938150338" class="text-xs text-white/50 hover:text-white transition-colors">+34 938 150 338</a></li>
+            <li><a href="mailto:hola@beservices.es" class="text-xs text-white/50 hover:text-white transition-colors">hola@beservices.es</a></li>
+            <li><p class="text-xs text-white/30 leading-relaxed">Carrer de València, 307<br>08009 Barcelona</p></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-white/10">
+        <p class="text-xs text-white/30">© 2026 BeServices. Todos los derechos reservados.</p>
+        <div class="flex items-center gap-6">
+          <a href="#" class="text-[11px] text-white/30 hover:text-white/60 transition-colors">Aviso legal</a>
+          <a href="#" class="text-[11px] text-white/30 hover:text-white/60 transition-colors">Privacidad</a>
+          <a href="#" class="text-[11px] text-white/30 hover:text-white/60 transition-colors">Cookies</a>
+          <a href="internal.html" class="text-[11px] text-white/20 hover:text-white/50 transition-colors flex items-center gap-1" title="Portal Interno">
+            <i class="ph ph-lock-simple text-xs"></i> Portal Interno
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ─────────────────────────── SCRIPTS ─────────────────────────── -->
+  <script>
+    // Init Lucide icons
+    lucide.createIcons();
+
+    // ── Filter pills logic ──────────────────────────────────────────
+    const pills = document.querySelectorAll('.filter-pill');
+    const cards = document.querySelectorAll('.case-card');
+    const noResults = document.getElementById('no-results');
+
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        // Update active pill
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        const filter = pill.dataset.filter;
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+          const category = card.dataset.category;
+          if (filter === 'todos' || category === filter) {
+            card.classList.remove('hidden-card');
+            visibleCount++;
+          } else {
+            card.classList.add('hidden-card');
+          }
+        });
+
+        // Show/hide empty state
+        noResults.classList.toggle('hidden', visibleCount > 0);
+      });
+    });
+
+    // ── IntersectionObserver reveal ─────────────────────────────────
+    (function () {
+      const revealEls = document.querySelectorAll('.reveal');
+      if (!revealEls.length) return;
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      revealEls.forEach(el => io.observe(el));
+    })();
+  </script>
+
+</body>
+</html>

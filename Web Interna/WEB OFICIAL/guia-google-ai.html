@@ -259,15 +259,8 @@ td.hl { background:rgba(26,115,232,.03); }
 
 
 <div class="tabs-wrap" id="tabsWrap">
-  <nav class="tabs" id="tabsNav">
-    <button class="tab on" onclick="show('inicio',this)">🏠 Inicio</button>
-    <button class="tab" onclick="show('universo-ia',this)">🌌 Universo AI</button>
-    <button class="tab" onclick="show('planes',this)">📋 Planes Workspace</button>
-    <button class="tab" onclick="show('addons',this)">➕ Add-ons</button>
-    <button class="tab" onclick="show('gemini-ent',this)">🤖 Gemini Enterprise</button>
-    <button class="tab" onclick="show('ai-personal',this)">👤 Google AI personal</button>
-    <button class="tab" onclick="show('guia',this)">🎯 Guía de ventas</button>
-  </nav>
+  <nav id="main-nav" data-active="internal"></nav>
+<script src="nav-component.js"></script>
 </div>
 
 

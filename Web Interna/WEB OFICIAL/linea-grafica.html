@@ -100,19 +100,8 @@
 <body class="antialiased selection:bg-corporateNavy selection:text-white">
 
     <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-corporateNavy/5 transition-all">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="internal.html" class="flex items-center gap-2 group">
-                <div
-                    class="w-8 h-8 rounded-full bg-corporateNavy/5 flex items-center justify-center group-hover:bg-corporateNavy/10 transition-colors">
-                    <i class="ph ph-arrow-left text-lg text-corporateNavy"></i>
-                </div>
-                <span class="font-bold text-sm uppercase tracking-widest text-corporateNavy">Portal Interno</span>
-            </a>
-
-            <span class="text-xs font-bold uppercase tracking-widest text-mutedGray">Brand Book 2026</span>
-        </div>
-    </nav>
+    <nav id="main-nav" data-active="internal"></nav>
+<script src="nav-component.js"></script>
 
     <!-- Hero Concept -->
     <section class="relative pt-40 pb-24 overflow-hidden">

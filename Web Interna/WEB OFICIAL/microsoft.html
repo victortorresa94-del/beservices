@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Partner Microsoft 365 | Licencias, Copilot, Teams y Seguridad para empresas — BeServices</title>
+  <meta name="description" content="BeServices es partner certificado Microsoft. Gestionamos Microsoft 365, Copilot, Azure, Intune y seguridad para empresas de 10 a 200 empleados en España." />
+  <link rel="canonical" href="https://beservices.es/microsoft/" />
+  <meta property="og:title" content="Partner Microsoft 365 | Licencias, Copilot, Teams y Seguridad para empresas — BeServices" />
+  <meta property="og:description" content="BeServices es partner certificado Microsoft. Gestionamos Microsoft 365, Copilot, Azure, Intune y seguridad para empresas de 10 a 200 empleados en España." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBlue: '#0075f2',
+            corporateNavy: '#001A41',
+            mutedGray: '#9CA3AF',
+            electricCyan: '#50cabf',
+            surfaceLow: '#f3f4f5',
+            iceWhite: '#f8f9fa'
+          },
+          fontFamily: {
+            space: ["'Space Grotesk'", "sans-serif"],
+            sans: ["'Inter'", "system-ui", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #ffffff;
+      color: #001A41;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Space Grotesk', sans-serif;
+      color: #001A41;
+      letter-spacing: -0.02em;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, #001A41 0%, #50cabf 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-h1 {
+      font-size: clamp(2.8rem, 4.5vw, 4.5rem);
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .plan-card {
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 26, 65, 0.10);
+    }
+
+    .product-card {
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0, 26, 65, 0.08);
+    }
+
+    .step-connector {
+      position: absolute;
+      top: 24px;
+      left: calc(50% + 28px);
+      right: calc(-50% + 28px);
+      height: 2px;
+      background: linear-gradient(90deg, #50cabf, #0075f2);
+      opacity: 0.3;
+    }
+
+    @media (max-width: 767px) {
+      .step-connector { display: none; }
+    }
+  </style>
+</head>
+
+<body class="antialiased selection:bg-corporateNavy selection:text-white">
+
+  <!-- NAVBAR -->
+  <nav id="main-nav" data-active="microsoft"></nav>
+  <script src="nav-component.js"></script>
+
+  <!-- ===========================
+       SECTION 1: HERO
+  =========================== -->
+  <section class="bg-white pt-32 pb-20 overflow-hidden relative">
+    <!-- Ambient blobs -->
+    <div class="absolute top-0 right-0 w-[700px] h-[700px] bg-brandBlue/5 rounded-full blur-3xl -z-0 translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-electricCyan/5 rounded-full blur-3xl -z-0 -translate-x-1/2 translate-y-1/3 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+        <!-- Left: copy -->
+        <div>
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brandBlue/8 border border-brandBlue/15 mb-8 reveal active">
+            <span class="w-2 h-2 rounded-full bg-brandBlue animate-pulse"></span>
+            <span class="text-xs font-semibold tracking-widest text-brandBlue uppercase">Partner certificado Microsoft</span>
+          </div>
+
+          <!-- H1 -->
+          <h1 class="hero-h1 text-corporateNavy mb-6 reveal active" style="transition-delay:80ms">
+            Todo Microsoft 365 para tu empresa, gestionado por expertos.
+          </h1>
+
+          <!-- Subtext -->
+          <p class="text-lg text-mutedGray leading-relaxed mb-10 max-w-xl reveal active" style="transition-delay:160ms">
+            Licencias, configuración, seguridad, Copilot y soporte continuo. Somos tu partner Microsoft en España.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row gap-4 reveal active" style="transition-delay:240ms">
+            <a href="#precios" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-corporateNavy text-white font-semibold rounded-full hover:bg-corporateNavy/90 transition-all shadow-xl shadow-corporateNavy/20">
+              Ver planes Microsoft
+            </a>
+            <a href="contacto.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-corporateNavy border-2 border-corporateNavy/20 font-semibold rounded-full hover:border-corporateNavy/50 hover:bg-surfaceLow transition-all">
+              Hablar con un experto
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: product pill grid -->
+        <div class="reveal active" style="transition-delay:320ms">
+          <div class="grid grid-cols-3 gap-4">
+            <!-- Teams -->
+            <div class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-surfaceLow border border-gray-100 hover:border-brandBlue/20 hover:shadow-md transition-all group">
+              <div class="w-12 h-12 rounded-xl bg-[#6264A7]/10 flex items-center justify-center">
+                <i class="ph ph-microsoft-teams-logo text-2xl text-[#6264A7]"></i>
+              </div>
+              <span class="text-xs font-semibold text-corporateNavy text-center">Teams</span>
+            </div>
+            <!-- Exchange -->
+            <div class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-surfaceLow border border-gray-100 hover:border-brandBlue/20 hover:shadow-md transition-all group">
+              <div class="w-12 h-12 rounded-xl bg-brandBlue/10 flex items-center justify-center">
+                <i class="ph ph-envelope text-2xl text-brandBlue"></i>
+              </div>
+              <span class="text-xs font-semibold text-corporateNavy text-center">Exchange</span>
+            </div>
+            <!-- SharePoint -->
+            <div class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-surfaceLow border border-gray-100 hover:border-brandBlue/20 hover:shadow-md transition-all group">
+              <div class="w-12 h-12 rounded-xl bg-[#038387]/10 flex items-center justify-center">
+                <i class="ph ph-share-network text-2xl text-[#038387]"></i>
+              </div>
+              <span class="text-xs font-semibold text-corporateNavy text-center">SharePoint</span>
+            </div>
+            <!-- OneDrive -->
+            <div class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-surfaceLow border border-gray-100 hover:border-brandBlue/20 hover:shadow-md transition-all group">
+              <div class="w-12 h-12 rounded-xl bg-[#0078d4]/10 flex items-center justify-center">
+                <i class="ph ph-cloud text-2xl text-[#0078d4]"></i>
+              </div>
+              <span class="text-xs font-semibold text-corporateNavy text-center">OneDrive</span>
+            </div>
+            <!-- Copilot -->
+            <div class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-surfaceLow border border-gray-100 hover:border-brandBlue/20 hover:shadow-md transition-all group">
+              <div class="w-12 h-12 rounded-xl bg-brandBlue/10 flex items-center justify-center">
+                <i class="ph ph-robot text-2xl text-brandBlue"></i>
+              </div>
+              <span class="text-xs font-semibold text-corporateNavy text-center">Copilot</span>
+            </div>
+            <!-- Intune -->
+            <div class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-surfaceLow border border-gray-100 hover:border-brandBlue/20 hover:shadow-md transition-all group">
+              <div class="w-12 h-12 rounded-xl bg-[#00a4ef]/10 flex items-center justify-center">
+                <i class="ph ph-devices text-2xl text-[#00a4ef]"></i>
+              </div>
+              <span class="text-xs font-semibold text-corporateNavy text-center">Intune</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       SECTION 2: PRODUCTOS
+  =========================== -->
+  <section class="py-24 bg-iceWhite">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <p class="text-xs font-bold tracking-widest text-brandBlue uppercase mb-3">Ecosistema</p>
+        <h2 class="text-3xl md:text-4xl font-space font-semibold text-corporateNavy">Productos Microsoft que gestionamos</h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+
+        <!-- Microsoft 365 Business -->
+        <div class="product-card rounded-[1.5rem] bg-white p-6 border border-gray-100 reveal">
+          <div class="w-12 h-12 rounded-xl bg-brandBlue/10 flex items-center justify-center mb-5">
+            <i class="ph ph-briefcase text-2xl text-brandBlue"></i>
+          </div>
+          <h3 class="text-base font-semibold text-corporateNavy mb-2">Microsoft 365 Business</h3>
+          <p class="text-sm text-mutedGray leading-relaxed">Licencias completas para todo el equipo. Email, Office, Teams y más.</p>
+        </div>
+
+        <!-- Microsoft Teams -->
+        <div class="product-card rounded-[1.5rem] bg-white p-6 border border-gray-100 reveal">
+          <div class="w-12 h-12 rounded-xl bg-[#6264A7]/10 flex items-center justify-center mb-5">
+            <i class="ph ph-video-camera text-2xl text-[#6264A7]"></i>
+          </div>
+          <h3 class="text-base font-semibold text-corporateNavy mb-2">Microsoft Teams</h3>
+          <p class="text-sm text-mutedGray leading-relaxed">Videoconferencias, chat y colaboración en tiempo real.</p>
+        </div>
+
+        <!-- SharePoint + OneDrive -->
+        <div class="product-card rounded-[1.5rem] bg-white p-6 border border-gray-100 reveal">
+          <div class="w-12 h-12 rounded-xl bg-[#038387]/10 flex items-center justify-center mb-5">
+            <i class="ph ph-folders text-2xl text-[#038387]"></i>
+          </div>
+          <h3 class="text-base font-semibold text-corporateNavy mb-2">SharePoint + OneDrive</h3>
+          <p class="text-sm text-mutedGray leading-relaxed">Gestión documental y trabajo colaborativo en la nube.</p>
+        </div>
+
+        <!-- Microsoft Copilot -->
+        <div class="product-card rounded-[1.5rem] bg-white p-6 border border-gray-100 reveal">
+          <div class="w-12 h-12 rounded-xl bg-brandBlue/10 flex items-center justify-center mb-5">
+            <i class="ph ph-robot text-2xl text-brandBlue"></i>
+          </div>
+          <h3 class="text-base font-semibold text-corporateNavy mb-2">Microsoft Copilot</h3>
+          <p class="text-sm text-mutedGray leading-relaxed">IA generativa integrada en Word, Excel, Teams y Outlook.</p>
+        </div>
+
+        <!-- Microsoft Intune -->
+        <div class="product-card rounded-[1.5rem] bg-white p-6 border border-gray-100 reveal">
+          <div class="w-12 h-12 rounded-xl bg-[#00a4ef]/10 flex items-center justify-center mb-5">
+            <i class="ph ph-devices text-2xl text-[#00a4ef]"></i>
+          </div>
+          <h3 class="text-base font-semibold text-corporateNavy mb-2">Microsoft Intune</h3>
+          <p class="text-sm text-mutedGray leading-relaxed">Gestión centralizada de todos los dispositivos corporativos.</p>
+        </div>
+
+        <!-- Microsoft Azure -->
+        <div class="product-card rounded-[1.5rem] bg-white p-6 border border-gray-100 reveal">
+          <div class="w-12 h-12 rounded-xl bg-[#0072c6]/10 flex items-center justify-center mb-5">
+            <i class="ph ph-cloud text-2xl text-[#0072c6]"></i>
+          </div>
+          <h3 class="text-base font-semibold text-corporateNavy mb-2">Microsoft Azure</h3>
+          <p class="text-sm text-mutedGray leading-relaxed">Infraestructura cloud, backup y virtualización empresarial.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       SECTION 3: PLAN DE IMPLANTACIÓN
+  =========================== -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <p class="text-xs font-bold tracking-widest text-brandBlue uppercase mb-3">Proceso</p>
+        <h2 class="text-3xl md:text-4xl font-space font-semibold text-corporateNavy">Cómo lo hacemos</h2>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8 md:gap-6 relative">
+
+        <!-- Step 1 -->
+        <div class="relative flex flex-col items-center text-center reveal">
+          <div class="hidden md:block step-connector"></div>
+          <div class="w-14 h-14 rounded-2xl bg-brandBlue flex items-center justify-center mb-5 shadow-lg shadow-brandBlue/25">
+            <i class="ph ph-magnifying-glass text-2xl text-white"></i>
+          </div>
+          <div class="w-7 h-7 rounded-full bg-brandBlue/10 flex items-center justify-center mb-4">
+            <span class="text-xs font-bold text-brandBlue">1</span>
+          </div>
+          <h3 class="text-base font-semibold text-corporateNavy mb-2">Diagnóstico</h3>
+          <p class="text-sm text-mutedGray leading-relaxed">Análisis de tu infraestructura actual y licencias en uso.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative flex flex-col items-center text-center reveal" style="transition-delay:100ms">
+          <div class="hidden md:block step-connector"></div>
+          <div class="w-14 h-14 rounded-2xl bg-electricCyan flex items-center justify-center mb-5 shadow-lg shadow-electricCyan/25">
+            <i class="ph ph-clipboard-text text-2xl text-white"></i>
+          </div>
+          <div class="w-7 h-7 rounded-full bg-electricCyan/10 flex items-center justify-center mb-4">
+            <span class="text-xs font-bold text-electricCyan">2</span>
+          </div>
+          <h3 class="text-base font-semibold text-corporateNavy mb-2">Propuesta</h3>
+          <p class="text-sm text-mutedGray leading-relaxed">Plan personalizado de migración con costes y plazos claros.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative flex flex-col items-center text-center reveal" style="transition-delay:200ms">
+          <div class="hidden md:block step-connector"></div>
+          <div class="w-14 h-14 rounded-2xl bg-brandBlue flex items-center justify-center mb-5 shadow-lg shadow-brandBlue/25">
+            <i class="ph ph-rocket-launch text-2xl text-white"></i>
+          </div>
+          <div class="w-7 h-7 rounded-full bg-brandBlue/10 flex items-center justify-center mb-4">
+            <span class="text-xs font-bold text-brandBlue">3</span>
+          </div>
+          <h3 class="text-base font-semibold text-corporateNavy mb-2">Migración</h3>
+          <p class="text-sm text-mutedGray leading-relaxed">Despliegue sin interrupciones, con formación incluida para el equipo.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="relative flex flex-col items-center text-center reveal" style="transition-delay:300ms">
+          <div class="w-14 h-14 rounded-2xl bg-electricCyan flex items-center justify-center mb-5 shadow-lg shadow-electricCyan/25">
+            <i class="ph ph-headset text-2xl text-white"></i>
+          </div>
+          <div class="w-7 h-7 rounded-full bg-electricCyan/10 flex items-center justify-center mb-4">
+            <span class="text-xs font-bold text-electricCyan">4</span>
+          </div>
+          <h3 class="text-base font-semibold text-corporateNavy mb-2">Soporte</h3>
+          <p class="text-sm text-mutedGray leading-relaxed">Soporte continuo y gestión proactiva del entorno Microsoft.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       SECTION 4: PRECIOS
+  =========================== -->
+  <section id="precios" class="py-24 bg-iceWhite">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-6 reveal">
+        <p class="text-xs font-bold tracking-widest text-brandBlue uppercase mb-3">Planes</p>
+        <h2 class="text-3xl md:text-4xl font-space font-semibold text-corporateNavy">Planes de gestión Microsoft 365</h2>
+      </div>
+      <p class="text-center text-mutedGray mb-16 reveal" style="transition-delay:80ms">
+        El precio de las licencias Microsoft se añade al coste de gestión.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-8">
+
+        <!-- STARTER -->
+        <div class="plan-card rounded-[1.75rem] bg-white p-8 border border-gray-100 flex flex-col reveal">
+          <div class="mb-6">
+            <p class="text-xs font-bold tracking-widest text-mutedGray uppercase mb-3">Starter</p>
+            <p class="text-sm text-mutedGray mb-4">Hasta 15 usuarios</p>
+            <div class="flex items-end gap-1 mb-1">
+              <span class="text-4xl font-bold text-corporateNavy font-space">8€</span>
+              <span class="text-sm text-mutedGray mb-1">/usuario/mes</span>
+            </div>
+            <p class="text-xs text-mutedGray">+ licencias Microsoft</p>
+          </div>
+          <ul class="space-y-3 mb-8 flex-1">
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-electricCyan text-lg flex-shrink-0 mt-0.5"></i>
+              Gestión básica de licencias
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-electricCyan text-lg flex-shrink-0 mt-0.5"></i>
+              Email corporativo + Teams
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-electricCyan text-lg flex-shrink-0 mt-0.5"></i>
+              Soporte horario 9–18h L-V
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-electricCyan text-lg flex-shrink-0 mt-0.5"></i>
+              Onboarding de usuario incluido
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-mutedGray">
+              <i class="ph ph-x-circle text-gray-200 text-lg flex-shrink-0 mt-0.5"></i>
+              Copilot AI
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-mutedGray">
+              <i class="ph ph-x-circle text-gray-200 text-lg flex-shrink-0 mt-0.5"></i>
+              Azure / Intune
+            </li>
+          </ul>
+          <a href="contacto.html" class="w-full text-center py-3.5 px-6 rounded-full border-2 border-corporateNavy/20 text-corporateNavy font-semibold hover:border-corporateNavy/50 hover:bg-surfaceLow transition-all text-sm">
+            Solicitar propuesta
+          </a>
+        </div>
+
+        <!-- BUSINESS (highlighted) -->
+        <div class="plan-card rounded-[1.75rem] bg-white p-8 border-2 border-electricCyan flex flex-col relative shadow-xl shadow-electricCyan/10 reveal" style="transition-delay:100ms">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+            <span class="inline-block px-4 py-1.5 bg-electricCyan text-white text-xs font-bold tracking-wider uppercase rounded-full">Recomendado</span>
+          </div>
+          <div class="mb-6">
+            <p class="text-xs font-bold tracking-widest text-electricCyan uppercase mb-3">Business</p>
+            <p class="text-sm text-mutedGray mb-4">15–60 usuarios</p>
+            <div class="flex items-end gap-1 mb-1">
+              <span class="text-4xl font-bold text-corporateNavy font-space">15€</span>
+              <span class="text-sm text-mutedGray mb-1">/usuario/mes</span>
+            </div>
+            <p class="text-xs text-mutedGray">+ licencias Microsoft</p>
+          </div>
+          <ul class="space-y-3 mb-8 flex-1">
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-electricCyan text-lg flex-shrink-0 mt-0.5"></i>
+              Gestión completa Microsoft 365
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-electricCyan text-lg flex-shrink-0 mt-0.5"></i>
+              Seguridad avanzada + MFA + DLP
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-electricCyan text-lg flex-shrink-0 mt-0.5"></i>
+              Microsoft Copilot incluido
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-electricCyan text-lg flex-shrink-0 mt-0.5"></i>
+              SharePoint + OneDrive gestionado
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-electricCyan text-lg flex-shrink-0 mt-0.5"></i>
+              Soporte prioritario L-V 8–20h
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-mutedGray">
+              <i class="ph ph-x-circle text-gray-200 text-lg flex-shrink-0 mt-0.5"></i>
+              Azure + SLA 4h
+            </li>
+          </ul>
+          <a href="contacto.html" class="w-full text-center py-3.5 px-6 rounded-full bg-electricCyan text-white font-semibold hover:bg-electricCyan/90 transition-all text-sm shadow-lg shadow-electricCyan/25">
+            Solicitar propuesta
+          </a>
+        </div>
+
+        <!-- ENTERPRISE -->
+        <div class="plan-card rounded-[1.75rem] bg-white p-8 border border-gray-100 flex flex-col reveal" style="transition-delay:200ms">
+          <div class="mb-6">
+            <p class="text-xs font-bold tracking-widest text-mutedGray uppercase mb-3">Enterprise</p>
+            <p class="text-sm text-mutedGray mb-4">60–200 usuarios</p>
+            <div class="flex items-end gap-1 mb-1">
+              <span class="text-4xl font-bold text-corporateNavy font-space">22€</span>
+              <span class="text-sm text-mutedGray mb-1">/usuario/mes</span>
+            </div>
+            <p class="text-xs text-mutedGray">+ licencias Microsoft</p>
+          </div>
+          <ul class="space-y-3 mb-8 flex-1">
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-electricCyan text-lg flex-shrink-0 mt-0.5"></i>
+              Gestión avanzada + reporting
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-electricCyan text-lg flex-shrink-0 mt-0.5"></i>
+              Azure + backup cloud incluido
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-electricCyan text-lg flex-shrink-0 mt-0.5"></i>
+              Microsoft Intune completo
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-electricCyan text-lg flex-shrink-0 mt-0.5"></i>
+              SLA garantizado &lt; 4 horas
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-electricCyan text-lg flex-shrink-0 mt-0.5"></i>
+              Soporte 24/7 urgencias
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-electricCyan text-lg flex-shrink-0 mt-0.5"></i>
+              Technical Account Manager
+            </li>
+          </ul>
+          <a href="contacto.html" class="w-full text-center py-3.5 px-6 rounded-full border-2 border-corporateNavy/20 text-corporateNavy font-semibold hover:border-corporateNavy/50 hover:bg-surfaceLow transition-all text-sm">
+            Solicitar propuesta
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       SECTION 5: WHY BESERVICES
+  =========================== -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <p class="text-xs font-bold tracking-widest text-brandBlue uppercase mb-3">Diferencial</p>
+        <h2 class="text-3xl md:text-4xl font-space font-semibold text-corporateNavy">Por qué BeServices para Microsoft</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-8">
+
+        <!-- Partner certificado -->
+        <div class="flex gap-5 p-7 rounded-2xl bg-surfaceLow border border-gray-100 hover:border-electricCyan/30 hover:shadow-md transition-all reveal group">
+          <div class="w-12 h-12 rounded-xl bg-brandBlue/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+            <i class="ph ph-seal-check text-2xl text-brandBlue"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold text-corporateNavy mb-2">Partner certificado</h3>
+            <p class="text-sm text-mutedGray leading-relaxed">Certificación oficial Microsoft que garantiza calidad, acceso prioritario a soporte y recursos exclusivos.</p>
+          </div>
+        </div>
+
+        <!-- Sin cuota de arranque -->
+        <div class="flex gap-5 p-7 rounded-2xl bg-surfaceLow border border-gray-100 hover:border-electricCyan/30 hover:shadow-md transition-all reveal group" style="transition-delay:80ms">
+          <div class="w-12 h-12 rounded-xl bg-electricCyan/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+            <i class="ph ph-currency-eur text-2xl text-electricCyan"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold text-corporateNavy mb-2">Sin cuota de arranque</h3>
+            <p class="text-sm text-mutedGray leading-relaxed">Implantación incluida en el precio mensual, sin costes ocultos ni pagos iniciales por migración.</p>
+          </div>
+        </div>
+
+        <!-- SLA < 4 horas -->
+        <div class="flex gap-5 p-7 rounded-2xl bg-surfaceLow border border-gray-100 hover:border-electricCyan/30 hover:shadow-md transition-all reveal group" style="transition-delay:160ms">
+          <div class="w-12 h-12 rounded-xl bg-brandBlue/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+            <i class="ph ph-clock-countdown text-2xl text-brandBlue"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold text-corporateNavy mb-2">SLA &lt; 4 horas</h3>
+            <p class="text-sm text-mutedGray leading-relaxed">Respuesta garantizada contractualmente. Tiempo de resolución medido y auditado cada mes.</p>
+          </div>
+        </div>
+
+        <!-- Formación incluida -->
+        <div class="flex gap-5 p-7 rounded-2xl bg-surfaceLow border border-gray-100 hover:border-electricCyan/30 hover:shadow-md transition-all reveal group" style="transition-delay:240ms">
+          <div class="w-12 h-12 rounded-xl bg-electricCyan/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+            <i class="ph ph-graduation-cap text-2xl text-electricCyan"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold text-corporateNavy mb-2">Formación incluida</h3>
+            <p class="text-sm text-mutedGray leading-relaxed">Onboarding y sesiones de formación para todos los usuarios, sin coste adicional en cualquier plan.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       SECTION 6: CTA
+  =========================== -->
+  <section class="py-24 bg-corporateNavy relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brandBlue/20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
+      <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-electricCyan/15 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3"></div>
+    </div>
+    <div class="max-w-3xl mx-auto px-6 text-center relative z-10">
+      <div class="reveal">
+        <p class="text-xs font-bold tracking-widest text-electricCyan uppercase mb-4">Siguiente paso</p>
+        <h2 class="text-3xl md:text-4xl font-space font-semibold text-white mb-6 leading-tight">
+          ¿Listo para optimizar tu Microsoft 365?
+        </h2>
+        <p class="text-white/60 mb-10 text-lg leading-relaxed">
+          Cuéntanos el tamaño de tu empresa y en 24h te enviamos una propuesta personalizada sin compromiso.
+        </p>
+        <a href="contacto.html" class="inline-flex items-center gap-2 px-10 py-4 bg-electricCyan text-white font-semibold rounded-full hover:bg-electricCyan/90 transition-all shadow-xl shadow-electricCyan/30 text-base">
+          Hablar con un experto
+          <i class="ph ph-arrow-right text-lg"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       FOOTER
+  =========================== -->
+  <footer class="bg-corporateNavy border-t border-white/10 pt-16 pb-10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-10 mb-12">
+        <!-- Brand -->
+        <div class="md:col-span-2">
+          <a href="index.html" class="inline-block mb-4">
+            <span class="text-xl font-bold text-white font-space tracking-tight">Be<span class="text-electricCyan">Services</span></span>
+          </a>
+          <p class="text-white/50 text-sm leading-relaxed max-w-xs">
+            Partner Microsoft y Google. IT gestionado para empresas de 10 a 200 empleados en España.
+          </p>
+        </div>
+        <!-- Servicios -->
+        <div>
+          <h4 class="text-xs font-bold tracking-widest text-white/30 uppercase mb-5">Servicios</h4>
+          <ul class="space-y-3">
+            <li><a href="microsoft.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">Microsoft 365</a></li>
+            <li><a href="google.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">Google Workspace</a></li>
+            <li><a href="servicio-seguridad.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">Seguridad IT</a></li>
+            <li><a href="servicio-soporte.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">Soporte Técnico</a></li>
+          </ul>
+        </div>
+        <!-- Empresa -->
+        <div>
+          <h4 class="text-xs font-bold tracking-widest text-white/30 uppercase mb-5">Empresa</h4>
+          <ul class="space-y-3">
+            <li><a href="nosotros.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">Nosotros</a></li>
+            <li><a href="casos.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">Casos de éxito</a></li>
+            <li><a href="blog.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">Blog</a></li>
+            <li><a href="contacto.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-xs text-white/30">© 2025 BeServices. Todos los derechos reservados.</p>
+        <p class="text-xs text-white/30">Partner certificado Microsoft y Google Workspace</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===========================
+       SCRIPTS
+  =========================== -->
+  <script>
+    // Lucide icons init
+    lucide.createIcons();
+
+    // Reveal on scroll
+    const revealEls = document.querySelectorAll('.reveal:not(.active)');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+  </script>
+
+</body>
+</html>

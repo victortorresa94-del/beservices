@@ -113,20 +113,8 @@
 <body class="antialiased">
 
     <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-4">
-                <img src="assets/logo.png" alt="BeServices" class="h-8 w-auto mix-blend-multiply" />
-                <div class="h-6 w-px bg-gray-200"></div>
-                <span class="text-xs font-bold uppercase tracking-widest text-corporateNavy opacity-60">AI Strategy</span>
-            </div>
-            <div class="flex gap-6">
-                <a href="#rules" class="text-xs font-bold uppercase tracking-widest text-corporateNavy hover:text-brandBlue transition-colors">Reglas</a>
-                <a href="#ceo" class="text-xs font-bold uppercase tracking-widest text-corporateNavy hover:text-brandBlue transition-colors">CEO</a>
-                <a href="#cfo" class="text-xs font-bold uppercase tracking-widest text-corporateNavy hover:text-brandBlue transition-colors">CFO</a>
-            </div>
-        </div>
-    </nav>
+    <nav id="main-nav" data-active="internal"></nav>
+<script src="nav-component.js"></script>
 
     <!-- Hero Section -->
     <section class="relative pt-40 pb-24 overflow-hidden">

@@ -28,16 +28,8 @@
 <body class="antialiased selection:bg-corporateNavy selection:text-white">
 
   <!-- NAVBAR -->
-  <nav class="fixed top-0 w-full z-50 glass-navbar transition-all duration-300" id="navbar">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="index.html" class="flex items-center">
-        <img src="assets/logo.png" alt="beServices Logo" class="h-8 w-auto mix-blend-multiply" />
-      </a>
-      <a href="catalogo.html" class="inline-flex items-center gap-2 justify-center px-6 py-2.5 text-sm font-bold text-white bg-corporateNavy rounded-full hover:bg-corporateNavy/90 transition-colors shadow-lg shadow-corporateNavy/20 group">
-        <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-1 transition-transform"></i> Volver al Journey
-      </a>
-    </div>
-  </nav>
+  <nav id="main-nav" data-active="servicios"></nav>
+<script src="nav-component.js"></script>
 
   <!-- HERO -->
   <section class="relative pt-40 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-50">

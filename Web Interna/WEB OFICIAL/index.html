@@ -112,22 +112,8 @@
 <body class="antialiased selection:bg-corporateNavy selection:text-white">
 
     <!-- BEGIN: Navbar -->
-    <nav class="fixed top-0 w-full z-50 glass-navbar transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="flex items-center">
-                <img src="assets/logo.png" alt="beServices Logo" class="h-8 w-auto mix-blend-multiply" />
-            </a>
-
-            <div class="hidden md:flex items-center gap-8 bg-white/40 border border-corporateNavy/5 px-8 py-2 rounded-full backdrop-blur-md">
-                <a href="#servicios" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">Servicios</a>
-                <a href="#" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">Nosotros</a>
-                <a href="#" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">Casos</a>
-                <a href="#contacto" class="text-sm font-medium text-mutedGray hover:text-corporateNavy transition-colors">Contacto</a>
-            </div>
-
-            <a href="internal.html" class="hidden md:inline-flex items-center gap-2 justify-center px-6 py-2.5 text-sm font-bold text-white bg-[#001A41] rounded-full hover:bg-[#001A41]/90 transition-colors shadow-lg shadow-[#001A41]/20">Internal Site <span class="opacity-60">→</span></a>
-        </div>
-    </nav>
+    <nav id="main-nav" data-active="home"></nav>
+    <script src="nav-component.js"></script>
 
     <style>
         .text-gradient {
@@ -622,17 +608,6 @@
         window.addEventListener("scroll", reveal);
         setTimeout(reveal, 100);
 
-        window.addEventListener('scroll', function () {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 20) {
-                navbar.classList.add('shadow-md');
-                navbar.classList.remove('py-2');
-            } else {
-                navbar.classList.remove('shadow-md');
-                navbar.classList.add('py-2');
-            }
-        });
-        
         lucide.createIcons();
     </script>
 </body>

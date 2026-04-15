@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Partner Google Workspace | Gmail, Drive, Meet y Gemini para empresas — BeServices</title>
+  <meta name="description" content="BeServices gestiona Google Workspace para empresas españolas. Migraciones, licencias, seguridad y soporte. Partner certificado Google." />
+  <link rel="canonical" href="https://beservices.es/google/" />
+  <meta property="og:title" content="Partner Google Workspace | Gmail, Drive, Meet y Gemini para empresas — BeServices" />
+  <meta property="og:description" content="BeServices gestiona Google Workspace para empresas españolas. Migraciones, licencias, seguridad y soporte. Partner certificado Google." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBlue: '#0075f2',
+            corporateNavy: '#001A41',
+            mutedGray: '#9CA3AF',
+            electricCyan: '#50cabf',
+            surfaceLow: '#f3f4f5',
+            iceWhite: '#f8f9fa'
+          },
+          fontFamily: {
+            space: ["'Space Grotesk'", "sans-serif"],
+            sans: ["'Inter'", "system-ui", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #ffffff;
+      color: #001A41;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Space Grotesk', sans-serif;
+      color: #001A41;
+      letter-spacing: -0.02em;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .text-gradient-google {
+      background: linear-gradient(135deg, #001A41 0%, #34a853 50%, #4285f4 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-h1 {
+      font-size: clamp(2.8rem, 4.5vw, 4.5rem);
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .plan-card {
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 26, 65, 0.10);
+    }
+
+    .product-card {
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0, 26, 65, 0.08);
+    }
+
+    .step-connector {
+      position: absolute;
+      top: 24px;
+      left: calc(50% + 28px);
+      right: calc(-50% + 28px);
+      height: 2px;
+      background: linear-gradient(90deg, #34a853, #4285f4);
+      opacity: 0.3;
+    }
+
+    @media (max-width: 767px) {
+      .step-connector { display: none; }
+    }
+
+    /* Google color palette */
+    .google-blue   { color: #4285f4; }
+    .google-red    { color: #ea4335; }
+    .google-yellow { color: #fbbc04; }
+    .google-green  { color: #34a853; }
+
+    .bg-google-blue   { background-color: #4285f4; }
+    .bg-google-red    { background-color: #ea4335; }
+    .bg-google-green  { background-color: #34a853; }
+
+    .bg-google-blue-light  { background-color: rgba(66,133,244,0.10); }
+    .bg-google-red-light   { background-color: rgba(234,67,53,0.10); }
+    .bg-google-green-light { background-color: rgba(52,168,83,0.10); }
+    .bg-google-yellow-light{ background-color: rgba(251,188,4,0.12); }
+    .bg-google-purple-light{ background-color: rgba(103,58,183,0.10); }
+    .bg-google-gray-light  { background-color: rgba(95,99,104,0.10); }
+  </style>
+</head>
+
+<body class="antialiased selection:bg-corporateNavy selection:text-white">
+
+  <!-- NAVBAR -->
+  <nav id="main-nav" data-active="google"></nav>
+  <script src="nav-component.js"></script>
+
+  <!-- ===========================
+       SECTION 1: HERO
+  =========================== -->
+  <section class="bg-white pt-32 pb-20 overflow-hidden relative">
+    <!-- Ambient blobs -->
+    <div class="absolute top-0 right-0 w-[700px] h-[700px] rounded-full blur-3xl -z-0 translate-x-1/3 -translate-y-1/3 pointer-events-none" style="background:rgba(66,133,244,0.05)"></div>
+    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full blur-3xl -z-0 -translate-x-1/2 translate-y-1/3 pointer-events-none" style="background:rgba(52,168,83,0.05)"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+        <!-- Left: copy -->
+        <div>
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-8 reveal active" style="background:rgba(66,133,244,0.07);border-color:rgba(66,133,244,0.18)">
+            <span class="w-2 h-2 rounded-full animate-pulse" style="background:#4285f4"></span>
+            <span class="text-xs font-semibold tracking-widest uppercase" style="color:#4285f4">Partner certificado Google</span>
+          </div>
+
+          <!-- H1 -->
+          <h1 class="hero-h1 text-corporateNavy mb-6 reveal active" style="transition-delay:80ms">
+            Todo Google Workspace para tu empresa, con soporte local.
+          </h1>
+
+          <!-- Subtext -->
+          <p class="text-lg text-mutedGray leading-relaxed mb-10 max-w-xl reveal active" style="transition-delay:160ms">
+            Migraciones, licencias, seguridad, Gemini AI y soporte en español. Somos tu partner Google en España.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row gap-4 reveal active" style="transition-delay:240ms">
+            <a href="#precios" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-corporateNavy text-white font-semibold rounded-full hover:bg-corporateNavy/90 transition-all shadow-xl shadow-corporateNavy/20">
+              Ver planes Google
+            </a>
+            <a href="contacto.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-corporateNavy border-2 border-corporateNavy/20 font-semibold rounded-full hover:border-corporateNavy/50 hover:bg-surfaceLow transition-all">
+              Hablar con un experto
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: product pill grid -->
+        <div class="reveal active" style="transition-delay:320ms">
+          <div class="grid grid-cols-3 gap-4">
+            <!-- Gmail -->
+            <div class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-surfaceLow border border-gray-100 hover:shadow-md transition-all" style="border-color:rgba(66,133,244,0.12)">
+              <div class="w-12 h-12 rounded-xl bg-google-red-light flex items-center justify-center">
+                <i class="ph ph-envelope-simple text-2xl" style="color:#ea4335"></i>
+              </div>
+              <span class="text-xs font-semibold text-corporateNavy text-center">Gmail</span>
+            </div>
+            <!-- Drive -->
+            <div class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-surfaceLow border border-gray-100 hover:shadow-md transition-all">
+              <div class="w-12 h-12 rounded-xl bg-google-blue-light flex items-center justify-center">
+                <i class="ph ph-hard-drives text-2xl" style="color:#4285f4"></i>
+              </div>
+              <span class="text-xs font-semibold text-corporateNavy text-center">Drive</span>
+            </div>
+            <!-- Meet -->
+            <div class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-surfaceLow border border-gray-100 hover:shadow-md transition-all">
+              <div class="w-12 h-12 rounded-xl bg-google-green-light flex items-center justify-center">
+                <i class="ph ph-video-camera text-2xl" style="color:#34a853"></i>
+              </div>
+              <span class="text-xs font-semibold text-corporateNavy text-center">Meet</span>
+            </div>
+            <!-- Docs -->
+            <div class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-surfaceLow border border-gray-100 hover:shadow-md transition-all">
+              <div class="w-12 h-12 rounded-xl bg-google-blue-light flex items-center justify-center">
+                <i class="ph ph-file-text text-2xl" style="color:#4285f4"></i>
+              </div>
+              <span class="text-xs font-semibold text-corporateNavy text-center">Docs/Sheets</span>
+            </div>
+            <!-- Gemini -->
+            <div class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-surfaceLow border border-gray-100 hover:shadow-md transition-all">
+              <div class="w-12 h-12 rounded-xl bg-google-purple-light flex items-center justify-center">
+                <i class="ph ph-sparkle text-2xl" style="color:#673ab7"></i>
+              </div>
+              <span class="text-xs font-semibold text-corporateNavy text-center">Gemini AI</span>
+            </div>
+            <!-- Google Cloud -->
+            <div class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-surfaceLow border border-gray-100 hover:shadow-md transition-all">
+              <div class="w-12 h-12 rounded-xl bg-google-yellow-light flex items-center justify-center">
+                <i class="ph ph-cloud text-2xl" style="color:#fbbc04"></i>
+              </div>
+              <span class="text-xs font-semibold text-corporateNavy text-center">Google Cloud</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       SECTION 2: PRODUCTOS
+  =========================== -->
+  <section class="py-24 bg-iceWhite">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <p class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#4285f4">Ecosistema</p>
+        <h2 class="text-3xl md:text-4xl font-space font-semibold text-corporateNavy">Apps Google Workspace que gestionamos</h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+
+        <!-- Gmail Business -->
+        <div class="product-card rounded-[1.5rem] bg-white p-6 border border-gray-100 reveal">
+          <div class="w-12 h-12 rounded-xl bg-google-red-light flex items-center justify-center mb-5">
+            <i class="ph ph-envelope-simple text-2xl" style="color:#ea4335"></i>
+          </div>
+          <h3 class="text-base font-semibold text-corporateNavy mb-2">Gmail Business</h3>
+          <p class="text-sm text-mutedGray leading-relaxed">Email profesional con tu dominio, sin publicidad y con almacenamiento ampliado.</p>
+        </div>
+
+        <!-- Google Meet -->
+        <div class="product-card rounded-[1.5rem] bg-white p-6 border border-gray-100 reveal">
+          <div class="w-12 h-12 rounded-xl bg-google-green-light flex items-center justify-center mb-5">
+            <i class="ph ph-video-camera text-2xl" style="color:#34a853"></i>
+          </div>
+          <h3 class="text-base font-semibold text-corporateNavy mb-2">Google Meet</h3>
+          <p class="text-sm text-mutedGray leading-relaxed">Videoconferencias HD ilimitadas con grabación, subtítulos en tiempo real y hasta 1.000 participantes.</p>
+        </div>
+
+        <!-- Drive + Docs -->
+        <div class="product-card rounded-[1.5rem] bg-white p-6 border border-gray-100 reveal">
+          <div class="w-12 h-12 rounded-xl bg-google-blue-light flex items-center justify-center mb-5">
+            <i class="ph ph-files text-2xl" style="color:#4285f4"></i>
+          </div>
+          <h3 class="text-base font-semibold text-corporateNavy mb-2">Drive + Docs</h3>
+          <p class="text-sm text-mutedGray leading-relaxed">Almacenamiento en la nube y colaboración en tiempo real sobre documentos, hojas de cálculo y presentaciones.</p>
+        </div>
+
+        <!-- Google Gemini -->
+        <div class="product-card rounded-[1.5rem] bg-white p-6 border border-gray-100 reveal">
+          <div class="w-12 h-12 rounded-xl bg-google-purple-light flex items-center justify-center mb-5">
+            <i class="ph ph-sparkle text-2xl" style="color:#673ab7"></i>
+          </div>
+          <h3 class="text-base font-semibold text-corporateNavy mb-2">Google Gemini</h3>
+          <p class="text-sm text-mutedGray leading-relaxed">IA generativa integrada en Gmail, Docs, Meet y Sheets para automatizar tareas y ganar productividad.</p>
+        </div>
+
+        <!-- Google Vault -->
+        <div class="product-card rounded-[1.5rem] bg-white p-6 border border-gray-100 reveal">
+          <div class="w-12 h-12 rounded-xl bg-google-gray-light flex items-center justify-center mb-5">
+            <i class="ph ph-archive text-2xl" style="color:#5f6368"></i>
+          </div>
+          <h3 class="text-base font-semibold text-corporateNavy mb-2">Google Vault</h3>
+          <p class="text-sm text-mutedGray leading-relaxed">Archivo legal, retención de datos y eDiscovery para cumplir con requisitos de compliance y auditoría.</p>
+        </div>
+
+        <!-- Chrome Enterprise -->
+        <div class="product-card rounded-[1.5rem] bg-white p-6 border border-gray-100 reveal">
+          <div class="w-12 h-12 rounded-xl bg-google-blue-light flex items-center justify-center mb-5">
+            <i class="ph ph-globe text-2xl" style="color:#4285f4"></i>
+          </div>
+          <h3 class="text-base font-semibold text-corporateNavy mb-2">Chrome Enterprise</h3>
+          <p class="text-sm text-mutedGray leading-relaxed">Gestión centralizada de políticas, extensiones y dispositivos Chrome en toda la organización.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       SECTION 3: PROCESO
+  =========================== -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <p class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#34a853">Proceso</p>
+        <h2 class="text-3xl md:text-4xl font-space font-semibold text-corporateNavy">Cómo migramos a Google Workspace</h2>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8 md:gap-6 relative">
+
+        <!-- Step 1 -->
+        <div class="relative flex flex-col items-center text-center reveal">
+          <div class="hidden md:block step-connector"></div>
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 shadow-lg" style="background:#4285f4;box-shadow:0 8px 25px rgba(66,133,244,0.3)">
+            <i class="ph ph-magnifying-glass text-2xl text-white"></i>
+          </div>
+          <div class="w-7 h-7 rounded-full flex items-center justify-center mb-4" style="background:rgba(66,133,244,0.1)">
+            <span class="text-xs font-bold" style="color:#4285f4">1</span>
+          </div>
+          <h3 class="text-base font-semibold text-corporateNavy mb-2">Auditoría</h3>
+          <p class="text-sm text-mutedGray leading-relaxed">Analizamos tu dominio, cuentas actuales y flujos de trabajo para planificar la migración.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative flex flex-col items-center text-center reveal" style="transition-delay:100ms">
+          <div class="hidden md:block step-connector"></div>
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 shadow-lg" style="background:#34a853;box-shadow:0 8px 25px rgba(52,168,83,0.3)">
+            <i class="ph ph-clipboard-text text-2xl text-white"></i>
+          </div>
+          <div class="w-7 h-7 rounded-full flex items-center justify-center mb-4" style="background:rgba(52,168,83,0.1)">
+            <span class="text-xs font-bold" style="color:#34a853">2</span>
+          </div>
+          <h3 class="text-base font-semibold text-corporateNavy mb-2">Plan de migración</h3>
+          <p class="text-sm text-mutedGray leading-relaxed">Propuesta personalizada con calendario de migración, costes y licencias Workspace recomendadas.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative flex flex-col items-center text-center reveal" style="transition-delay:200ms">
+          <div class="hidden md:block step-connector"></div>
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 shadow-lg" style="background:#4285f4;box-shadow:0 8px 25px rgba(66,133,244,0.3)">
+            <i class="ph ph-rocket-launch text-2xl text-white"></i>
+          </div>
+          <div class="w-7 h-7 rounded-full flex items-center justify-center mb-4" style="background:rgba(66,133,244,0.1)">
+            <span class="text-xs font-bold" style="color:#4285f4">3</span>
+          </div>
+          <h3 class="text-base font-semibold text-corporateNavy mb-2">Migración</h3>
+          <p class="text-sm text-mutedGray leading-relaxed">Migración de emails, contactos y calendarios sin pérdida de datos ni interrupciones del negocio.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="relative flex flex-col items-center text-center reveal" style="transition-delay:300ms">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 shadow-lg" style="background:#34a853;box-shadow:0 8px 25px rgba(52,168,83,0.3)">
+            <i class="ph ph-headset text-2xl text-white"></i>
+          </div>
+          <div class="w-7 h-7 rounded-full flex items-center justify-center mb-4" style="background:rgba(52,168,83,0.1)">
+            <span class="text-xs font-bold" style="color:#34a853">4</span>
+          </div>
+          <h3 class="text-base font-semibold text-corporateNavy mb-2">Soporte continuo</h3>
+          <p class="text-sm text-mutedGray leading-relaxed">Gestión proactiva del entorno Google, formación y soporte técnico en español.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       SECTION 4: PRECIOS
+  =========================== -->
+  <section id="precios" class="py-24 bg-iceWhite">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-6 reveal">
+        <p class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#4285f4">Planes</p>
+        <h2 class="text-3xl md:text-4xl font-space font-semibold text-corporateNavy">Planes de gestión Google Workspace</h2>
+      </div>
+      <p class="text-center text-mutedGray mb-16 reveal" style="transition-delay:80ms">
+        El precio de las licencias Google Workspace se añade al coste de gestión.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-8">
+
+        <!-- STARTER -->
+        <div class="plan-card rounded-[1.75rem] bg-white p-8 border border-gray-100 flex flex-col reveal">
+          <div class="mb-6">
+            <p class="text-xs font-bold tracking-widest text-mutedGray uppercase mb-3">Starter</p>
+            <p class="text-sm text-mutedGray mb-4">Hasta 15 usuarios</p>
+            <div class="flex items-end gap-1 mb-1">
+              <span class="text-4xl font-bold text-corporateNavy font-space">8€</span>
+              <span class="text-sm text-mutedGray mb-1">/usuario/mes</span>
+            </div>
+            <p class="text-xs text-mutedGray">+ licencias Google Workspace Business Starter</p>
+          </div>
+          <ul class="space-y-3 mb-8 flex-1">
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-lg flex-shrink-0 mt-0.5" style="color:#34a853"></i>
+              Gmail Business con dominio propio
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-lg flex-shrink-0 mt-0.5" style="color:#34a853"></i>
+              Google Drive + Meet + Docs
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-lg flex-shrink-0 mt-0.5" style="color:#34a853"></i>
+              Soporte horario 9–18h L-V
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-lg flex-shrink-0 mt-0.5" style="color:#34a853"></i>
+              Onboarding de usuario incluido
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-mutedGray">
+              <i class="ph ph-x-circle text-lg flex-shrink-0 mt-0.5 text-gray-200"></i>
+              Gemini AI
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-mutedGray">
+              <i class="ph ph-x-circle text-lg flex-shrink-0 mt-0.5 text-gray-200"></i>
+              Google Vault
+            </li>
+          </ul>
+          <a href="contacto.html" class="w-full text-center py-3.5 px-6 rounded-full border-2 border-corporateNavy/20 text-corporateNavy font-semibold hover:border-corporateNavy/50 hover:bg-surfaceLow transition-all text-sm">
+            Solicitar propuesta
+          </a>
+        </div>
+
+        <!-- BUSINESS (highlighted) -->
+        <div class="plan-card rounded-[1.75rem] bg-white p-8 border-2 flex flex-col relative shadow-xl reveal" style="transition-delay:100ms;border-color:#34a853;box-shadow:0 20px 40px rgba(52,168,83,0.10)">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+            <span class="inline-block px-4 py-1.5 text-white text-xs font-bold tracking-wider uppercase rounded-full" style="background:#34a853">Recomendado</span>
+          </div>
+          <div class="mb-6">
+            <p class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#34a853">Business</p>
+            <p class="text-sm text-mutedGray mb-4">15–60 usuarios</p>
+            <div class="flex items-end gap-1 mb-1">
+              <span class="text-4xl font-bold text-corporateNavy font-space">14€</span>
+              <span class="text-sm text-mutedGray mb-1">/usuario/mes</span>
+            </div>
+            <p class="text-xs text-mutedGray">+ licencias Google Workspace Business Standard</p>
+          </div>
+          <ul class="space-y-3 mb-8 flex-1">
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-lg flex-shrink-0 mt-0.5" style="color:#34a853"></i>
+              Gestión completa Workspace
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-lg flex-shrink-0 mt-0.5" style="color:#34a853"></i>
+              Seguridad avanzada + 2FA + DLP
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-lg flex-shrink-0 mt-0.5" style="color:#34a853"></i>
+              Gemini AI incluido
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-lg flex-shrink-0 mt-0.5" style="color:#34a853"></i>
+              Grabación de Meet incluida
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-lg flex-shrink-0 mt-0.5" style="color:#34a853"></i>
+              Soporte prioritario L-V 8–20h
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-mutedGray">
+              <i class="ph ph-x-circle text-lg flex-shrink-0 mt-0.5 text-gray-200"></i>
+              Google Vault + SLA 4h
+            </li>
+          </ul>
+          <a href="contacto.html" class="w-full text-center py-3.5 px-6 rounded-full text-white font-semibold transition-all text-sm shadow-lg" style="background:#34a853;box-shadow:0 8px 25px rgba(52,168,83,0.25)">
+            Solicitar propuesta
+          </a>
+        </div>
+
+        <!-- ENTERPRISE -->
+        <div class="plan-card rounded-[1.75rem] bg-white p-8 border border-gray-100 flex flex-col reveal" style="transition-delay:200ms">
+          <div class="mb-6">
+            <p class="text-xs font-bold tracking-widest text-mutedGray uppercase mb-3">Enterprise</p>
+            <p class="text-sm text-mutedGray mb-4">60–200 usuarios</p>
+            <div class="flex items-end gap-1 mb-1">
+              <span class="text-4xl font-bold text-corporateNavy font-space">20€</span>
+              <span class="text-sm text-mutedGray mb-1">/usuario/mes</span>
+            </div>
+            <p class="text-xs text-mutedGray">+ licencias Google Workspace Business Plus</p>
+          </div>
+          <ul class="space-y-3 mb-8 flex-1">
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-lg flex-shrink-0 mt-0.5" style="color:#34a853"></i>
+              Gestión avanzada + reporting
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-lg flex-shrink-0 mt-0.5" style="color:#34a853"></i>
+              Google Cloud incluido
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-lg flex-shrink-0 mt-0.5" style="color:#34a853"></i>
+              Google Vault completo
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-lg flex-shrink-0 mt-0.5" style="color:#34a853"></i>
+              SLA garantizado &lt; 4 horas
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-lg flex-shrink-0 mt-0.5" style="color:#34a853"></i>
+              Soporte 24/7 urgencias
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-corporateNavy/80">
+              <i class="ph ph-check-circle text-lg flex-shrink-0 mt-0.5" style="color:#34a853"></i>
+              Technical Account Manager
+            </li>
+          </ul>
+          <a href="contacto.html" class="w-full text-center py-3.5 px-6 rounded-full border-2 border-corporateNavy/20 text-corporateNavy font-semibold hover:border-corporateNavy/50 hover:bg-surfaceLow transition-all text-sm">
+            Solicitar propuesta
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       SECTION 5: WHY BESERVICES
+  =========================== -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <p class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#4285f4">Diferencial</p>
+        <h2 class="text-3xl md:text-4xl font-space font-semibold text-corporateNavy">Por qué BeServices para Google</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-8">
+
+        <!-- Partner certificado -->
+        <div class="flex gap-5 p-7 rounded-2xl bg-surfaceLow border border-gray-100 hover:shadow-md transition-all reveal group" style="--hover-border:#34a853">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform bg-google-blue-light">
+            <i class="ph ph-seal-check text-2xl" style="color:#4285f4"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold text-corporateNavy mb-2">Partner certificado Google</h3>
+            <p class="text-sm text-mutedGray leading-relaxed">Certificación oficial Google Cloud que garantiza calidad, soporte de nivel premier y acceso a recursos exclusivos.</p>
+          </div>
+        </div>
+
+        <!-- Soporte en español -->
+        <div class="flex gap-5 p-7 rounded-2xl bg-surfaceLow border border-gray-100 hover:shadow-md transition-all reveal group" style="transition-delay:80ms">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform bg-google-green-light">
+            <i class="ph ph-chat-circle-text text-2xl" style="color:#34a853"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold text-corporateNavy mb-2">Soporte 100% en español</h3>
+            <p class="text-sm text-mutedGray leading-relaxed">Olvídate de hablar con soporte en inglés. Todo el equipo de BeServices es hispanohablante y está en España.</p>
+          </div>
+        </div>
+
+        <!-- Migración sin downtime -->
+        <div class="flex gap-5 p-7 rounded-2xl bg-surfaceLow border border-gray-100 hover:shadow-md transition-all reveal group" style="transition-delay:160ms">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform bg-google-blue-light">
+            <i class="ph ph-arrow-clockwise text-2xl" style="color:#4285f4"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold text-corporateNavy mb-2">Migración sin downtime</h3>
+            <p class="text-sm text-mutedGray leading-relaxed">Migramos todos tus emails, contactos y calendarios sin interrumpir el trabajo diario de tu equipo.</p>
+          </div>
+        </div>
+
+        <!-- Formación incluida -->
+        <div class="flex gap-5 p-7 rounded-2xl bg-surfaceLow border border-gray-100 hover:shadow-md transition-all reveal group" style="transition-delay:240ms">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform bg-google-green-light">
+            <i class="ph ph-graduation-cap text-2xl" style="color:#34a853"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold text-corporateNavy mb-2">Formación incluida</h3>
+            <p class="text-sm text-mutedGray leading-relaxed">Sesiones de onboarding y formación en Google Workspace para todos los usuarios, sin coste adicional.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       SECTION 6: CTA
+  =========================== -->
+  <section class="py-24 bg-corporateNavy relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" style="background:rgba(66,133,244,0.18)"></div>
+      <div class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-3xl -translate-x-1/3 translate-y-1/3" style="background:rgba(52,168,83,0.15)"></div>
+    </div>
+    <div class="max-w-3xl mx-auto px-6 text-center relative z-10">
+      <div class="reveal">
+        <p class="text-xs font-bold tracking-widest uppercase mb-4" style="color:#34a853">Siguiente paso</p>
+        <h2 class="text-3xl md:text-4xl font-space font-semibold text-white mb-6 leading-tight">
+          ¿Listo para pasarte a Google Workspace?
+        </h2>
+        <p class="text-white/60 mb-10 text-lg leading-relaxed">
+          Cuéntanos el tamaño de tu empresa y en 24h te enviamos una propuesta personalizada sin compromiso.
+        </p>
+        <a href="contacto.html" class="inline-flex items-center gap-2 px-10 py-4 text-white font-semibold rounded-full transition-all text-base shadow-xl" style="background:#34a853;box-shadow:0 12px 30px rgba(52,168,83,0.35)">
+          Hablar con un experto
+          <i class="ph ph-arrow-right text-lg"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       FOOTER
+  =========================== -->
+  <footer class="bg-corporateNavy border-t border-white/10 pt-16 pb-10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-10 mb-12">
+        <!-- Brand -->
+        <div class="md:col-span-2">
+          <a href="index.html" class="inline-block mb-4">
+            <span class="text-xl font-bold text-white font-space tracking-tight">Be<span class="text-electricCyan">Services</span></span>
+          </a>
+          <p class="text-white/50 text-sm leading-relaxed max-w-xs">
+            Partner Microsoft y Google. IT gestionado para empresas de 10 a 200 empleados en España.
+          </p>
+        </div>
+        <!-- Servicios -->
+        <div>
+          <h4 class="text-xs font-bold tracking-widest text-white/30 uppercase mb-5">Servicios</h4>
+          <ul class="space-y-3">
+            <li><a href="microsoft.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">Microsoft 365</a></li>
+            <li><a href="google.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">Google Workspace</a></li>
+            <li><a href="servicio-seguridad.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">Seguridad IT</a></li>
+            <li><a href="servicio-soporte.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">Soporte Técnico</a></li>
+          </ul>
+        </div>
+        <!-- Empresa -->
+        <div>
+          <h4 class="text-xs font-bold tracking-widest text-white/30 uppercase mb-5">Empresa</h4>
+          <ul class="space-y-3">
+            <li><a href="nosotros.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">Nosotros</a></li>
+            <li><a href="casos.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">Casos de éxito</a></li>
+            <li><a href="blog.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">Blog</a></li>
+            <li><a href="contacto.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-xs text-white/30">© 2025 BeServices. Todos los derechos reservados.</p>
+        <p class="text-xs text-white/30">Partner certificado Microsoft y Google Workspace</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===========================
+       SCRIPTS
+  =========================== -->
+  <script>
+    // Lucide icons init
+    lucide.createIcons();
+
+    // Reveal on scroll
+    const revealEls = document.querySelectorAll('.reveal:not(.active)');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+  </script>
+
+</body>
+</html>

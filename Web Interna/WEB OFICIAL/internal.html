@@ -77,21 +77,8 @@
 
 <body class="antialiased text-corporateNavy">
     <!-- BEGIN: Navbar -->
-    <nav class="fixed top-0 w-full z-50 glass-navbar transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="assets/logo.png" alt="beServices Logo" class="h-8 w-auto mix-blend-multiply" />
-                <span
-                    class="text-xs font-bold uppercase tracking-widest text-mutedGray border-l border-gray-300 pl-3">Portal
-                    Interno</span>
-            </a>
-
-            <a href="index.html"
-                class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-corporateNavy rounded-full hover:bg-corporateNavy/90 transition-colors shadow-lg shadow-corporateNavy/20">
-                Volver a la Web Pública
-            </a>
-        </div>
-    </nav>
+    <nav id="main-nav" data-active="internal"></nav>
+<script src="nav-component.js"></script>
 
     <!-- Main Content -->
     <div class="pt-32 pb-20 px-6 max-w-7xl mx-auto min-h-screen">
