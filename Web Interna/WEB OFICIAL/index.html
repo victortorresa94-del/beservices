@@ -107,6 +107,7 @@
             box-shadow: 0 8px 30px rgba(80, 202, 191, 0.15);
         }
     </style>
+    <link rel="stylesheet" href="bee.css">
 </head>
 
 <body class="antialiased selection:bg-corporateNavy selection:text-white">
@@ -610,5 +611,60 @@
 
         lucide.createIcons();
     </script>
+
+    <!-- BEE WIDGET -->
+    <div id="bee-trigger" onclick="window._bee.toggleBee()" style="display:none">
+      <div class="bee-trigger-label">✦ Ask Bee</div>
+      <div class="bee-trigger-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
+          <ellipse cx="12" cy="10" rx="6" ry="7"/>
+          <path d="M6 10c-2 0-3 1.5-3 3s1 3 3 3"/>
+          <path d="M18 10c2 0 3 1.5 3 3s-1 3-3 3"/>
+          <path d="M9 4L7 1M15 4l2-3"/>
+          <line x1="9" y1="13" x2="15" y2="13"/>
+          <line x1="9" y1="10" x2="15" y2="10"/>
+        </svg>
+      </div>
+    </div>
+
+    <div id="bee-widget" class="bee-widget" style="display:none">
+      <div class="bee-header">
+        <div class="bee-header-left">
+          <div class="bee-avatar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" width="18" height="18">
+              <ellipse cx="12" cy="10" rx="6" ry="7"/>
+              <path d="M6 10c-2 0-3 1.5-3 3s1 3 3 3"/>
+              <path d="M18 10c2 0 3 1.5 3 3s-1 3-3 3"/>
+              <path d="M9 4L7 1M15 4l2-3"/>
+              <line x1="9" y1="13" x2="15" y2="13"/>
+              <line x1="9" y1="10" x2="15" y2="10"/>
+            </svg>
+          </div>
+          <div>
+            <div class="bee-name">Bee <span class="bee-verified">✓</span></div>
+            <div class="bee-subtitle">AI Advisor · BeServices</div>
+          </div>
+        </div>
+        <button onclick="window._bee.toggleBee()" class="bee-close">∨</button>
+      </div>
+      <div id="bee-body" class="bee-body"></div>
+      <div class="bee-input-wrap">
+        <div class="bee-input-label">Pregunta lo que necesites sobre nuestros servicios</div>
+        <div class="bee-input-row">
+          <input id="bee-input" type="text" placeholder="Escribe tu pregunta..."
+                 onkeydown="if(event.key==='Enter') window._bee.sendToBee()">
+          <button onclick="window._bee.sendToBee()" class="bee-send-btn">↑</button>
+        </div>
+        <div class="bee-disclaimer">🔒 Bee usa IA. Revisa siempre la información importante.</div>
+      </div>
+      <div class="bee-tabs">
+        <button class="bee-tab active" id="bee-tab-home" onclick="window._bee.beeShowHome()">🏠 Inicio</button>
+        <button class="bee-tab" id="bee-tab-services" onclick="window._bee.beeShowServices()">🛡️ Servicios</button>
+        <button class="bee-tab" id="bee-tab-plans" onclick="window._bee.beeShowPlans()">📦 Planes</button>
+        <button class="bee-tab" id="bee-tab-history" onclick="window._bee.beeShowHistory()">🕐 Historial</button>
+      </div>
+    </div>
+
+    <script src="bee.js"></script>
 </body>
 </html>

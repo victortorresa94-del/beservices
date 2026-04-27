@@ -1,3 +1,8 @@
 {
-  "outputDirectory": "Web Interna/WEB OFICIAL"
+  "outputDirectory": "Web Interna/WEB OFICIAL",
+  "functions": {
+    "api/bee.js": {
+      "runtime": "nodejs20.x"
+    }
+  }
 }
