@@ -1,5 +1,7 @@
 'use strict';
 
+const https = require('https');
+
 const BEE_SYSTEM_PROMPT = `Eres Bee, el asistente de BeServices. Eres un experto en servicios IT y ciberseguridad para empresas de 10-200 empleados que trabajan con Microsoft 365 o Google Workspace.
 
 QUIÉN ERES:
@@ -30,10 +32,7 @@ REGLAS:
 - Precios Microsoft: di siempre "orientativo, confirmar con contrato"
 - Si algo escapa a tu conocimiento técnico exacto, di: "Eso te lo confirma nuestro equipo técnico. ¿Te paso el contacto?"
 - Nunca presiones para contratar. Informa, explica el valor.
-- Termina con una pregunta, acción concreta o CTA suave:
-  → "¿Quieres que te explique cómo funciona la implementación?"
-  → "¿Te cuento qué incluye el plan en detalle?"
-  → "¿Hablamos con un especialista esta semana?"
+- Termina con una pregunta, acción concreta o CTA suave
 - Para diagnóstico gratuito, menciona BeAudit en beservices.es/beaudit
 
 LO QUE NO HACES:
@@ -42,6 +41,35 @@ LO QUE NO HACES:
 - No prometes fechas sin que el equipo técnico confirme
 - No recomiendas productos de competidores
 - No hablas de temas fuera de seguridad IT y productividad digital`;
+
+function callAnthropic(payload) {
+  return new Promise((resolve, reject) => {
+    const body = JSON.stringify(payload);
+    const options = {
+      hostname: 'api.anthropic.com',
+      path: '/v1/messages',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(body),
+        'x-api-key': process.env.ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01'
+      }
+    };
+    const req = https.request(options, (res) => {
+      let data = '';
+      res.on('data', chunk => { data += chunk; });
+      res.on('end', () => {
+        try { resolve(JSON.parse(data)); }
+        catch (e) { reject(new Error('Invalid JSON from Anthropic: ' + data)); }
+      });
+    });
+    req.on('error', reject);
+    req.setTimeout(30000, () => { req.destroy(); reject(new Error('Request timeout')); });
+    req.write(body);
+    req.end();
+  });
+}
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -60,26 +88,18 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': process.env.ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01'
-      },
-      body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 1000,
-        system: BEE_SYSTEM_PROMPT,
-        messages: messages.slice(-10)
-      })
+    const data = await callAnthropic({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 1000,
+      system: BEE_SYSTEM_PROMPT,
+      messages: messages.slice(-10)
     });
 
-    const data = await response.json();
     if (data.error) {
       return res.status(500).json({ error: data.error.message || 'Error en Anthropic API' });
     }
-    const content = data.content?.[0]?.text || '';
+
+    const content = (data.content && data.content[0] && data.content[0].text) || '';
     return res.json({ reply: content });
 
   } catch (err) {

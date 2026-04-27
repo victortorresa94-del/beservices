@@ -1,670 +1,107 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="es">
-
+<html lang="es" class="scroll-smooth">
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>BeServices | Partner Microsoft 365 y Google Workspace para empresas | Seguridad IT y Soporte Gestionado en España</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BeServices | Servicios para tu escalabilidad digital</title>
+  <meta name="description" content="BeServices transforma empresas con Microsoft 365, Google Workspace, ciberseguridad gestionada y soporte IT gestionado.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="bee.css">
 
-    <meta name="description" content="BeServices gestiona licencias Microsoft 365 y Google Workspace, seguridad con Besafe, cloud y soporte IT para empresas de 10 a 200 empleados en España. Partner certificado Microsoft y Google.">
-    <meta name="keywords" content="partner Microsoft 365 empresas, soporte IT gestionado pymes, seguridad informática empresas España, Google Workspace partner, Copilot empresas, backup Microsoft 365">
-    <link rel="canonical" href="https://beservices.es/">
-    <meta property="og:title" content="BeServices — Servicios IT para empresas que quieren escalar con seguridad">
-    <meta property="og:description" content="Partner Microsoft y Google. Licencias, seguridad, cloud y soporte IT gestionado para empresas medianas en España.">
-    <meta property="og:type" content="website">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', -apple-system, sans-serif; color: #1a202c; background: #fff; }
 
-    <!-- Google Fonts: Inter 400/500/600, Inter -->
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter:wght@700;800;900&display=swap" rel="stylesheet" />
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(5,11,26, 0.95); backdrop-filter: blur(8px);
+      padding: 1rem 2rem; border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    nav .container { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    nav .logo { color: white; font-size: 1.5rem; font-weight: 800; }
+    nav .menu { display: flex; gap: 2rem; flex: 1; margin-left: 3rem; }
+    nav .menu a { color: #e2e8f0; font-size: 0.95rem; text-decoration: none; transition: opacity .2s; }
+    nav .menu a:hover { opacity: 0.7; }
+    nav .right { display: flex; gap: 1.5rem; align-items: center; }
+    nav .location { color: #cbd5e1; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
+    nav .btn { background: transparent; border: 1.5px solid #0075F2; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all .2s; }
+    nav .btn:hover { background: #0075F2; }
 
-    <!-- Premium Icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    @media (max-width: 768px) {
+      nav .menu { display: none; }
+      nav .location { display: none; }
+    }
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brandBlue: '#0075f2',
-                        corporateNavy: '#001A41',
-                        mutedGray: '#9CA3AF',
-                        electricCyan: '#50cabf',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Inter', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
+    /* HERO */
+    .hero {
+      position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #030B1C 0%, #0A1628 100%);
+      background-image: url('assets/hero.jpeg');
+      background-size: cover; background-position: center 40%;
+      overflow: hidden; margin-top: 60px;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(3,11,28,0.4) 0%, rgba(3,11,28,0.65) 50%, rgba(3,11,28,0.9) 100%);
+      z-index: 1;
+    }
+    .hero-content { position: relative; z-index: 2; text-align: center; color: white; max-width: 800px; padding: 2rem; }
+    .hero-content h1 {
+      font-size: clamp(2.5rem, 8vw, 6rem); font-weight: 900; line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .hero-line { height: 4px; width: 80px; background: #0075F2; margin: 1.5rem auto 2rem; border-radius: 2px; }
+    .hero-content p { font-size: 1.1rem; color: #cbd5e1; margin-bottom: 2rem; line-height: 1.6; }
+    .hero-cta {
+      display: inline-block; padding: 0.9rem 2rem; border: 2px solid white; color: white;
+      text-decoration: none; border-radius: 8px; font-weight: 600; transition: all .3s;
+      cursor: pointer; background: transparent;
+    }
+    .hero-cta:hover { background: white; color: #030B1C; }
 
-    <!-- Custom Styles for Glassmorphism and Specific Brand Elements -->
-    <style data-purpose="brand-styling">
-        body {
-            background-color: #FFFFFF;
-            color: #001A41;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Inter', sans-serif;
-            font-weight: 800;
-            color: #001A41;
-            letter-spacing: -0.02em;
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 10px 40px 0 rgba(0, 26, 65, 0.04);
-            border-radius: 1.5rem;
-            transition: all 0.4s ease;
-        }
-
-        .glass-navbar {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(0, 26, 65, 0.05);
-        }
-
-        .hero-heading {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .plan-card {
-            border: 1px solid rgba(0, 26, 65, 0.08);
-            border-radius: 1.25rem;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .plan-card:hover {
-            border-color: #50cabf;
-            box-shadow: 0 8px 30px rgba(80, 202, 191, 0.15);
-        }
-    </style>
-    <link rel="stylesheet" href="bee.css">
+    @media (max-width: 768px) {
+      .hero { min-height: 80vh; }
+      .hero-content h1 { font-size: 2rem; }
+    }
+  </style>
 </head>
+<body>
 
-<body class="antialiased selection:bg-corporateNavy selection:text-white">
-
-    <!-- BEGIN: Navbar -->
-    <nav id="main-nav" data-active="home"></nav>
-    <script src="nav-component.js"></script>
-
-    <style>
-        .text-gradient {
-            background: linear-gradient(135deg, #001A41 0%, #50cabf 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: transparent;
-        }
-    </style>
-
-    <!-- BEGIN: Hero Section -->
-    <section class="relative pt-32 pb-16 lg:pt-36 lg:pb-20 overflow-hidden bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-
-                <!-- Columna texto -->
-                <div class="reveal active">
-                    <!-- Badge -->
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-gray-100 shadow-sm mb-6">
-                        <span class="w-1.5 h-1.5 rounded-full bg-[#50cabf] shrink-0"></span>
-                        <span class="text-[11px] font-bold tracking-[0.15em] text-[#001A41] uppercase">SERVICIOS PARA TU ENTORNO DIGITAL</span>
-                    </div>
-                    <!-- H1 — Inter font, normal + bold + gradient teal -->
-                    <h1 class="font-normal text-[#001A41] mb-5 reveal active" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif; font-size: clamp(2rem, 3.2vw, 3.4rem); line-height: 1.15; letter-spacing: -0.02em; transition-delay:100ms">
-                        Scaling your <span style="font-weight:700">digital</span><br />
-                        <span class="text-gradient" style="font-weight:700">World</span>
-                    </h1>
-                    <p class="text-sm text-gray-400 leading-relaxed mb-8 max-w-sm reveal active" style="transition-delay:200ms">
-                        Gestionamos licencias, infraestructura, seguridad, inteligencia artificial y soporte IT para empresas de 10 a 200 empleados en España.
-                    </p>
-                    <div class="flex flex-row gap-3 reveal active" style="transition-delay:300ms">
-                        <a href="#servicios" class="inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white bg-[#001A41] rounded-xl transition-all shadow-lg shadow-[#001A41]/20 hover:-translate-y-0.5">Ver nuestros servicios</a>
-                        <a href="contacto.html" class="inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-[#001A41] bg-transparent border border-gray-200 rounded-xl hover:bg-gray-50 transition-all">Habla con nosotros</a>
-                    </div>
-                </div>
-
-                <!-- Columna imagen encuadrada -->
-                <div class="relative flex justify-end reveal active hidden lg:block" style="transition-delay:150ms">
-                    <div class="w-full max-w-[480px] rounded-[2rem] overflow-hidden bg-gray-50 shadow-xl" style="aspect-ratio: 1 / 1;">
-                        <img src="assets/hero.jpeg" alt="BeServices" class="w-full h-full object-cover" />
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN 5: PARTNERS (MOVED BELOW HERO) -->
-    <section class="py-16 bg-white border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-center text-xs font-bold text-gray-400 uppercase tracking-widest mb-10">Trabajamos con los mejores fabricantes</h2>
-            <div class="flex flex-wrap justify-center items-center gap-10 md:gap-14 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-                <img src="https://beservices.es/wp-content/uploads/2024/09/Microsoft_365_logo-1024x169.png" class="h-6 object-contain" alt="Microsoft" />
-                <img src="https://beservices.es/wp-content/uploads/2024/09/Google-Workspace.png" class="h-6 object-contain" alt="Google Workspace" />
-                <img src="https://beservices.es/wp-content/uploads/2024/09/SonicWall_logo.svg-1024x175.png" class="h-6 object-contain" alt="SonicWall" />
-                <img src="https://beservices.es/wp-content/uploads/2024/09/veeam.png" class="h-5 object-contain" alt="Veeam" />
-                <img src="https://www.datto.com/images/datto-logo.svg" class="h-5 object-contain" alt="Datto" onerror="this.style.display='none'" />
-                <img src="https://beservices.es/wp-content/uploads/2024/09/Citrix_Systems_logo.svg-1024x319.png" class="h-6 object-contain" alt="Citrix" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Parallels_Desktop_logo.svg/1200px-Parallels_Desktop_logo.svg.png" class="h-6 object-contain" alt="Parallels" onerror="this.style.display='none'" />
-                <img src="https://cdn.prod.website-files.com/63d2cc53b4e9b53cc09fe89e/63d2cc53b4e9b5d9009fe8bb_Factorial_Logo.svg" class="h-6 object-contain" alt="Factorial" onerror="this.style.display='none'" />
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN 2: LAS 5 FASES -->
-    <section id="servicios" class="py-24 bg-white border-t border-gray-100 overflow-hidden">
-        <div class="max-w-[1400px] mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <span class="text-[10px] font-bold tracking-[0.2em] text-[#0075f2] uppercase bg-[#0075f2]/5 px-3 py-1 rounded">Cómo trabajamos contigo</span>
-                <h2 class="text-3xl md:text-4xl font-heading font-normal text-corporateNavy mt-4">Cinco fases para tu entorno digital completo</h2>
-                <p class="text-mutedGray max-w-2xl mx-auto text-sm mt-4">Cada empresa tiene un punto de partida distinto. Puedes empezar donde lo necesites.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-                <!-- Fase 01 -->
-                <a href="servicio-activa.html" class="group p-10 bg-white border border-gray-100 rounded-[3rem] shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-700 flex flex-col items-center text-center relative overflow-hidden block">
-                    <div class="w-24 h-24 mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-700">
-                        <img src="assets/ICONOS/grandes/1.png" alt="Activa" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/100x100?text=Icono'"/>
-                    </div>
-                    <span class="text-[10px] font-bold tracking-[0.2em] text-[#001A41]/40 uppercase mb-4">FASE 01</span>
-                    <h3 class="text-2xl font-heading font-black text-corporateNavy uppercase mb-1">ACTIVA</h3>
-                    <p class="text-[10px] font-bold text-[#001A41] uppercase mb-6 tracking-wider">TU ENTORNO DIGITAL</p>
-                    <p class="text-[11px] text-mutedGray leading-relaxed mb-10 max-w-[220px] h-[4.5rem]">Activamos Microsoft 365, Google Workspace y licencias cloud para que tu equipo trabaje con las herramientas correctas desde el primer día.</p>
-                    <div class="mt-auto pt-6 border-t border-gray-50/50 w-full flex justify-center">
-                        <span class="text-xs font-bold text-[#0075f2] group-hover:text-[#001A41] transition-colors flex items-center gap-2">Explorar Servicios <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
-                    </div>
-                </a>
-
-                <!-- Fase 02 -->
-                <a href="servicio-escala.html" class="group p-10 bg-white border border-gray-100 rounded-[3rem] shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-700 flex flex-col items-center text-center relative overflow-hidden block">
-                    <div class="w-24 h-24 mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-700">
-                        <img src="assets/ICONOS/grandes/2.png" alt="Escala" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/100x100?text=Icono'"/>
-                    </div>
-                    <span class="text-[10px] font-bold tracking-[0.2em] text-[#001A41]/40 uppercase mb-4">FASE 02</span>
-                    <h3 class="text-2xl font-heading font-black text-corporateNavy uppercase mb-1">ESCALA</h3>
-                    <p class="text-[10px] font-bold text-[#001A41] uppercase mb-6 tracking-wider">TU INFRAESTRUCTURA</p>
-                    <p class="text-[11px] text-mutedGray leading-relaxed mb-10 max-w-[220px] h-[4.5rem]">Migraciones a la nube, despliegues de Azure y Google Cloud, y cloud privado para empresas que necesitan escalar sin límites.</p>
-                    <div class="mt-auto pt-6 border-t border-gray-50/50 w-full flex justify-center">
-                        <span class="text-xs font-bold text-[#0075f2] group-hover:text-[#001A41] transition-colors flex items-center gap-2">Explorar Servicios <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
-                    </div>
-                </a>
-
-                <!-- Fase 03 -->
-                <a href="servicio-protege.html" class="group p-10 bg-white border border-gray-100 rounded-[3rem] shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-700 flex flex-col items-center text-center relative overflow-hidden block">
-                    <div class="w-24 h-24 mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-700">
-                        <img src="assets/ICONOS/grandes/3.png" alt="Protege" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/100x100?text=Icono'"/>
-                    </div>
-                    <span class="text-[10px] font-bold tracking-[0.2em] text-[#001A41]/40 uppercase mb-4">FASE 03</span>
-                    <h3 class="text-2xl font-heading font-black text-corporateNavy uppercase mb-1">PROTEGE</h3>
-                    <p class="text-[10px] font-bold text-[#001A41] uppercase mb-6 tracking-wider">TU EMPRESA Y DATOS</p>
-                    <p class="text-[11px] text-mutedGray leading-relaxed mb-10 max-w-[220px] h-[4.5rem]">Besafe, firewall, backup y monitorización. Seguridad multicapa para empresas que no pueden permitirse una brecha.</p>
-                    <div class="mt-auto pt-6 border-t border-gray-50/50 w-full flex justify-center">
-                        <span class="text-xs font-bold text-[#0075f2] group-hover:text-[#001A41] transition-colors flex items-center gap-2">Explorar Servicios <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
-                    </div>
-                </a>
-
-                <!-- Fase 04 -->
-                <a href="servicio-potencia.html" class="group p-10 bg-white border border-gray-100 rounded-[3rem] shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-700 flex flex-col items-center text-center relative overflow-hidden block">
-                    <div class="w-24 h-24 mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-700">
-                        <img src="assets/ICONOS/grandes/4.png" alt="Potencia" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/100x100?text=Icono'"/>
-                    </div>
-                    <span class="text-[10px] font-bold tracking-[0.2em] text-[#001A41]/40 uppercase mb-4">FASE 04</span>
-                    <h3 class="text-2xl font-heading font-black text-corporateNavy uppercase mb-1">POTENCIA</h3>
-                    <p class="text-[10px] font-bold text-[#001A41] uppercase mb-6 tracking-wider">TU NEGOCIO CON IA</p>
-                    <p class="text-[11px] text-mutedGray leading-relaxed mb-10 max-w-[220px] h-[4.5rem]">Copilot, Gemini, Power BI y automatizaciones. Convertimos los datos y la IA en productividad real para tu equipo.</p>
-                    <div class="mt-auto pt-6 border-t border-gray-50/50 w-full flex justify-center">
-                        <span class="text-xs font-bold text-[#0075f2] group-hover:text-[#001A41] transition-colors flex items-center gap-2">Explorar Servicios <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
-                    </div>
-                </a>
-
-                <!-- Fase 05 -->
-                <a href="servicio-gestiona.html" class="group p-10 bg-white border border-gray-100 rounded-[3rem] shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-700 flex flex-col items-center text-center relative overflow-hidden block">
-                    <div class="w-24 h-24 mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-700">
-                        <img src="assets/ICONOS/grandes/5.png" alt="Gestiona" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/100x100?text=Icono'"/>
-                    </div>
-                    <span class="text-[10px] font-bold tracking-[0.2em] text-[#001A41]/40 uppercase mb-4">FASE 05</span>
-                    <h3 class="text-2xl font-heading font-black text-corporateNavy uppercase mb-1">GESTIONA</h3>
-                    <p class="text-[10px] font-bold text-[#001A41] uppercase mb-6 tracking-wider">TU TRANQUILIDAD</p>
-                    <p class="text-[11px] text-mutedGray leading-relaxed mb-10 max-w-[220px] h-[4.5rem]">Tu departamento IT externo. Soporte gestionado, resolución de incidencias y gestión proactiva sin contratar personal técnico.</p>
-                    <div class="mt-auto pt-6 border-t border-gray-50/50 w-full flex justify-center">
-                        <span class="text-xs font-bold text-[#0075f2] group-hover:text-[#001A41] transition-colors flex items-center gap-2">Explorar Servicios <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- SECCIÓN 3: POR QUÉ BESERVICES -->
-    <section class="py-24 bg-gray-50/50 border-t border-gray-100">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-3xl md:text-5xl font-heading font-black text-corporateNavy mb-16 text-center reveal">No somos solo un proveedor de licencias.</h2>
-            <div class="grid md:grid-cols-2 gap-x-12 gap-y-16 max-w-5xl mx-auto">
-                <!-- Item 1 -->
-                <div class="flex gap-6 reveal group">
-                    <div class="w-14 h-14 shrink-0 bg-white rounded-2xl flex items-center justify-center text-[#0075f2] shadow-sm group-hover:bg-[#0075f2] group-hover:text-white transition-colors">
-                        <i class="ph ph-handshake text-2xl"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-bold text-corporateNavy mb-2">Partner certificado Microsoft y Google</h4>
-                        <p class="text-mutedGray text-sm leading-relaxed">Trabajamos directamente con los fabricantes, sin intermediarios.</p>
-                    </div>
-                </div>
-                <!-- Item 2 -->
-                <div class="flex gap-6 reveal group" style="transition-delay: 100ms;">
-                    <div class="w-14 h-14 shrink-0 bg-white rounded-2xl flex items-center justify-center text-[#0075f2] shadow-sm group-hover:bg-[#0075f2] group-hover:text-white transition-colors">
-                        <i class="ph ph-shield-check text-2xl"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-bold text-corporateNavy mb-2">Seguridad como eje central, no como extra</h4>
-                        <p class="text-mutedGray text-sm leading-relaxed">Besafe es nuestro producto propio, no un servicio de terceros reempaquetado.</p>
-                    </div>
-                </div>
-                <!-- Item 3 -->
-                <div class="flex gap-6 reveal group" style="transition-delay: 200ms;">
-                    <div class="w-14 h-14 shrink-0 bg-white rounded-2xl flex items-center justify-center text-[#0075f2] shadow-sm group-hover:bg-[#0075f2] group-hover:text-white transition-colors">
-                        <i class="ph ph-buildings text-2xl"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-bold text-corporateNavy mb-2">Un interlocutor para todo tu entorno IT</h4>
-                        <p class="text-mutedGray text-sm leading-relaxed">Licencias, cloud, seguridad y soporte en una sola relación.</p>
-                    </div>
-                </div>
-                <!-- Item 4 -->
-                <div class="flex gap-6 reveal group" style="transition-delay: 300ms;">
-                    <div class="w-14 h-14 shrink-0 bg-white rounded-2xl flex items-center justify-center text-[#0075f2] shadow-sm group-hover:bg-[#0075f2] group-hover:text-white transition-colors">
-                        <i class="ph ph-headphones text-2xl"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-bold text-corporateNavy mb-2">Equipo técnico especializado, no call center</h4>
-                        <p class="text-mutedGray text-sm leading-relaxed">Los que configuran son los que cogen el teléfono.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PRUEBA SOCIAL -->
-    <section class="py-10 bg-[#F9FAFB] border-t border-b border-gray-100">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-0">
-                <div class="text-center px-6 py-4 reveal border-r border-gray-200 last:border-0">
-                    <p class="font-heading font-extrabold text-[#001A41] leading-none mb-2" style="font-size:2.5rem">+10 años</p>
-                    <p class="text-mutedGray text-xs leading-relaxed">gestionando entornos Microsoft y Google</p>
-                </div>
-                <div class="text-center px-6 py-4 reveal border-r border-gray-200 last:border-0" style="transition-delay:100ms">
-                    <p class="font-heading font-extrabold text-[#001A41] leading-none mb-2" style="font-size:2.5rem">+150</p>
-                    <p class="text-mutedGray text-xs leading-relaxed">empresas confían en nosotros hoy</p>
-                </div>
-                <div class="text-center px-6 py-4 reveal border-r border-gray-200 last:border-0" style="transition-delay:200ms">
-                    <p class="font-heading font-extrabold text-[#001A41] leading-none mb-2" style="font-size:2.5rem">&lt; 4h</p>
-                    <p class="text-mutedGray text-xs leading-relaxed">tiempo medio de resolución de incidencias</p>
-                </div>
-                <div class="text-center px-6 py-4 reveal" style="transition-delay:300ms">
-                    <p class="font-heading font-extrabold text-[#001A41] leading-none mb-2" style="font-size:2.5rem">100%</p>
-                    <p class="text-mutedGray text-xs leading-relaxed">cobertura en España, soporte en tu idioma</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN: COMBINACIONES DE SERVICIOS -->
-    <section id="packs" class="py-24 bg-white border-t border-gray-100 relative">
-        <div class="max-w-[1400px] mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <span class="text-[10px] font-bold tracking-[0.2em] text-[#0075f2] uppercase bg-[#0075f2]/5 px-3 py-1 rounded">Soluciones empaquetadas</span>
-                <h2 class="text-3xl md:text-4xl font-heading font-normal text-corporateNavy mt-4">Combinaciones de Servicios</h2>
-                <p class="text-mutedGray max-w-2xl mx-auto text-sm mt-4">
-                    Packs pensados para las necesidades más habituales. Punto de partida para el equipo comercial.
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-6 items-stretch">
-                
-                <!-- PACK 1: Start -->
-                <div class="plan-card bg-white relative group reveal overflow-hidden flex flex-col shadow-sm border border-gray-100 rounded-xl">
-                    <div class="h-44 w-full bg-slate-50 relative overflow-hidden">
-                        <img src="assets/pack_bestart.png" onerror="this.src='assets/hero.jpeg'" alt="Pack Start" class="absolute inset-0 h-full w-full object-cover object-center mix-blend-multiply transition-transform duration-700 group-hover:scale-110">
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col relative bg-white">
-                        <h4 class="text-xl font-bold text-corporateNavy mb-2">BeStart</h4>
-                        <p class="text-mutedGray text-xs italic mb-4">"Para el que empieza o cambia de proveedor"</p>
-                        <ul class="space-y-3 text-xs text-corporateNavy mb-6 flex-grow text-left">
-                            <li class="flex items-start gap-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-electricCyan shrink-0 mt-0.5"></i>
-                                <span class="leading-tight"><strong class="text-corporateNavy">Licencias:</strong> M365 o Google Workspace activados</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-electricCyan shrink-0 mt-0.5"></i>
-                                <span class="leading-tight"><strong class="text-corporateNavy">Activación:</strong> Configuración inicial completa</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-electricCyan shrink-0 mt-0.5"></i>
-                                <span class="leading-tight"><strong class="text-corporateNavy">Soporte:</strong> Bolsa de horas técnicas incluida</span>
-                            </li>
-                        </ul>
-                        <div class="border-t border-gray-100 pt-4 mt-auto">
-                            <div class="font-bold text-corporateNavy mb-3 text-sm">Precio a medida</div>
-                            <a href="servicio-activa.html" class="block w-full text-center py-2.5 bg-corporateNavy hover:bg-brandBlue text-white text-xs font-bold rounded-full transition-all">Ver detalle</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PACK 2: Shield -->
-                <div class="plan-card bg-white relative group reveal overflow-hidden flex flex-col shadow-sm border border-gray-100 rounded-xl" style="transition-delay:50ms">
-                    <div class="h-44 w-full bg-slate-50 relative overflow-hidden">
-                        <img src="assets/pack_beshield.png" onerror="this.src='assets/hero.jpeg'" alt="Pack Shield" class="absolute inset-0 h-full w-full object-cover object-center mix-blend-multiply transition-transform duration-700 group-hover:scale-110">
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col relative bg-white">
-                        <h4 class="text-xl font-bold text-corporateNavy mb-2">BeShield</h4>
-                        <p class="text-mutedGray text-xs italic mb-4">"Tienes licencias. Falta seguridad y el respaldo"</p>
-                        <ul class="space-y-3 text-xs text-corporateNavy mb-6 flex-grow text-left">
-                            <li class="flex items-start gap-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-electricCyan shrink-0 mt-0.5"></i>
-                                <span class="leading-tight"><strong class="text-corporateNavy">Licencias:</strong> M365 Business Premium</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-electricCyan shrink-0 mt-0.5"></i>
-                                <span class="leading-tight"><strong class="text-corporateNavy">Seguridad:</strong> Besafe Essentials activa</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-electricCyan shrink-0 mt-0.5"></i>
-                                <span class="leading-tight"><strong class="text-corporateNavy">Respaldo:</strong> BeBackup M365/Google</span>
-                            </li>
-                        </ul>
-                        <div class="border-t border-gray-100 pt-4 mt-auto">
-                            <div class="font-bold text-corporateNavy mb-3 text-sm">Precio a medida</div>
-                            <a href="servicio-protege.html" class="block w-full text-center py-2.5 bg-corporateNavy hover:bg-brandBlue text-white text-xs font-bold rounded-full transition-all">Ver detalle</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PACK 3: Besafe -->
-                <div class="plan-card bg-white relative group reveal overflow-hidden flex flex-col shadow-sm border border-gray-100 rounded-xl" style="transition-delay:100ms">
-                    <div class="h-44 w-full bg-slate-50 relative overflow-hidden">
-                        <img src="assets/pack_besafe.png" onerror="this.src='assets/hero.jpeg'" alt="Pack Besafe" class="absolute inset-0 h-full w-full object-cover object-center mix-blend-multiply transition-transform duration-700 group-hover:scale-110">
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col relative bg-white">
-                        <h4 class="text-xl font-bold text-corporateNavy mb-2">Besafe</h4>
-                        <p class="text-mutedGray text-xs italic mb-4">"Seguridad Microsoft gestionada en 3 niveles"</p>
-                        <ul class="space-y-3 text-xs text-corporateNavy mb-6 flex-grow text-left">
-                            <li class="flex items-start gap-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-electricCyan shrink-0 mt-0.5"></i>
-                                <span class="leading-tight"><strong class="text-corporateNavy">Lite:</strong> E-mail security y MFA</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-electricCyan shrink-0 mt-0.5"></i>
-                                <span class="leading-tight"><strong class="text-corporateNavy">Essentials:</strong> + Intune y Servidores</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-electricCyan shrink-0 mt-0.5"></i>
-                                <span class="leading-tight"><strong class="text-corporateNavy">Advanced:</strong> + EDR y Shadow IT</span>
-                            </li>
-                        </ul>
-                        <div class="border-t border-gray-100 pt-4 mt-auto">
-                            <div class="font-bold text-corporateNavy mb-3 text-sm">Desde €3.500 implantación</div>
-                            <a href="servicio-protege.html" class="block w-full text-center py-2.5 bg-corporateNavy hover:bg-brandBlue text-white text-xs font-bold rounded-full transition-all">Ver planes</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PACK 4: AI -->
-                <div class="plan-card bg-corporateNavy border border-corporateNavy/20 relative group reveal shadow-xl overflow-hidden flex flex-col rounded-xl" style="transition-delay:150ms">
-                    <div class="absolute top-0 right-0 bg-electricCyan text-corporateNavy text-[9px] font-bold tracking-widest uppercase px-3 py-1.5 z-20 rounded-bl-xl shadow-sm">AVANZADO</div>
-                    <div class="h-44 w-full bg-corporateNavy relative overflow-hidden z-10">
-                        <div class="absolute inset-0 bg-gradient-to-t from-corporateNavy to-transparent opacity-80 z-10 pointer-events-none"></div>
-                        <img src="assets/pack_beai.png" onerror="this.src='assets/hero.jpeg'" alt="Pack AI" class="absolute inset-0 h-full w-full z-0 object-cover object-center transition-transform duration-700 group-hover:scale-110">
-                    </div>
-                    
-                    <div class="p-6 flex-grow flex flex-col relative z-20 bg-corporateNavy">
-                        <h4 class="text-xl font-bold text-white mb-2">BeAI</h4>
-                        <p class="text-electricCyan/80 text-xs italic mb-4">"La forma correcta de activar IA"</p>
-                        <ul class="space-y-3 text-xs text-blue-100 mb-6 flex-grow text-left">
-                            <li class="flex items-start gap-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-electricCyan shrink-0 mt-0.5"></i>
-                                <span class="leading-tight"><strong class="text-white">Licencias:</strong> M365 Premium + Copilot</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-electricCyan shrink-0 mt-0.5"></i>
-                                <span class="leading-tight"><strong class="text-white">Seguridad:</strong> Políticas DLP para IA</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-electricCyan shrink-0 mt-0.5"></i>
-                                <span class="leading-tight"><strong class="text-white">Readiness:</strong> Formación y adopción</span>
-                            </li>
-                        </ul>
-                        <div class="border-t border-white/10 pt-4 mt-auto">
-                            <div class="font-bold text-white mb-3 text-sm">Precio a medida</div>
-                            <a href="servicio-potencia.html" class="block w-full text-center py-2.5 bg-electricCyan text-corporateNavy hover:bg-white text-xs font-bold rounded-full transition-all">Ver detalle</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PACK 5: Hybrid -->
-                <div class="plan-card bg-corporateNavy border border-corporateNavy/20 relative group reveal shadow-xl overflow-hidden flex flex-col rounded-xl" style="transition-delay:200ms">
-                    <div class="absolute top-0 right-0 bg-[#0075f2] text-white text-[9px] font-bold tracking-widest uppercase px-3 py-1.5 z-20 rounded-bl-xl shadow-sm">INFRAESTRUCTURA</div>
-                    <div class="h-44 w-full bg-corporateNavy relative overflow-hidden z-10">
-                        <div class="absolute inset-0 bg-gradient-to-t from-corporateNavy to-transparent opacity-80 z-10 pointer-events-none"></div>
-                        <img src="assets/pack_behybrid.png" onerror="this.src='assets/hero.jpeg'" alt="Pack Hybrid" class="absolute inset-0 h-full w-full z-0 object-cover object-center transition-transform duration-700 group-hover:scale-110">
-                    </div>
-                    
-                    <div class="p-6 flex-grow flex flex-col relative z-20 bg-corporateNavy">
-                        <h4 class="text-xl font-bold text-white mb-2">BeHybrid</h4>
-                        <p class="text-electricCyan/80 text-xs italic mb-4">"Cloud, workspace y seguridad juntos"</p>
-                        <ul class="space-y-3 text-xs text-blue-100 mb-6 flex-grow text-left">
-                            <li class="flex items-start gap-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-electricCyan shrink-0 mt-0.5"></i>
-                                <span class="leading-tight"><strong class="text-white">Infra:</strong> BeCloud o Azure gestionado</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-electricCyan shrink-0 mt-0.5"></i>
-                                <span class="leading-tight"><strong class="text-white">Seguridad:</strong> Besafe Essentials incluida</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-electricCyan shrink-0 mt-0.5"></i>
-                                <span class="leading-tight"><strong class="text-white">Gestión:</strong> Soporte mensual unificado</span>
-                            </li>
-                        </ul>
-                        <div class="border-t border-white/10 pt-4 mt-auto">
-                            <div class="font-bold text-white mb-3 text-sm">Precio a medida</div>
-                            <a href="servicio-escala.html" class="block w-full text-center py-2.5 bg-electricCyan text-corporateNavy hover:bg-white text-xs font-bold rounded-full transition-all">Ver detalle</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN 4: CASO DE ÉXITO -->
-    <section class="py-24 bg-[#E0F2FE]">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="bg-white p-12 md:p-16 rounded-[2.5rem] shadow-xl text-center reveal relative">
-                <span class="inline-block text-[#0075f2] font-bold text-[10px] tracking-widest uppercase mb-6 bg-[#E0F2FE] px-4 py-1.5 rounded-full">CASO DE ÉXITO</span>
-                <h3 class="text-2xl md:text-3xl font-heading font-black text-corporateNavy mb-8">Predictby — De las licencias al entorno IT completo</h3>
-                <p class="text-mutedGray md:text-lg leading-relaxed mb-10 max-w-3xl mx-auto font-medium">Predictby llegó con Microsoft 365 sin configurar y sin seguridad gestionada. Desplegamos Besafe Advanced, activamos Copilot para el equipo y configuramos backup completo. En menos de un mes, entorno seguro, productivo y con IA funcionando desde el primer día.</p>
-                <div class="flex flex-wrap justify-center gap-4 mb-10">
-                    <span class="px-5 py-2.5 bg-gray-50 border border-gray-100 rounded-full text-sm font-bold text-corporateNavy shadow-sm">Besafe Advanced en 13 días</span>
-                    <span class="px-5 py-2.5 bg-gray-50 border border-gray-100 rounded-full text-sm font-bold text-corporateNavy shadow-sm">Copilot activo en &lt; 30 días</span>
-                    <span class="px-5 py-2.5 bg-gray-50 border border-gray-100 rounded-full text-sm font-bold text-corporateNavy shadow-sm">0 incidencias de seguridad desde el despliegue</span>
-                </div>
-                <a href="casos.html" class="inline-flex items-center text-[#0075f2] font-bold hover:gap-2 transition-all">Ver más casos <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- SECCIÓN PARA QUIÉN -->
-    <section class="py-24 bg-white border-t border-gray-100">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <span class="text-[10px] font-bold tracking-[0.2em] text-[#0075f2] uppercase bg-[#0075f2]/5 px-3 py-1 rounded">NUESTRO CLIENTE IDEAL</span>
-                <h2 class="text-3xl md:text-5xl font-heading font-black text-corporateNavy mt-4 max-w-3xl mx-auto">Diseñado para empresas que ya usan tecnología pero saben que podrían sacarle más partido.</h2>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <!-- Card 1 -->
-                <div class="bg-white border border-gray-100 rounded-[2rem] p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 reveal group">
-                    <i class="ph ph-buildings text-[#0075f2] mb-6 block" style="font-size:2.5rem"></i>
-                    <h3 class="text-xl font-bold text-corporateNavy mb-3">10 a 200 empleados</h3>
-                    <p class="text-mutedGray text-sm leading-relaxed">Empresas medianas con entorno Microsoft 365 o Google Workspace activo, sin departamento IT completo o con uno que necesita apoyo especializado.</p>
-                </div>
-                <!-- Card 2 -->
-                <div class="bg-white border border-gray-100 rounded-[2rem] p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 reveal group" style="transition-delay:100ms">
-                    <i class="ph ph-chart-line-up text-[#0075f2] mb-6 block" style="font-size:2.5rem"></i>
-                    <h3 class="text-xl font-bold text-corporateNavy mb-3">En crecimiento o en transformación</h3>
-                    <p class="text-mutedGray text-sm leading-relaxed">Empresas que están migrando a la nube, adoptando IA, o que acaban de darse cuenta de que su seguridad informática tiene agujeros que nadie ha tapado.</p>
-                </div>
-                <!-- Card 3 -->
-                <div class="bg-white border border-gray-100 rounded-[2rem] p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 reveal group" style="transition-delay:200ms">
-                    <i class="ph ph-map-pin text-[#0075f2] mb-6 block" style="font-size:2.5rem"></i>
-                    <h3 class="text-xl font-bold text-corporateNavy mb-3">Con sede en España</h3>
-                    <p class="text-mutedGray text-sm leading-relaxed">Atendemos en español, con soporte en horario español, y entendiendo las implicaciones legales (NIS2, RGPD) del mercado local.</p>
-                </div>
-            </div>
-            <p class="text-center text-mutedGray text-sm reveal">¿No encajas exactamente en este perfil? <a href="#contacto" class="text-[#0075f2] font-bold hover:underline">Cuéntanos tu caso.</a></p>
-        </div>
-    </section>
-
-    <!-- SECCIÓN 6: CTA FINAL -->
-    <section id="contacto" class="py-24 bg-[#001A41] relative overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(26,115,232,0.15),_transparent_50%)]"></div>
-        <div class="max-w-4xl mx-auto px-6 text-center relative z-10 reveal">
-            <h2 class="text-4xl md:text-5xl font-heading font-black text-white mb-6">¿Por dónde empiezas?</h2>
-            <p class="text-lg text-white/80 mb-10 max-w-2xl mx-auto">20 minutos. Te decimos exactamente qué necesitas, qué costaría y cuánto tardaríamos. Si no te aportamos nada, no pierdes más que 20 minutos. Sin comerciales, sin presión.</p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="contacto.html" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-[#001A41] bg-white rounded-full hover:bg-gray-50 transition-all shadow-xl hover:-translate-y-1">Agendar llamada gratuita</a>
-                <a href="#servicios" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-transparent border border-white/30 rounded-full hover:bg-white/10 transition-all">Ver los 5 servicios</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- BEGIN: Footer -->
-    <footer class="bg-corporateNavy pt-16 pb-8 border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-10">
-                <a href="#" class="flex items-center bg-white p-2 rounded-lg">
-                    <img src="assets/logo.png" alt="beServices Logo" class="h-8 w-auto mix-blend-multiply" />
-                </a>
-                <div class="flex flex-wrap justify-center gap-6 text-sm font-medium text-gray-400">
-                    <a href="#servicios" class="hover:text-white transition">Servicios</a>
-                    <a href="#contacto" class="hover:text-white transition">Contacto</a>
-                    <a href="#" class="hover:text-white transition">Aviso Legal</a>
-                </div>
-            </div>
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-white/10">
-                <p class="text-sm font-bold text-gray-400">Servicios para tu entorno digital</p>
-                <p class="text-sm text-gray-500">© 2026 BeServices</p>
-                <div class="flex gap-4 opacity-50 grayscale hover:grayscale-0 transition-all duration-300">
-                    <img src="https://beservices.es/wp-content/uploads/2024/09/Microsoft_365_logo-1024x169.png" class="h-4 object-contain filter invert opacity-50" alt="Microsoft" />
-                    <img src="https://beservices.es/wp-content/uploads/2024/09/Google-Workspace.png" class="h-4 object-contain filter invert opacity-50" alt="Google Workspace" />
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Interactive JS -->
-    <script>
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 50;
-
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        setTimeout(reveal, 100);
-
-        lucide.createIcons();
-    </script>
-
-    <!-- BEE WIDGET -->
-    <div id="bee-trigger" onclick="window._bee.toggleBee()" style="display:none">
-      <div class="bee-trigger-label">✦ Ask Bee</div>
-      <div class="bee-trigger-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
-          <ellipse cx="12" cy="10" rx="6" ry="7"/>
-          <path d="M6 10c-2 0-3 1.5-3 3s1 3 3 3"/>
-          <path d="M18 10c2 0 3 1.5 3 3s-1 3-3 3"/>
-          <path d="M9 4L7 1M15 4l2-3"/>
-          <line x1="9" y1="13" x2="15" y2="13"/>
-          <line x1="9" y1="10" x2="15" y2="10"/>
-        </svg>
-      </div>
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <div class="logo">BeServices</div>
+    <div class="menu">
+      <a href="#servicios">Servicios</a>
+      <a href="#sectores">Sectores</a>
+      <a href="#casos">Casos de éxito</a>
+      <a href="#recursos">Recursos</a>
+      <a href="#nosotros">Sobre nosotros</a>
     </div>
-
-    <div id="bee-widget" class="bee-widget" style="display:none">
-      <div class="bee-header">
-        <div class="bee-header-left">
-          <div class="bee-avatar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" width="18" height="18">
-              <ellipse cx="12" cy="10" rx="6" ry="7"/>
-              <path d="M6 10c-2 0-3 1.5-3 3s1 3 3 3"/>
-              <path d="M18 10c2 0 3 1.5 3 3s-1 3-3 3"/>
-              <path d="M9 4L7 1M15 4l2-3"/>
-              <line x1="9" y1="13" x2="15" y2="13"/>
-              <line x1="9" y1="10" x2="15" y2="10"/>
-            </svg>
-          </div>
-          <div>
-            <div class="bee-name">Bee <span class="bee-verified">✓</span></div>
-            <div class="bee-subtitle">AI Advisor · BeServices</div>
-          </div>
-        </div>
-        <button onclick="window._bee.toggleBee()" class="bee-close">∨</button>
-      </div>
-      <div id="bee-body" class="bee-body"></div>
-      <div class="bee-input-wrap">
-        <div class="bee-input-label">Pregunta lo que necesites sobre nuestros servicios</div>
-        <div class="bee-input-row">
-          <input id="bee-input" type="text" placeholder="Escribe tu pregunta..."
-                 onkeydown="if(event.key==='Enter') window._bee.sendToBee()">
-          <button onclick="window._bee.sendToBee()" class="bee-send-btn">↑</button>
-        </div>
-        <div class="bee-disclaimer">🔒 Bee usa IA. Revisa siempre la información importante.</div>
-      </div>
-      <div class="bee-tabs">
-        <button class="bee-tab active" id="bee-tab-home" onclick="window._bee.beeShowHome()">🏠 Inicio</button>
-        <button class="bee-tab" id="bee-tab-services" onclick="window._bee.beeShowServices()">🛡️ Servicios</button>
-        <button class="bee-tab" id="bee-tab-plans" onclick="window._bee.beeShowPlans()">📦 Planes</button>
-        <button class="bee-tab" id="bee-tab-history" onclick="window._bee.beeShowHistory()">🕐 Historial</button>
-      </div>
+    <div class="right">
+      <div class="location">📍 Barcelona</div>
+      <button class="btn">Hablemos →</button>
     </div>
+  </div>
+</nav>
 
-    <script src="bee.js"></script>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Servicios para tu<br><span style="color: #0075F2;">escalabilidad digital</span></h1>
+    <div class="hero-line"></div>
+    <p>Transformamos empresas con Microsoft 365, Google Workspace, ciberseguridad gestionada y soporte IT continuo. Partner certificado Microsoft y Google.</p>
+    <button class="hero-cta" onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'})">
+      Descubre nuestros servicios →
+    </button>
+  </div>
+</section>
+
+<!-- RESTO DEL CONTENIDO VIENE EN FASE 2-4 -->
+
 </body>
 </html>

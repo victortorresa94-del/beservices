@@ -1,8 +1,13 @@
 {
+  "version": 2,
   "outputDirectory": "Web Interna/WEB OFICIAL",
   "functions": {
     "api/bee.js": {
       "runtime": "nodejs20.x"
     }
-  }
+  },
+  "rewrites": [
+    { "source": "/api/bee", "destination": "/api/bee" },
+    { "source": "/(.*)", "destination": "/$1" }
+  ]
 }
