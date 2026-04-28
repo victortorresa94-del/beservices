@@ -1,265 +1,348 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html class="scroll-smooth" lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BeServices | Servicios para tu escalabilidad digital</title>
-  <meta name="description" content="BeServices transforma empresas con Microsoft 365, Google Workspace, ciberseguridad gestionada y soporte IT gestionado.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="stylesheet" href="bee.css">
-
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', -apple-system, sans-serif; color: #1a202c; background: #fff; }
-
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(5,11,26, 0.95); backdrop-filter: blur(8px);
-      padding: 1rem 2rem; border-bottom: 1px solid rgba(255,255,255,.1);
-    }
-    nav .container { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-    nav .logo { color: white; font-size: 1.5rem; font-weight: 800; }
-    nav .menu { display: flex; gap: 2rem; flex: 1; margin-left: 3rem; }
-    nav .menu a { color: #e2e8f0; font-size: 0.95rem; text-decoration: none; transition: opacity .2s; }
-    nav .menu a:hover { opacity: 0.7; }
-    nav .right { display: flex; gap: 1.5rem; align-items: center; }
-    nav .location { color: #cbd5e1; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
-    nav .btn { background: transparent; border: 1.5px solid #0075F2; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all .2s; }
-    nav .btn:hover { background: #0075F2; }
-
-    @media (max-width: 768px) {
-      nav .menu { display: none; }
-      nav .location { display: none; }
-    }
-
-    /* HERO */
-    .hero {
-      position: relative; min-height: 100vh; display: flex; align-items: flex-end;
-      background: #030B1C;
-      background-image: url('assets/barcelona-hero.png');
-      background-size: cover; background-position: center center;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to right, rgba(3,11,28,0.75) 0%, rgba(3,11,28,0.2) 100%);
-      z-index: 1;
-    }
-    .hero-content {
-      position: relative; z-index: 2; color: white;
-      max-width: 1280px; width: 100%; margin: 0 auto;
-      padding: 0 2rem 6rem;
-    }
-    .hero-content h1 {
-      font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 900; line-height: 1.05;
-      margin-bottom: 1.25rem; color: white; max-width: 700px;
-    }
-    .hero-line { height: 4px; width: 120px; background: #0075F2; margin-bottom: 2rem; border-radius: 2px; }
-    .hero-cta {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 1rem 2rem; border: 1.5px solid rgba(255,255,255,0.7); color: white;
-      text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1rem;
-      transition: all .3s; cursor: pointer; background: transparent;
-    }
-    .hero-cta:hover { background: white; color: #030B1C; border-color: white; }
-
-    @media (max-width: 768px) {
-      .hero { min-height: 80vh; }
-      .hero-content h1 { font-size: 2.5rem; }
-      .hero-content { padding: 0 1.5rem 4rem; }
-    }
-
-    /* ABOUT BAND */
-    .about-band { background: #F5F6F8; padding: 5rem 2rem; }
-    .about-band .container { max-width: 1280px; margin: 0 auto; }
-    .about-cols { display: grid; grid-template-columns: repeat(3,1fr); gap: 3rem; margin-bottom: 3rem; }
-    .about-col { text-align: center; }
-    .about-col .num { font-size: 2.5rem; font-weight: 900; color: #0075F2; line-height: 1; margin-bottom: 0.5rem; }
-    .about-col .label { font-size: 1rem; font-weight: 600; color: #030B1C; margin-bottom: 0.5rem; }
-    .about-col .sub { font-size: 0.875rem; color: #64748b; }
-    .about-divider { width: 60px; height: 3px; background: #0075F2; margin: 0 auto 3rem; border-radius: 2px; }
-    .about-text { text-align: center; max-width: 700px; margin: 0 auto; font-size: 1.05rem; color: #475569; line-height: 1.8; }
-    @media (max-width: 768px) { .about-cols { grid-template-columns: 1fr; gap: 2rem; } }
-
-    /* SERVICES */
-    .services-section { background: #fff; padding: 6rem 2rem; }
-    .services-section .container { max-width: 1280px; margin: 0 auto; }
-    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; color: #0075F2; text-transform: uppercase; margin-bottom: 1rem; }
-    .section-title { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 900; color: #030B1C; line-height: 1.15; margin-bottom: 3.5rem; }
-    .services-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 1rem; }
-    .svc-card {
-      position: relative; border-radius: 16px; overflow: hidden;
-      min-height: 420px; cursor: pointer;
-      transition: transform .3s, box-shadow .3s;
-      background: #0A1628;
-    }
-    .svc-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,117,242,.25); }
-    .svc-card-bg {
-      position: absolute; inset: 0; background-size: cover; background-position: center;
-      opacity: 0.35; transition: opacity .3s;
-    }
-    .svc-card:hover .svc-card-bg { opacity: 0.5; }
-    .svc-card::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(3,11,28,1) 0%, rgba(3,11,28,0.5) 60%, rgba(3,11,28,0.2) 100%);
-    }
-    .svc-card-body {
-      position: relative; z-index: 2; padding: 1.5rem;
-      display: flex; flex-direction: column; height: 100%; min-height: 420px; justify-content: flex-end;
-    }
-    .svc-icon { width: 48px; height: 48px; margin-bottom: auto; padding-top: 1.5rem; }
-    .svc-tag { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; color: #0075F2; text-transform: uppercase; margin-bottom: 0.5rem; }
-    .svc-name { font-size: 1.3rem; font-weight: 800; color: white; margin-bottom: 0.75rem; }
-    .svc-desc { font-size: 0.82rem; color: #94a3b8; line-height: 1.55; margin-bottom: 1.25rem; }
-    .svc-link { color: white; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
-    .svc-link::after { content: '→'; transition: transform .2s; }
-    .svc-card:hover .svc-link::after { transform: translateX(4px); }
-    @media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(3,1fr); } }
-    @media (max-width: 640px) { .services-grid { grid-template-columns: 1fr 1fr; } }
-  </style>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>BeServices | Servicios para tu escalabilidad digital</title>
+    <meta name="description" content="BeServices gestiona licencias Microsoft 365 y Google Workspace, seguridad, cloud y soporte IT para empresas de 10 a 200 empleados en Espana.">
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>tailwind.config={theme:{extend:{colors:{brandBlue:"#0075f2",corporateNavy:"#001A41",mutedGray:"#9CA3AF",electricCyan:"#50cabf"},fontFamily:{sans:["Inter","sans-serif"]}}}}</script>
+    <style>
+        *{box-sizing:border-box}
+        body{font-family:"Inter",sans-serif;color:#001A41;background:#fff;overflow-x:hidden}
+        .reveal{opacity:0;transform:translateY(20px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
+        .reveal.active{opacity:1;transform:translateY(0)}
+        .svc-card{position:relative;border-radius:10px;overflow:hidden;text-decoration:none;display:block;transition:transform .35s ease,box-shadow .35s ease}
+        .svc-card::before{content:"";display:block;padding-top:145%}
+        .svc-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.3)}
+        .svc-card-inner{position:absolute;inset:0;padding:1.75rem 1.5rem 1.5rem;display:flex;flex-direction:column;justify-content:flex-end}
+        .svc-card-bar{position:absolute;top:0;left:0;right:0;height:3px}
+        .steps-line{position:absolute;top:32px;left:15%;right:15%;height:1px;background:linear-gradient(to right,#0075f2,#50cabf,#0075f2);pointer-events:none}
+        .sec-panel{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;backdrop-filter:blur(10px)}
+        .sec-row{display:flex;align-items:center;justify-content:space-between;padding:.625rem 1rem;border-radius:7px;margin-bottom:6px;font-size:.75rem}
+        .neural-bg{background:#020b1a;position:relative;overflow:hidden}
+        .hero-cta-btn{display:inline-flex;align-items:center;gap:8px;padding:.75rem 1.5rem;border:1px solid rgba(255,255,255,.55);color:#fff;font-size:.875rem;font-weight:500;text-decoration:none;transition:background .2s}
+        .hero-cta-btn:hover{background:rgba(255,255,255,.1)}
+        .case-card{position:relative;overflow:hidden;border-radius:14px;min-height:340px;display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;transition:transform .3s ease}
+        .case-card:hover{transform:translateY(-4px)}
+        .case-photo{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.3;transition:opacity .4s}
+        .case-card:hover .case-photo{opacity:.4}
+        .case-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(2,12,27,.97) 0%,rgba(2,12,27,.45) 100%)}
+        .glass-navbar{background:rgba(255,255,255,.75);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,26,65,.05)}
+    </style>
 </head>
-<body>
+<body class="antialiased">
+    <nav id="main-nav" data-active="home"></nav>
+    <script src="nav-component.js"></script>
 
-<!-- NAV -->
-<nav>
-  <div class="container">
-    <div class="logo">BeServices</div>
-    <div class="menu">
-      <a href="#servicios">Servicios</a>
-      <a href="#sectores">Sectores</a>
-      <a href="#casos">Casos de éxito</a>
-      <a href="#recursos">Recursos</a>
-      <a href="#nosotros">Sobre nosotros</a>
-    </div>
-    <div class="right">
-      <div class="location">📍 Barcelona</div>
-      <button class="btn">Hablemos →</button>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <h1>Servicios para tu<br>escalabilidad digital</h1>
-    <div class="hero-line"></div>
-    <button class="hero-cta" onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'})">
-      Descubre nuestros servicios →
-    </button>
-  </div>
-</section>
-
-<!-- ABOUT BAND -->
-<section class="about-band">
-  <div class="container">
-    <div class="about-cols">
-      <div class="about-col">
-        <div class="num">18+</div>
-        <div class="label">años acompañando empresas</div>
-        <div class="sub">en su transformación digital</div>
-      </div>
-      <div class="about-col">
-        <div class="num">★</div>
-        <div class="label">Partner certificado Microsoft y Google</div>
-        <div class="sub">Solutions Partner · Google Workspace</div>
-      </div>
-      <div class="about-col">
-        <div class="num">🇪🇸</div>
-        <div class="label">Desde Barcelona, para toda España</div>
-        <div class="sub">Proyectos en remoto y presencial</div>
-      </div>
-    </div>
-    <div class="about-divider"></div>
-    <p class="about-text">En BeServices creemos que la tecnología debe ser un motor de crecimiento, no una fuente de problemas. Trabajamos codo a codo con el equipo directivo e IT de cada cliente para diseñar, implementar y gestionar entornos digitales que escalan con el negocio.</p>
-  </div>
-</section>
-
-<!-- LO QUE HACEMOS -->
-<section class="services-section" id="servicios">
-  <div class="container">
-    <div class="section-label">LO QUE HACEMOS</div>
-    <h2 class="section-title">Servicios para cada etapa<br>de tu crecimiento</h2>
-    <div class="services-grid">
-
-      <!-- ACTIVA -->
-      <div class="svc-card">
-        <div class="svc-card-bg" style="background-image:url('assets/a-professional-b2b-tech-post-featuring-a_5bJmihQWQwKYw7NZLGorww_R2c-IN4mTq606yCp_1150Q_cover_sd.jpeg')"></div>
-        <div class="svc-card-body">
-          <img src="assets/ICONOS/ACTIVA.png" class="svc-icon" alt="Activa">
-          <div>
-            <div class="svc-tag">ACTIVA</div>
-            <div class="svc-name">Activa tu entorno digital</div>
-            <div class="svc-desc">Microsoft 365 y Google Workspace. Implantamos, migramos y configuramos tu entorno de colaboración moderno.</div>
-            <a class="svc-link" href="servicio-activa.html">Ver servicio</a>
-          </div>
+    <!-- 1. HERO -->
+    <section style="position:relative;overflow:hidden;display:flex;align-items:flex-end;height:100vh;min-height:560px;">
+        <img src="assets/hero-barcelona.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.45) 45%,rgba(0,0,0,.18) 100%);"></div>
+        <div style="position:relative;z-index:10;width:100%;max-width:1400px;margin:0 auto;padding:0 1.5rem 5rem;">
+            <h1 style="font-family:'Inter',sans-serif;font-size:clamp(2.4rem,5.5vw,4.5rem);font-weight:700;color:#fff;line-height:1.08;letter-spacing:-.025em;max-width:680px;margin-bottom:1.25rem;">Servicios para tu<br>escalabilidad digital</h1>
+            <div style="width:52px;height:3px;background:#0075f2;margin-bottom:2rem;"></div>
+            <a href="#servicios" class="hero-cta-btn">Descubre nuestros servicios <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
-      </div>
+    </section>
 
-      <!-- ESCALA -->
-      <div class="svc-card">
-        <div class="svc-card-bg" style="background-image:url('assets/a-professional-b2b-tech-post-design-feat_B_DWjBiWQCaIrPoq07YV7A_R2c-IN4mTq606yCp_1150Q_sd.jpeg')"></div>
-        <div class="svc-card-body">
-          <img src="assets/ICONOS/ESCALA.png" class="svc-icon" alt="Escala">
-          <div>
-            <div class="svc-tag">ESCALA</div>
-            <div class="svc-name">Escala con cloud</div>
-            <div class="svc-desc">Azure e infraestructura cloud gestionada. Migraciones, arquitectura y optimización para crecer sin límites.</div>
-            <a class="svc-link" href="servicio-escala.html">Ver servicio</a>
-          </div>
+    <!-- 2. LO QUE HACEMOS -->
+    <section id="servicios" style="padding:5.5rem 0;background:#fff;">
+        <div style="max-width:1400px;margin:0 auto;padding:0 1.5rem;">
+            <div class="reveal" style="margin-bottom:3rem;">
+                <h2 style="font-family:'Inter',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:#001A41;letter-spacing:-.025em;line-height:1.1;">Lo que <span style="color:#0075f2;">hacemos</span></h2>
+                <p style="font-size:.875rem;color:#9CA3AF;margin-top:.75rem;max-width:480px;line-height:1.7;">Soluciones tecnologicas end-to-end para impulsar tu negocio con seguridad, eficiencia y escalabilidad.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;" class="services-grid">
+                <a href="servicio-activa.html" class="svc-card reveal" style="background:linear-gradient(155deg,#0a1830 0%,#001A41 100%);">
+                    <div class="svc-card-bar" style="background:#0075f2;"></div>
+                    <div class="svc-card-inner">
+                        <span style="font-size:.6rem;font-weight:700;letter-spacing:.18em;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:.625rem;display:block;">ACTIVA</span>
+                        <h3 style="font-size:1.05rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.625rem;">Tu entorno digital</h3>
+                        <p style="font-size:.72rem;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:1.25rem;">Ponemos en marcha tu negocio con tecnologia segura y fiable desde el primer dia.</p>
+                        <div style="display:flex;align-items:center;gap:5px;font-size:.75rem;font-weight:600;color:#0075f2;">Ver mas <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                    </div>
+                </a>
+                <a href="servicio-escala.html" class="svc-card reveal" style="background:linear-gradient(155deg,#071424 0%,#091e3a 100%);transition-delay:60ms">
+                    <div class="svc-card-bar" style="background:#50cabf;"></div>
+                    <div class="svc-card-inner">
+                        <span style="font-size:.6rem;font-weight:700;letter-spacing:.18em;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:.625rem;display:block;">ESCALA</span>
+                        <h3 style="font-size:1.05rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.625rem;">Tu infraestructura</h3>
+                        <p style="font-size:.72rem;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:1.25rem;">Escalamos tu infraestructura cloud para crecer sin limites y sin fricciones.</p>
+                        <div style="display:flex;align-items:center;gap:5px;font-size:.75rem;font-weight:600;color:#50cabf;">Ver mas <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                    </div>
+                </a>
+                <a href="servicio-protege.html" class="svc-card reveal" style="background:linear-gradient(155deg,#080f20 0%,#0c1835 100%);transition-delay:120ms">
+                    <div class="svc-card-bar" style="background:#0075f2;"></div>
+                    <div class="svc-card-inner">
+                        <span style="font-size:.6rem;font-weight:700;letter-spacing:.18em;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:.625rem;display:block;">PROTEGE</span>
+                        <h3 style="font-size:1.05rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.625rem;">Tu empresa y datos</h3>
+                        <p style="font-size:.72rem;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:1.25rem;">Protegemos tus datos y sistemas con ciberseguridad avanzada multicapa.</p>
+                        <div style="display:flex;align-items:center;gap:5px;font-size:.75rem;font-weight:600;color:#0075f2;">Ver mas <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                    </div>
+                </a>
+                <a href="servicio-potencia.html" class="svc-card reveal" style="background:linear-gradient(155deg,#061020 0%,#091830 100%);transition-delay:180ms">
+                    <div class="svc-card-bar" style="background:#50cabf;"></div>
+                    <div class="svc-card-inner">
+                        <span style="font-size:.6rem;font-weight:700;letter-spacing:.18em;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:.625rem;display:block;">POTENCIA</span>
+                        <h3 style="font-size:1.05rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.625rem;">Tu negocio con IA</h3>
+                        <p style="font-size:.72rem;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:1.25rem;">Optimizamos procesos y datos para potenciar tu rendimiento con IA.</p>
+                        <div style="display:flex;align-items:center;gap:5px;font-size:.75rem;font-weight:600;color:#50cabf;">Ver mas <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                    </div>
+                </a>
+                <a href="servicio-gestiona.html" class="svc-card reveal" style="background:linear-gradient(155deg,#04101a 0%,#07172c 100%);transition-delay:240ms">
+                    <div class="svc-card-bar" style="background:#0075f2;"></div>
+                    <div class="svc-card-inner">
+                        <span style="font-size:.6rem;font-weight:700;letter-spacing:.18em;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:.625rem;display:block;">GESTIONA</span>
+                        <h3 style="font-size:1.05rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.625rem;">Tu tranquilidad</h3>
+                        <p style="font-size:.72rem;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:1.25rem;">Gestionamos tu IT para que te centres en lo que importa a tu negocio.</p>
+                        <div style="display:flex;align-items:center;gap:5px;font-size:.75rem;font-weight:600;color:#0075f2;">Ver mas <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                    </div>
+                </a>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <!-- PROTEGE -->
-      <div class="svc-card">
-        <div class="svc-card-bg" style="background-image:url('assets/a-professional-b2b-tech-social-media-pos_qtcQOEAvS1urAYTxCUGOBQ_R2c-IN4mTq606yCp_1150Q_sd.jpeg')"></div>
-        <div class="svc-card-body">
-          <img src="assets/ICONOS/PROTEGE.png" class="svc-icon" alt="Protege">
-          <div>
-            <div class="svc-tag">PROTEGE</div>
-            <div class="svc-name">Protege tu empresa</div>
-            <div class="svc-desc">Besafe: MFA, Acceso Condicional, EDR y Backup gestionado. Ciberseguridad real para empresas reales.</div>
-            <a class="svc-link" href="servicio-protege.html">Ver servicio</a>
-          </div>
+    <!-- 3. COMO TRABAJAMOS -->
+    <section style="padding:5.5rem 0;background:#fff;border-top:1px solid #f1f5f9;">
+        <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;">
+            <div class="reveal" style="margin-bottom:4rem;">
+                <h2 style="font-family:'Inter',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:#001A41;letter-spacing:-.025em;line-height:1.1;">Como <span style="color:#0075f2;">trabajamos</span></h2>
+                <p style="font-size:.875rem;color:#9CA3AF;margin-top:.75rem;max-width:460px;line-height:1.7;">Un proceso claro y colaborativo para transformar tu negocio con tecnologia segura y eficaz.</p>
+            </div>
+            <div style="position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;" class="steps-grid">
+                <div class="steps-line" id="stepsLine"></div>
+                <div class="reveal" style="padding:0 1rem;">
+                    <div style="width:64px;height:64px;border-radius:50%;border:2px solid #0075f2;display:flex;align-items:center;justify-content:center;background:#fff;position:relative;z-index:2;margin-bottom:1.5rem;"><span style="font-size:1rem;font-weight:700;color:#0075f2;">01</span></div>
+                    <h3 style="font-size:1.1rem;font-weight:700;color:#001A41;margin-bottom:.5rem;">Diagnostico</h3>
+                    <p style="font-size:.8rem;color:#9CA3AF;line-height:1.7;">Analizamos tu entorno, retos y oportunidades de mejora.</p>
+                </div>
+                <div class="reveal" style="padding:0 1rem;transition-delay:80ms;">
+                    <div style="width:64px;height:64px;border-radius:50%;border:2px solid #0075f2;display:flex;align-items:center;justify-content:center;background:#fff;position:relative;z-index:2;margin-bottom:1.5rem;"><span style="font-size:1rem;font-weight:700;color:#0075f2;">02</span></div>
+                    <h3 style="font-size:1.1rem;font-weight:700;color:#001A41;margin-bottom:.5rem;">Plan personalizado</h3>
+                    <p style="font-size:.8rem;color:#9CA3AF;line-height:1.7;">Disenamos una hoja de ruta alineada con tus objetivos.</p>
+                </div>
+                <div class="reveal" style="padding:0 1rem;transition-delay:160ms;">
+                    <div style="width:64px;height:64px;border-radius:50%;border:2px solid #0075f2;display:flex;align-items:center;justify-content:center;background:#fff;position:relative;z-index:2;margin-bottom:1.5rem;"><span style="font-size:1rem;font-weight:700;color:#0075f2;">03</span></div>
+                    <h3 style="font-size:1.1rem;font-weight:700;color:#001A41;margin-bottom:.5rem;">Implementacion</h3>
+                    <p style="font-size:.8rem;color:#9CA3AF;line-height:1.7;">Ejecutamos el plan con rigor, seguridad y minima disrupcion.</p>
+                </div>
+                <div class="reveal" style="padding:0 1rem;transition-delay:240ms;">
+                    <div style="width:64px;height:64px;border-radius:50%;border:2px solid #0075f2;display:flex;align-items:center;justify-content:center;background:#fff;position:relative;z-index:2;margin-bottom:1.5rem;"><span style="font-size:1rem;font-weight:700;color:#0075f2;">04</span></div>
+                    <h3 style="font-size:1.1rem;font-weight:700;color:#001A41;margin-bottom:.5rem;">Soporte continuo</h3>
+                    <p style="font-size:.8rem;color:#9CA3AF;line-height:1.7;">Te acompanamos con soporte proactivo y mejora continua.</p>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <!-- POTENCIA -->
-      <div class="svc-card">
-        <div class="svc-card-bg" style="background-image:url('assets/a-professional-square-b2b-tech-social-me_61rx-sdyTvuiYdfJ2ogo9g_R2c-IN4mTq606yCp_1150Q_sd.jpeg')"></div>
-        <div class="svc-card-body">
-          <img src="assets/ICONOS/POTENCIA.png" class="svc-icon" alt="Potencia">
-          <div>
-            <div class="svc-tag">POTENCIA</div>
-            <div class="svc-name">Potencia con IA</div>
-            <div class="svc-desc">Copilot, agentes y Claude integrados en tu flujo de trabajo. IA bajo control y con gobernanza.</div>
-            <a class="svc-link" href="servicio-potencia.html">Ver servicio</a>
-          </div>
+    <!-- 4. SEGURIDAD BANNER -->
+    <section style="background:#020c1b;padding:5rem 0;position:relative;overflow:hidden;">
+        <div style="position:absolute;right:-80px;top:50%;transform:translateY(-50%);pointer-events:none;">
+            <div style="width:540px;height:540px;border-radius:50%;border:1px solid rgba(0,117,242,.18);box-shadow:0 0 80px rgba(0,117,242,.12);"></div>
+            <div style="position:absolute;inset:50px;border-radius:50%;border:1px solid rgba(80,202,191,.1);"></div>
+            <div style="position:absolute;inset:110px;border-radius:50%;border:1px solid rgba(0,117,242,.12);"></div>
         </div>
-      </div>
-
-      <!-- GESTIONA -->
-      <div class="svc-card">
-        <div class="svc-card-bg" style="background-image:url('assets/a-professional-b2b-tech-post-featuring-a_5bJmihQWQwKYw7NZLGorww_R2c-IN4mTq606yCp_1150Q_cover_sd.jpeg'); filter: hue-rotate(200deg);"></div>
-        <div class="svc-card-body">
-          <img src="assets/ICONOS/GESTIONA.png" class="svc-icon" alt="Gestiona">
-          <div>
-            <div class="svc-tag">GESTIONA</div>
-            <div class="svc-name">Gestiona sin límites</div>
-            <div class="svc-desc">BeHelp: soporte IT gestionado, helpdesk y mantenimiento continuo. Tu equipo IT externo de confianza.</div>
-            <a class="svc-link" href="servicio-gestiona.html">Ver servicio</a>
-          </div>
+        <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;position:relative;z-index:10;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;" class="sec-grid">
+                <div class="reveal">
+                    <span style="font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#50cabf;display:block;margin-bottom:1.25rem;">CIBERSEGURIDAD PARA EMPRESAS</span>
+                    <h2 style="font-family:'Inter',sans-serif;font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;color:#fff;line-height:1.18;letter-spacing:-.025em;margin-bottom:1.25rem;">Tu empresa ya esta<br>en el <span style="color:#0075f2;">punto de mira.</span></h2>
+                    <p style="font-size:.875rem;color:rgba(255,255,255,.5);line-height:1.75;max-width:420px;margin-bottom:2rem;">Las ciberamenazas evolucionan. Nosotros te ayudamos a anticiparte, prepararte y cumplir con lo que viene.</p>
+                    <div style="display:flex;align-items:stretch;margin-bottom:2.5rem;">
+                        <div style="padding-right:1.5rem;">
+                            <p style="font-size:1.9rem;font-weight:700;color:#fff;line-height:1;margin-bottom:4px;">+116%</p>
+                            <p style="font-size:.7rem;color:rgba(255,255,255,.4);line-height:1.5;">ransomware en Espana<br><span style="color:rgba(255,255,255,.25);">Fuente: INCIBE</span></p>
+                        </div>
+                        <div style="width:1px;background:rgba(255,255,255,.1);margin:0 1.5rem;"></div>
+                        <div>
+                            <p style="font-size:1.9rem;font-weight:700;color:#fff;line-height:1;margin-bottom:4px;">NIS2</p>
+                            <p style="font-size:.7rem;color:rgba(255,255,255,.4);line-height:1.5;">en vigor 2026<br><span style="color:rgba(255,255,255,.25);">Directiva UE</span></p>
+                        </div>
+                    </div>
+                    <a href="contacto.html" style="display:inline-flex;align-items:center;gap:8px;padding:.875rem 1.75rem;background:#0075f2;color:#fff;font-size:.875rem;font-weight:600;border-radius:5px;text-decoration:none;">Haz tu diagnostico gratuito <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+                <div class="reveal sec-panel" style="transition-delay:150ms;padding:1.5rem;">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.06);">
+                        <span style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);">Estado de seguridad</span>
+                        <span style="font-size:.68rem;color:rgba(255,255,255,.25);">Ahora</span>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;">
+                        <div style="position:relative;width:72px;height:72px;flex-shrink:0;">
+                            <svg viewBox="0 0 72 72" style="width:72px;height:72px;transform:rotate(-90deg);">
+                                <circle cx="36" cy="36" r="30" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="6"/>
+                                <circle cx="36" cy="36" r="30" fill="none" stroke="#f59e0b" stroke-width="6" stroke-dasharray="188.4" stroke-dashoffset="41.4" stroke-linecap="round"/>
+                            </svg>
+                            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><span style="font-size:1.25rem;font-weight:700;color:#f59e0b;">78</span></div>
+                        </div>
+                        <div>
+                            <p style="font-size:.875rem;font-weight:600;color:#fff;margin-bottom:3px;">Nivel de seguridad medio</p>
+                            <p style="font-size:.72rem;color:rgba(255,255,255,.35);">7 riesgos criticos detectados</p>
+                        </div>
+                    </div>
+                    <div class="sec-row" style="background:rgba(245,158,11,.09);"><span style="color:rgba(255,255,255,.7);">Intentos de acceso no autorizado</span><span style="color:#f59e0b;font-weight:600;font-size:.68rem;">2h 11m</span></div>
+                    <div class="sec-row" style="background:rgba(239,68,68,.09);"><span style="color:rgba(255,255,255,.7);">Dispositivos sin parche critico</span><span style="color:#ef4444;font-weight:600;font-size:.68rem;">Critico</span></div>
+                    <div class="sec-row" style="background:rgba(255,255,255,.04);"><span style="color:rgba(255,255,255,.55);">Configuracion de correo detectada</span><span style="color:#50cabf;font-weight:600;font-size:.68rem;">4h 33m</span></div>
+                    <div class="sec-row" style="background:rgba(255,255,255,.04);"><span style="color:rgba(255,255,255,.55);">MFA activado en todos los usuarios</span><span style="color:#50cabf;font-weight:600;font-size:.68rem;">Activo</span></div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
 
-    </div>
-  </div>
-</section>
+    <!-- 5. AI READINESS -->
+    <section class="neural-bg" style="padding:5.5rem 0;">
+        <div style="position:absolute;inset:0;opacity:.45;pointer-events:none;">
+            <svg viewBox="0 0 1400 560" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+                <defs><radialGradient id="ng1" cx="75%" cy="50%" r="55%"><stop offset="0%" stop-color="#0075f2" stop-opacity=".35"/><stop offset="100%" stop-color="#0075f2" stop-opacity="0"/></radialGradient></defs>
+                <rect width="1400" height="560" fill="url(#ng1)"/>
+                <g stroke="#0075f2" stroke-width=".6" opacity=".35" fill="none">
+                    <path d="M1200,280 Q900,60 160,30"/><path d="M1200,280 Q950,130 100,160"/>
+                    <path d="M1200,280 Q850,230 40,250"/><path d="M1200,280 Q900,330 80,310"/>
+                    <path d="M1200,280 Q950,400 200,420"/><path d="M1200,280 Q880,470 300,510"/>
+                </g>
+                <g fill="#0075f2" opacity=".6">
+                    <circle cx="160" cy="30" r="3.5"/><circle cx="100" cy="160" r="2.5"/>
+                    <circle cx="40" cy="250" r="3"/><circle cx="80" cy="310" r="2"/>
+                    <circle cx="200" cy="420" r="3.5"/><circle cx="300" cy="510" r="2.5"/>
+                </g>
+            </svg>
+        </div>
+        <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;position:relative;z-index:10;">
+            <div class="reveal" style="max-width:600px;">
+                <h2 style="font-family:'Inter',sans-serif;font-size:clamp(1.9rem,4vw,3.1rem);font-weight:700;color:#fff;line-height:1.15;letter-spacing:-.025em;margin-bottom:1.25rem;">La IA ya esta en tu empresa.<br>Esta bajo <span style="color:#0075f2;">control</span>?</h2>
+                <p style="font-size:.875rem;color:rgba(255,255,255,.48);line-height:1.75;margin-bottom:2rem;">Copilot, agentes y Claude ya acceden a tus datos. Nosotros preparamos tu entorno.</p>
+                <div style="display:flex;flex-direction:column;gap:.875rem;margin-bottom:2.5rem;">
+                    <a href="servicio-potencia.html" style="display:flex;align-items:center;gap:10px;font-size:.9rem;color:rgba(255,255,255,.7);text-decoration:none;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0075f2" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Securizacion de agentes IA</a>
+                    <a href="servicio-potencia.html" style="display:flex;align-items:center;gap:10px;font-size:.9rem;color:rgba(255,255,255,.7);text-decoration:none;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0075f2" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Copilot Readiness</a>
+                    <a href="servicio-protege.html" style="display:flex;align-items:center;gap:10px;font-size:.9rem;color:rgba(255,255,255,.7);text-decoration:none;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0075f2" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Cumplimiento NIS2 y AI Act</a>
+                </div>
+                <a href="contacto.html" style="display:inline-flex;align-items:center;gap:8px;padding:.875rem 1.75rem;border:1px solid rgba(255,255,255,.28);color:#fff;font-size:.8rem;font-weight:600;text-decoration:none;text-transform:uppercase;letter-spacing:.07em;border-radius:4px;">HABLEMOS DE TU ENTORNO IA <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            </div>
+        </div>
+    </section>
 
-<!-- FASES 3-4 VIENEN AQUÍ -->
+    <!-- 6. CASOS DE EXITO -->
+    <section style="background:#fff;padding:5.5rem 0;">
+        <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;">
+            <div class="reveal" style="margin-bottom:3rem;">
+                <span style="font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#0075f2;display:block;margin-bottom:.75rem;">CASOS DE EXITO</span>
+                <h2 style="font-family:'Inter',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:#001A41;letter-spacing:-.025em;line-height:1.1;">Lo que hemos conseguido <span style="color:#0075f2;">juntos</span></h2>
+                <p style="font-size:.875rem;color:#9CA3AF;margin-top:.75rem;max-width:440px;line-height:1.7;">Proyectos reales. Empresas reales. Resultados medibles.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;" class="cases-grid">
+                <a href="casos.html" class="case-card reveal" style="background:#0a1628;">
+                    <div class="case-photo" style="background-image:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=900&q=80');"></div>
+                    <div class="case-overlay"></div>
+                    <div style="position:relative;padding:2rem;">
+                        <span style="font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#50cabf;display:block;margin-bottom:.75rem;">GRUPO INDUSTRIAL</span>
+                        <h3 style="font-size:1.25rem;font-weight:700;color:#fff;line-height:1.35;margin-bottom:.75rem;">Ciberseguridad y cumplimiento para un entorno industrial critico</h3>
+                        <p style="font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:1.25rem;">Arquitectura de seguridad integral y cumplimiento NIS2 sin interrumpir la operacion.</p>
+                        <span style="display:inline-flex;align-items:center;gap:6px;font-size:.8rem;font-weight:600;color:#0075f2;">Ver caso <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </div>
+                </a>
+                <a href="casos.html" class="case-card reveal" style="background:#071424;transition-delay:100ms;">
+                    <div class="case-photo" style="background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80');"></div>
+                    <div class="case-overlay"></div>
+                    <div style="position:relative;padding:2rem;">
+                        <span style="font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#50cabf;display:block;margin-bottom:.75rem;">SERVICIOS JURIDICOS BARCELONA</span>
+                        <h3 style="font-size:1.25rem;font-weight:700;color:#fff;line-height:1.35;margin-bottom:.75rem;">Microsoft 365 y Copilot: mas productividad, mas control</h3>
+                        <p style="font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:1.25rem;">Migracion a M365 y adopcion de Copilot con seguridad y gobernanza desde el primer dia.</p>
+                        <span style="display:inline-flex;align-items:center;gap:6px;font-size:.8rem;font-weight:600;color:#0075f2;">Ver caso <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 
+    <!-- 7. PARTNERS & TECH -->
+    <section style="background:#fff;border-top:1px solid #f1f5f9;padding:4.5rem 0;">
+        <div style="max-width:1000px;margin:0 auto;padding:0 1.5rem;text-align:center;" class="reveal">
+            <span style="font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#0075f2;display:block;margin-bottom:2.5rem;">TECNOLOGIA Y PARTNERS DE CONFIANZA</span>
+            <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:2.5rem 3.5rem;margin-bottom:2.5rem;">
+                <img src="https://beservices.es/wp-content/uploads/2024/09/Microsoft_365_logo-1024x169.png" style="height:26px;object-fit:contain;filter:grayscale(1);opacity:.6;transition:all .3s;" onmouseover="this.style.filter='grayscale(0)';this.style.opacity='1'" onmouseout="this.style.filter='grayscale(1)';this.style.opacity='.6'" alt="Microsoft">
+                <img src="https://beservices.es/wp-content/uploads/2024/09/Google-Workspace.png" style="height:26px;object-fit:contain;filter:grayscale(1);opacity:.6;transition:all .3s;" onmouseover="this.style.filter='grayscale(0)';this.style.opacity='1'" onmouseout="this.style.filter='grayscale(1)';this.style.opacity='.6'" alt="Google Workspace">
+                <span style="font-size:1.1rem;font-weight:700;color:#001A41;opacity:.55;">V-Valley</span>
+                <span style="font-size:1.05rem;font-weight:600;color:#001A41;opacity:.55;">factorial</span>
+                <div style="opacity:.55;display:flex;align-items:center;gap:7px;">
+                    <div style="border:2px solid #001A41;padding:3px 6px;font-size:.62rem;font-weight:800;line-height:1.2;color:#001A41;">ISO<br>27001</div>
+                    <span style="font-size:.65rem;color:#666;line-height:1.4;">ISO 27001<br>Certified</span>
+                </div>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem 2.5rem;">
+                <span style="display:flex;align-items:center;gap:6px;font-size:.82rem;color:#6B7280;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0075f2" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Partner Microsoft certificado</span>
+                <span style="display:flex;align-items:center;gap:6px;font-size:.82rem;color:#6B7280;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0075f2" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>ISO 27001</span>
+                <span style="display:flex;align-items:center;gap:6px;font-size:.82rem;color:#6B7280;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0075f2" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Soporte en espanol</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. CTA FINAL -->
+    <section style="background:#001A41;padding:5rem 0;">
+        <div style="max-width:720px;margin:0 auto;padding:0 1.5rem;text-align:center;" class="reveal">
+            <h2 style="font-family:'Inter',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:#fff;letter-spacing:-.025em;margin-bottom:1.25rem;line-height:1.1;">Por donde empiezas?</h2>
+            <p style="font-size:1rem;color:rgba(255,255,255,.55);line-height:1.75;max-width:500px;margin:0 auto 2.5rem;">20 minutos. Te decimos exactamente que necesitas, que costaria y cuanto tardariamos. Sin presion.</p>
+            <a href="contacto.html" style="display:inline-flex;align-items:center;gap:8px;padding:1rem 2rem;background:#0075f2;color:#fff;font-size:.9rem;font-weight:600;border-radius:6px;text-decoration:none;">Agendar llamada gratuita <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background:#020c1b;border-top:1px solid rgba(255,255,255,.06);padding:4rem 0 2rem;">
+        <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;">
+            <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:3rem;" class="footer-grid">
+                <div>
+                    <a href="index.html" style="display:inline-block;margin-bottom:1rem;"><img src="assets/logo.png" alt="BeServices" style="height:26px;filter:brightness(0) invert(1);opacity:.75;" onerror="this.style.display='none'"></a>
+                    <p style="font-size:.75rem;color:rgba(255,255,255,.3);line-height:1.65;max-width:180px;">Tecnologia de confianza para empresas que crecen con seguridad.</p>
+                </div>
+                <div>
+                    <h4 style="font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:1.25rem;">Servicios</h4>
+                    <ul style="list-style:none;padding:0;margin:0;">
+                        <li style="margin-bottom:.6rem;"><a href="servicio-activa.html" style="font-size:.85rem;color:rgba(255,255,255,.5);text-decoration:none;">ACTIVA</a></li>
+                        <li style="margin-bottom:.6rem;"><a href="servicio-escala.html" style="font-size:.85rem;color:rgba(255,255,255,.5);text-decoration:none;">ESCALA</a></li>
+                        <li style="margin-bottom:.6rem;"><a href="servicio-protege.html" style="font-size:.85rem;color:rgba(255,255,255,.5);text-decoration:none;">PROTEGE</a></li>
+                        <li style="margin-bottom:.6rem;"><a href="servicio-potencia.html" style="font-size:.85rem;color:rgba(255,255,255,.5);text-decoration:none;">POTENCIA</a></li>
+                        <li><a href="servicio-gestiona.html" style="font-size:.85rem;color:rgba(255,255,255,.5);text-decoration:none;">GESTIONA</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:1.25rem;">Empresa</h4>
+                    <ul style="list-style:none;padding:0;margin:0;">
+                        <li style="margin-bottom:.6rem;"><a href="nosotros.html" style="font-size:.85rem;color:rgba(255,255,255,.5);text-decoration:none;">Nosotros</a></li>
+                        <li style="margin-bottom:.6rem;"><a href="casos.html" style="font-size:.85rem;color:rgba(255,255,255,.5);text-decoration:none;">Casos de exito</a></li>
+                        <li style="margin-bottom:.6rem;"><a href="blog.html" style="font-size:.85rem;color:rgba(255,255,255,.5);text-decoration:none;">Blog</a></li>
+                        <li><a href="contacto.html" style="font-size:.85rem;color:rgba(255,255,255,.5);text-decoration:none;">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:1.25rem;">Recursos</h4>
+                    <ul style="list-style:none;padding:0;margin:0;">
+                        <li style="margin-bottom:.6rem;"><a href="microsoft.html" style="font-size:.85rem;color:rgba(255,255,255,.5);text-decoration:none;">Microsoft 365</a></li>
+                        <li style="margin-bottom:.6rem;"><a href="google.html" style="font-size:.85rem;color:rgba(255,255,255,.5);text-decoration:none;">Google Workspace</a></li>
+                        <li style="margin-bottom:.6rem;"><a href="guia-google-ai.html" style="font-size:.85rem;color:rgba(255,255,255,.5);text-decoration:none;">Guia Google AI</a></li>
+                        <li style="margin-bottom:1rem;"><a href="claude-microsoft.html" style="font-size:.85rem;color:rgba(255,255,255,.5);text-decoration:none;">Claude + Microsoft</a></li>
+                        <li style="padding-top:1rem;border-top:1px solid rgba(255,255,255,.06);">
+                            <a href="internal.html" style="font-size:.8rem;color:rgba(255,255,255,.28);text-decoration:none;display:flex;align-items:center;gap:6px;">
+                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:.5;"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Portal Interno
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top:1px solid rgba(255,255,255,.06);padding-top:1.5rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;">
+                <p style="font-size:.72rem;color:rgba(255,255,255,.22);">2026 BeServices. Todos los derechos reservados.</p>
+                <p style="font-size:.72rem;color:rgba(255,255,255,.22);">Partner certificado Microsoft y Google Workspace</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function revealAll(){document.querySelectorAll(".reveal").forEach(function(el){if(el.getBoundingClientRect().top<window.innerHeight-60)el.classList.add("active")});}
+        window.addEventListener("scroll",revealAll,{passive:true});setTimeout(revealAll,120);
+        function handleGrids(){var w=window.innerWidth;var sg=document.querySelector(".services-grid");if(sg)sg.style.gridTemplateColumns=w<768?"repeat(2,1fr)":"repeat(5,1fr)";var stg=document.querySelector(".steps-grid");if(stg)stg.style.gridTemplateColumns=w<768?"repeat(2,1fr)":"repeat(4,1fr)";var sl=document.getElementById("stepsLine");if(sl)sl.style.display=w<768?"none":"block";var secg=document.querySelector(".sec-grid");if(secg)secg.style.gridTemplateColumns=w<768?"1fr":"1fr 1fr";var cg=document.querySelector(".cases-grid");if(cg)cg.style.gridTemplateColumns=w<640?"1fr":"1fr 1fr";var fg=document.querySelector(".footer-grid");if(fg)fg.style.gridTemplateColumns=w<768?"1fr 1fr":"1.5fr 1fr 1fr 1fr";}
+        handleGrids();window.addEventListener("resize",handleGrids);
+    </script>
 </body>
 </html>
