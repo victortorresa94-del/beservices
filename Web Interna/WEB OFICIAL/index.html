@@ -13,7 +13,7 @@ body{font-family:'Inter',sans-serif;color:#111;background:#fff;overflow-x:hidden
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
 .reveal.active{opacity:1;transform:none}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:62px;background:rgba(0,0,0,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
-.nav-logo{font-size:1.1rem;font-weight:700;color:#fff;letter-spacing:-.01em;text-decoration:none}
+.nav-logo{display:flex;align-items:center;text-decoration:none}
 .nav-links{display:flex;gap:28px;list-style:none}
 .nav-links a{font-size:.85rem;color:rgba(255,255,255,.7);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:#fff}
@@ -35,12 +35,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 
 <!-- NAV -->
 <nav>
-  <a href="/" class="nav-logo">BeServices</a>
+  <a href="/" class="nav-logo">
+    <img src="assets/logo.png" alt="BeServices" style="height:28px;object-fit:contain;filter:brightness(0) invert(1)">
+  </a>
   <ul class="nav-links" id="nav-ul">
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#sectores">Sectores</a></li>
     <li><a href="#casos">Casos de éxito</a></li>
-    <li><a href="#proceso">Cómo trabajamos</a></li>
+    <li><a href="#proceso">Recursos</a></li>
     <li><a href="#contacto">Sobre nosotros</a></li>
   </ul>
   <div class="nav-right">
