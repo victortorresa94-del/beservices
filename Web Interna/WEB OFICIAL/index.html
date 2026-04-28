@@ -25,6 +25,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .btn-p:hover{background:#005ecb;transform:translateY(-1px)}
 .btn-g{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;font-size:.9rem;font-weight:500;padding:12px 22px;border-radius:8px;text-decoration:none;border:1px solid rgba(255,255,255,.38);transition:border-color .2s,background .2s}
 .btn-g:hover{border-color:#fff;background:rgba(255,255,255,.07)}
+.svc-card:hover{box-shadow:0 8px 32px rgba(0,117,242,.13);transform:translateY(-4px)}
 .ol{font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#0075f2;margin-bottom:14px}
 .sec-h{font-size:clamp(1.9rem,3.8vw,2.9rem);font-weight:700;color:#001A41;line-height:1.1}
 .sec-h span{color:#0075f2}
@@ -108,41 +109,46 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
       </div>
       <p class="reveal" style="font-size:.93rem;color:#555;max-width:380px;line-height:1.65;transition-delay:.1s">Soluciones tecnológicas end-to-end para impulsar tu negocio con seguridad, eficiencia y escalabilidad.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid #e8eaed;border-radius:14px;overflow:hidden" id="svc-grid">
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px" id="svc-grid">
 
-      <a href="#" class="svc-card reveal" style="text-decoration:none;display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px 24px 32px;border-right:1px solid #e8eaed;transition:background .2s,transform .2s;background:#fff">
-        <span style="font-size:2.4rem;font-weight:700;color:#e8ecf2;line-height:1;margin-bottom:20px">01</span>
-        <img src="assets/ICONOS/grandes/1.png" alt="" style="width:72px;height:72px;object-fit:contain;margin-bottom:20px">
-        <div style="font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#0075f2;margin-bottom:8px">ACTIVA</div>
-        <p style="font-size:.83rem;color:#555;line-height:1.55">Ponemos en marcha tu negocio con tecnología segura y fiable.</p>
+      <a href="#" class="svc-card reveal" style="text-decoration:none;display:flex;flex-direction:column;align-items:center;text-align:center;padding:36px 20px 28px;border-radius:12px;border:1px solid #e4e8f0;background:#fff;transition:box-shadow .2s,transform .2s;position:relative;overflow:hidden">
+        <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:#0075f2;border-radius:0 0 2px 2px"></div>
+        <span style="font-size:2.8rem;font-weight:700;color:#dde3ee;line-height:1;margin-bottom:24px;letter-spacing:-.02em">01</span>
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" style="margin-bottom:22px"><path d="M28 6L10 14v14c0 11 8 21 18 24 10-3 18-13 18-24V14L28 6z" stroke="#0075f2" stroke-width="2.2" stroke-linejoin="round"/><path d="M20 28l6 6 10-10" stroke="#0075f2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div style="font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#001A41;margin-bottom:10px">ACTIVA</div>
+        <p style="font-size:.83rem;color:#666;line-height:1.6">Ponemos en marcha tu negocio con tecnología segura y fiable.</p>
       </a>
 
-      <a href="#" class="svc-card reveal" style="text-decoration:none;display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px 24px 32px;border-right:1px solid #e8eaed;transition:background .2s,transform .2s;background:#fff;transition-delay:.07s">
-        <span style="font-size:2.4rem;font-weight:700;color:#e8ecf2;line-height:1;margin-bottom:20px">02</span>
-        <img src="assets/ICONOS/grandes/2.png" alt="" style="width:72px;height:72px;object-fit:contain;margin-bottom:20px">
-        <div style="font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#0075f2;margin-bottom:8px">ESCALA</div>
-        <p style="font-size:.83rem;color:#555;line-height:1.55">Escalamos tu infraestructura para crecer sin límites.</p>
+      <a href="#" class="svc-card reveal" style="text-decoration:none;display:flex;flex-direction:column;align-items:center;text-align:center;padding:36px 20px 28px;border-radius:12px;border:1px solid #e4e8f0;background:#fff;transition:box-shadow .2s,transform .2s;position:relative;overflow:hidden;transition-delay:.07s">
+        <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:#0075f2;border-radius:0 0 2px 2px"></div>
+        <span style="font-size:2.8rem;font-weight:700;color:#dde3ee;line-height:1;margin-bottom:24px;letter-spacing:-.02em">02</span>
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" style="margin-bottom:22px"><rect x="8" y="34" width="8" height="14" rx="2" stroke="#0075f2" stroke-width="2.2"/><rect x="24" y="24" width="8" height="24" rx="2" stroke="#0075f2" stroke-width="2.2"/><rect x="40" y="14" width="8" height="34" rx="2" stroke="#0075f2" stroke-width="2.2"/><path d="M14 20l10-8 10 6 10-10" stroke="#0075f2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 8h8v8" stroke="#0075f2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div style="font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#001A41;margin-bottom:10px">ESCALA</div>
+        <p style="font-size:.83rem;color:#666;line-height:1.6">Escalamos tu infraestructura para crecer sin límites.</p>
       </a>
 
-      <a href="#" class="svc-card reveal" style="text-decoration:none;display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px 24px 32px;border-right:1px solid #e8eaed;transition:background .2s,transform .2s;background:#fff;transition-delay:.14s">
-        <span style="font-size:2.4rem;font-weight:700;color:#e8ecf2;line-height:1;margin-bottom:20px">03</span>
-        <img src="assets/ICONOS/grandes/3.png" alt="" style="width:72px;height:72px;object-fit:contain;margin-bottom:20px">
-        <div style="font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#0075f2;margin-bottom:8px">PROTEGE</div>
-        <p style="font-size:.83rem;color:#555;line-height:1.55">Ciberseguridad avanzada y cumplimiento normativo.</p>
+      <a href="#" class="svc-card reveal" style="text-decoration:none;display:flex;flex-direction:column;align-items:center;text-align:center;padding:36px 20px 28px;border-radius:12px;border:1px solid #e4e8f0;background:#fff;transition:box-shadow .2s,transform .2s;position:relative;overflow:hidden;transition-delay:.14s">
+        <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:#0075f2;border-radius:0 0 2px 2px"></div>
+        <span style="font-size:2.8rem;font-weight:700;color:#dde3ee;line-height:1;margin-bottom:24px;letter-spacing:-.02em">03</span>
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" style="margin-bottom:22px"><rect x="14" y="26" width="28" height="22" rx="3" stroke="#0075f2" stroke-width="2.2"/><path d="M20 26v-8a8 8 0 0116 0v8" stroke="#0075f2" stroke-width="2.2" stroke-linecap="round"/><circle cx="28" cy="36" r="3" fill="#0075f2"/><line x1="28" y1="39" x2="28" y2="43" stroke="#0075f2" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <div style="font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#001A41;margin-bottom:10px">PROTEGE</div>
+        <p style="font-size:.83rem;color:#666;line-height:1.6">Protegemos tus datos y sistemas con ciberseguridad avanzada.</p>
       </a>
 
-      <a href="#" class="svc-card reveal" style="text-decoration:none;display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px 24px 32px;border-right:1px solid #e8eaed;transition:background .2s,transform .2s;background:#fff;transition-delay:.21s">
-        <span style="font-size:2.4rem;font-weight:700;color:#e8ecf2;line-height:1;margin-bottom:20px">04</span>
-        <img src="assets/ICONOS/grandes/4.png" alt="" style="width:72px;height:72px;object-fit:contain;margin-bottom:20px">
-        <div style="font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#0075f2;margin-bottom:8px">POTENCIA</div>
-        <p style="font-size:.83rem;color:#555;line-height:1.55">Optimizamos procesos y datos para tu rendimiento.</p>
+      <a href="#" class="svc-card reveal" style="text-decoration:none;display:flex;flex-direction:column;align-items:center;text-align:center;padding:36px 20px 28px;border-radius:12px;border:1px solid #e4e8f0;background:#fff;transition:box-shadow .2s,transform .2s;position:relative;overflow:hidden;transition-delay:.21s">
+        <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:#0075f2;border-radius:0 0 2px 2px"></div>
+        <span style="font-size:2.8rem;font-weight:700;color:#dde3ee;line-height:1;margin-bottom:24px;letter-spacing:-.02em">04</span>
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" style="margin-bottom:22px"><path d="M30 8L18 30h12l-4 18L38 26H26L30 8z" stroke="#0075f2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div style="font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#001A41;margin-bottom:10px">POTENCIA</div>
+        <p style="font-size:.83rem;color:#666;line-height:1.6">Optimizamos procesos y datos para potenciar tu rendimiento.</p>
       </a>
 
-      <a href="#" class="svc-card reveal" style="text-decoration:none;display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px 24px 32px;transition:background .2s,transform .2s;background:#fff;transition-delay:.28s">
-        <span style="font-size:2.4rem;font-weight:700;color:#e8ecf2;line-height:1;margin-bottom:20px">05</span>
-        <img src="assets/ICONOS/grandes/5.png" alt="" style="width:72px;height:72px;object-fit:contain;margin-bottom:20px">
-        <div style="font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#0075f2;margin-bottom:8px">GESTIONA</div>
-        <p style="font-size:.83rem;color:#555;line-height:1.55">Gestionamos tus servicios IT para que te centres en tu negocio.</p>
+      <a href="#" class="svc-card reveal" style="text-decoration:none;display:flex;flex-direction:column;align-items:center;text-align:center;padding:36px 20px 28px;border-radius:12px;border:1px solid #e4e8f0;background:#fff;transition:box-shadow .2s,transform .2s;position:relative;overflow:hidden;transition-delay:.28s">
+        <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:#0075f2;border-radius:0 0 2px 2px"></div>
+        <span style="font-size:2.8rem;font-weight:700;color:#dde3ee;line-height:1;margin-bottom:24px;letter-spacing:-.02em">05</span>
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" style="margin-bottom:22px"><circle cx="28" cy="28" r="7" stroke="#0075f2" stroke-width="2.2"/><path d="M28 8v4M28 44v4M8 28h4M44 28h4M13.5 13.5l2.8 2.8M39.7 39.7l2.8 2.8M13.5 42.5l2.8-2.8M39.7 16.3l2.8-2.8" stroke="#0075f2" stroke-width="2.2" stroke-linecap="round"/><path d="M22 22a8.5 8.5 0 000 12M34 34a8.5 8.5 0 000-12" stroke="#0075f2" stroke-width="2" stroke-linecap="round" opacity=".4"/></svg>
+        <div style="font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#001A41;margin-bottom:10px">GESTIONA</div>
+        <p style="font-size:.83rem;color:#666;line-height:1.6">Gestionamos tus servicios IT para que te centres en lo importante.</p>
       </a>
 
     </div>
