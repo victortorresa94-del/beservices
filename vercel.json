@@ -1,5 +1,4 @@
 {
-  "buildCommand": "node -e \"const fs=require('fs'); fs.cpSync('Web Interna/WEB OFICIAL', 'output', {recursive:true});\"",
-  "outputDirectory": "output",
+  "outputDirectory": "Web Interna/WEB OFICIAL",
   "cleanUrls": true
 }
