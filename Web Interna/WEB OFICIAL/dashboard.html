@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>CEO Dashboard | beServices</title>
+
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBlue: '#0075f2',
+            corporateNavy: '#001A41',
+            mutedGray: '#9CA3AF',
+            electricCyan: '#50cabf',
+          },
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #f0f4f8; }
+    h1,h2,h3,h4 { font-family: 'Inter', sans-serif; color: #001A41; letter-spacing: -0.02em; }
+
+    .glass-navbar {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0,26,65,0.06);
+    }
+
+    .kpi-card {
+      background: white;
+      border-radius: 1.25rem;
+      border: 1px solid rgba(0,26,65,0.05);
+      box-shadow: 0 2px 8px rgba(0,26,65,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .kpi-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,26,65,0.1);
+    }
+
+    .chart-card {
+      background: white;
+      border-radius: 1.25rem;
+      border: 1px solid rgba(0,26,65,0.05);
+      box-shadow: 0 2px 8px rgba(0,26,65,0.06);
+    }
+
+    .trend-up   { color: #10b981; }
+    .trend-down { color: #ef4444; }
+
+    .badge-live {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #ecfdf5; color: #065f46;
+      font-size: 0.7rem; font-weight: 600;
+      padding: 4px 10px; border-radius: 999px;
+    }
+    .badge-live::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: #10b981;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    .table-row:hover { background: #f8fafc; }
+
+    .bar-fill {
+      height: 6px; border-radius: 999px;
+      background: linear-gradient(90deg, #0075f2, #50cabf);
+      transition: width 1s ease;
+    }
+
+    /* Scrollbar slim */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: #f0f4f8; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 999px; }
+  </style>
+</head>
+
+<body class="antialiased text-corporateNavy">
+
+  <!-- Navbar -->
+  <nav id="main-nav" data-active="internal"></nav>
+  <script src="nav-component.js"></script>
+
+  <!-- ── Page ────────────────────────────────────────────────────── -->
+  <div class="pt-28 pb-20 px-4 md:px-8 max-w-[1400px] mx-auto">
+
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+      <div>
+        <div class="flex items-center gap-3 mb-2">
+          <a href="internal.html" class="text-mutedGray hover:text-brandBlue transition-colors text-sm flex items-center gap-1">
+            <i class="ph ph-arrow-left"></i> Portal Interno
+          </a>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold text-corporateNavy mb-1">CEO Dashboard</h1>
+        <p class="text-mutedGray text-sm">Facturación · Clientes · Productos — datos en tiempo real desde Eurowin</p>
+      </div>
+      <div class="flex items-center gap-3 flex-shrink-0">
+        <span class="badge-live">Eurowin 2026</span>
+        <span class="text-xs text-mutedGray" id="last-updated"></span>
+      </div>
+    </div>
+
+    <!-- ── KPI Cards ────────────────────────────────────────────── -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+
+      <!-- Clientes activos -->
+      <div class="kpi-card p-6">
+        <div class="flex items-start justify-between mb-4">
+          <div class="w-10 h-10 rounded-xl bg-brandBlue/10 flex items-center justify-center">
+            <i class="ph ph-users text-xl text-brandBlue"></i>
+          </div>
+          <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">Abril 2026</span>
+        </div>
+        <div class="text-3xl font-bold text-corporateNavy mb-1">239</div>
+        <div class="text-xs text-mutedGray font-medium uppercase tracking-wide">Clientes activos</div>
+        <div class="mt-3 pt-3 border-t border-gray-50 text-xs text-mutedGray">
+          <span class="text-corporateNavy font-medium">263</span> en máximo histórico YTD
+        </div>
+      </div>
+
+      <!-- Facturación mes -->
+      <div class="kpi-card p-6">
+        <div class="flex items-start justify-between mb-4">
+          <div class="w-10 h-10 rounded-xl bg-electricCyan/10 flex items-center justify-center">
+            <i class="ph ph-calendar-check text-xl text-electricCyan"></i>
+          </div>
+          <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded-full">Este mes</span>
+        </div>
+        <div class="text-3xl font-bold text-corporateNavy mb-1">436.899 <span class="text-lg font-normal">€</span></div>
+        <div class="text-xs text-mutedGray font-medium uppercase tracking-wide">Facturación Abril</div>
+        <div class="mt-3 pt-3 border-t border-gray-50 text-xs text-mutedGray">
+          293 facturas emitidas
+        </div>
+      </div>
+
+      <!-- Facturación YTD -->
+      <div class="kpi-card p-6">
+        <div class="flex items-start justify-between mb-4">
+          <div class="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center">
+            <i class="ph ph-chart-line-up text-xl text-purple-600"></i>
+          </div>
+          <span class="text-xs font-semibold text-purple-600 bg-purple-50 px-2 py-1 rounded-full">YTD 2026</span>
+        </div>
+        <div class="text-3xl font-bold text-corporateNavy mb-1">1,906 <span class="text-lg font-normal">k€</span></div>
+        <div class="text-xs text-mutedGray font-medium uppercase tracking-wide">Facturación acumulada</div>
+        <div class="mt-3 pt-3 border-t border-gray-50 text-xs text-mutedGray">
+          1.210 facturas · Enero–Abril
+        </div>
+      </div>
+
+      <!-- Ticket medio -->
+      <div class="kpi-card p-6">
+        <div class="flex items-start justify-between mb-4">
+          <div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center">
+            <i class="ph ph-receipt text-xl text-amber-600"></i>
+          </div>
+          <span class="text-xs font-semibold text-amber-700 bg-amber-50 px-2 py-1 rounded-full">Promedio</span>
+        </div>
+        <div class="text-3xl font-bold text-corporateNavy mb-1">7.248 <span class="text-lg font-normal">€</span></div>
+        <div class="text-xs text-mutedGray font-medium uppercase tracking-wide">Facturación media / cliente</div>
+        <div class="mt-3 pt-3 border-t border-gray-50 text-xs text-mutedGray">
+          Calculado sobre YTD 2026
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Charts Row ───────────────────────────────────────────── -->
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-6">
+
+      <!-- Evolución mensual – grande -->
+      <div class="chart-card p-6 lg:col-span-3">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h2 class="text-lg font-bold text-corporateNavy">Evolución Mensual 2026</h2>
+            <p class="text-xs text-mutedGray mt-0.5">Facturación total con IVA por mes</p>
+          </div>
+          <div class="text-xs text-mutedGray bg-gray-50 px-3 py-1.5 rounded-lg">Ene – Abr 2026</div>
+        </div>
+        <canvas id="chartMensual" height="220"></canvas>
+      </div>
+
+      <!-- Clientes por mes – pequeño -->
+      <div class="chart-card p-6 lg:col-span-2">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h2 class="text-lg font-bold text-corporateNavy">Clientes por Mes</h2>
+            <p class="text-xs text-mutedGray mt-0.5">Clientes únicos facturados</p>
+          </div>
+        </div>
+        <canvas id="chartClientes" height="220"></canvas>
+      </div>
+
+    </div>
+
+    <!-- ── Bottom Row ───────────────────────────────────────────── -->
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+
+      <!-- Top 10 Clientes -->
+      <div class="chart-card p-6 lg:col-span-3">
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h2 class="text-lg font-bold text-corporateNavy">Top 10 Clientes</h2>
+            <p class="text-xs text-mutedGray mt-0.5">Por facturación acumulada — últimos 12 meses</p>
+          </div>
+          <span class="text-xs text-mutedGray">Importe con IVA</span>
+        </div>
+        <div class="space-y-3" id="top-clientes"></div>
+      </div>
+
+      <!-- Top Servicios / Productos -->
+      <div class="chart-card p-6 lg:col-span-2">
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h2 class="text-lg font-bold text-corporateNavy">Top Servicios</h2>
+            <p class="text-xs text-mutedGray mt-0.5">Por importe facturado 2026</p>
+          </div>
+        </div>
+        <canvas id="chartProductos" height="260"></canvas>
+        <div class="mt-4 space-y-1.5" id="legend-productos"></div>
+      </div>
+
+    </div>
+
+    <!-- ── Línea de detalle Mes Actual ──────────────────────────── -->
+    <div class="chart-card p-6 mt-6">
+      <div class="flex items-center justify-between mb-5">
+        <div>
+          <h2 class="text-lg font-bold text-corporateNavy">Detalle Abril 2026</h2>
+          <p class="text-xs text-mutedGray mt-0.5">Facturación mes actual · 239 clientes · 293 facturas · 436.899 €</p>
+        </div>
+        <a href="internal.html" class="text-xs text-brandBlue hover:underline flex items-center gap-1">
+          Ver portal interno <i class="ph ph-arrow-right"></i>
+        </a>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-gray-50 rounded-xl p-4">
+          <div class="text-xs text-mutedGray mb-1">Mes mejor</div>
+          <div class="text-base font-bold text-corporateNavy">Febrero 2026</div>
+          <div class="text-xs text-emerald-600 font-medium mt-0.5">553.952 €</div>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-4">
+          <div class="text-xs text-mutedGray mb-1">Mes actual vs mejor</div>
+          <div class="text-base font-bold text-corporateNavy">−21,2%</div>
+          <div class="text-xs text-mutedGray mt-0.5">436k vs 553k</div>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-4">
+          <div class="text-xs text-mutedGray mb-1">Ticket medio / factura</div>
+          <div class="text-base font-bold text-corporateNavy">1.491 €</div>
+          <div class="text-xs text-mutedGray mt-0.5">293 facturas</div>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-4">
+          <div class="text-xs text-mutedGray mb-1">Media clientes / mes</div>
+          <div class="text-base font-bold text-corporateNavy">244</div>
+          <div class="text-xs text-mutedGray mt-0.5">Ene–Abr 2026</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /max-w -->
+
+  <!-- Footer -->
+  <footer class="bg-corporateNavy border-t border-white/10 pt-16 pb-10 mt-10">
+    <div class="max-w-[1300px] mx-auto px-6 lg:px-10">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+        <div class="col-span-2 md:col-span-1">
+          <a href="index.html" class="inline-flex items-center gap-2 mb-4">
+            <img src="assets/logo.png" alt="BeServices" style="height:28px;width:auto;filter:brightness(0) invert(1);"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline';">
+            <span style="display:none;font-weight:800;font-size:1rem;color:#fff;letter-spacing:-.02em;">Be<span style="color:#50cabf;">Services</span></span>
+          </a>
+          <p class="text-xs text-white/40 leading-relaxed max-w-[200px]">Tecnología de confianza para empresas que crecen con seguridad.</p>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold tracking-widest text-white/30 uppercase mb-5">Servicios</h4>
+          <ul class="space-y-3">
+            <li><a href="servicio-activa.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">ACTIVA</a></li>
+            <li><a href="servicio-escala.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">ESCALA</a></li>
+            <li><a href="servicio-protege.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">PROTEGE</a></li>
+            <li><a href="servicio-potencia.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">POTENCIA</a></li>
+            <li><a href="servicio-gestiona.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">GESTIONA</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold tracking-widest text-white/30 uppercase mb-5">Soluciones</h4>
+          <ul class="space-y-3">
+            <li><a href="microsoft.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">Microsoft 365</a></li>
+            <li><a href="google.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">Google Workspace</a></li>
+            <li><a href="servicio-cloud.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">BeCenter</a></li>
+            <li><a href="servicio-backup.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">BeDataCenter</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold tracking-widest text-white/30 uppercase mb-5">Empresa</h4>
+          <ul class="space-y-3">
+            <li><a href="nosotros.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">Nosotros</a></li>
+            <li><a href="casos.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">Casos de éxito</a></li>
+            <li><a href="blog.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">Blog</a></li>
+            <li><a href="contacto.html" class="text-sm text-white/60 hover:text-electricCyan transition-colors">Contacto</a></li>
+            <li><a href="internal.html" class="text-sm text-white/40 hover:text-white/60 transition-colors">Portal Interno</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-xs text-white/30">© 2026 BeServices. Todos los derechos reservados.</p>
+        <p class="text-xs text-white/30">Datos: Eurowin · Actualizado Abril 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Scripts ─────────────────────────────────────────────────── -->
+  <script>
+    // ── Datos Eurowin (actualizados Abril 2026) ───────────────────
+    const MESES = ['Ene', 'Feb', 'Mar', 'Abr'];
+    const FACTURACION = [495110, 553952, 420896, 436899];
+    const CLIENTES_MES = [251, 244, 241, 239];
+
+    const TOP_CLIENTES = [
+      { nombre: 'ArgentoCloud OÜ',                    total: 883338 },
+      { nombre: 'Assoc. Coordinadora Sinergia Social', total: 163786 },
+      { nombre: 'ALEA IBERIA S.L.',                   total:  79357 },
+      { nombre: 'IMO Serveis Informàtics S.L.',        total:  31563 },
+      { nombre: 'LIFTISA, S.L.',                      total:  27040 },
+      { nombre: 'Meypar S.L.',                        total:  22320 },
+      { nombre: 'Heimdal Seguridad SL',               total:  22247 },
+      { nombre: 'SUMA CAPITAL SGEIC S.A.',             total:  21257 },
+      { nombre: 'ALVAC, S.A.',                        total:  19811 },
+      { nombre: '1D3A Analógico y Digital S.L.',       total:  17327 },
+    ];
+
+    const TOP_SERVICIOS = [
+      { nombre: 'Google Cloud Platform', total: 735412, color: '#0075f2' },
+      { nombre: 'CPD Virtual BE32',      total:  78672, color: '#50cabf' },
+      { nombre: 'Omnissa Workspace One', total:  38292, color: '#8b5cf6' },
+      { nombre: 'ESET Protect',          total:  22540, color: '#f59e0b' },
+      { nombre: 'Otros servicios',       total: 1031941, color: '#e2e8f0' },
+    ];
+
+    // Fecha última actualización
+    document.getElementById('last-updated').textContent =
+      'Actualizado: ' + new Date().toLocaleDateString('es-ES', { day:'2-digit', month:'short', year:'numeric' });
+
+    // ── Chart: Evolución mensual ──────────────────────────────────
+    new Chart(document.getElementById('chartMensual'), {
+      type: 'bar',
+      data: {
+        labels: MESES,
+        datasets: [{
+          label: 'Facturación (€)',
+          data: FACTURACION,
+          backgroundColor: MESES.map((_, i) =>
+            i === MESES.length - 1 ? '#0075f2' : 'rgba(0,117,242,0.15)'
+          ),
+          borderColor: MESES.map((_, i) =>
+            i === MESES.length - 1 ? '#0075f2' : 'rgba(0,117,242,0.3)'
+          ),
+          borderWidth: 2,
+          borderRadius: 8,
+          borderSkipped: false,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: ctx => ' ' + ctx.parsed.y.toLocaleString('es-ES') + ' €'
+            }
+          }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { font: { family: 'Inter', size: 12 }, color: '#9CA3AF' } },
+          y: {
+            grid: { color: 'rgba(0,0,0,0.04)', drawBorder: false },
+            ticks: {
+              font: { family: 'Inter', size: 11 }, color: '#9CA3AF',
+              callback: v => (v/1000).toFixed(0) + 'k €'
+            }
+          }
+        }
+      }
+    });
+
+    // ── Chart: Clientes por mes ───────────────────────────────────
+    new Chart(document.getElementById('chartClientes'), {
+      type: 'line',
+      data: {
+        labels: MESES,
+        datasets: [{
+          label: 'Clientes',
+          data: CLIENTES_MES,
+          borderColor: '#50cabf',
+          backgroundColor: 'rgba(80,202,191,0.08)',
+          borderWidth: 2.5,
+          pointBackgroundColor: '#50cabf',
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          tension: 0.4,
+          fill: true,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: ctx => ' ' + ctx.parsed.y + ' clientes' } }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { font: { family: 'Inter', size: 12 }, color: '#9CA3AF' } },
+          y: {
+            min: 230, max: 265,
+            grid: { color: 'rgba(0,0,0,0.04)', drawBorder: false },
+            ticks: { font: { family: 'Inter', size: 11 }, color: '#9CA3AF' }
+          }
+        }
+      }
+    });
+
+    // ── Top Clientes (barras de progreso) ─────────────────────────
+    const maxCliente = TOP_CLIENTES[0].total;
+    const container = document.getElementById('top-clientes');
+    TOP_CLIENTES.forEach((c, i) => {
+      const pct = (c.total / maxCliente * 100).toFixed(0);
+      container.innerHTML += `
+        <div class="table-row rounded-xl px-3 py-2.5 transition-colors">
+          <div class="flex items-center justify-between mb-1">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-bold text-mutedGray w-5">${i+1}</span>
+              <span class="text-sm font-medium text-corporateNavy truncate max-w-[220px]">${c.nombre}</span>
+            </div>
+            <span class="text-sm font-bold text-corporateNavy ml-2 flex-shrink-0">
+              ${c.total >= 1000 ? (c.total/1000).toFixed(0)+'k' : c.total.toLocaleString('es-ES')} €
+            </span>
+          </div>
+          <div class="bg-gray-100 rounded-full h-1.5 ml-7">
+            <div class="bar-fill" style="width:${pct}%"></div>
+          </div>
+        </div>
+      `;
+    });
+
+    // ── Chart: Top Servicios (doughnut) ───────────────────────────
+    new Chart(document.getElementById('chartProductos'), {
+      type: 'doughnut',
+      data: {
+        labels: TOP_SERVICIOS.map(s => s.nombre),
+        datasets: [{
+          data: TOP_SERVICIOS.map(s => s.total),
+          backgroundColor: TOP_SERVICIOS.map(s => s.color),
+          borderWidth: 0,
+          hoverOffset: 6,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        cutout: '68%',
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: ctx => ' ' + ctx.parsed.toLocaleString('es-ES') + ' €'
+            }
+          }
+        }
+      }
+    });
+
+    // Leyenda manual servicios
+    const legContainer = document.getElementById('legend-productos');
+    TOP_SERVICIOS.forEach(s => {
+      legContainer.innerHTML += `
+        <div class="flex items-center justify-between text-xs">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:${s.color}"></span>
+            <span class="text-mutedGray truncate max-w-[140px]">${s.nombre}</span>
+          </div>
+          <span class="font-semibold text-corporateNavy">${(s.total/1000).toFixed(0)}k €</span>
+        </div>
+      `;
+    });
+
+  </script>
+</body>
+</html>
