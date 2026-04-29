@@ -14,50 +14,54 @@
     }
   </script>
   <style>
-    * { box-sizing: border-box; }
+    * { box-sizing:border-box; }
     body { font-family:'Inter',sans-serif; background:#f0f4f8; margin:0; }
     h1,h2,h3,h4 { font-family:'Inter',sans-serif; color:#001A41; letter-spacing:-0.02em; margin:0; }
-
-    .card {
-      background:white; border-radius:1.25rem;
-      border:1px solid rgba(0,26,65,0.05);
-      box-shadow:0 2px 8px rgba(0,26,65,0.06);
-      padding:1.25rem;
-    }
-
-    /* Chart containers — altura FIJA siempre */
+    .card { background:white; border-radius:1.25rem; border:1px solid rgba(0,26,65,0.05); box-shadow:0 2px 8px rgba(0,26,65,0.06); padding:1.25rem; }
     .chart-wrap { position:relative; width:100%; height:200px; }
     .chart-wrap canvas { position:absolute; inset:0; width:100%!important; height:100%!important; }
-
-    .badge-live {
-      display:inline-flex; align-items:center; gap:5px;
-      background:#ecfdf5; color:#065f46;
-      font-size:.7rem; font-weight:600;
-      padding:3px 10px; border-radius:999px;
-    }
-    .badge-live::before {
-      content:''; width:6px; height:6px; border-radius:50%; background:#10b981;
-      animation:pulse 1.5s infinite;
-    }
+    .chart-wrap-lg { position:relative; width:100%; height:260px; }
+    .chart-wrap-lg canvas { position:absolute; inset:0; width:100%!important; height:100%!important; }
+    .badge-live { display:inline-flex; align-items:center; gap:5px; background:#ecfdf5; color:#065f46; font-size:.7rem; font-weight:600; padding:3px 10px; border-radius:999px; }
+    .badge-live::before { content:''; width:6px; height:6px; border-radius:50%; background:#10b981; animation:pulse 1.5s infinite; }
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
-
-    .bar-fill {
-      height:5px; border-radius:999px;
-      background:linear-gradient(90deg,#0075f2,#50cabf);
-    }
-
+    .bar-fill { height:5px; border-radius:999px; background:linear-gradient(90deg,#0075f2,#50cabf); }
     .kpi-val { font-size:1.6rem; font-weight:800; color:#001A41; line-height:1; }
     .kpi-label { font-size:.68rem; font-weight:600; color:#9CA3AF; text-transform:uppercase; letter-spacing:.05em; margin-top:.25rem; }
     .kpi-sub { font-size:.72rem; color:#9CA3AF; margin-top:.5rem; }
+
+    /* Tabla productos */
+    #prod-table { width:100%; border-collapse:collapse; font-size:.78rem; }
+    #prod-table th { background:#f8fafc; color:#9CA3AF; font-weight:600; font-size:.68rem; text-transform:uppercase; letter-spacing:.04em; padding:.6rem .75rem; text-align:right; white-space:nowrap; border-bottom:1px solid #f0f4f8; }
+    #prod-table th:first-child,
+    #prod-table th:nth-child(2) { text-align:left; }
+    #prod-table td { padding:.55rem .75rem; border-bottom:1px solid #f8fafc; color:#001A41; text-align:right; vertical-align:middle; }
+    #prod-table td:first-child { text-align:center; color:#9CA3AF; font-weight:600; font-size:.7rem; width:28px; }
+    #prod-table td:nth-child(2) { text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:500; }
+    #prod-table tr:hover td { background:#f8fafc; }
+    .cat-pill { display:inline-flex; align-items:center; padding:1px 7px; border-radius:999px; font-size:.65rem; font-weight:600; white-space:nowrap; }
+    .num-green { color:#059669; }
+    .num-red   { color:#dc2626; }
+    .num-muted { color:#9CA3AF; }
+
+    /* Filtros tabs */
+    .tab-btn { padding:.35rem .8rem; border-radius:.5rem; font-size:.75rem; font-weight:600; cursor:pointer; border:none; background:transparent; color:#9CA3AF; transition:all .15s; }
+    .tab-btn.active { background:#001A41; color:white; }
+    .tab-btn:hover:not(.active) { background:#f0f4f8; color:#001A41; }
+
+    /* Sort arrow */
+    th.sortable { cursor:pointer; user-select:none; }
+    th.sortable:hover { color:#001A41; }
+    th.sort-asc::after  { content:' ↑'; }
+    th.sort-desc::after { content:' ↓'; }
   </style>
 </head>
 <body class="antialiased">
 
-  <!-- Navbar -->
   <nav id="main-nav" data-active="internal"></nav>
   <script src="nav-component.js"></script>
 
-  <div style="padding-top:5.5rem; padding-bottom:3rem; max-width:1300px; margin:0 auto; padding-left:1.5rem; padding-right:1.5rem;">
+  <div style="padding-top:5.5rem; padding-bottom:3rem; max-width:1400px; margin:0 auto; padding-left:1.5rem; padding-right:1.5rem;">
 
     <!-- Header -->
     <div style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin-bottom:1.75rem;">
@@ -73,235 +77,363 @@
 
     <!-- ── KPI ROW ── -->
     <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-bottom:1.25rem;">
-
       <div class="card" style="display:flex; flex-direction:column; gap:.5rem;">
-        <div style="width:36px;height:36px;border-radius:.75rem;background:rgba(0,117,242,.08);display:flex;align-items:center;justify-content:center;">
-          <i class="ph ph-users" style="font-size:1.1rem;color:#0075f2;"></i>
-        </div>
+        <div style="width:36px;height:36px;border-radius:.75rem;background:rgba(0,117,242,.08);display:flex;align-items:center;justify-content:center;"><i class="ph ph-users" style="font-size:1.1rem;color:#0075f2;"></i></div>
         <div class="kpi-val">239</div>
         <div class="kpi-label">Clientes activos</div>
         <div class="kpi-sub">263 máximo YTD · Abril 2026</div>
       </div>
-
       <div class="card" style="display:flex; flex-direction:column; gap:.5rem;">
-        <div style="width:36px;height:36px;border-radius:.75rem;background:rgba(80,202,191,.08);display:flex;align-items:center;justify-content:center;">
-          <i class="ph ph-calendar-check" style="font-size:1.1rem;color:#50cabf;"></i>
-        </div>
+        <div style="width:36px;height:36px;border-radius:.75rem;background:rgba(80,202,191,.08);display:flex;align-items:center;justify-content:center;"><i class="ph ph-calendar-check" style="font-size:1.1rem;color:#50cabf;"></i></div>
         <div class="kpi-val">436.899 <span style="font-size:1rem;font-weight:500;">€</span></div>
         <div class="kpi-label">Facturación Abril</div>
         <div class="kpi-sub">293 facturas emitidas</div>
       </div>
-
       <div class="card" style="display:flex; flex-direction:column; gap:.5rem;">
-        <div style="width:36px;height:36px;border-radius:.75rem;background:rgba(139,92,246,.08);display:flex;align-items:center;justify-content:center;">
-          <i class="ph ph-chart-line-up" style="font-size:1.1rem;color:#8b5cf6;"></i>
-        </div>
+        <div style="width:36px;height:36px;border-radius:.75rem;background:rgba(139,92,246,.08);display:flex;align-items:center;justify-content:center;"><i class="ph ph-chart-line-up" style="font-size:1.1rem;color:#8b5cf6;"></i></div>
         <div class="kpi-val">1,906 <span style="font-size:1rem;font-weight:500;">k€</span></div>
         <div class="kpi-label">Facturación YTD 2026</div>
         <div class="kpi-sub">1.210 facturas · Ene–Abr</div>
       </div>
-
       <div class="card" style="display:flex; flex-direction:column; gap:.5rem;">
-        <div style="width:36px;height:36px;border-radius:.75rem;background:rgba(245,158,11,.08);display:flex;align-items:center;justify-content:center;">
-          <i class="ph ph-receipt" style="font-size:1.1rem;color:#f59e0b;"></i>
-        </div>
+        <div style="width:36px;height:36px;border-radius:.75rem;background:rgba(245,158,11,.08);display:flex;align-items:center;justify-content:center;"><i class="ph ph-receipt" style="font-size:1.1rem;color:#f59e0b;"></i></div>
         <div class="kpi-val">7.248 <span style="font-size:1rem;font-weight:500;">€</span></div>
         <div class="kpi-label">Facturación media / cliente</div>
         <div class="kpi-sub">Calculado sobre YTD 2026</div>
       </div>
-
     </div>
 
     <!-- ── CHARTS ROW ── -->
     <div style="display:grid; grid-template-columns:3fr 2fr; gap:1rem; margin-bottom:1.25rem;">
-
-      <!-- Barras mensuales -->
       <div class="card">
         <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem;">
-          <div>
-            <h2 style="font-size:.95rem; font-weight:700;">Evolución mensual 2026</h2>
-            <p style="font-size:.72rem; color:#9CA3AF; margin-top:.15rem;">Facturación total con IVA</p>
-          </div>
+          <div><h2 style="font-size:.95rem; font-weight:700;">Evolución mensual 2026</h2><p style="font-size:.72rem; color:#9CA3AF; margin-top:.15rem;">Facturación total con IVA</p></div>
           <span style="font-size:.68rem; background:#f8fafc; color:#9CA3AF; padding:3px 8px; border-radius:.5rem;">Ene – Abr</span>
         </div>
-        <div class="chart-wrap">
-          <canvas id="chartMensual"></canvas>
-        </div>
+        <div class="chart-wrap"><canvas id="chartMensual"></canvas></div>
       </div>
-
-      <!-- Clientes por mes -->
       <div class="card">
-        <div style="margin-bottom:1rem;">
-          <h2 style="font-size:.95rem; font-weight:700;">Clientes únicos / mes</h2>
-          <p style="font-size:.72rem; color:#9CA3AF; margin-top:.15rem;">Clientes facturados cada mes</p>
-        </div>
-        <div class="chart-wrap">
-          <canvas id="chartClientes"></canvas>
-        </div>
+        <div style="margin-bottom:1rem;"><h2 style="font-size:.95rem; font-weight:700;">Clientes únicos / mes</h2><p style="font-size:.72rem; color:#9CA3AF; margin-top:.15rem;">Clientes facturados cada mes</p></div>
+        <div class="chart-wrap"><canvas id="chartClientes"></canvas></div>
       </div>
-
     </div>
 
-    <!-- ── BOTTOM ROW ── -->
-    <div style="display:grid; grid-template-columns:3fr 2fr; gap:1rem;">
-
-      <!-- Top 10 clientes -->
+    <!-- ── TOP CLIENTES + SERVICIOS ── -->
+    <div style="display:grid; grid-template-columns:3fr 2fr; gap:1rem; margin-bottom:1.25rem;">
       <div class="card">
         <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem;">
-          <div>
-            <h2 style="font-size:.95rem; font-weight:700;">Top 10 clientes</h2>
-            <p style="font-size:.72rem; color:#9CA3AF; margin-top:.15rem;">Últimos 12 meses · importe con IVA</p>
-          </div>
+          <div><h2 style="font-size:.95rem; font-weight:700;">Top 10 clientes</h2><p style="font-size:.72rem; color:#9CA3AF; margin-top:.15rem;">Últimos 12 meses · importe con IVA</p></div>
         </div>
         <div id="top-clientes" style="display:flex; flex-direction:column; gap:.6rem;"></div>
       </div>
-
-      <!-- Servicios donut -->
       <div class="card">
-        <div style="margin-bottom:1rem;">
-          <h2 style="font-size:.95rem; font-weight:700;">Top servicios 2026</h2>
-          <p style="font-size:.72rem; color:#9CA3AF; margin-top:.15rem;">Por importe facturado</p>
-        </div>
-        <div class="chart-wrap" style="height:180px;">
-          <canvas id="chartProductos"></canvas>
-        </div>
+        <div style="margin-bottom:1rem;"><h2 style="font-size:.95rem; font-weight:700;">Top categorías 2026</h2><p style="font-size:.72rem; color:#9CA3AF; margin-top:.15rem;">Por importe facturado</p></div>
+        <div class="chart-wrap" style="height:180px;"><canvas id="chartProductos"></canvas></div>
         <div id="legend-servicios" style="display:flex; flex-direction:column; gap:.4rem; margin-top:1rem;"></div>
       </div>
+    </div>
 
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- PANEL PRODUCTOS                                           -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div class="card" style="padding:1.5rem;">
+
+      <!-- Cabecera panel -->
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1.25rem;">
+        <div>
+          <h2 style="font-size:1.05rem; font-weight:800;">Panel de Productos</h2>
+          <p style="font-size:.72rem; color:#9CA3AF; margin-top:.2rem;">Top 50 líneas facturadas · Comparativa Ene–Abr 2026 · 825 productos distintos en total</p>
+        </div>
+        <!-- Filtros de categoría -->
+        <div style="display:flex; gap:.35rem; flex-wrap:wrap;" id="cat-filters">
+          <button class="tab-btn active" data-cat="all" onclick="filterCat(this)">Todos</button>
+          <button class="tab-btn" data-cat="gcp"       onclick="filterCat(this)">Google Cloud</button>
+          <button class="tab-btn" data-cat="workspace"  onclick="filterCat(this)">Google Workspace</button>
+          <button class="tab-btn" data-cat="cpd"       onclick="filterCat(this)">CPD / BeCloud</button>
+          <button class="tab-btn" data-cat="m365"      onclick="filterCat(this)">Microsoft 365</button>
+          <button class="tab-btn" data-cat="otros"     onclick="filterCat(this)">Otros</button>
+        </div>
+      </div>
+
+      <!-- Gráfica comparativa top 10 productos (barras agrupadas por mes) -->
+      <div style="margin-bottom:1.5rem;">
+        <p style="font-size:.75rem; font-weight:600; color:#9CA3AF; text-transform:uppercase; letter-spacing:.05em; margin-bottom:.6rem;">Comparativa mensual — Top 10 productos por facturación YTD</p>
+        <div class="chart-wrap-lg"><canvas id="chartProdCompare"></canvas></div>
+      </div>
+
+      <!-- Buscador -->
+      <div style="position:relative; margin-bottom:.75rem;">
+        <i class="ph ph-magnifying-glass" style="position:absolute; left:.75rem; top:50%; transform:translateY(-50%); color:#9CA3AF; font-size:.9rem;"></i>
+        <input id="prod-search" type="text" placeholder="Buscar producto o descripción..."
+          oninput="renderTable()"
+          style="width:100%; padding:.45rem .75rem .45rem 2.25rem; border:1px solid #e2e8f0; border-radius:.6rem; font-size:.8rem; font-family:Inter,sans-serif; color:#001A41; outline:none;">
+      </div>
+
+      <!-- Tabla -->
+      <div style="overflow-x:auto;">
+        <table id="prod-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Producto / Descripción</th>
+              <th>Categoría</th>
+              <th class="sortable" onclick="sortTable('ene')">Enero</th>
+              <th class="sortable" onclick="sortTable('feb')">Febrero</th>
+              <th class="sortable" onclick="sortTable('mar')">Marzo</th>
+              <th class="sortable" onclick="sortTable('abr')">Abril</th>
+              <th class="sortable sort-desc" onclick="sortTable('ytd')">Total YTD</th>
+              <th>Var. Abr vs Mar</th>
+              <th>Visual</th>
+            </tr>
+          </thead>
+          <tbody id="prod-tbody"></tbody>
+        </table>
+      </div>
+      <p style="font-size:.7rem; color:#9CA3AF; margin-top:.6rem; text-align:right;" id="prod-count"></p>
     </div>
 
   </div><!-- /main -->
 
-  <!-- Footer -->
-  <footer style="background:#001A41; border-top:1px solid rgba(255,255,255,.08); padding:2rem 1.5rem; margin-top:2rem;">
-    <div style="max-width:1300px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
-      <p style="font-size:.72rem; color:rgba(255,255,255,.3); margin:0;">© 2026 BeServices · Datos: Eurowin</p>
+  <footer style="background:#001A41; border-top:1px solid rgba(255,255,255,.08); padding:1.5rem; margin-top:1.5rem;">
+    <div style="max-width:1400px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+      <p style="font-size:.72rem; color:rgba(255,255,255,.3); margin:0;">© 2026 BeServices · Datos: Eurowin Abril 2026</p>
       <a href="internal.html" style="font-size:.72rem; color:rgba(255,255,255,.4); text-decoration:none;">← Portal Interno</a>
     </div>
   </footer>
 
   <script>
-    // ── Datos reales Eurowin Abril 2026 ──────────────────────────
-    const MESES = ['Enero','Febrero','Marzo','Abril'];
-    const FACTURACION = [495110, 553952, 420896, 436899];
-    const CLIENTES = [251, 244, 241, 239];
+  // ── DATOS ──────────────────────────────────────────────────────
+  const MESES_LABELS = ['Enero','Febrero','Marzo','Abril'];
+  const FACTURACION  = [495110, 553952, 420896, 436899];
+  const CLIENTES_MES = [251, 244, 241, 239];
 
-    const TOP_CLIENTES = [
-      { n:'ArgentoCloud OÜ',                      v:883338 },
-      { n:'Assoc. Coordinadora Sinergia Social',   v:163786 },
-      { n:'ALEA IBERIA S.L.',                      v:79357  },
-      { n:'IMO Serveis Informàtics S.L.',           v:31563  },
-      { n:'LIFTISA, S.L.',                         v:27040  },
-      { n:'Meypar S.L.',                           v:22320  },
-      { n:'Heimdal Seguridad SL',                  v:22247  },
-      { n:'SUMA CAPITAL SGEIC S.A.',                v:21257  },
-      { n:'ALVAC, S.A.',                           v:19811  },
-      { n:'1D3A Analógico y Digital S.L.',          v:17327  },
-    ];
+  const TOP_CLIENTES = [
+    { n:'ArgentoCloud OÜ',                     v:883338 },
+    { n:'Assoc. Coordinadora Sinergia Social',  v:163786 },
+    { n:'ALEA IBERIA S.L.',                     v:79357  },
+    { n:'IMO Serveis Informàtics S.L.',          v:31563  },
+    { n:'LIFTISA, S.L.',                        v:27040  },
+    { n:'Meypar S.L.',                          v:22320  },
+    { n:'Heimdal Seguridad SL',                 v:22247  },
+    { n:'SUMA CAPITAL SGEIC S.A.',               v:21257  },
+    { n:'ALVAC, S.A.',                          v:19811  },
+    { n:'1D3A Analógico y Digital S.L.',         v:17327  },
+  ];
 
-    const SERVICIOS = [
-      { n:'Google Cloud',        v:735412, c:'#0075f2' },
-      { n:'CPD Virtual BE32',    v:78672,  c:'#50cabf' },
-      { n:'Omnissa Workspace',   v:38292,  c:'#8b5cf6' },
-      { n:'ESET Protect',        v:22540,  c:'#f59e0b' },
-      { n:'Otros',               v:1031941,c:'#e2e8f0' },
-    ];
+  const CAT_SERVICIOS = [
+    { n:'Google Cloud',       v:735412,  c:'#0075f2' },
+    { n:'CPD / BeCloud',      v:215000,  c:'#50cabf' },
+    { n:'Google Workspace',   v:205000,  c:'#10b981' },
+    { n:'Microsoft 365',      v:95000,   c:'#8b5cf6' },
+    { n:'Omnissa / ESET',     v:60832,   c:'#f59e0b' },
+    { n:'Otros',              v:395651,  c:'#e2e8f0' },
+  ];
 
-    // Chart defaults
-    Chart.defaults.font.family = 'Inter';
-    Chart.defaults.color = '#9CA3AF';
+  // Productos reales Eurowin — top 50 por YTD
+  const PRODUCTOS_RAW = [
+    { cod:'016F757699D632F548', def:'Google Cloud Platform · Octa Markets LTD',          cat:'gcp',       ene:150129, feb:150289, mar:138665, abr:153087, ytd:592171, uds:4   },
+    { cod:'01593036CB26713662', def:'Google Cloud Platform · LICATA',                     cat:'gcp',       ene:51815,  feb:48538,  mar:1971,   abr:74,     ytd:102400, uds:4   },
+    { cod:'3.52.200.0267',      def:'Cuota CPD Virtual BE32',                             cat:'cpd',       ene:19668,  feb:19668,  mar:19668,  abr:19668,  ytd:78672,  uds:64  },
+    { cod:'3.57.100.0115',      def:'Cuota Workspace Enterprise Std · ArgentoCloud',      cat:'workspace', ene:10676,  feb:10676,  mar:10676,  abr:10676,  ytd:42706,  uds:4   },
+    { cod:'3.57.100.0112',      def:'Cuota Workspace Enterprise Std · Argento',           cat:'workspace', ene:6006,   feb:13417,  mar:9711,   abr:9711,   ytd:38846,  uds:4   },
+    { cod:'WSD-AMMEP-12PT0-CS', def:'Omnissa Workspace One Desktop Essentials SaaS 1Y',   cat:'otros',     ene:0,      feb:38292,  mar:0,      abr:0,      ytd:38292,  uds:850 },
+    { cod:'3.52.200.0358',      def:'Cuota Citrix Cloud · Sinergia',                      cat:'cpd',       ene:7424,   feb:7424,   mar:7424,   abr:7424,   ytd:29696,  uds:4   },
+    { cod:'3.57.100.0196',      def:'Cuota Workspace Enterprise Std · Call Solutions',    cat:'workspace', ene:7334,   feb:7334,   mar:7334,   abr:7334,   ytd:29338,  uds:4   },
+    { cod:'0173B3A3C91735D4DA', def:'Google Cloud Platform · Alea Play Solutions',        cat:'gcp',       ene:8487,   feb:0,      mar:6377,   abr:8389,   ytd:23254,  uds:3   },
+    { cod:'ONREG4067099PAO',    def:'ESET Protect Complete · Renovación',                 cat:'otros',     ene:0,      feb:22540,  mar:0,      abr:0,      ytd:22540,  uds:700 },
+    { cod:'0187D28FEAC697713A', def:'Google Cloud Platform · Evoluziona Seguridad',       cat:'gcp',       ene:4613,   feb:4486,   mar:3972,   abr:4513,   ytd:17586,  uds:4   },
+    { cod:'3.57.100.0205',      def:'Cuota Workspace Enterprise Std · Argento (2)',       cat:'workspace', ene:3848,   feb:3827,   mar:3827,   abr:4083,   ytd:15586,  uds:4   },
+    { cod:'3.57.100.0060',      def:'Cuota Workspace Enterprise · Alea',                 cat:'workspace', ene:3480,   feb:3480,   mar:3747,   abr:3747,   ytd:14454,  uds:4   },
+    { cod:'01E6C4C957CE726A28', def:'Google Cloud Platform · 1D3A Analógico y Digital',  cat:'gcp',       ene:3937,   feb:3906,   mar:3624,   abr:2852,   ytd:14320,  uds:4   },
+    { cod:'3.52.200.0527',      def:'Cuota BeCloud · LIFTISA',                            cat:'cpd',       ene:3331,   feb:3331,   mar:3331,   abr:3331,   ytd:13327,  uds:4   },
+    { cod:'3.57.100.0237',      def:'Cuota Workspace Enterprise Std · ALVAC',             cat:'workspace', ene:3290,   feb:3290,   mar:3290,   abr:3290,   ytd:13163,  uds:4   },
+    { cod:'3.30.100.0195',      def:'Tareas técnicas exportación servidor FTP01',         cat:'otros',     ene:2275,   feb:6037,   mar:650,    abr:1300,   ytd:10262,  uds:7   },
+    { cod:'3.57.100.0413',      def:'Cuota Platform Advanced Looker · Alea',              cat:'workspace', ene:2435,   feb:2435,   mar:2435,   abr:2435,   ytd:9740,   uds:4   },
+    { cod:'3.52.200.0517',      def:'Cuota M365 Business Premium · Compensa',             cat:'m365',      ene:3162,   feb:3162,   mar:3162,   abr:0,      ytd:9486,   uds:3   },
+    { cod:'3.57.100.0316',      def:'Cuota Workspace Business Starter Flex · Gabias',     cat:'workspace', ene:2324,   feb:2324,   mar:2324,   abr:2324,   ytd:9298,   uds:4   },
+    { cod:'3.52.200.0247',      def:'Cuota BeCloud · Avalis',                             cat:'cpd',       ene:4168,   feb:4168,   mar:0,      abr:0,      ytd:8337,   uds:2   },
+    { cod:'3.57.100.0017',      def:'Cuota Workspace Business Std · YouToo Project',      cat:'workspace', ene:1944,   feb:1944,   mar:1944,   abr:1944,   ytd:7776,   uds:4   },
+    { cod:'3.57.100.0389',      def:'Cuota Workspace Enterprise Std · PW Commit',         cat:'workspace', ene:1935,   feb:1935,   mar:1935,   abr:1935,   ytd:7743,   uds:4   },
+    { cod:'3.52.200.0494',      def:'Cuota CPD Virtual 150 Lic RDS',                     cat:'cpd',       ene:1875,   feb:1875,   mar:1875,   abr:1875,   ytd:7500,   uds:4   },
+    { cod:'3.52.200.0906',      def:'Cuota M365 Copilot Y/Y · SUMA',                     cat:'m365',      ene:0,      feb:0,      mar:7418,   abr:18,     ytd:7436,   uds:2   },
+    { cod:'3.57.100.0340',      def:'Cuota Workspace Frontline Starter · TDN',            cat:'workspace', ene:1833,   feb:1833,   mar:1833,   abr:1847,   ytd:7346,   uds:4   },
+    { cod:'3.57.100.0655',      def:'Cuota Viewer User Looker PBL Hosted',               cat:'workspace', ene:1788,   feb:1788,   mar:1788,   abr:1788,   ytd:7152,   uds:4   },
+    { cod:'3.52.200.0266',      def:'Cuota CPD Virtual BE16',                             cat:'cpd',       ene:1783,   feb:1783,   mar:1783,   abr:1783,   ytd:7132,   uds:12  },
+    { cod:'3.52.200.0724',      def:'Cuota BeCloud · Gestoría Albert',                   cat:'cpd',       ene:1747,   feb:1747,   mar:1747,   abr:1747,   ytd:6990,   uds:4   },
+    { cod:'3.52.201.0322',      def:'Cuota BeCloud Peak · Serclet',                      cat:'cpd',       ene:1665,   feb:1665,   mar:1665,   abr:1665,   ytd:6660,   uds:4   },
+    { cod:'3.57.100.0067',      def:'Cuota Soporte Google Anual Ticketing',               cat:'workspace', ene:959,    feb:2300,   mar:1270,   abr:2100,   ytd:6629,   uds:11  },
+    { cod:'3.57.100.0160',      def:'Cuota Workspace Business Std · Blue Banana',         cat:'workspace', ene:1648,   feb:1648,   mar:1648,   abr:1648,   ytd:6593,   uds:4   },
+    { cod:'01961DCB37251B808D', def:'Google Cloud Platform · Soluciones Tecno Profesionales', cat:'gcp', ene:1238,   feb:1265,   mar:1713,   abr:2032,   ytd:6250,   uds:4   },
+    { cod:'3.52.200.0459',      def:'Cuota BeCloud · SILMAR',                             cat:'cpd',       ene:1514,   feb:1514,   mar:1514,   abr:1514,   ytd:6056,   uds:4   },
+    { cod:'3.52.200.0787',      def:'Cuota BeCloud · VIPER',                              cat:'cpd',       ene:1470,   feb:1470,   mar:1470,   abr:1470,   ytd:5880,   uds:4   },
+    { cod:'3.52.200.0510',      def:'Cuota M365 Business Premium · LIFTISA',              cat:'m365',      ene:1174,   feb:1174,   mar:1604,   abr:1639,   ytd:5592,   uds:4   },
+    { cod:'3.57.100.0444',      def:'Cuota Workspace Business Std Flex · nSing.tv',       cat:'workspace', ene:1344,   feb:1344,   mar:1344,   abr:1344,   ytd:5378,   uds:4   },
+    { cod:'3.57.100.0337',      def:'Cuota Workspace Business Std · MABESU',              cat:'workspace', ene:2492,   feb:0,      mar:0,      abr:2885,   ytd:5377,   uds:2   },
+    { cod:'3.52.200.0119',      def:'Cuota BeCloud · Kriter-Codina',                      cat:'cpd',       ene:1329,   feb:1329,   mar:1329,   abr:1329,   ytd:5318,   uds:4   },
+    { cod:'3.52.200.0493',      def:'Cuota CPD Virtual 50 Win Server SPLA',              cat:'cpd',       ene:1265,   feb:1265,   mar:1265,   abr:1265,   ytd:5060,   uds:4   },
+    { cod:'3.52.200.0653',      def:'Cuota M365 Apps for Business · Argento',             cat:'m365',      ene:1111,   feb:1142,   mar:1142,   abr:1620,   ytd:5015,   uds:5   },
+    { cod:'3.52.200.0166',      def:'Cuota BeCloud · BTS & Asociados',                    cat:'cpd',       ene:1184,   feb:1184,   mar:1184,   abr:1184,   ytd:4738,   uds:4   },
+    { cod:'3.52.200.0250',      def:'Cuota BeCloud · Rectificadores Guasch',              cat:'cpd',       ene:1106,   feb:1106,   mar:1106,   abr:1106,   ytd:4426,   uds:4   },
+    { cod:'3.57.100.0438',      def:'Cuota Workspace Business Starter Flex · Hoy Voy',   cat:'workspace', ene:1092,   feb:1092,   mar:1092,   abr:1092,   ytd:4370,   uds:4   },
+    { cod:'3.52.201.0027',      def:'Cuota BeCloud · LegalKernBCN',                       cat:'cpd',       ene:1055,   feb:1055,   mar:1055,   abr:1055,   ytd:4223,   uds:4   },
+    { cod:'3.52.200.0319',      def:'Cuota CPD Virtual Ampliación 1024GB',                cat:'cpd',       ene:1052,   feb:1052,   mar:1052,   abr:1052,   ytd:4209,   uds:20  },
+    { cod:'3.52.201.0197',      def:'Cuota BeCloud IMO · PBA',                            cat:'cpd',       ene:1037,   feb:1037,   mar:1037,   abr:1037,   ytd:4150,   uds:4   },
+    { cod:'3.52.200.1887',      def:'Penalización Permanencia Citrix Cloud',              cat:'cpd',       ene:0,      feb:750,    mar:0,      abr:5101,   ytd:5851,   uds:423 },
+    { cod:'017AA661BDC11CFA0C', def:'Google Cloud Platform · Parkia',                     cat:'gcp',       ene:1477,   feb:1446,   mar:1316,   abr:1466,   ytd:5707,   uds:4   },
+    { cod:'3.57.100.0207',      def:'Google Cloud Platform · Alea Play Solutions (2)',    cat:'gcp',       ene:0,      feb:6587,   mar:0,      abr:0,      ytd:6587,   uds:1   },
+  ];
 
-    // ── Barras mensuales ─────────────────────────────────────────
-    new Chart(document.getElementById('chartMensual'), {
-      type: 'bar',
-      data: {
-        labels: MESES,
-        datasets: [{
-          data: FACTURACION,
-          backgroundColor: FACTURACION.map((_,i) => i===3 ? '#0075f2' : 'rgba(0,117,242,.12)'),
-          borderColor:      FACTURACION.map((_,i) => i===3 ? '#0075f2' : 'rgba(0,117,242,.25)'),
-          borderWidth: 2, borderRadius: 6, borderSkipped: false,
-        }]
+  const CAT_COLORS = { gcp:'#0075f2', workspace:'#10b981', cpd:'#50cabf', m365:'#8b5cf6', otros:'#f59e0b' };
+  const CAT_LABELS = { gcp:'Google Cloud', workspace:'G. Workspace', cpd:'CPD/BeCloud', m365:'Microsoft 365', otros:'Otros' };
+
+  // Estado tabla
+  let currentCat = 'all';
+  let sortCol = 'ytd';
+  let sortDir = 'desc';
+
+  // ── KPI Charts ────────────────────────────────────────────────
+  Chart.defaults.font.family = 'Inter';
+  Chart.defaults.color = '#9CA3AF';
+
+  new Chart(document.getElementById('chartMensual'), {
+    type:'bar',
+    data:{ labels:MESES_LABELS, datasets:[{ data:FACTURACION, backgroundColor:FACTURACION.map((_,i)=>i===3?'#0075f2':'rgba(0,117,242,.12)'), borderColor:FACTURACION.map((_,i)=>i===3?'#0075f2':'rgba(0,117,242,.25)'), borderWidth:2, borderRadius:6, borderSkipped:false }] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{callbacks:{label:c=>' '+c.parsed.y.toLocaleString('es-ES')+' €'}} }, scales:{ x:{grid:{display:false},ticks:{font:{size:11}}}, y:{grid:{color:'rgba(0,0,0,.04)'},border:{display:false},ticks:{font:{size:10},callback:v=>(v/1000).toFixed(0)+'k €'}} } }
+  });
+
+  new Chart(document.getElementById('chartClientes'), {
+    type:'line',
+    data:{ labels:MESES_LABELS, datasets:[{ data:CLIENTES_MES, borderColor:'#50cabf', backgroundColor:'rgba(80,202,191,.07)', borderWidth:2.5, pointBackgroundColor:'#50cabf', pointRadius:5, tension:.4, fill:true }] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{callbacks:{label:c=>' '+c.parsed.y+' clientes'}} }, scales:{ x:{grid:{display:false},ticks:{font:{size:11}}}, y:{min:230,max:260,grid:{color:'rgba(0,0,0,.04)'},border:{display:false},ticks:{font:{size:10}}} } }
+  });
+
+  // Top clientes
+  const maxC = TOP_CLIENTES[0].v;
+  TOP_CLIENTES.forEach((c,i)=>{
+    const pct=(c.v/maxC*100).toFixed(0);
+    const fmtV=c.v>=100000?(c.v/1000).toFixed(0)+'k':c.v.toLocaleString('es-ES');
+    document.getElementById('top-clientes').insertAdjacentHTML('beforeend',`
+      <div><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.25rem;">
+        <span style="font-size:.75rem;color:#001A41;display:flex;gap:.4rem;align-items:center;"><b style="color:#9CA3AF;font-weight:600;min-width:16px;">${i+1}</b>${c.n}</span>
+        <span style="font-size:.75rem;font-weight:700;color:#001A41;margin-left:.5rem;white-space:nowrap;">${fmtV} €</span>
+      </div><div style="background:#f0f4f8;border-radius:999px;height:5px;"><div class="bar-fill" style="width:${pct}%;"></div></div></div>`);
+  });
+
+  // Donut categorías
+  new Chart(document.getElementById('chartProductos'), {
+    type:'doughnut',
+    data:{ labels:CAT_SERVICIOS.map(s=>s.n), datasets:[{ data:CAT_SERVICIOS.map(s=>s.v), backgroundColor:CAT_SERVICIOS.map(s=>s.c), borderWidth:0, hoverOffset:4 }] },
+    options:{ responsive:true, maintainAspectRatio:false, cutout:'65%', plugins:{ legend:{display:false}, tooltip:{callbacks:{label:c=>' '+c.parsed.toLocaleString('es-ES')+' €'}} } }
+  });
+  CAT_SERVICIOS.forEach(s=>{ document.getElementById('legend-servicios').insertAdjacentHTML('beforeend',`
+    <div style="display:flex;justify-content:space-between;align-items:center;font-size:.72rem;">
+      <span style="display:flex;align-items:center;gap:.4rem;color:#9CA3AF;"><span style="width:8px;height:8px;border-radius:50%;background:${s.c};flex-shrink:0;"></span>${s.n}</span>
+      <span style="font-weight:700;color:#001A41;">${(s.v/1000).toFixed(0)}k €</span>
+    </div>`); });
+
+  // ── Gráfica comparativa productos ────────────────────────────
+  let chartProdCompare = null;
+
+  function buildCompareChart(data) {
+    const top10 = [...data].sort((a,b)=>b.ytd-a.ytd).slice(0,10);
+    const labels = top10.map(p => {
+      const s = p.def.replace(/·.*$/,'').trim();
+      return s.length > 28 ? s.slice(0,26)+'…' : s;
+    });
+    if (chartProdCompare) chartProdCompare.destroy();
+    chartProdCompare = new Chart(document.getElementById('chartProdCompare'), {
+      type:'bar',
+      data:{
+        labels,
+        datasets:[
+          { label:'Enero',   data:top10.map(p=>p.ene), backgroundColor:'rgba(0,117,242,.55)',  borderRadius:3 },
+          { label:'Febrero', data:top10.map(p=>p.feb), backgroundColor:'rgba(0,117,242,.35)',  borderRadius:3 },
+          { label:'Marzo',   data:top10.map(p=>p.mar), backgroundColor:'rgba(80,202,191,.55)', borderRadius:3 },
+          { label:'Abril',   data:top10.map(p=>p.abr), backgroundColor:'rgba(80,202,191,.9)',  borderRadius:3 },
+        ]
       },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend:{display:false}, tooltip:{ callbacks:{ label: c => ' '+c.parsed.y.toLocaleString('es-ES')+' €' } } },
-        scales: {
-          x: { grid:{display:false}, ticks:{font:{size:11}} },
-          y: { grid:{color:'rgba(0,0,0,.04)'}, border:{display:false},
-               ticks:{ font:{size:10}, callback: v => (v/1000).toFixed(0)+'k €' } }
+      options:{
+        responsive:true, maintainAspectRatio:false,
+        plugins:{ legend:{ position:'top', labels:{ boxWidth:10, font:{size:11} } }, tooltip:{ callbacks:{ label:c=>' '+c.dataset.label+': '+c.parsed.y.toLocaleString('es-ES')+' €' } } },
+        scales:{
+          x:{ grid:{display:false}, ticks:{font:{size:10}} },
+          y:{ grid:{color:'rgba(0,0,0,.04)'}, border:{display:false}, ticks:{font:{size:10}, callback:v=>(v/1000).toFixed(0)+'k €'} }
         }
       }
     });
+  }
 
-    // ── Línea clientes ───────────────────────────────────────────
-    new Chart(document.getElementById('chartClientes'), {
-      type: 'line',
-      data: {
-        labels: MESES,
-        datasets: [{
-          data: CLIENTES,
-          borderColor:'#50cabf', backgroundColor:'rgba(80,202,191,.07)',
-          borderWidth:2.5, pointBackgroundColor:'#50cabf',
-          pointRadius:5, pointHoverRadius:7,
-          tension:.4, fill:true,
-        }]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend:{display:false}, tooltip:{ callbacks:{ label: c => ' '+c.parsed.y+' clientes' } } },
-        scales: {
-          x: { grid:{display:false}, ticks:{font:{size:11}} },
-          y: { min:230, max:260, grid:{color:'rgba(0,0,0,.04)'}, border:{display:false}, ticks:{font:{size:10}} }
-        }
-      }
-    });
+  // ── Tabla productos ───────────────────────────────────────────
+  function fmt(v) {
+    if (v === 0) return '<span class="num-muted">—</span>';
+    return v >= 1000 ? (v/1000).toFixed(1)+'k' : v.toLocaleString('es-ES');
+  }
+  function fmtDelta(abr, mar) {
+    if (mar === 0 && abr === 0) return '<span class="num-muted">—</span>';
+    if (mar === 0) return '<span class="num-green">Nuevo</span>';
+    const pct = ((abr - mar) / mar * 100).toFixed(0);
+    const cls = pct >= 0 ? 'num-green' : 'num-red';
+    return `<span class="${cls}">${pct >= 0 ? '+' : ''}${pct}%</span>`;
+  }
+  function miniBar(abr, maxV) {
+    const pct = maxV > 0 ? Math.round(abr / maxV * 100) : 0;
+    return `<div style="background:#f0f4f8;border-radius:999px;height:5px;width:70px;display:inline-block;vertical-align:middle;">
+      <div style="height:5px;border-radius:999px;background:#0075f2;width:${pct}%;"></div></div>`;
+  }
 
-    // ── Top clientes barras ──────────────────────────────────────
-    const max = TOP_CLIENTES[0].v;
-    TOP_CLIENTES.forEach((c,i) => {
-      const pct = (c.v/max*100).toFixed(0);
-      const fmtV = c.v >= 100000 ? (c.v/1000).toFixed(0)+'k' : c.v.toLocaleString('es-ES');
-      document.getElementById('top-clientes').insertAdjacentHTML('beforeend', `
-        <div>
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.25rem;">
-            <span style="font-size:.75rem;color:#001A41;display:flex;gap:.4rem;align-items:center;">
-              <b style="color:#9CA3AF;font-weight:600;min-width:16px;">${i+1}</b>
-              ${c.n}
-            </span>
-            <span style="font-size:.75rem;font-weight:700;color:#001A41;margin-left:.5rem;white-space:nowrap;">${fmtV} €</span>
-          </div>
-          <div style="background:#f0f4f8;border-radius:999px;height:5px;">
-            <div class="bar-fill" style="width:${pct}%;"></div>
-          </div>
-        </div>
-      `);
-    });
+  function getFiltered() {
+    const q = (document.getElementById('prod-search').value || '').toLowerCase();
+    return PRODUCTOS_RAW.filter(p =>
+      (currentCat === 'all' || p.cat === currentCat) &&
+      (!q || p.def.toLowerCase().includes(q) || p.cod.toLowerCase().includes(q))
+    );
+  }
 
-    // ── Donut servicios ──────────────────────────────────────────
-    new Chart(document.getElementById('chartProductos'), {
-      type: 'doughnut',
-      data: {
-        labels: SERVICIOS.map(s=>s.n),
-        datasets:[{ data:SERVICIOS.map(s=>s.v), backgroundColor:SERVICIOS.map(s=>s.c), borderWidth:0, hoverOffset:4 }]
-      },
-      options: {
-        responsive:true, maintainAspectRatio:false, cutout:'65%',
-        plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label: c => ' '+c.parsed.toLocaleString('es-ES')+' €' } } }
-      }
-    });
+  function renderTable() {
+    const data = getFiltered();
+    const sorted = [...data].sort((a,b) => sortDir === 'desc' ? b[sortCol] - a[sortCol] : a[sortCol] - b[sortCol]);
+    const maxAbr = Math.max(...sorted.map(p=>p.abr));
 
-    SERVICIOS.forEach(s => {
-      document.getElementById('legend-servicios').insertAdjacentHTML('beforeend', `
-        <div style="display:flex;justify-content:space-between;align-items:center;font-size:.72rem;">
-          <span style="display:flex;align-items:center;gap:.4rem;color:#9CA3AF;">
-            <span style="width:8px;height:8px;border-radius:50%;background:${s.c};flex-shrink:0;"></span>
-            ${s.n}
-          </span>
-          <span style="font-weight:700;color:#001A41;">${(s.v/1000).toFixed(0)}k €</span>
-        </div>
-      `);
+    let html = '';
+    sorted.forEach((p,i) => {
+      const pill = `<span class="cat-pill" style="background:${CAT_COLORS[p.cat]}20;color:${CAT_COLORS[p.cat]};">${CAT_LABELS[p.cat]}</span>`;
+      html += `<tr>
+        <td>${i+1}</td>
+        <td title="${p.cod}">${p.def}</td>
+        <td>${pill}</td>
+        <td>${fmt(p.ene)} €</td>
+        <td>${fmt(p.feb)} €</td>
+        <td>${fmt(p.mar)} €</td>
+        <td><b>${fmt(p.abr)} €</b></td>
+        <td><b>${fmt(p.ytd)} €</b></td>
+        <td>${fmtDelta(p.abr, p.mar)}</td>
+        <td>${miniBar(p.abr, maxAbr)}</td>
+      </tr>`;
     });
+    document.getElementById('prod-tbody').innerHTML = html;
+    document.getElementById('prod-count').textContent = `Mostrando ${sorted.length} de ${PRODUCTOS_RAW.length} productos`;
+
+    buildCompareChart(data);
+  }
+
+  function filterCat(btn) {
+    currentCat = btn.dataset.cat;
+    document.querySelectorAll('#cat-filters .tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderTable();
+  }
+
+  function sortTable(col) {
+    if (sortCol === col) { sortDir = sortDir === 'desc' ? 'asc' : 'desc'; }
+    else { sortCol = col; sortDir = 'desc'; }
+    document.querySelectorAll('#prod-table th').forEach(th => th.classList.remove('sort-asc','sort-desc'));
+    const th = document.querySelector(`th[onclick="sortTable('${col}')"]`);
+    if (th) th.classList.add(sortDir === 'desc' ? 'sort-desc' : 'sort-asc');
+    renderTable();
+  }
+
+  // Init
+  renderTable();
   </script>
 </body>
 </html>
