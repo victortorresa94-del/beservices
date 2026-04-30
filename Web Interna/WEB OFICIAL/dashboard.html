@@ -769,12 +769,24 @@
   new Chart(document.getElementById('chartProductos'), {
     type:'doughnut',
     data:{ labels:CAT_SERVICIOS.map(s=>s.n), datasets:[{ data:CAT_SERVICIOS.map(s=>s.v), backgroundColor:CAT_SERVICIOS.map(s=>s.c), borderWidth:0, hoverOffset:4 }] },
-    options:{ responsive:true, maintainAspectRatio:false, cutout:'65%', plugins:{ legend:{display:false}, tooltip:{callbacks:{label:c=>' '+c.parsed.toLocaleString('es-ES')+' €'}} } }
+    options:{ responsive:true, maintainAspectRatio:false, cutout:'65%', plugins:{ legend:{display:false},
+      tooltip:{ callbacks:{
+        label: c => {
+          const total = c.dataset.data.reduce((a,b)=>a+b,0);
+          const pct = (c.parsed/total*100).toFixed(1);
+          return '  ' + c.parsed.toLocaleString('es-ES') + ' € · ' + pct + '%';
+        }
+      }}
+    }}
   });
-  CAT_SERVICIOS.forEach(s=>{ document.getElementById('legend-servicios').insertAdjacentHTML('beforeend',`
+  const catTotal = CAT_SERVICIOS.reduce((a,s)=>a+s.v,0);
+  CAT_SERVICIOS.forEach(s=>{ const pct=(s.v/catTotal*100).toFixed(1); document.getElementById('legend-servicios').insertAdjacentHTML('beforeend',`
     <div style="display:flex;justify-content:space-between;align-items:center;font-size:.72rem;">
       <span style="display:flex;align-items:center;gap:.4rem;color:#9CA3AF;"><span style="width:8px;height:8px;border-radius:50%;background:${s.c};flex-shrink:0;"></span>${s.n}</span>
-      <span style="font-weight:700;color:#001A41;">${(s.v/1000).toFixed(0)}k €</span>
+      <span style="display:flex;gap:.5rem;align-items:center;">
+        <span style="color:#9CA3AF;font-size:.68rem;">${pct}%</span>
+        <span style="font-weight:700;color:#001A41;">${(s.v/1000).toFixed(0)}k €</span>
+      </span>
     </div>`); });
 
   // ── Gráfica comparativa productos ────────────────────────────
