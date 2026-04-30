@@ -69,6 +69,13 @@
     .crossell-ring { display:flex; align-items:center; justify-content:center; flex-direction:column; width:90px; height:90px; border-radius:50%; border:5px solid #0075f2; background:#eff6ff; flex-shrink:0; }
     @media(max-width:900px){ .alert-row{ grid-template-columns:1fr; } .insight-2col{ grid-template-columns:1fr; } }
 
+    /* Collapsible sections */
+    .section-body { max-height:4000px; overflow:hidden; opacity:1; transition:max-height .35s cubic-bezier(.4,0,.2,1), opacity .2s; }
+    .section-body.collapsed { max-height:0; opacity:0; }
+    .toggle-chev { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:6px; background:#f0f4f8; border:none; cursor:pointer; color:#9CA3AF; transition:background .15s, transform .2s; flex-shrink:0; }
+    .toggle-chev:hover { background:#e2e8f0; color:#001A41; }
+    .toggle-chev.collapsed { transform:rotate(-90deg); }
+
     /* Plan Explorer */
     .plan-pill { display:inline-flex; flex-direction:column; align-items:center; padding:.6rem 1rem; border-radius:.75rem; border:1.5px solid #e2e8f0; cursor:pointer; background:white; transition:all .15s; min-width:120px; font-family:Inter,sans-serif; }
     .plan-pill:hover { border-color:#0075f2; background:#eff6ff; }
@@ -374,9 +381,14 @@
 
       <!-- Cabecera panel -->
       <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1.25rem;">
-        <div>
-          <h2 style="font-size:1.05rem; font-weight:800;">Panel de Productos</h2>
-          <p style="font-size:.72rem; color:#9CA3AF; margin-top:.2rem;">Top 50 líneas facturadas · Comparativa Ene–Abr 2026 · 825 productos distintos en total</p>
+        <div style="display:flex;align-items:center;gap:.6rem;cursor:pointer;" onclick="toggleSection('prod-body','prod-chev')">
+          <div>
+            <h2 style="font-size:1.05rem; font-weight:800; display:flex; align-items:center; gap:.5rem;">
+              Panel de Productos
+              <button class="toggle-chev" id="prod-chev" tabindex="-1"><i class="ph ph-caret-down" style="font-size:.8rem;"></i></button>
+            </h2>
+            <p style="font-size:.72rem; color:#9CA3AF; margin-top:.2rem;">Top 50 líneas facturadas · Comparativa Ene–Abr 2026 · 825 productos distintos en total</p>
+          </div>
         </div>
         <!-- Filtros de categoría -->
         <div style="display:flex; gap:.35rem; flex-wrap:wrap;" id="cat-filters">
@@ -389,6 +401,7 @@
         </div>
       </div>
 
+      <div id="prod-body" class="section-body">
       <!-- Gráfica comparativa top 10 productos (barras agrupadas por mes) -->
       <div style="margin-bottom:1.5rem;">
         <p style="font-size:.75rem; font-weight:600; color:#9CA3AF; text-transform:uppercase; letter-spacing:.05em; margin-bottom:.6rem;">Comparativa mensual — Top 10 productos por facturación YTD</p>
@@ -424,6 +437,7 @@
         </table>
       </div>
       <p style="font-size:.7rem; color:#9CA3AF; margin-top:.6rem; text-align:right;" id="prod-count"></p>
+      </div><!-- /prod-body -->
     </div>
 
     <!-- ══════════════════════════════════════════════════════════ -->
@@ -432,9 +446,14 @@
     <div class="card" style="padding:1.5rem; margin-top:1.25rem;">
 
       <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin-bottom:1.25rem;">
-        <div>
-          <h2 style="font-size:1.05rem;font-weight:800;">Explorador de Clientes por Producto</h2>
-          <p style="font-size:.72rem;color:#9CA3AF;margin-top:.2rem;">Selecciona el área y el producto para ver qué clientes lo tienen contratado · Datos Abril 2026</p>
+        <div style="display:flex;align-items:center;gap:.6rem;cursor:pointer;" onclick="toggleSection('explorer-body','explorer-chev')">
+          <div>
+            <h2 style="font-size:1.05rem;font-weight:800;display:flex;align-items:center;gap:.5rem;">
+              Explorador de Clientes por Producto
+              <button class="toggle-chev" id="explorer-chev" tabindex="-1"><i class="ph ph-caret-down" style="font-size:.8rem;"></i></button>
+            </h2>
+            <p style="font-size:.72rem;color:#9CA3AF;margin-top:.2rem;">Selecciona el área y el producto para ver qué clientes lo tienen contratado · Datos Abril 2026</p>
+          </div>
         </div>
         <div style="position:relative;">
           <i class="ph ph-magnifying-glass" style="position:absolute;left:.65rem;top:50%;transform:translateY(-50%);color:#9CA3AF;font-size:.85rem;"></i>
@@ -443,6 +462,7 @@
         </div>
       </div>
 
+      <div id="explorer-body" class="section-body">
       <!-- Macro tabs -->
       <div id="macro-tabs" style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid #f0f4f8;"></div>
 
@@ -467,6 +487,7 @@
         </table>
       </div>
       <p id="explorer-count" style="font-size:.7rem;color:#9CA3AF;margin-top:.5rem;text-align:right;"></p>
+      </div><!-- /explorer-body -->
     </div>
 
     <!-- ══════════════════════════════════════════════════════════ -->
@@ -1337,6 +1358,15 @@
     });
     document.getElementById('explorer-tbody').innerHTML = html;
     document.getElementById('explorer-count').textContent = `Mostrando ${sorted.length} de ${plan.clientes.length} clientes · Total: ${total.toLocaleString('es-ES')} €/mes`;
+  }
+
+  // ── TOGGLE COLLAPSIBLE SECTIONS ──────────────────────────────
+  function toggleSection(bodyId, chevId) {
+    const body = document.getElementById(bodyId);
+    const chev = document.getElementById(chevId);
+    const willCollapse = !body.classList.contains('collapsed');
+    body.classList.toggle('collapsed', willCollapse);
+    chev.classList.toggle('collapsed', willCollapse);
   }
 
   buildMacroTabs();
