@@ -173,6 +173,71 @@
     </div>
 
     <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- BANNER CLOUD                                              -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div class="card" style="padding:1.5rem; margin-bottom:1.25rem; background:linear-gradient(135deg,#0f1c3f 0%,#0d2a52 60%,#0a3060 100%); border:none;">
+
+      <!-- Header -->
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:1.1rem;">☁️</div>
+          <div>
+            <h2 style="font-size:1rem;font-weight:800;color:white;margin:0;">Cloud · Google Cloud Platform + Azure</h2>
+            <p style="font-size:.7rem;color:rgba(255,255,255,.45);margin-top:.15rem;">Consumo de cloud facturado · Abril 2026</p>
+          </div>
+        </div>
+        <!-- KPIs totales -->
+        <div style="display:flex;gap:2rem;flex-wrap:wrap;">
+          <div style="text-align:right;">
+            <div style="font-size:.62rem;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;">Total Cloud</div>
+            <div style="font-size:1.5rem;font-weight:800;color:white;line-height:1.1;" id="cloud-total-kpi"></div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:.62rem;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;">Clientes</div>
+            <div style="font-size:1.5rem;font-weight:800;color:white;line-height:1.1;" id="cloud-cli-kpi"></div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:.62rem;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;">% Revenue</div>
+            <div style="font-size:1.5rem;font-weight:800;color:white;line-height:1.1;" id="cloud-pct-kpi"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dos columnas: GCP | Azure -->
+      <div style="display:grid;grid-template-columns:1fr 320px;gap:1.25rem;" id="cloud-cols">
+
+        <!-- GCP -->
+        <div style="background:rgba(255,255,255,.06);border-radius:1rem;padding:1.1rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+            <div style="display:flex;align-items:center;gap:.5rem;">
+              <span style="font-size:.95rem;">🔴</span>
+              <span style="font-size:.8rem;font-weight:700;color:white;">Google Cloud Platform</span>
+            </div>
+            <span style="font-size:.72rem;font-weight:700;color:#fca5a5;" id="gcp-total-label"></span>
+          </div>
+          <div id="gcp-client-list"></div>
+        </div>
+
+        <!-- Azure -->
+        <div style="background:rgba(255,255,255,.06);border-radius:1rem;padding:1.1rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+            <div style="display:flex;align-items:center;gap:.5rem;">
+              <span style="font-size:.95rem;">🟦</span>
+              <span style="font-size:.8rem;font-weight:700;color:white;">Microsoft Azure</span>
+            </div>
+            <span style="font-size:.72rem;font-weight:700;color:#93c5fd;" id="azure-total-label"></span>
+          </div>
+          <div id="azure-client-list"></div>
+        </div>
+
+      </div>
+
+      <p style="font-size:.63rem;color:rgba(255,255,255,.2);margin-top:1rem;margin-bottom:0;">
+        * GCP: importes de consumo pass-through según artículo Eurowin. Clientes facturados confirmados pendiente verificación Eurowin.
+      </p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
     <!-- FILA: CHURN · ALTAS · CONCENTRACIÓN                      -->
     <!-- ══════════════════════════════════════════════════════════ -->
     <div class="alert-row">
@@ -1394,6 +1459,77 @@
     document.getElementById('explorer-tbody').innerHTML = html;
     document.getElementById('explorer-count').textContent = `Mostrando ${sorted.length} de ${plan.clientes.length} clientes · Total: ${total.toLocaleString('es-ES')} €/mes`;
   }
+
+  // ── BANNER CLOUD ──────────────────────────────────────────────
+  const GCP_CLIENTES = [
+    {n:'Octa Markets LTD',                  v:153087, nota:'vía ArgentoCloud OÜ'},
+    {n:'Alea Play Solutions',               v:8389,  nota:'vía ALEA IBERIA S.L.'},
+    {n:'Evoluziona Seguridad',              v:4513,  nota:''},
+    {n:'1D3A Analógico y Digital SL',       v:2852,  nota:''},
+    {n:'Casals Ventilación Air Industrial', v:882,   nota:''},
+    {n:'Solter Soldadura SL',               v:402,   nota:''},
+    {n:'Ram Narayan SL',                    v:389,   nota:''},
+    {n:'Estiluz',                           v:330,   nota:''},
+    {n:'Taller Segadell SRL',               v:292,   nota:''},
+    {n:'LICATA',                            v:74,    nota:''},
+  ];
+
+  const AZURE_CLIENTES = [
+    {n:'Meypar S.L',                 v:638,  nota:'Azure CSP'},
+    {n:'Parsec Comunicaciones S.L',  v:605,  nota:'Azure CSP'},
+    {n:'Sole S.A',                   v:296,  nota:'Azure CSP'},
+    {n:'STEGOTRONIC S.A.',           v:262,  nota:'Azure AD P1 / Entra ID'},
+  ];
+
+  (function renderCloudBanner() {
+    const gcpTotal   = GCP_CLIENTES.reduce((s,c)=>s+c.v,0);
+    const azureTotal = AZURE_CLIENTES.reduce((s,c)=>s+c.v,0);
+    const cloudTotal = gcpTotal + azureTotal;
+    const cloudCli   = GCP_CLIENTES.length + AZURE_CLIENTES.length;
+    const abr        = FACTURACION[3]; // Abril
+
+    document.getElementById('cloud-total-kpi').textContent = (cloudTotal/1000).toFixed(0)+'k €';
+    document.getElementById('cloud-cli-kpi').textContent   = cloudCli;
+    document.getElementById('cloud-pct-kpi').textContent   = (cloudTotal/abr*100).toFixed(1)+'%';
+    document.getElementById('gcp-total-label').textContent = gcpTotal.toLocaleString('es-ES')+' €/mes';
+    document.getElementById('azure-total-label').textContent = azureTotal.toLocaleString('es-ES')+' €/mes';
+
+    // GCP list
+    const gcpMax = GCP_CLIENTES[0].v;
+    document.getElementById('gcp-client-list').innerHTML = GCP_CLIENTES.map((c,i)=>{
+      const pct = Math.round(c.v/gcpMax*100);
+      return `<div style="margin-bottom:.65rem;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.25rem;">
+          <div>
+            <span style="font-size:.7rem;color:rgba(255,255,255,.35);margin-right:.35rem;">${i+1}</span>
+            <span style="font-size:.75rem;font-weight:600;color:rgba(255,255,255,.85);">${c.n}</span>
+            ${c.nota?`<span style="font-size:.62rem;color:rgba(255,255,255,.3);margin-left:.3rem;">${c.nota}</span>`:''}
+          </div>
+          <span style="font-size:.75rem;font-weight:700;color:#fca5a5;white-space:nowrap;margin-left:.5rem;">${c.v.toLocaleString('es-ES')} €</span>
+        </div>
+        <div style="height:3px;background:rgba(255,255,255,.08);border-radius:999px;">
+          <div style="height:3px;background:#ef4444;border-radius:999px;width:${pct}%;"></div></div>
+      </div>`;
+    }).join('');
+
+    // Azure list
+    const azureMax = AZURE_CLIENTES[0].v;
+    document.getElementById('azure-client-list').innerHTML = AZURE_CLIENTES.map((c,i)=>{
+      const pct = Math.round(c.v/azureMax*100);
+      return `<div style="margin-bottom:.65rem;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.25rem;">
+          <div>
+            <span style="font-size:.7rem;color:rgba(255,255,255,.35);margin-right:.35rem;">${i+1}</span>
+            <span style="font-size:.75rem;font-weight:600;color:rgba(255,255,255,.85);">${c.n}</span>
+            ${c.nota?`<span style="font-size:.62rem;color:rgba(255,255,255,.3);margin-left:.3rem;">${c.nota}</span>`:''}
+          </div>
+          <span style="font-size:.75rem;font-weight:700;color:#93c5fd;white-space:nowrap;margin-left:.5rem;">${c.v.toLocaleString('es-ES')} €</span>
+        </div>
+        <div style="height:3px;background:rgba(255,255,255,.08);border-radius:999px;">
+          <div style="height:3px;background:#3b82f6;border-radius:999px;width:${pct}%;"></div></div>
+      </div>`;
+    }).join('');
+  })();
 
   // ── TOGGLE COLLAPSIBLE SECTIONS ──────────────────────────────
   function toggleSection(bodyId, chevId) {
