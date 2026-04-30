@@ -385,7 +385,7 @@
           <div>
             <h2 style="font-size:1.05rem; font-weight:800; display:flex; align-items:center; gap:.5rem;">
               Panel de Productos
-              <button class="toggle-chev" id="prod-chev" tabindex="-1"><i class="ph ph-caret-down" style="font-size:.8rem;"></i></button>
+              <button class="toggle-chev collapsed" id="prod-chev" tabindex="-1"><i class="ph ph-caret-down" style="font-size:.8rem;"></i></button>
             </h2>
             <p style="font-size:.72rem; color:#9CA3AF; margin-top:.2rem;">Top 50 líneas facturadas · Comparativa Ene–Abr 2026 · 825 productos distintos en total</p>
           </div>
@@ -401,7 +401,7 @@
         </div>
       </div>
 
-      <div id="prod-body" class="section-body">
+      <div id="prod-body" class="section-body collapsed">
       <!-- Gráfica comparativa top 10 productos (barras agrupadas por mes) -->
       <div style="margin-bottom:1.5rem;">
         <p style="font-size:.75rem; font-weight:600; color:#9CA3AF; text-transform:uppercase; letter-spacing:.05em; margin-bottom:.6rem;">Comparativa mensual — Top 10 productos por facturación YTD</p>
@@ -450,7 +450,7 @@
           <div>
             <h2 style="font-size:1.05rem;font-weight:800;display:flex;align-items:center;gap:.5rem;">
               Explorador de Clientes por Producto
-              <button class="toggle-chev" id="explorer-chev" tabindex="-1"><i class="ph ph-caret-down" style="font-size:.8rem;"></i></button>
+              <button class="toggle-chev collapsed" id="explorer-chev" tabindex="-1"><i class="ph ph-caret-down" style="font-size:.8rem;"></i></button>
             </h2>
             <p style="font-size:.72rem;color:#9CA3AF;margin-top:.2rem;">Selecciona el área y el producto para ver qué clientes lo tienen contratado · Datos Abril 2026</p>
           </div>
@@ -462,7 +462,7 @@
         </div>
       </div>
 
-      <div id="explorer-body" class="section-body">
+      <div id="explorer-body" class="section-body collapsed">
       <!-- Macro tabs -->
       <div id="macro-tabs" style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid #f0f4f8;"></div>
 
@@ -495,11 +495,16 @@
     <!-- ══════════════════════════════════════════════════════════ -->
     <div class="card" style="padding:1.5rem; margin-top:1.25rem;">
       <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem;">
-        <div>
-          <h2 style="font-size:1.05rem;font-weight:800;">Segmentación de Clientes por Tier</h2>
-          <p style="font-size:.72rem;color:#9CA3AF;margin-top:.2rem;">
-            💎 Tier A ≥ 10.000 €/mes &nbsp;·&nbsp; ⭐ Tier B 1.000–9.999 €/mes &nbsp;·&nbsp; 🌱 Tier C &lt; 1.000 €/mes &nbsp;·&nbsp; Calculado sobre servicios gestionados recurrentes · Abril 2026
-          </p>
+        <div style="display:flex;align-items:center;gap:.6rem;cursor:pointer;" onclick="toggleSection('tier-body','tier-chev')">
+          <div>
+            <h2 style="font-size:1.05rem;font-weight:800;display:flex;align-items:center;gap:.5rem;">
+              Segmentación de Clientes por Tier
+              <button class="toggle-chev collapsed" id="tier-chev" tabindex="-1"><i class="ph ph-caret-down" style="font-size:.8rem;"></i></button>
+            </h2>
+            <p style="font-size:.72rem;color:#9CA3AF;margin-top:.2rem;">
+              💎 Tier A ≥ 10.000 €/mes &nbsp;·&nbsp; ⭐ Tier B 1.000–9.999 €/mes &nbsp;·&nbsp; 🌱 Tier C &lt; 1.000 €/mes &nbsp;·&nbsp; Calculado sobre servicios gestionados recurrentes · Abril 2026
+            </p>
+          </div>
         </div>
         <div style="position:relative;">
           <i class="ph ph-magnifying-glass" style="position:absolute;left:.65rem;top:50%;transform:translateY(-50%);color:#9CA3AF;font-size:.85rem;"></i>
@@ -508,11 +513,12 @@
         </div>
       </div>
 
-      <!-- Tier cards -->
-      <div id="tier-cards" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.5rem;"></div>
-
-      <!-- Client list -->
-      <div id="tier-client-list"></div>
+      <div id="tier-body" class="section-body collapsed">
+        <!-- Tier cards -->
+        <div id="tier-cards" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.5rem;"></div>
+        <!-- Client list -->
+        <div id="tier-client-list"></div>
+      </div><!-- /tier-body -->
     </div>
 
   </div><!-- /main -->
