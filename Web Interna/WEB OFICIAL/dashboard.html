@@ -469,6 +469,31 @@
       <p id="explorer-count" style="font-size:.7rem;color:#9CA3AF;margin-top:.5rem;text-align:right;"></p>
     </div>
 
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- TIER DE CLIENTES                                          -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div class="card" style="padding:1.5rem; margin-top:1.25rem;">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem;">
+        <div>
+          <h2 style="font-size:1.05rem;font-weight:800;">Segmentación de Clientes por Tier</h2>
+          <p style="font-size:.72rem;color:#9CA3AF;margin-top:.2rem;">
+            💎 Tier A ≥ 10.000 €/mes &nbsp;·&nbsp; ⭐ Tier B 1.000–9.999 €/mes &nbsp;·&nbsp; 🌱 Tier C &lt; 1.000 €/mes &nbsp;·&nbsp; Calculado sobre servicios gestionados recurrentes · Abril 2026
+          </p>
+        </div>
+        <div style="position:relative;">
+          <i class="ph ph-magnifying-glass" style="position:absolute;left:.65rem;top:50%;transform:translateY(-50%);color:#9CA3AF;font-size:.85rem;"></i>
+          <input id="tier-search" type="text" placeholder="Buscar cliente..." oninput="renderTierList()"
+            style="padding:.4rem .75rem .4rem 2rem;border:1.5px solid #e2e8f0;border-radius:.6rem;font-size:.78rem;font-family:Inter,sans-serif;outline:none;width:200px;">
+        </div>
+      </div>
+
+      <!-- Tier cards -->
+      <div id="tier-cards" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.5rem;"></div>
+
+      <!-- Client list -->
+      <div id="tier-client-list"></div>
+    </div>
+
   </div><!-- /main -->
 
   <footer style="background:#001A41; border-top:1px solid rgba(255,255,255,.08); padding:1.5rem; margin-top:1.5rem;">
@@ -1317,6 +1342,120 @@
   buildMacroTabs();
   buildPlanPills();
   renderExplorer();
+
+  // ── TIER DE CLIENTES ─────────────────────────────────────────
+  // Calcula el total por cliente sumando todos sus productos en MACRO_EXPLORER
+  function computeClientTiers() {
+    const totals = {};
+    Object.values(MACRO_EXPLORER).forEach(macro => {
+      macro.plans.forEach(plan => {
+        plan.clientes.forEach(c => {
+          totals[c.n] = (totals[c.n] || 0) + c.v;
+        });
+      });
+    });
+    const A = [], B = [], C = [];
+    Object.entries(totals).forEach(([name, total]) => {
+      if      (total >= 10000) A.push({n: name, v: total});
+      else if (total >= 1000)  B.push({n: name, v: total});
+      else                     C.push({n: name, v: total});
+    });
+    return {
+      A: A.sort((a,b) => b.v - a.v),
+      B: B.sort((a,b) => b.v - a.v),
+      C: C.sort((a,b) => b.v - a.v),
+    };
+  }
+
+  const TIERS = computeClientTiers();
+  let activeTier = 'B';
+
+  const TIER_CFG = {
+    A: { label:'Tier A', range:'≥ 10.000 €/mes', color:'#7c3aed', bg:'#f5f3ff', border:'#c4b5fd', icon:'💎', desc:'Cuentas estratégicas' },
+    B: { label:'Tier B', range:'1.000 – 9.999 €/mes', color:'#0075f2', bg:'#eff6ff', border:'#93c5fd', icon:'⭐', desc:'Cuentas de crecimiento' },
+    C: { label:'Tier C', range:'< 1.000 €/mes', color:'#64748b', bg:'#f8fafc', border:'#cbd5e1', icon:'🌱', desc:'Cuentas base / pequeñas' },
+  };
+
+  function buildTierCards() {
+    const container = document.getElementById('tier-cards');
+    container.innerHTML = '';
+    Object.entries(TIER_CFG).forEach(([key, cfg]) => {
+      const clients = TIERS[key];
+      const total   = clients.reduce((s,c) => s+c.v, 0);
+      const avg     = clients.length ? Math.round(total / clients.length) : 0;
+      const isActive = key === activeTier;
+      const div = document.createElement('div');
+      div.style.cssText = `padding:1.25rem;border-radius:1rem;border:2px solid ${isActive ? cfg.color : '#e2e8f0'};background:${isActive ? cfg.bg : 'white'};cursor:pointer;transition:all .15s;`;
+      div.innerHTML = `
+        <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.75rem;">
+          <span style="font-size:1.3rem;line-height:1;">${cfg.icon}</span>
+          <div>
+            <div style="font-size:.85rem;font-weight:800;color:${cfg.color};">${cfg.label}</div>
+            <div style="font-size:.63rem;color:#9CA3AF;">${cfg.range}</div>
+          </div>
+        </div>
+        <div style="font-size:1.75rem;font-weight:800;color:#001A41;line-height:1;">${clients.length}</div>
+        <div style="font-size:.68rem;color:#9CA3AF;margin-bottom:.6rem;margin-top:.1rem;">clientes</div>
+        <div style="font-size:.82rem;font-weight:700;color:${cfg.color};">${total.toLocaleString('es-ES')} €/mes</div>
+        <div style="font-size:.65rem;color:#9CA3AF;margin-top:.1rem;">media ${avg.toLocaleString('es-ES')} €/cliente</div>
+        <div style="height:4px;background:#f0f4f8;border-radius:999px;margin-top:.75rem;overflow:hidden;">
+          <div style="height:4px;background:${cfg.color};border-radius:999px;width:100%;opacity:${isActive?'1':'.35'};"></div>
+        </div>`;
+      div.onclick = () => { activeTier = key; buildTierCards(); renderTierList(); };
+      container.appendChild(div);
+    });
+  }
+
+  function renderTierList() {
+    const cfg     = TIER_CFG[activeTier];
+    const clients = TIERS[activeTier];
+    const q       = (document.getElementById('tier-search').value || '').toLowerCase();
+    const filtered = clients.filter(c => !q || c.n.toLowerCase().includes(q));
+    const tierTotal = clients.reduce((s,c) => s+c.v, 0);
+    const maxV    = filtered[0]?.v || 1;
+    const container = document.getElementById('tier-client-list');
+
+    if (!filtered.length) {
+      container.innerHTML = `<p style="text-align:center;color:#9CA3AF;font-size:.8rem;padding:2rem;">Sin resultados para "${q}"</p>`;
+      return;
+    }
+
+    let rows = '';
+    filtered.forEach((c, i) => {
+      const pct     = Math.round(c.v / maxV * 100);
+      const tierPct = (c.v / tierTotal * 100).toFixed(1);
+      rows += `<tr>
+        <td style="padding:.5rem .75rem;border-bottom:1px solid #f8fafc;color:#9CA3AF;font-size:.7rem;font-weight:600;width:32px;">${clients.indexOf(c)+1}</td>
+        <td style="padding:.5rem .75rem;border-bottom:1px solid #f8fafc;">
+          <div style="display:flex;align-items:center;gap:.5rem;">
+            <span style="background:${cfg.bg};color:${cfg.color};font-size:.6rem;font-weight:800;padding:1px 7px;border-radius:999px;white-space:nowrap;">${activeTier}</span>
+            <span style="font-weight:600;color:#001A41;font-size:.78rem;">${c.n}</span>
+          </div>
+          <div style="height:3px;background:#f0f4f8;border-radius:999px;margin-top:5px;width:180px;">
+            <div style="height:3px;background:${cfg.color};border-radius:999px;width:${pct}%;"></div></div>
+        </td>
+        <td style="padding:.5rem .75rem;border-bottom:1px solid #f8fafc;text-align:right;font-weight:700;color:#001A41;font-size:.78rem;">${c.v.toLocaleString('es-ES')} €</td>
+        <td style="padding:.5rem .75rem;border-bottom:1px solid #f8fafc;text-align:right;color:#9CA3AF;font-size:.7rem;">${tierPct}%</td>
+      </tr>`;
+    });
+
+    container.innerHTML = `
+      <table style="width:100%;border-collapse:collapse;">
+        <thead><tr>
+          <th style="background:#f8fafc;color:#9CA3AF;font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;padding:.55rem .75rem;border-bottom:1px solid #f0f4f8;text-align:left;">#</th>
+          <th style="background:#f8fafc;color:#9CA3AF;font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;padding:.55rem .75rem;border-bottom:1px solid #f0f4f8;text-align:left;">Cliente</th>
+          <th style="background:#f8fafc;color:#9CA3AF;font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;padding:.55rem .75rem;border-bottom:1px solid #f0f4f8;text-align:right;">€ / mes</th>
+          <th style="background:#f8fafc;color:#9CA3AF;font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;padding:.55rem .75rem;border-bottom:1px solid #f0f4f8;text-align:right;">% tier</th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+      <p style="font-size:.7rem;color:#9CA3AF;margin-top:.5rem;text-align:right;">
+        ${filtered.length} de ${clients.length} clientes · Total ${activeTier}: ${tierTotal.toLocaleString('es-ES')} €/mes
+      </p>`;
+  }
+
+  buildTierCards();
+  renderTierList();
   </script>
 </body>
 </html>
