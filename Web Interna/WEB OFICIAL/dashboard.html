@@ -1039,6 +1039,23 @@
       label:'Google Workspace', color:'#0075f2', bg:'#eff6ff',
       plans: WS_PLANS
     },
+    gcp: {
+      label:'Google Cloud', color:'#ea4335', bg:'#fef2f2',
+      plans: [
+        { id:'gcp-all', label:'Google Cloud Platform', color:'#ea4335', bg:'#fef2f2', clientes:[
+          {n:'Octa Markets LTD (vía ArgentoCloud)',         v:153087},
+          {n:'Alea Play Solutions (vía ALEA IBERIA)',       v:8389},
+          {n:'Evoluziona Seguridad',                        v:4513},
+          {n:'1D3A Analógico y Digital SL',                 v:2852},
+          {n:'Casals Ventilación Air Industrial SL',        v:882},
+          {n:'Solter Soldadura SL',                         v:402},
+          {n:'Ram Narayan SL (Plata y Minerales)',          v:389},
+          {n:'Estiluz',                                     v:330},
+          {n:'Taller Segadell SRL',                         v:292},
+          {n:'LICATA',                                      v:74},
+        ]},
+      ]
+    },
     m365: {
       label:'Microsoft 365', color:'#7c3aed', bg:'#f5f3ff',
       plans: [
@@ -1294,7 +1311,7 @@
   function buildMacroTabs() {
     const container = document.getElementById('macro-tabs');
     container.innerHTML = '';
-    const icons = { gws:'🔵', m365:'🟣', cpd:'⚡', seguridad:'🔴', backup:'🟡', soporte:'🎧' };
+    const icons = { gws:'🔵', gcp:'☁️', m365:'🟣', cpd:'⚡', seguridad:'🔴', backup:'🟡', soporte:'🎧' };
     Object.entries(MACRO_EXPLORER).forEach(([key, macro]) => {
       const btn = document.createElement('button');
       btn.className = 'tab-btn' + (key === activeMacro ? ' active' : '');
