@@ -433,8 +433,8 @@
 
       <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin-bottom:1.25rem;">
         <div>
-          <h2 style="font-size:1.05rem;font-weight:800;">Clientes por Plan — Google Workspace</h2>
-          <p style="font-size:.72rem;color:#9CA3AF;margin-top:.2rem;">Selecciona un plan para ver qué clientes lo tienen contratado · Datos Abril 2026</p>
+          <h2 style="font-size:1.05rem;font-weight:800;">Explorador de Clientes por Producto</h2>
+          <p style="font-size:.72rem;color:#9CA3AF;margin-top:.2rem;">Selecciona el área y el producto para ver qué clientes lo tienen contratado · Datos Abril 2026</p>
         </div>
         <div style="position:relative;">
           <i class="ph ph-magnifying-glass" style="position:absolute;left:.65rem;top:50%;transform:translateY(-50%);color:#9CA3AF;font-size:.85rem;"></i>
@@ -443,8 +443,11 @@
         </div>
       </div>
 
+      <!-- Macro tabs -->
+      <div id="macro-tabs" style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid #f0f4f8;"></div>
+
       <!-- Plan pills -->
-      <div id="plan-pills" style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.25rem;"></div>
+      <div id="plan-pills" style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.25rem;min-height:20px;"></div>
 
       <!-- Summary bar -->
       <div id="explorer-summary" style="display:flex;gap:1.5rem;padding:.75rem 1rem;background:#f8fafc;border-radius:.75rem;margin-bottom:1rem;flex-wrap:wrap;"></div>
@@ -966,14 +969,320 @@
     },
   ];
 
-  let activePlan = 'standard';
+  // ── MACRO EXPLORER DATA ──────────────────────────────────────
+  const MACRO_EXPLORER = {
+    gws: {
+      label:'Google Workspace', color:'#0075f2', bg:'#eff6ff',
+      plans: WS_PLANS
+    },
+    m365: {
+      label:'Microsoft 365', color:'#7c3aed', bg:'#f5f3ff',
+      plans: [
+        { id:'m365-premium', label:'Business Premium', color:'#7c3aed', bg:'#f5f3ff', clientes:[
+          {n:'LIFTISA, S.L.',                              v:1639},
+          {n:'STEGOTRONIC S.A.',                           v:963},
+          {n:'COTOWN SHARING LIFE SL',                     v:782},
+          {n:'LEGALKERNBCN S.L',                           v:662},
+          {n:'PredictBy Research and Consulting SL',       v:642},
+          {n:'Vandor Real Estate Socimi, S.A.U.',          v:515},
+          {n:'Greenertis Corp, S.L.',                      v:453},
+          {n:'BTS Professional Services SL',               v:433},
+          {n:'GLOOBAL MOVINGRENT SA.',                     v:431},
+          {n:'GESTORIA MOHE ASSESSORS SLP',                v:309},
+          {n:'Iris Ventures SL',                           v:216},
+          {n:'Productos Codina S.A',                       v:206},
+          {n:'Agrupació de Jugadors del FC Barcelona',     v:185},
+          {n:'IMO serveis Informatics S.L',                v:176},
+          {n:'Rossello Pons Asociados S.L',                v:147},
+          {n:'Parsec Comunicaciones S.L',                  v:108},
+          {n:'INTENSITAT SL',                              v:98},
+          {n:'Globalmeats S.L',                            v:87},
+          {n:'J. VILASECA SA',                             v:81},
+          {n:'INDUSTRIA MECANICA J.PANES, S.A.',           v:43},
+          {n:'FUNDACIÓ SUMA IMPACT FOUNDATION',            v:42},
+          {n:'Puiggali i Dosta Real States Investments',   v:41},
+          {n:'F2 ELEVACION',                               v:22},
+        ]},
+        { id:'m365-standard', label:'Business Standard', color:'#0075f2', bg:'#eff6ff', clientes:[
+          {n:'IMO serveis Informatics S.L',                v:1179},
+          {n:'J. VILASECA SA',                             v:679},
+          {n:'Mobiprix Mobles S.A.U',                      v:135},
+          {n:'CULTICESPED JARD FLOR ELIA, SL',             v:111},
+          {n:'NOBA VENTURES SL',                           v:91},
+          {n:'Tacoronte SA',                               v:80},
+          {n:'LOBELIA EARTH S.L',                          v:72},
+          {n:'DUMO SEGURIDAD SL',                          v:61},
+          {n:'F2 ELEVACION',                               v:49},
+          {n:'Productos Codina S.A',                       v:47},
+          {n:'Elite Formacion Integral SLU',               v:45},
+          {n:'Rectificadores Guasch S.A.U.',               v:37},
+          {n:'SURGEST MEDICAL S.L',                        v:34},
+          {n:'PredictBy Research and Consulting SL',       v:34},
+          {n:'MECÀNIQUES SEGAB, S.L.',                     v:25},
+          {n:'LIFTISA, S.L.',                              v:22},
+          {n:'BTS Professional Services SL',               v:12},
+          {n:'ALNIR 23 SL',                                v:12},
+          {n:'Marcel Mulet Carmona',                       v:12},
+          {n:'ZANIA SPACE SL',                             v:12},
+        ]},
+        { id:'m365-basic', label:'Basic / Apps / Exchange', color:'#10b981', bg:'#f0fdf4', clientes:[
+          {n:'ArgentoCloud OÜ',                            v:1635},
+          {n:'LIFTISA, S.L.',                              v:412},
+          {n:'Tacoronte SA',                               v:251},
+          {n:'Mobiprix Mobles S.A.U',                      v:153},
+          {n:'GLOOBAL MOVINGRENT SA.',                     v:116},
+          {n:'INGENIERIA SEMASA SAU',                      v:103},
+          {n:'J. VILASECA SA',                             v:52},
+          {n:'AUDITA PROCESOS DOCUMENTALES SL',            v:44},
+          {n:'NOBA VENTURES SL',                           v:44},
+          {n:'DUMO SEGURIDAD SL',                          v:41},
+          {n:'Agrupació de Jugadors del FC Barcelona',     v:40},
+          {n:'Vandor Real Estate Socimi, S.A.U.',          v:37},
+          {n:'Marcel Mulet Carmona',                       v:32},
+          {n:'Productos Codina S.A',                       v:28},
+          {n:'Iris Ventures SL',                           v:16},
+          {n:'LEGALKERNBCN S.L',                           v:15},
+          {n:'ALNIR 23 SL',                                v:12},
+          {n:'Galaxia Informática S.L',                    v:11},
+          {n:'Globalmeats S.L',                            v:10},
+          {n:'Greenertis Corp, S.L.',                      v:10},
+          {n:'BTS Professional Services SL',               v:8},
+          {n:'ROCODROM LES AGULLES, S.L.',                 v:6},
+          {n:'Sucesores Prat S.A',                         v:5},
+          {n:'ZANIA SPACE SL',                             v:4},
+          {n:'IMO serveis Informatics S.L',                v:4},
+          {n:'FUNDACIÓ SUMA IMPACT FOUNDATION',            v:4},
+          {n:'INTENSITAT SL',                              v:4},
+          {n:'BIOMETHANE INITIATIVES, S.L.',               v:3},
+        ]},
+        { id:'m365-power', label:'Power BI / Azure / Copilot', color:'#f59e0b', bg:'#fffbeb', clientes:[
+          {n:'LIFTISA, S.L.',                              v:416},
+          {n:'STEGOTRONIC S.A.',                           v:262},
+          {n:'COTOWN SHARING LIFE SL',                     v:183},
+          {n:'IMO serveis Informatics S.L',                v:104},
+          {n:'Vandor Real Estate Socimi, S.A.U.',          v:82},
+          {n:'GLOOBAL MOVINGRENT SA.',                     v:80},
+          {n:'INGENIERIA SEMASA SAU',                      v:71},
+          {n:'Parsec Comunicaciones S.L',                  v:41},
+          {n:'Globalmeats S.L',                            v:33},
+          {n:'Iris Ventures SL',                           v:30},
+          {n:'GESTORIA MOHE ASSESSORS SLP',                v:28},
+        ]},
+      ]
+    },
+    cpd: {
+      label:'CPD BeCloud', color:'#50cabf', bg:'#f0fdfa',
+      plans: [
+        { id:'cpd-all', label:'Servidores BeCloud', color:'#50cabf', bg:'#f0fdfa', clientes:[
+          {n:'Associacio Coordinadora Sinergia Social',    v:31299},
+          {n:'LIFTISA, S.L.',                              v:3435},
+          {n:'IMO serveis Informatics S.L',                v:3191},
+          {n:'METROPOLITAN SPAIN, S.L.',                   v:2800},
+          {n:'SERCLET, SL',                                v:1965},
+          {n:'Meypar S.L',                                 v:1947},
+          {n:'Jesús Benavides Lima',                       v:1904},
+          {n:'GESTORIA ALBERT ASSESSORIA CONSULTORIA SLP', v:1883},
+          {n:'SILMAR FREIGHT, S.L.U.',                     v:1646},
+          {n:'MANUFACTURAS DEPORTIVAS VIPER, S.A.',        v:1470},
+          {n:'Productos Codina S.A',                       v:1379},
+          {n:'GESTORIA MOHE ASSESSORS SLP',                v:1375},
+          {n:'ADTENDE S.L',                                v:1220},
+          {n:'BTS Professional Services SL',               v:1220},
+          {n:'Rectificadores Guasch S.A.U.',               v:1107},
+          {n:'LEGALKERNBCN S.L',                           v:1056},
+          {n:'CLINICA OFTALMOLOGICA TACIR SLP',            v:891},
+          {n:'BITAVIS SERVEIS INFORMÀTICS SL',             v:834},
+          {n:'Digit Mollerussa S.L',                       v:742},
+          {n:'GLOOBAL MOVINGRENT SA.',                     v:661},
+          {n:'JORGE FERRI LARA',                           v:655},
+          {n:'Grup Informatic NG Soft, S.L.',              v:611},
+          {n:'PUJOL GESTORIA ADMINISTRATIVA SLP',          v:610},
+          {n:'EYRE GESTION BCN S.L',                       v:593},
+          {n:'BAKSTECH GROUP, S.L.',                       v:580},
+          {n:'Agrupació de Jugadors del FC Barcelona',     v:486},
+          {n:'BUISI TOOLS, S.L.',                          v:482},
+          {n:'Sucesores Prat S.A',                         v:475},
+          {n:'Actividades Eléctricas BOXTAR, S.L.',        v:450},
+          {n:'Agencia Transportes Salvador Grúas',         v:428},
+          {n:'Mermon Markets, S.L.',                       v:421},
+          {n:'Plusasesor SL',                              v:414},
+          {n:'TRANSPORTES PEJÓ S.A',                       v:370},
+          {n:'Techos Valenza España SL',                   v:364},
+          {n:'EFIKA SERVICIOS INFORMATICOS SLU',           v:361},
+          {n:'Rossello Pons Asociados S.L',                v:351},
+          {n:'SHARE LOGISTICS SPAIN SLU',                  v:350},
+          {n:'VALENZA CATALUNYA, S.L.',                    v:340},
+          {n:'Weon 2024, SL',                              v:316},
+          {n:'RADMEDICA BARCELONA SL',                     v:311},
+          {n:'Moliclara S.L.',                             v:305},
+          {n:'Grupo Gomez Avanza SL',                      v:279},
+          {n:'SCHOLPP IBERICA DE MONTAJES S.A.U',          v:260},
+          {n:'Process S.L',                                v:253},
+          {n:'HIELOS TORNÉ y CIA',                         v:237},
+          {n:'Galaxia Informática S.L',                    v:198},
+          {n:'Cervisimag SL',                              v:193},
+          {n:'INDUSTRIA MECANICA J.PANES, S.A.',           v:191},
+          {n:'AUDITA PROCESOS DOCUMENTALES SL',            v:190},
+          {n:'CTIS 3000, S.L',                             v:184},
+          {n:'InfoGest2000 SL',                            v:183},
+          {n:'OSOKO SERVICIOS INTEGRALES SL',              v:182},
+          {n:'COTOWN SHARING LIFE SL',                     v:180},
+          {n:'TICNOVA QUALITY TEAM SL',                    v:158},
+          {n:'GUBER DIVISION ESPAÑA S.L.',                 v:124},
+          {n:'IsardSat S.L',                               v:102},
+          {n:'GURUPRO S.L',                                v:65},
+          {n:'SUMA CAPITAL SGEIC S.A',                     v:46},
+          {n:'Fundació de Jugadors del FC Barcelona',      v:35},
+        ]},
+      ]
+    },
+    seguridad: {
+      label:'Seguridad', color:'#ef4444', bg:'#fff5f5',
+      plans: [
+        { id:'seg-all', label:'Firewall / EDR / BeSafe', color:'#ef4444', bg:'#fff5f5', clientes:[
+          {n:'STEGOTRONIC S.A.',                           v:2335},
+          {n:'Associacio Coordinadora Sinergia Social',    v:2080},
+          {n:'Meypar S.L',                                 v:710},
+          {n:'SILMAR FREIGHT, S.L.U.',                     v:325},
+          {n:'BITAVIS SERVEIS INFORMÀTICS SL',             v:274},
+          {n:'SUMA CAPITAL SGEIC S.A',                     v:240},
+          {n:'Sucesores Prat S.A',                         v:204},
+          {n:'IMO serveis Informatics S.L',                v:193},
+          {n:'CADEPA GLOBAL PACKAGING SL',                 v:122},
+          {n:'Avalis de Catalunya SGR',                    v:84},
+          {n:'BCN BIT Sistemas y Gestion SL',              v:71},
+          {n:'Productos Codina S.A',                       v:60},
+          {n:'LIFTISA, S.L.',                              v:53},
+          {n:'Marcel Mulet Carmona',                       v:46},
+          {n:'Sole S.A',                                   v:42},
+          {n:'Notaria Gran Via S.C.P.',                    v:23},
+          {n:'MH Soluciones S.L',                          v:20},
+          {n:'F2 ELEVACION',                               v:20},
+          {n:'FUNDACIÓ SUMA IMPACT FOUNDATION',            v:7},
+          {n:'Globalmeats S.L',                            v:4},
+          {n:'JORGE FERRI LARA',                           v:2},
+        ]},
+      ]
+    },
+    backup: {
+      label:'BeBackup', color:'#f59e0b', bg:'#fffbeb',
+      plans: [
+        { id:'bkp-all', label:'BeData / BeBackup', color:'#f59e0b', bg:'#fffbeb', clientes:[
+          {n:'IMO serveis Informatics S.L',                v:1062},
+          {n:'L. Oliva Torras S.A',                        v:465},
+          {n:'Grup Informatic NG Soft, S.L.',              v:228},
+          {n:'TORELLO GESTSOFT INFORMATICA SL',            v:216},
+          {n:'Digit Mollerussa S.L',                       v:172},
+          {n:'Isabel González González',                   v:136},
+          {n:'BCN BIT Sistemas y Gestion SL',              v:135},
+          {n:'Process S.L',                                v:127},
+          {n:'REDYMAN MEDITERRÁNEO S.L.U.',                v:118},
+          {n:'Tarragona Sistemes Industrials S.L',         v:115},
+          {n:'BAKSTECH GROUP, S.L.',                       v:100},
+          {n:'GC LOBOC SLL',                               v:91},
+          {n:'BITLAND COMPUTERS, S.L.',                    v:88},
+          {n:'BTS Professional Services SL',               v:80},
+          {n:'PUJOL GESTORIA ADMINISTRATIVA SLP',          v:78},
+          {n:'COTOWN SHARING LIFE SL',                     v:68},
+          {n:'3 K REAL ESTATE PROPERTIES SL',              v:65},
+          {n:'Vandor Real Estate Socimi, S.A.U.',          v:65},
+          {n:'Technology Computer Project SL',             v:60},
+          {n:'Productos Codina S.A',                       v:60},
+          {n:'BITAVIS SERVEIS INFORMÀTICS SL',             v:50},
+          {n:'Marcel Mulet Carmona',                       v:49},
+          {n:'Mermon Markets, S.L.',                       v:49},
+          {n:'PIPPOL TELEFONÍA CLOUD PROFESIONAL SL',      v:39},
+          {n:'Iris Ventures SL',                           v:20},
+          {n:'CBALP06 SL',                                 v:20},
+          {n:'Quantitative Genomic Medicine Laboratories', v:18},
+          {n:'SÁNCHEZ&GRANDA ABOGADOS, SLP',               v:15},
+          {n:'OSOKO SERVICIOS INTEGRALES SL',              v:13},
+          {n:'Sucesores Prat S.A',                         v:8},
+          {n:'Globalmeats S.L',                            v:3},
+          {n:'LADENTAL ASSOCIATS SLP',                     v:3},
+        ]},
+      ]
+    },
+    soporte: {
+      label:'BeHelp / Soporte', color:'#64748b', bg:'#f8fafc',
+      plans: [
+        { id:'sop-all', label:'BeHelp / Soporte Gestionado', color:'#64748b', bg:'#f8fafc', clientes:[
+          {n:'Meypar S.L',                                 v:240},
+          {n:'Sucesores Prat S.A',                         v:165},
+          {n:'Mobiprix Mobles S.A.U',                      v:102},
+          {n:'Iris Ventures SL',                           v:96},
+          {n:'CLINICA OFTALMOLOGICA TACIR SLP',            v:70},
+          {n:'BTS Professional Services SL',               v:54},
+          {n:'AUDITA PROCESOS DOCUMENTALES SL',            v:50},
+          {n:'Parsec Comunicaciones S.L',                  v:50},
+          {n:'INDUSTRIA MECANICA J.PANES, S.A.',           v:30},
+          {n:'Greenertis Corp, S.L.',                      v:21},
+          {n:'CTIS 3000, S.L',                             v:12},
+          {n:'DUMO SEGURIDAD SL',                          v:8},
+        ]},
+      ]
+    },
+  };
+
+  let activeMacro = 'gws';
+  let activePlan  = 'standard';
+
+  function buildMacroTabs() {
+    const container = document.getElementById('macro-tabs');
+    container.innerHTML = '';
+    const icons = { gws:'🔵', m365:'🟣', cpd:'⚡', seguridad:'🔴', backup:'🟡', soporte:'🎧' };
+    Object.entries(MACRO_EXPLORER).forEach(([key, macro]) => {
+      const btn = document.createElement('button');
+      btn.className = 'tab-btn' + (key === activeMacro ? ' active' : '');
+      if (key === activeMacro) btn.style.cssText = `background:${macro.color};color:white;`;
+      const totalC = macro.plans.reduce((s,p) => s + p.clientes.length, 0);
+      btn.textContent = (icons[key]||'') + ' ' + macro.label;
+      btn.title = `${totalC} clientes`;
+      btn.onclick = () => {
+        activeMacro = key;
+        activePlan = macro.plans[0].id;
+        document.getElementById('explorer-search').value = '';
+        document.querySelectorAll('#macro-tabs .tab-btn').forEach(b => { b.classList.remove('active'); b.style.cssText = ''; });
+        btn.classList.add('active');
+        btn.style.cssText = `background:${macro.color};color:white;`;
+        buildPlanPills();
+        renderExplorer();
+      };
+      container.appendChild(btn);
+    });
+  }
+
+  function buildPlanPills() {
+    const macro = MACRO_EXPLORER[activeMacro];
+    const container = document.getElementById('plan-pills');
+    container.innerHTML = '';
+    if (macro.plans.length <= 1) return; // hide pills when only one plan
+    macro.plans.forEach(p => {
+      const total = p.clientes.reduce((s,c) => s+c.v, 0);
+      const pill = document.createElement('button');
+      pill.className = 'plan-pill' + (p.id === activePlan ? ' active' : '');
+      pill.style.setProperty('--pc', p.color);
+      pill.style.setProperty('--pb', p.bg);
+      pill.innerHTML = `<span class="pp-label">${p.label}</span><span class="pp-count">${p.clientes.length}</span><span class="pp-amount">${(total/1000).toFixed(1)}k €/mes</span>`;
+      pill.onclick = () => {
+        activePlan = p.id;
+        document.querySelectorAll('#plan-pills .plan-pill').forEach(b => b.classList.remove('active'));
+        pill.classList.add('active');
+        renderExplorer();
+      };
+      container.appendChild(pill);
+    });
+  }
 
   function renderExplorer() {
-    const plan = WS_PLANS.find(p => p.id === activePlan);
+    const macro = MACRO_EXPLORER[activeMacro];
+    const plan = macro.plans.find(p => p.id === activePlan) || macro.plans[0];
     const q = (document.getElementById('explorer-search').value || '').toLowerCase();
     const filtered = plan.clientes.filter(c => !q || c.n.toLowerCase().includes(q));
-    const sorted = [...filtered].sort((a,b)=>b.v-a.v);
-    const total = plan.clientes.reduce((s,c)=>s+c.v,0);
+    const sorted = [...filtered].sort((a,b) => b.v - a.v);
+    const total = plan.clientes.reduce((s,c) => s+c.v, 0);
+    const macroTotal = macro.plans.reduce((s,p) => s + p.clientes.reduce((a,c) => a+c.v, 0), 0);
+    const pctLabel = macro.plans.length > 1 ? `% área ${macro.label}` : `% área ${macro.label}`;
 
     // Summary bar
     document.getElementById('explorer-summary').innerHTML = `
@@ -981,17 +1290,17 @@
       <div style="width:1px;background:#e2e8f0;"></div>
       <div><span style="font-size:.7rem;color:#9CA3AF;">Facturación / mes</span><br><span style="font-size:1rem;font-weight:800;color:${plan.color};">${total.toLocaleString('es-ES')} €</span></div>
       <div style="width:1px;background:#e2e8f0;"></div>
-      <div><span style="font-size:.7rem;color:#9CA3AF;">Media por cliente</span><br><span style="font-size:1rem;font-weight:800;color:#001A41;">${Math.round(total/plan.clientes.length).toLocaleString('es-ES')} €</span></div>
+      <div><span style="font-size:.7rem;color:#9CA3AF;">Media por cliente</span><br><span style="font-size:1rem;font-weight:800;color:#001A41;">${Math.round(total/Math.max(plan.clientes.length,1)).toLocaleString('es-ES')} €</span></div>
       <div style="width:1px;background:#e2e8f0;"></div>
-      <div><span style="font-size:.7rem;color:#9CA3AF;">% del total Workspace</span><br><span style="font-size:1rem;font-weight:800;color:#001A41;">${(total/92854*100).toFixed(1)}%</span></div>`;
+      <div><span style="font-size:.7rem;color:#9CA3AF;">${pctLabel}</span><br><span style="font-size:1rem;font-weight:800;color:#001A41;">${(total/Math.max(macroTotal,1)*100).toFixed(1)}%</span></div>`;
 
     // Table
     const maxV = sorted[0]?.v || 1;
     let html = '';
-    sorted.forEach((c,i)=>{
+    sorted.forEach((c,i) => {
       const pct = Math.round(c.v/maxV*100);
       html += `<tr>
-        <td><span class="rank-badge">${i+1}</span></td>
+        <td style="color:#9CA3AF;font-weight:600;font-size:.7rem;">${i+1}</td>
         <td>
           <div style="font-size:.78rem;font-weight:600;color:#001A41;">${c.n}</div>
           <div style="height:3px;background:#f0f4f8;border-radius:999px;margin-top:4px;width:140px;">
@@ -1002,25 +1311,11 @@
       </tr>`;
     });
     document.getElementById('explorer-tbody').innerHTML = html;
-    document.getElementById('explorer-count').textContent = `Mostrando ${sorted.length} de ${plan.clientes.length} clientes · Total plan: ${total.toLocaleString('es-ES')} €/mes`;
+    document.getElementById('explorer-count').textContent = `Mostrando ${sorted.length} de ${plan.clientes.length} clientes · Total: ${total.toLocaleString('es-ES')} €/mes`;
   }
 
-  // Build plan pills
-  WS_PLANS.forEach(p=>{
-    const pill = document.createElement('button');
-    pill.className = 'plan-pill' + (p.id===activePlan?' active':'');
-    pill.style.setProperty('--pc', p.color);
-    pill.style.setProperty('--pb', p.bg);
-    pill.innerHTML = `<span class="pp-label">${p.label}</span><span class="pp-count">${p.clientes.length}</span><span class="pp-amount">${(p.total/1000).toFixed(1)}k €/mes</span>`;
-    pill.onclick = ()=>{
-      activePlan = p.id;
-      document.querySelectorAll('.plan-pill').forEach(b=>b.classList.remove('active'));
-      pill.classList.add('active');
-      renderExplorer();
-    };
-    document.getElementById('plan-pills').appendChild(pill);
-  });
-
+  buildMacroTabs();
+  buildPlanPills();
   renderExplorer();
   </script>
 </body>
