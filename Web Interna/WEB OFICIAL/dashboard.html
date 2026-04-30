@@ -68,6 +68,24 @@
     .insight-2col { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.25rem; }
     .crossell-ring { display:flex; align-items:center; justify-content:center; flex-direction:column; width:90px; height:90px; border-radius:50%; border:5px solid #0075f2; background:#eff6ff; flex-shrink:0; }
     @media(max-width:900px){ .alert-row{ grid-template-columns:1fr; } .insight-2col{ grid-template-columns:1fr; } }
+
+    /* Plan Explorer */
+    .plan-pill { display:inline-flex; flex-direction:column; align-items:center; padding:.6rem 1rem; border-radius:.75rem; border:1.5px solid #e2e8f0; cursor:pointer; background:white; transition:all .15s; min-width:120px; font-family:Inter,sans-serif; }
+    .plan-pill:hover { border-color:#0075f2; background:#eff6ff; }
+    .plan-pill.active { border-color:var(--pc); background:var(--pb); }
+    .plan-pill .pp-label { font-size:.68rem; font-weight:700; color:#9CA3AF; text-transform:uppercase; letter-spacing:.04em; margin-bottom:.25rem; }
+    .plan-pill.active .pp-label { color:var(--pc); }
+    .plan-pill .pp-count { font-size:1.1rem; font-weight:800; color:#001A41; line-height:1; }
+    .plan-pill.active .pp-count { color:var(--pc); }
+    .plan-pill .pp-amount { font-size:.68rem; color:#9CA3AF; margin-top:.2rem; }
+    .plan-pill.active .pp-amount { color:var(--pc); opacity:.8; }
+    #explorer-table { width:100%; border-collapse:collapse; font-size:.78rem; }
+    #explorer-table th { background:#f8fafc; color:#9CA3AF; font-weight:600; font-size:.65rem; text-transform:uppercase; letter-spacing:.04em; padding:.55rem .75rem; border-bottom:1px solid #f0f4f8; text-align:left; }
+    #explorer-table th:last-child { text-align:right; }
+    #explorer-table td { padding:.5rem .75rem; border-bottom:1px solid #f8fafc; color:#001A41; vertical-align:middle; }
+    #explorer-table td:last-child { text-align:right; font-weight:700; }
+    #explorer-table tr:hover td { background:#f8fafc; }
+    .rank-badge { display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; background:#f0f4f8; font-size:.65rem; font-weight:700; color:#9CA3AF; }
   </style>
 </head>
 <body class="antialiased">
@@ -406,6 +424,46 @@
         </table>
       </div>
       <p style="font-size:.7rem; color:#9CA3AF; margin-top:.6rem; text-align:right;" id="prod-count"></p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- EXPLORADOR: CLIENTES POR PLAN                            -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div class="card" style="padding:1.5rem; margin-top:1.25rem;">
+
+      <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin-bottom:1.25rem;">
+        <div>
+          <h2 style="font-size:1.05rem;font-weight:800;">Clientes por Plan — Google Workspace</h2>
+          <p style="font-size:.72rem;color:#9CA3AF;margin-top:.2rem;">Selecciona un plan para ver qué clientes lo tienen contratado · Datos Abril 2026</p>
+        </div>
+        <div style="position:relative;">
+          <i class="ph ph-magnifying-glass" style="position:absolute;left:.65rem;top:50%;transform:translateY(-50%);color:#9CA3AF;font-size:.85rem;"></i>
+          <input id="explorer-search" type="text" placeholder="Buscar cliente..." oninput="renderExplorer()"
+            style="padding:.4rem .75rem .4rem 2rem;border:1.5px solid #e2e8f0;border-radius:.6rem;font-size:.78rem;font-family:Inter,sans-serif;outline:none;width:200px;">
+        </div>
+      </div>
+
+      <!-- Plan pills -->
+      <div id="plan-pills" style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.25rem;"></div>
+
+      <!-- Summary bar -->
+      <div id="explorer-summary" style="display:flex;gap:1.5rem;padding:.75rem 1rem;background:#f8fafc;border-radius:.75rem;margin-bottom:1rem;flex-wrap:wrap;"></div>
+
+      <!-- Table -->
+      <div style="overflow-x:auto;">
+        <table id="explorer-table">
+          <thead>
+            <tr>
+              <th style="width:32px;">#</th>
+              <th>Cliente</th>
+              <th>Plan</th>
+              <th>€ / mes</th>
+            </tr>
+          </thead>
+          <tbody id="explorer-tbody"></tbody>
+        </table>
+      </div>
+      <p id="explorer-count" style="font-size:.7rem;color:#9CA3AF;margin-top:.5rem;text-align:right;"></p>
     </div>
 
   </div><!-- /main -->
@@ -767,6 +825,203 @@
 
   // Init
   renderTable();
+
+  // ── EXPLORADOR CLIENTES POR PLAN ─────────────────────────────
+  const WS_PLANS = [
+    {
+      id:'enterprise', label:'Enterprise Std', color:'#7c3aed', bg:'#f5f3ff',
+      total:42086, clientes:[
+        {n:'ArgentoCloud OÜ',               v:32840},
+        {n:'ALEA IBERIA S.L.',              v:3747},
+        {n:'ALVAC S.A.',                    v:3291},
+        {n:'PW Advisory & Capital Services',v:2007},
+        {n:'Twin Freaks Studio SL',         v:205},
+      ]
+    },
+    {
+      id:'standard', label:'Business Standard', color:'#0075f2', bg:'#eff6ff',
+      total:19200, clientes:[
+        {n:'ASESORIA MABESU SL',            v:2885},{n:'AUssieYouTOO Pty (VITESSE)',  v:1944},
+        {n:'Blue Banana Brand SL',          v:1648},{n:'SERVICIOS DEPEC SL',          v:1033},
+        {n:'Assoc. Sinergia Social (AICIA)',v:816}, {n:'SUTARGI SAL',                 v:700},
+        {n:'TMC Cancela Mulching Solutions',v:669}, {n:'Quantitative Genomic Medicine',v:666},
+        {n:'Acceleralia SL',                v:574}, {n:'IsardSat SL',                 v:587},
+        {n:'Iberian Leaders Influencers',   v:437}, {n:'INGENIERIA SEMASA SAU',        v:411},
+        {n:'RK Madrid SLU',                v:354}, {n:'Net Design Studio SL',         v:353},
+        {n:'La Banda-I Producciones SL',    v:332}, {n:'Innedito / El Cielo de Madrid',v:323},
+        {n:'NOBA Ventures SL',              v:315}, {n:'ECOMM360 SL',                 v:274},
+        {n:'TECNISAMPLE',                   v:259}, {n:'Cubic Estudi d\'Enginyeria',    v:258},
+        {n:'Gep & Risk 112 SL',             v:253}, {n:'Sol Marketing Promocional SL', v:244},
+        {n:'Accom Consulting Spain SL',     v:243}, {n:'Dodepecho DYC SL',            v:243},
+        {n:'Euro Weekly News Media SA',     v:242}, {n:'Real Estate Servicing SL',     v:244},
+        {n:'Montajes Eléctricos Luna SL',   v:231}, {n:'Erretres Diseño y Comunicación',v:379},
+        {n:'Victoriano Saiz Echevarria',    v:217}, {n:'El Cuartel Creativo SL',       v:190},
+        {n:'CIRCO22 SL',                    v:190}, {n:'Netipbox Technologies SL',      v:204},
+        {n:'N&M Construcciones 1980 SLU',   v:205}, {n:'HOY VOY A CONDUCIR SL',        v:115},
+        {n:'Vitalis Salud y Bienestar SL',  v:113}, {n:'Cool Marbelous SL',            v:163},
+        {n:'Nacar Estudio SL',              v:111}, {n:'Dream Bigger Studio SL',        v:104},
+        {n:'SETDART ONLINE SL',             v:103}, {n:'Akrovalis SL',                  v:103},
+        {n:'Estrategos SL',                 v:95},  {n:'Kayak SLP',                     v:76},
+        {n:'PW Advisory & Capital (STD)',   v:68},  {n:'Do Postproduction SL',          v:149},
+        {n:'Fibra Medios Telecom SL',       v:70},  {n:'Higiatech Technologies SL',     v:156},
+        {n:'Plusasesor SL',                 v:80},  {n:'Estiluz SA',                    v:175},
+        {n:'Rosynet SL',                    v:81},  {n:'Fons Menorquí de Cooperació',   v:81},
+        {n:'Intromethod SL',                v:81},  {n:'Bergas Gourmet SL',             v:132},
+        {n:'Urointec SLU',                  v:163}, {n:'Alumilux SL',                   v:57},
+        {n:'GIGLON SL',                     v:103}, {n:'Iberwix Telecom SL',            v:92},
+        {n:'Digital Cinegetics SL',         v:32},  {n:'Estudio Thinketing',            v:37},
+        {n:'Kuluxka Aranguren SL',          v:11},  {n:'Peritaciones Insulares SL',     v:11},
+        {n:'Ex-Centris Production SL',      v:41},  {n:'Carnicas El Capricho SL',       v:23},
+        {n:'Serenitas SL',                  v:64},  {n:'Gay-Rosell & Solano SLP',       v:40},
+        {n:'Kademe Solution SL',            v:50},  {n:'ArgentoCloud (B.Std propio)',    v:148},
+        {n:'Foxtenn Bgreen SL',             v:54},  {n:'Revolution Publicidad SL',      v:25},
+        {n:'Asuntos Públicos Estrategos SL',v:95},
+      ]
+    },
+    {
+      id:'starter', label:'Business Starter', color:'#10b981', bg:'#f0fdf4',
+      total:20100, clientes:[
+        {n:'Idea Consultoría Informática SL (múltiples clientes gestionados)', v:2562},
+        {n:'Ayuntamiento de las Gabias',    v:2324},{n:'Audidat 3.0 SLU',             v:1962},
+        {n:'HOY VOY A CONDUCIR SL',         v:1092},{n:'ASESORIA MABESU SL',          v:942},
+        {n:'ALVAC SA',                      v:802}, {n:'TDN SAU',                     v:706},
+        {n:'Audio Video Zentralmedia SL',   v:696}, {n:'Peisa (Prod. Eléctricos Ind.)',v:538},
+        {n:'INGENIERIA SEMASA SAU',         v:562}, {n:'Nacar Estudio SL',            v:418},
+        {n:'RED Soluciones Logísticas Avz.',v:451}, {n:'El Cuartel Creativo SL',      v:395},
+        {n:'Asuntos Públicos Estrategos SL',v:292}, {n:'Diecescon Valoraciones SL',   v:326},
+        {n:'FEUSO (Fed. Enseñanza USO)',    v:316}, {n:'Castillo Castrillon Abogados', v:607},
+        {n:'Putxet Sport SL',               v:266}, {n:'Luis Vives Centro Estudios',  v:275},
+        {n:'Viatges Temps d\'Oci SL',       v:218}, {n:'Hormigones del Vinalopó SA',  v:219},
+        {n:'Fibra Medios Telecom SL',       v:248}, {n:'Logistica e Ingenieria SL',   v:202},
+        {n:'Alumilux SL',                   v:185}, {n:'CACHAPAS AND DELI SL',        v:232},
+        {n:'SETDART ONLINE SL',             v:229}, {n:'PW Advisory & Capital (STR)', v:102},
+        {n:'RK Madrid SLU',                v:153}, {n:'Chimugu SL',                  v:161},
+        {n:'Estudio Thinketing',            v:126}, {n:'MACOEX',                      v:129},
+        {n:'Gay-Rosell & Solano SLP',       v:129}, {n:'TECNISAMPLE',                 v:129},
+        {n:'Estrategos SL',                 v:292}, {n:'Club Clan 2000',              v:137},
+        {n:'Interstar Deporte SL',          v:152}, {n:'Acceleralia SL (Grantswin)',   v:114},
+        {n:'Kademe Solution SL',            v:119}, {n:'Iberian Leaders Influencers',  v:56},
+        {n:'Higiatech Technologies SL',     v:234}, {n:'GIGLON SL',                   v:141},
+        {n:'Eurosur Assistance SL',         v:163}, {n:'Do Postproduction SL',        v:112},
+        {n:'Sutargi SAL (Starter)',         v:103}, {n:'Roga Nautic SL',              v:88},
+        {n:'Urointec SLU (Starter)',        v:223}, {n:'Vitalis Salud y Bienestar',   v:81},
+        {n:'BACAF Property Management',     v:81},  {n:'Rosynet SL (Starter)',        v:178},
+        {n:'Revolution Publicidad SL',      v:99},  {n:'Iberwix Telecom SL',          v:73},
+        {n:'Akrovalis SL',                  v:34},  {n:'New Egi SL',                  v:69},
+        {n:'Friobox SL',                    v:69},  {n:'Digital Cinegetics SL',       v:69},
+        {n:'Kuluxka Aranguren SL',          v:57},  {n:'Soc. Cooperativa San Isidro', v:57},
+        {n:'Peritaciones Insulares SL',     v:64},  {n:'Atarigua SL',                 v:38},
+        {n:'Postproduction Techno Solutions',v:29}, {n:'Naturalsa SL',                v:47},
+        {n:'Pulses for Tomorrow SL',        v:34},  {n:'Foxtenn Bgreen SL (Starter)', v:102},
+        {n:'Coyser SA',                     v:8},   {n:'Carnicas El Capricho SL',     v:63},
+        {n:'Blue Banana Brand SL (STR)',    v:16},  {n:'Hijos J. García Teruel SL',   v:27},
+        {n:'FONS Menorquí de Cooperació',   v:81},
+      ]
+    },
+    {
+      id:'plus', label:'Business Plus', color:'#f59e0b', bg:'#fffbeb',
+      total:1033, clientes:[
+        {n:'Peisa (Prod. Eléctricos Ind.)', v:401},
+        {n:'Parkia Iniciativas SLU',        v:202},
+        {n:'Iberwix Telecom SL',            v:151},
+        {n:'Euro Weekly News Media SA',     v:84},
+        {n:'NOBA Ventures SL',              v:62},
+        {n:'Gay-Rosell & Solano SLP',       v:42},
+        {n:'Real Estate Servicing SL',      v:42},
+        {n:'Dodepecho DYC SL',              v:25},
+        {n:'Intromethod SL',                v:21},
+      ]
+    },
+    {
+      id:'frontline', label:'Frontline Starter', color:'#ef4444', bg:'#fff5f5',
+      total:2727, clientes:[
+        {n:'TDN SAU',          v:1847},
+        {n:'Iberwix Telecom SL',v:880},
+      ]
+    },
+    {
+      id:'looker', label:'Looker / Platform', color:'#64748b', bg:'#f8fafc',
+      total:5322, clientes:[
+        {n:'ALEA IBERIA SL — Platform Advanced', v:2435},
+        {n:'ALEA IBERIA SL — Viewer User PBL',   v:1788},
+        {n:'ALEA IBERIA SL — Developer User',    v:561},
+        {n:'ALEA IBERIA SL — Standard User',     v:538},
+      ]
+    },
+    {
+      id:'soporte', label:'Soporte Google', color:'#9CA3AF', bg:'#f8fafc',
+      total:2690, clientes:[
+        {n:'Iberwix Telecom SL (Anual Ticketing)', v:1000},
+        {n:'Intromethod SL',    v:300},
+        {n:'Alumilux SL',       v:300},
+        {n:'GIGLON SL',         v:300},
+        {n:'AKROVALIS SL',      v:200},
+        {n:'Heimdal Seguridad SL', v:200},
+        {n:'RAM NARAYAN SL',    v:150},
+        {n:'CHIMUGU SL',        v:200},
+        {n:'SUNBOX Distribution SL', v:150},
+        {n:'CHIMUGU SL (mensual)', v:50},
+        {n:'Kinsy SL (servidor)', v:40},
+      ]
+    },
+  ];
+
+  let activePlan = 'standard';
+
+  function renderExplorer() {
+    const plan = WS_PLANS.find(p => p.id === activePlan);
+    const q = (document.getElementById('explorer-search').value || '').toLowerCase();
+    const filtered = plan.clientes.filter(c => !q || c.n.toLowerCase().includes(q));
+    const sorted = [...filtered].sort((a,b)=>b.v-a.v);
+    const total = plan.clientes.reduce((s,c)=>s+c.v,0);
+
+    // Summary bar
+    document.getElementById('explorer-summary').innerHTML = `
+      <div><span style="font-size:.7rem;color:#9CA3AF;">Clientes</span><br><span style="font-size:1rem;font-weight:800;color:#001A41;">${plan.clientes.length}</span></div>
+      <div style="width:1px;background:#e2e8f0;"></div>
+      <div><span style="font-size:.7rem;color:#9CA3AF;">Facturación / mes</span><br><span style="font-size:1rem;font-weight:800;color:${plan.color};">${total.toLocaleString('es-ES')} €</span></div>
+      <div style="width:1px;background:#e2e8f0;"></div>
+      <div><span style="font-size:.7rem;color:#9CA3AF;">Media por cliente</span><br><span style="font-size:1rem;font-weight:800;color:#001A41;">${Math.round(total/plan.clientes.length).toLocaleString('es-ES')} €</span></div>
+      <div style="width:1px;background:#e2e8f0;"></div>
+      <div><span style="font-size:.7rem;color:#9CA3AF;">% del total Workspace</span><br><span style="font-size:1rem;font-weight:800;color:#001A41;">${(total/92854*100).toFixed(1)}%</span></div>`;
+
+    // Table
+    const maxV = sorted[0]?.v || 1;
+    let html = '';
+    sorted.forEach((c,i)=>{
+      const pct = Math.round(c.v/maxV*100);
+      html += `<tr>
+        <td><span class="rank-badge">${i+1}</span></td>
+        <td>
+          <div style="font-size:.78rem;font-weight:600;color:#001A41;">${c.n}</div>
+          <div style="height:3px;background:#f0f4f8;border-radius:999px;margin-top:4px;width:140px;">
+            <div style="height:3px;border-radius:999px;background:${plan.color};width:${pct}%;"></div></div>
+        </td>
+        <td><span style="background:${plan.bg};color:${plan.color};font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:999px;">${plan.label}</span></td>
+        <td>${c.v.toLocaleString('es-ES')} €</td>
+      </tr>`;
+    });
+    document.getElementById('explorer-tbody').innerHTML = html;
+    document.getElementById('explorer-count').textContent = `Mostrando ${sorted.length} de ${plan.clientes.length} clientes · Total plan: ${total.toLocaleString('es-ES')} €/mes`;
+  }
+
+  // Build plan pills
+  WS_PLANS.forEach(p=>{
+    const pill = document.createElement('button');
+    pill.className = 'plan-pill' + (p.id===activePlan?' active':'');
+    pill.style.setProperty('--pc', p.color);
+    pill.style.setProperty('--pb', p.bg);
+    pill.innerHTML = `<span class="pp-label">${p.label}</span><span class="pp-count">${p.clientes.length}</span><span class="pp-amount">${(p.total/1000).toFixed(1)}k €/mes</span>`;
+    pill.onclick = ()=>{
+      activePlan = p.id;
+      document.querySelectorAll('.plan-pill').forEach(b=>b.classList.remove('active'));
+      pill.classList.add('active');
+      renderExplorer();
+    };
+    document.getElementById('plan-pills').appendChild(pill);
+  });
+
+  renderExplorer();
   </script>
 </body>
 </html>
