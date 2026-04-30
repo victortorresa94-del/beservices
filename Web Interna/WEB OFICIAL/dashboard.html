@@ -233,7 +233,7 @@
       </div>
 
       <p style="font-size:.63rem;color:rgba(255,255,255,.2);margin-top:1rem;margin-bottom:0;">
-        * GCP: importes de consumo pass-through según artículo Eurowin. Clientes facturados confirmados pendiente verificación Eurowin.
+        * GCP: cliente = entidad facturada por BeServices · Nota entre paréntesis = proyecto GCP del cliente final · Datos Eurowin Abril 2026
       </p>
     </div>
 
@@ -1108,16 +1108,30 @@
       label:'Google Cloud', color:'#ea4335', bg:'#fef2f2',
       plans: [
         { id:'gcp-all', label:'Google Cloud Platform', color:'#ea4335', bg:'#fef2f2', clientes:[
-          {n:'Octa Markets LTD (vía ArgentoCloud)',         v:153087},
-          {n:'Alea Play Solutions (vía ALEA IBERIA)',       v:8389},
-          {n:'Evoluziona Seguridad',                        v:4513},
-          {n:'1D3A Analógico y Digital SL',                 v:2852},
-          {n:'Casals Ventilación Air Industrial SL',        v:882},
-          {n:'Solter Soldadura SL',                         v:402},
-          {n:'Ram Narayan SL (Plata y Minerales)',          v:389},
-          {n:'Estiluz',                                     v:330},
-          {n:'Taller Segadell SRL',                         v:292},
-          {n:'LICATA',                                      v:74},
+          {n:'ArgentoCloud OÜ',                              v:153168},
+          {n:'ALEA IBERIA S.L.',                             v:8389},
+          {n:'Heimdal Seguridad SL',                         v:4513},
+          {n:'1D3A ANALÓGICO Y DIGITAL, S.L',                v:2852},
+          {n:'Soluciones Tecno Profesionales Projects S.L',  v:2033},
+          {n:'Parkia Iniciativas S.L.U',                     v:1466},
+          {n:'Casals Ventilación Air Industrial SL',         v:882},
+          {n:'CHIMUGU, S.L.',                                v:651},
+          {n:'Miranza Inversiones Oftalmológicas S.L',       v:420},
+          {n:'Solter Soldadura SL',                          v:402},
+          {n:'RAM NARAYAN SL',                               v:389},
+          {n:'Estiluz S.A',                                  v:330},
+          {n:'TALLER SEGADELL S.R.L',                        v:292},
+          {n:'KANGAROO WELDING SL',                          v:246},
+          {n:'ADTENDE S.L',                                  v:240},
+          {n:'GEOCIENCIAS Y EXPLORACIONES MARÍTIMAS S.L.',   v:236},
+          {n:'AGRICOLA MONTSANT SL',                         v:200},
+          {n:'AP CUBED S.L.',                                v:192},
+          {n:'Aerin Sistemas SL',                            v:49},
+          {n:'NET DESIGN STUDIO, S.L.',                      v:29},
+          {n:'La Banda-I Producciones SL',                   v:27},
+          {n:'Kinsy SL',                                     v:14},
+          {n:'Alumilux SL',                                  v:8},
+          {n:'APAC STOCK BROKERAGE OPERATIONS PVT',          v:6},
         ]},
       ]
     },
@@ -1462,16 +1476,30 @@
 
   // ── BANNER CLOUD ──────────────────────────────────────────────
   const GCP_CLIENTES = [
-    {n:'Octa Markets LTD',                  v:153087, nota:'vía ArgentoCloud OÜ'},
-    {n:'Alea Play Solutions',               v:8389,  nota:'vía ALEA IBERIA S.L.'},
-    {n:'Evoluziona Seguridad',              v:4513,  nota:''},
-    {n:'1D3A Analógico y Digital SL',       v:2852,  nota:''},
-    {n:'Casals Ventilación Air Industrial', v:882,   nota:''},
-    {n:'Solter Soldadura SL',               v:402,   nota:''},
-    {n:'Ram Narayan SL',                    v:389,   nota:''},
-    {n:'Estiluz',                           v:330,   nota:''},
-    {n:'Taller Segadell SRL',               v:292,   nota:''},
-    {n:'LICATA',                            v:74,    nota:''},
+    {n:'ArgentoCloud OÜ',                              v:153168, nota:'Octa Markets · LICATA · APAC'},
+    {n:'ALEA IBERIA S.L.',                             v:8389,   nota:'Alea Play Solutions'},
+    {n:'Heimdal Seguridad SL',                         v:4513,   nota:'Evoluziona Seguridad'},
+    {n:'1D3A ANALÓGICO Y DIGITAL, S.L',                v:2852,   nota:''},
+    {n:'Soluciones Tecno Profesionales Projects S.L',  v:2033,   nota:''},
+    {n:'Parkia Iniciativas S.L.U',                     v:1466,   nota:''},
+    {n:'Casals Ventilación Air Industrial SL',         v:882,    nota:''},
+    {n:'CHIMUGU, S.L.',                                v:651,    nota:''},
+    {n:'Miranza Inversiones Oftalmológicas S.L',       v:420,    nota:''},
+    {n:'Solter Soldadura SL',                          v:402,    nota:''},
+    {n:'RAM NARAYAN SL',                               v:389,    nota:'Plata y Minerales'},
+    {n:'Estiluz S.A',                                  v:330,    nota:''},
+    {n:'TALLER SEGADELL S.R.L',                        v:292,    nota:''},
+    {n:'KANGAROO WELDING SL',                          v:246,    nota:''},
+    {n:'ADTENDE S.L',                                  v:240,    nota:''},
+    {n:'GEOCIENCIAS Y EXPLORACIONES MARÍTIMAS S.L.',   v:236,    nota:''},
+    {n:'AGRICOLA MONTSANT SL',                         v:200,    nota:''},
+    {n:'AP CUBED S.L.',                                v:192,    nota:''},
+    {n:'Aerin Sistemas SL',                            v:49,     nota:''},
+    {n:'NET DESIGN STUDIO, S.L.',                      v:29,     nota:''},
+    {n:'La Banda-I Producciones SL',                   v:27,     nota:''},
+    {n:'Kinsy SL',                                     v:14,     nota:''},
+    {n:'Alumilux SL',                                  v:8,      nota:''},
+    {n:'APAC STOCK BROKERAGE OPERATIONS PVT',          v:6,      nota:''},
   ];
 
   const AZURE_CLIENTES = [
